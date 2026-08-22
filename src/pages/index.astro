@@ -178,7 +178,7 @@ import "../styles/homepage.css";
             <div class="subject-number">06</div>
             <h3>Games & Tests</h3>
             <p>Turn knowledge into instinct with quick interactive challenges and practice.</p>
-            <a href="#quiz">Challenge yourself <span>↗</span></a>
+            <a href="/games/">Explore games & tests <span>↗</span></a>
             <div class="dark-glow"></div>
           </article>
         </div>
@@ -354,7 +354,7 @@ import "../styles/homepage.css";
       </div>
     </section>
 
-    <section class="final-cta">
+    <section class="final-cta" id="shop">
       <div class="shell final-cta-inner">
         <div class="cta-monster-wrap">
           <div class="cta-circle"></div>
@@ -488,13 +488,6 @@ document.querySelectorAll("[data-search]").forEach(btn=>{
   btn.addEventListener("click",()=>{search.value=btn.dataset.search;runSearch(btn.dataset.search)})
 });
 
-const mobileMenu=document.getElementById("mobileMenu");
-const mobilePanel=document.getElementById("mobilePanel");
-mobileMenu.addEventListener("click",()=>{
-  const open=mobilePanel.classList.toggle("open");
-  mobileMenu.setAttribute("aria-expanded",String(open));
-});
-mobilePanel.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>mobilePanel.classList.remove("open")));
 
   </script>
 </BaseLayout>
