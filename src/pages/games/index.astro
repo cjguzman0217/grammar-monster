@@ -1,322 +1,47 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/games.css";
-
-const featured = [
-  {
-    title: "Wordle",
-    description: "Find the hidden five-letter word in six tries. A daily vocabulary challenge with learner and advanced modes.",
-    tag: "DAILY WORD GAME",
-    meta: "5 letters • 6 tries",
-    href: "/games/wordle/",
-    icon: "W",
-    className: "feature-wordle"
-  },
-  {
-    title: "WordUp!",
-    description: "Build words quickly, test your vocabulary and keep the pressure on.",
-    tag: "VOCABULARY",
-    meta: "Fast-paced",
-    href: "#",
-    icon: "↑",
-    className: "feature-wordup"
-  },
-  {
-    title: "Word Builder",
-    description: "Turn letters into words and stretch your vocabulary one combination at a time.",
-    tag: "WORD GAME",
-    meta: "Build & discover",
-    href: "#",
-    icon: "Aa",
-    className: "feature-builder"
-  }
-];
-
-const games = [
-  { title: "Hangman", category: "Vocabulary", difficulty: "All levels", icon: "◌", href: "#" },
-  { title: "Countdown", category: "Word game", difficulty: "Intermediate", icon: "10", href: "#" },
-  { title: "Speed Test", category: "Grammar", difficulty: "Timed", icon: "⚡", href: "#" },
-  { title: "Memory Test", category: "Vocabulary", difficulty: "All levels", icon: "◆", href: "#" },
-  { title: "Confused Words Tetris", category: "Confused words", difficulty: "Intermediate", icon: "▦", href: "#" },
-  { title: "Confidence Game", category: "Grammar", difficulty: "Advanced", icon: "✓", href: "#" }
-];
-
-const testCollections = [
-  {
-    title: "Grammar Tests",
-    description: "Parts of speech, clauses, agreement, verb forms and the rules behind clear English.",
-    count: "100s of tests",
-    icon: "Aa",
-    items: ["Parts of speech", "Verb tenses", "Pronouns", "Clauses"]
-  },
-  {
-    title: "Punctuation Tests",
-    description: "Commas, apostrophes, semicolons, quotation marks and everything in between.",
-    count: "Topic practice",
-    icon: ",;",
-    items: ["Commas", "Apostrophes", "Semicolons", "Quotation marks"]
-  },
-  {
-    title: "Vocabulary & Confused Words",
-    description: "Choose the right word, sharpen definitions and practise commonly confused pairs.",
-    count: "Vocabulary practice",
-    icon: "ABC",
-    items: ["Affect or effect?", "Advice or advise?", "Word choice", "Definitions"]
-  },
-  {
-    title: "Teacher & Classroom Practice",
-    description: "Quick checks, shareable activities and classroom-friendly practice for lessons and homework.",
-    count: "Teacher tools",
-    icon: "✎",
-    items: ["Quick checks", "Homework practice", "Printable tests", "Classroom games"]
-  }
-];
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/wordle.css";
 ---
 
 <BaseLayout
-  title="Games & Tests | Grammar Monster"
-  description="Explore Grammar Monster games, grammar tests, vocabulary challenges and classroom practice."
+  title="Wordle | Grammar Monster"
+  description="Play Grammar Monster Wordle — a five-letter vocabulary challenge with learner and advanced modes."
 >
-  <div class="games-page">
-    <section class="games-hero">
-      <div class="games-shell games-hero__grid">
-        <div class="games-hero__copy">
-          <div class="games-eyebrow">
-            <span></span>
-            PRACTISE. PLAY. REMEMBER.
-          </div>
-
-          <h1>Games & tests<br><span>without the boring bits.</span></h1>
-
-          <p>
-            Turn grammar, vocabulary and punctuation into something you can actually
-            practise. Pick a game, test yourself by topic or find a quick classroom challenge.
-          </p>
-
-          <div class="games-search">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"/>
-            </svg>
-            <input
-              id="gameSearch"
-              type="search"
-              placeholder="Search Wordle, commas, verbs, vocabulary..."
-              aria-label="Search games and tests"
-            />
-            <button id="gameSearchBtn" type="button">Search</button>
-          </div>
-
-          <div class="games-filter-row" aria-label="Filter games and tests">
-            <button class="games-filter is-active" data-filter="all">All</button>
-            <button class="games-filter" data-filter="games">Games</button>
-            <button class="games-filter" data-filter="grammar">Grammar</button>
-            <button class="games-filter" data-filter="punctuation">Punctuation</button>
-            <button class="games-filter" data-filter="vocabulary">Vocabulary</button>
-            <button class="games-filter" data-filter="teachers">Teachers</button>
-          </div>
-        </div>
-
-        <div class="games-hero__art">
-          <div class="games-orb"></div>
-          <div class="letter-card lc-one">A</div>
-          <div class="letter-card lc-two">?</div>
-          <div class="letter-card lc-three">✓</div>
-          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
-
-          <div class="games-tip">
-            <span>MONSTER PICK</span>
-            <strong>Start with today’s Wordle.</strong>
-            <a href="/games/wordle/">Play now →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="featured-section">
-      <div class="games-shell">
-        <div class="games-section-head">
-          <div>
-            <span class="games-kicker">FEATURED GAMES</span>
-            <h2>Start with something fun.</h2>
-          </div>
-          <p>
-            Quick challenges for spelling, vocabulary, pattern recognition and grammar instinct.
-          </p>
-        </div>
-
-        <div class="featured-grid">
-          {featured.map((item) => (
-            <article
-              class:list={["featured-card", item.className]}
-              data-type="games"
-              data-search={`${item.title} ${item.description} ${item.tag}`}
-            >
-              <div class="featured-card__top">
-                <span class="featured-tag">{item.tag}</span>
-                <span class="featured-meta">{item.meta}</span>
-              </div>
-
-              <div class="featured-icon">{item.icon}</div>
-
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-
-              <a href={item.href}>
-                {item.href === "#" ? "Coming soon" : "Play now"}
-                <span>↗</span>
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="quick-section">
-      <div class="games-shell">
-        <div class="games-section-head compact-head">
-          <div>
-            <span class="games-kicker">QUICK GAMES</span>
-            <h2>Pick a challenge.</h2>
-          </div>
-        </div>
-
-        <div class="quick-grid">
-          {games.map((game) => (
-            <a
-              href={game.href}
-              class="quick-card"
-              data-type={`games ${game.category.toLowerCase()}`}
-              data-search={`${game.title} ${game.category} ${game.difficulty}`}
-            >
-              <div class="quick-icon">{game.icon}</div>
-              <div class="quick-copy">
-                <strong>{game.title}</strong>
-                <span>{game.category} • {game.difficulty}</span>
-              </div>
-              <b>→</b>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="test-section">
-      <div class="games-shell">
-        <div class="games-section-head">
-          <div>
-            <span class="games-kicker">TEST YOURSELF BY TOPIC</span>
-            <h2>Find exactly what you need.</h2>
-          </div>
-          <p>
-            Use these collections as the doorway into Grammar Monster’s much larger test library.
-          </p>
-        </div>
-
-        <div class="test-grid">
-          {testCollections.map((collection, index) => (
-            <article
-              class="test-card"
-              data-type={
-                index === 0 ? "grammar" :
-                index === 1 ? "punctuation" :
-                index === 2 ? "vocabulary" :
-                "teachers"
-              }
-              data-search={`${collection.title} ${collection.description} ${collection.items.join(" ")}`}
-            >
-              <div class="test-card__icon">{collection.icon}</div>
-
-              <div class="test-card__head">
-                <span>{collection.count}</span>
-                <h3>{collection.title}</h3>
-                <p>{collection.description}</p>
-              </div>
-
-              <div class="test-card__links">
-                {collection.items.map((item) => (
-                  <a href="#">
-                    <span>{item}</span>
-                    <b>→</b>
-                  </a>
-                ))}
-              </div>
-
-              <a class="test-card__all" href="#">
-                Explore all
-                <span>↗</span>
-              </a>
-            </article>
-          ))}
-        </div>
-
-        <p id="gamesNoResults" class="games-no-results" hidden>
-          No matching demo games or tests yet. Try “Wordle”, “grammar”, “commas” or “vocabulary”.
-        </p>
-      </div>
-    </section>
-
-    <section class="games-cta">
-      <div class="games-shell games-cta__inner">
-        <div class="games-cta__monster">
-          <div></div>
-          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
-        </div>
-
-        <div class="games-cta__copy">
-          <span>READY?</span>
-          <h2>One word. Six tries.</h2>
-          <p>Try the Grammar Monster Wordle prototype while the rest of the games library gets its new home.</p>
-        </div>
-
-        <a href="/games/wordle/">Play Wordle <span>→</span></a>
-      </div>
-    </section>
-  </div>
+<div class="wordle-page">
+<section class="hero"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow"><i></i> DAILY VOCABULARY CHALLENGE</div><h1>Wordle,<br><span>Monster style.</span></h1><p>Find the hidden five-letter word in six tries. Every guess gives you a clue — and every round quietly builds vocabulary, spelling and pattern recognition.</p><div class="actions"><button id="how" class="soft">How to play</button><button id="random" class="dark">Random challenge ↻</button></div><div class="hero-meta"><div><b>5</b><small>letters</small></div><em></em><div><b>6</b><small>tries</small></div><em></em><div><b>2</b><small>modes</small></div></div></div><div class="hero-art"><div class="orb"></div><div class="float f1">W</div><div class="float f2">O</div><div class="float f3">R</div><div class="float f4">D</div><img src="/assets/images/grammarMonsterEye.webp" alt=""><div class="hero-tip"><small>MONSTER TIP</small><p>Start with common vowels and consonants.</p></div></div></div></section>
+<div class="wordle-game-layout">
+<aside class="panel mode-panel"><small>GAME MODE</small><h2>Pick your challenge.</h2><button id="learner" class="mode active"><span>🌱</span><div><b>Learner</b><em>Common everyday words</em></div><i>✓</i></button><button id="advanced" class="mode"><span>⚡</span><div><b>Advanced</b><em>Broader vocabulary</em></div><i>✓</i></button><div class="today"><span></span><div><b>Today's challenge</b><small id="date"></small></div></div><button id="restart" class="link">Restart today's game</button></aside>
+<section class="game"><div class="top"><div><small>GRAMMAR MONSTER WORDLE</small><h2 id="title">Today's word</h2></div><div class="tries"><b id="tries">0</b><span>/ 6</span></div></div><div id="toast"></div><div id="board" class="board"></div><div class="legend"><span><i class="l exact"></i> Right place</span><span><i class="l present"></i> Wrong place</span><span><i class="l absent"></i> Not in word</span></div><div id="keyboard"></div><div id="result" class="result" hidden><div class="result-monster"><span></span><img src="/assets/images/grammarMonsterEye.webp" alt=""></div><div><small>CHALLENGE COMPLETE</small><h3 id="resultTitle"></h3><p id="resultText"></p><div class="result-actions"><button id="share" class="dark">Share result</button><button id="again" class="soft">Random word ↻</button></div></div></div></section>
+<aside class="panel"><small>YOUR STATS</small><div class="stats"><div><b id="played">0</b><span>Played</span></div><div><b id="win">0%</b><span>Win rate</span></div><div><b id="streak">0</b><span>Streak</span></div><div><b id="best">0</b><span>Best</span></div></div><div class="tip"><img src="/assets/images/grammarMonsterEye.webp" alt=""><p><small>MONSTER TIP</small><br><span id="tip">Start with common vowels and consonants.</span></p></div><div class="more"><small>KEEP PLAYING</small><a href="/games/">WordUp! <b>→</b></a><a href="/games/">Word Builder <b>→</b></a><a href="/games/">Hangman <b>→</b></a><a href="/games/">Countdown <b>→</b></a></div></aside>
+</div>
+<section class="learn"><div><div><small>MORE THAN A GAME</small><h2>Build vocabulary while you play.</h2><p>Wordle combines pattern recognition, spelling and vocabulary. Learner Mode keeps things approachable; Advanced Mode widens the challenge.</p></div><div class="why"><b>WHY IT WORKS</b><div><span>01</span><p>Repeated retrieval strengthens spelling memory.</p></div><div><span>02</span><p>Letter patterns build word awareness.</p></div><div><span>03</span><p>Quick feedback rewards logical deduction.</p></div></div></div></section>
+<dialog id="dialog"><button id="close">×</button><small>HOW TO PLAY</small><h2>Find the word in six tries.</h2><p>Enter a five-letter word and press <b>Enter</b>. Green means the right letter in the right place, gold means the right letter in the wrong place, and grey means the letter is not in the word.</p><button id="go" class="dark wide">Got it — let's play</button></dialog>
+</div>
 
   <script>
-    const searchInput = document.getElementById("gameSearch");
-    const searchButton = document.getElementById("gameSearchBtn");
-    const filters = [...document.querySelectorAll(".games-filter")];
-    const searchableCards = [...document.querySelectorAll("[data-search]")];
-    const noResults = document.getElementById("gamesNoResults");
-
-    let activeFilter = "all";
-
-    function applyGamesFilter() {
-      const term = searchInput?.value.trim().toLowerCase() || "";
-      let visible = 0;
-
-      searchableCards.forEach((card) => {
-        const haystack = (card.getAttribute("data-search") || "").toLowerCase();
-        const types = (card.getAttribute("data-type") || "").toLowerCase();
-
-        const matchesSearch = !term || haystack.includes(term);
-        const matchesFilter = activeFilter === "all" || types.includes(activeFilter);
-
-        const show = matchesSearch && matchesFilter;
-        card.classList.toggle("is-hidden", !show);
-
-        if (show) visible++;
-      });
-
-      if (noResults) noResults.hidden = visible !== 0;
-    }
-
-    filters.forEach((button) => {
-      button.addEventListener("click", () => {
-        activeFilter = button.dataset.filter || "all";
-
-        filters.forEach((item) => item.classList.remove("is-active"));
-        button.classList.add("is-active");
-
-        applyGamesFilter();
-      });
-    });
-
-    searchButton?.addEventListener("click", applyGamesFilter);
-
-    searchInput?.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") applyGamesFilter();
-    });
+const learner=["apple","beach","bread","chair","cloud","dream","earth","field","fruit","glass","green","happy","heart","house","light","money","music","night","ocean","paper","plant","quick","river","round","school","shirt","smile","sound","space","stone","table","teach","today","train","water","white","world","write","young","zebra","mouse","phone","clock","grape","sweet","laugh","story","small","great","under","every","never"];
+const advanced=["abide","acute","adorn","amble","ardor","beget","blithe","brisk","cairn","chasm","civic","crave","deign","droll","edict","elate","ethos","fable","flair","forge","guile","hasty","idiom","jaunt","knack","lithe","lucid","mirth","naive","niche","ovary","pique","quell","realm","rebus","rivet","savor","stoic","tacit","tenet","tryst","ultra","vigor","waive","wryly","yearn","zesty","adage","aloof","brine","caste","deter","feign","gruel","hoist","inert","joust","knead","leery","motif"];
+const tips=["Start with common vowels and consonants.","Gold letters belong in the word, but need to move.","The secret word may contain the same letter twice.","Use early guesses to test several new letters."];
+let mode="learner",secret="",row=0,guess="",done=false,history=[];
+const $=id=>document.getElementById(id);
+function list(){return mode==="learner"?learner:[...learner,...advanced]}
+function day(){return Math.floor((Date.now()-Date.UTC(2024,0,1))/86400000)}
+function choose(random=false){const a=list();return random?a[Math.floor(Math.random()*a.length)]:a[(day()*17+(mode==="advanced"?11:0))%a.length]}
+function board(){ $("board").innerHTML="";for(let r=0;r<6;r++){let d=document.createElement("div");d.className="row";for(let c=0;c<5;c++){let t=document.createElement("div");t.className="tile";t.dataset.r=r;t.dataset.c=c;d.appendChild(t)}$("board").appendChild(d)}}
+function keyboard(){let k=$("keyboard");k.innerHTML="";["QWERTYUIOP","ASDFGHJKL"].forEach(s=>{let d=document.createElement("div");d.className="keyrow";[...s].forEach(x=>d.appendChild(key(x)));k.appendChild(d)});let d=document.createElement("div");d.className="keyrow";d.appendChild(key("ENTER",1));[..."ZXCVBNM"].forEach(x=>d.appendChild(key(x)));d.appendChild(key("⌫",1));k.appendChild(d)}
+function key(x,w){let b=document.createElement("button");b.className="key"+(w?" wide":"");b.textContent=x;b.dataset.key=x;b.onclick=()=>press(x);return b}
+function paint(){document.querySelectorAll(`[data-r="${row}"]`).forEach((t,i)=>{t.textContent=guess[i]||"";t.classList.toggle("filled",!!guess[i])})}
+function evalGuess(g){let out=Array(5).fill("absent"),rem=secret.split("");for(let i=0;i<5;i++)if(g[i]===secret[i]){out[i]="exact";rem[i]=null}for(let i=0;i<5;i++)if(out[i]!=="exact"){let j=rem.indexOf(g[i]);if(j>-1){out[i]="present";rem[j]=null}}return out}
+function press(k){if(done)return;if(k==="⌫"||k==="Backspace"){guess=guess.slice(0,-1);paint();return}if(k==="ENTER"){submit();return}if(/^[A-Z]$/i.test(k)&&guess.length<5){guess+=k.toLowerCase();paint()}}
+function submit(){if(guess.length!==5){document.querySelectorAll(`[data-r="${row}"]`).forEach(t=>{t.classList.remove("shake");void t.offsetWidth;t.classList.add("shake")});toast("Five letters, please.");return}let g=guess,e=evalGuess(g);history.push({g,e});document.querySelectorAll(`[data-r="${row}"]`).forEach((t,i)=>{t.classList.add("reveal",e[i]);let kb=document.querySelector(`[data-key="${g[i].toUpperCase()}"]`);if(kb&&!kb.classList.contains("exact"))kb.classList.add(e[i])});row++;$("tries").textContent=row;if(g===secret){done=true;setTimeout(()=>finish(true),250)}else if(row===6){done=true;setTimeout(()=>finish(false),250)}else{guess="";paint()}}
+function toast(x){$("toast").textContent=x;setTimeout(()=>$("toast").textContent="",1500)}
+function stats(){try{return JSON.parse(localStorage.gmWordle)||{p:0,w:0,s:0,b:0}}catch{return{p:0,w:0,s:0,b:0}}}
+function showStats(){let s=stats();$("played").textContent=s.p;$("win").textContent=s.p?Math.round(s.w/s.p*100)+"%":"0%";$("streak").textContent=s.s;$("best").textContent=s.b||0}
+function finish(win){let s=stats();s.p++;if(win){s.w++;s.s++;s.b=s.b?Math.min(s.b,row):row}else s.s=0;localStorage.gmWordle=JSON.stringify(s);showStats();$("result").hidden=false;$("resultTitle").textContent=win?"Monster-approved.":"The word escaped.";$("resultText").textContent=win?`You found ${secret.toUpperCase()} in ${row} tries.`:`The word was ${secret.toUpperCase()}.`}
+function start(random=false){secret=choose(random);row=0;guess="";done=false;history=[];board();keyboard();$("tries").textContent=0;$("title").textContent=random?"Random challenge":"Today's word";$("result").hidden=true;$("tip").textContent=tips[Math.floor(Math.random()*tips.length)]}
+function switchMode(m){mode=m;$("learner").classList.toggle("active",m==="learner");$("advanced").classList.toggle("active",m==="advanced");start()}
+$("learner").onclick=()=>switchMode("learner");$("advanced").onclick=()=>switchMode("advanced");$("random").onclick=()=>start(true);$("again").onclick=()=>start(true);$("restart").onclick=()=>start(false);
+$("share").onclick=()=>{let map={exact:"🟩",present:"🟨",absent:"⬜"},txt=`Grammar Monster Wordle ${row}/6\n`+history.map(x=>x.e.map(y=>map[y]).join("")).join("\n");navigator.clipboard?.writeText(txt);toast("Result copied!")};
+const dlg=$("dialog");$("how").onclick=()=>dlg.showModal();$("close").onclick=()=>dlg.close();$("go").onclick=()=>dlg.close();document.addEventListener("keydown",e=>{if(e.key==="Enter")press("ENTER");else if(e.key==="Backspace")press("Backspace");else if(/^[a-z]$/i.test(e.key))press(e.key)});if(document.getElementById("date")){document.getElementById("date").textContent=new Date().toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});}showStats();start();
   </script>
 </BaseLayout>
