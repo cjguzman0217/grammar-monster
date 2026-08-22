@@ -1,0 +1,49 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: "Learn", href: "/#explore" },
+  { label: "Learning paths", href: "/#paths" },
+  { label: "Games & tests", href: "/games/" },
+  { label: "Popular", href: "/#popular" }
+];
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="site-brand" aria-label="Grammar Monster home">
+      <img
+        src="/assets/images/grammarMonsterEye.webp"
+        alt="Grammar Monster"
+      />
+
+      <span class="site-brand__text">
+        <span>Grammar</span>
+        <strong>Monster</strong>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              "site-nav__link",
+              currentPath.startsWith("/games") &&
+              item.href === "/games/"
+                ? "is-active"
+                : ""
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a href="/" class="site-header__cta">
+      Back home
+    </a>
+  </div>
+</header>
