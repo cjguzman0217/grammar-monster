@@ -15,18 +15,8 @@
   --white:#ffffff;
   --shadow:0 24px 70px rgba(11,63,47,.12);
 }
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:"DM Sans",system-ui,sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  overflow-x:hidden;
-}
 button,input{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
 button{cursor:pointer}
-img{max-width:100%;display:block}
 .shell{width:min(1180px,calc(100% - 40px));margin:0 auto}
 .ambient{
   position:fixed;
