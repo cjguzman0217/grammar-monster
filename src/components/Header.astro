@@ -1,22 +1,55 @@
 ---
 const currentPath = Astro.url.pathname;
+const isHome = currentPath === "/";
 
-const navItems = [
-  { label: "Learn", href: "/#explore" },
-  { label: "Learning paths", href: "/#paths" },
-  { label: "Games & tests", href: "/games/" },
-  { label: "Popular", href: "/#popular" }
+const isGames = currentPath.startsWith("/games");
+
+const groups = [
+  {
+    label: "Learn",
+    items: [
+      { label: "Grammar", href: "/#explore" },
+      { label: "Punctuation", href: "/#explore" },
+      { label: "Writing", href: "/#explore" },
+      { label: "Vocabulary", href: "/#explore" },
+      { label: "Spelling", href: "/#explore" }
+    ]
+  },
+  {
+    label: "Practice",
+    items: [
+      { label: "Games & tests", href: "/games/" },
+      { label: "Wordle", href: "/games/wordle/" },
+      { label: "Quick grammar challenge", href: "/#quiz" }
+    ]
+  },
+  {
+    label: "For you",
+    items: [
+      { label: "Beginners", href: "/#paths" },
+      { label: "Students", href: "/#paths" },
+      { label: "English learners", href: "/#paths" },
+      { label: "Business writers", href: "/#paths" },
+      { label: "Creative writers", href: "/#paths" }
+    ]
+  },
+  {
+    label: "Explore",
+    items: [
+      { label: "Popular lessons", href: "/#popular" },
+      { label: "Learning paths", href: "/#paths" },
+      { label: "Grammar glossary", href: "/#explore" },
+      { label: "Confused words", href: "/#explore" },
+      { label: "Word lists", href: "/#explore" }
+    ]
+  }
 ];
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
     <a href="/" class="site-brand" aria-label="Grammar Monster home">
-      <img
-        src="/assets/images/grammarMonsterEye.webp"
-        alt="Grammar Monster"
-      />
-
+      <img src="/assets/images/grammarMonsterEye.webp" alt="Grammar Monster" />
       <span class="site-brand__text">
         <span>Grammar</span>
         <strong>Monster</strong>
@@ -25,25 +58,91 @@ const navItems = [
 
     <nav class="site-nav" aria-label="Primary navigation">
       {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-              "site-nav__link",
-              currentPath.startsWith("/games") &&
-              item.href === "/games/"
-                ? "is-active"
-                : ""
-            ]}
-          >
-            {item.label}
-          </a>
+        groups.map((group) => (
+          <div class="site-nav__group">
+            <button class="site-nav__trigger" type="button" aria-expanded="false">
+              {group.label}
+              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+            </button>
+
+            <div class="site-nav__menu">
+              <div class="site-nav__menu-label">{group.label}</div>
+              {
+                group.items.map((item) => (
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "site-nav__menu-link",
+                      isGames && item.href === "/games/" ? "is-active" : ""
+                    ]}
+                  >
+                    <span>{item.label}</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
         ))
       }
+
+      <a class="site-nav__shop" href="/#shop">Shop</a>
     </nav>
 
-    <a href="/" class="site-header__cta">
-      Back home
+    <a
+      href={isHome ? "/games/" : "/"}
+      class="site-header__cta"
+    >
+      {isHome ? "Games & tests" : "Back home"}
+    </a>
+
+    <button
+      class="site-menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="siteMobileNav"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="site-mobile-nav" id="siteMobileNav">
+    {
+      groups.map((group) => (
+        <details>
+          <summary>{group.label}<span>+</span></summary>
+          <div>
+            {group.items.map((item) => <a href={item.href}>{item.label}</a>)}
+          </div>
+        </details>
+      ))
+    }
+    <a class="site-mobile-nav__shop" href="/#shop">Shop</a>
+    <a class="site-mobile-nav__cta" href={isHome ? "/games/" : "/"}>
+      {isHome ? "Explore games & tests" : "Back home"}
     </a>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector(".site-header");
+  const toggle = document.querySelector(".site-menu-toggle");
+  const mobileNav = document.getElementById("siteMobileNav");
+
+  if (header && toggle && mobileNav) {
+    toggle.addEventListener("click", () => {
+      const open = header.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    });
+
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        header.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open navigation");
+      });
+    });
+  }
+</script>
