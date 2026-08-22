@@ -1,0 +1,500 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/homepage.css";
+---
+
+<BaseLayout
+  title="Grammar Monster — English, made brilliantly clear."
+  description="Grammar Monster — free English grammar lessons, tests and games."
+>
+<div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+<div id="top" class="homepage">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            2,000+ free lessons • no login required
+          </div>
+
+          <h1>
+            English, made
+            <span class="gradient-text">brilliantly clear.</span>
+          </h1>
+
+          <p class="hero-lede">
+            Grammar, punctuation, vocabulary and writing — explained with clarity,
+            personality and just enough monster mischief to make it stick.
+          </p>
+
+          <div class="search-wrap">
+            <div class="search-card">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"/>
+              </svg>
+              <input id="lessonSearch" type="search" placeholder="Search grammar, commas, verbs, spelling..." aria-label="Search lessons">
+              <button id="searchBtn">Search</button>
+            </div>
+
+            <div class="popular-searches">
+              <span>Try:</span>
+              <button data-search="commas">Commas</button>
+              <button data-search="apostrophes">Apostrophes</button>
+              <button data-search="verbs">Verbs</button>
+              <button data-search="writing">Writing</button>
+            </div>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item">
+              <strong>2,000+</strong>
+              <span>lessons</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <strong>Hundreds</strong>
+              <span>of tests & games</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <strong>100%</strong>
+              <span>free to learn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="monster-halo"></div>
+
+          <div class="floating-chip chip-a">
+            <span>✓</span>
+            Clear explanations
+          </div>
+          <div class="floating-chip chip-b">
+            <span>⚡</span>
+            Instant practice
+          </div>
+
+          <div class="monster-stage">
+            <div class="stage-shine"></div>
+            <img class="hero-monster" src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true">
+            <div class="speech-card">
+              <span class="speech-label">MONSTER TIP</span>
+              <p id="monsterTip">A semicolon can join two closely related complete sentences.</p>
+              <button id="newTipBtn">Another tip ↻</button>
+            </div>
+          </div>
+
+          <div class="mini-score-card">
+            <div class="mini-score-icon">A+</div>
+            <div>
+              <strong>Learn it. Test it.</strong>
+              <span>Remember it.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-wave"></div>
+    </section>
+
+    <section class="marquee-section" aria-label="Topics">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>GRAMMAR</span><i>•</i>
+          <span>PUNCTUATION</span><i>•</i>
+          <span>VOCABULARY</span><i>•</i>
+          <span>SPELLING</span><i>•</i>
+          <span>WRITING</span><i>•</i>
+          <span>GAMES</span><i>•</i>
+          <span>TESTS</span><i>•</i>
+          <span>GRAMMAR</span><i>•</i>
+          <span>PUNCTUATION</span><i>•</i>
+          <span>VOCABULARY</span><i>•</i>
+          <span>SPELLING</span><i>•</i>
+          <span>WRITING</span><i>•</i>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="explore">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="kicker">EXPLORE THE LIBRARY</span>
+            <h2>Everything you need,<br>without the textbook fog.</h2>
+          </div>
+          <p>
+            Choose a subject and jump straight in. Every section is designed to make
+            the rules easier to understand, easier to practise and easier to remember.
+          </p>
+        </div>
+
+        <div class="subject-grid">
+          <article class="subject-card subject-featured">
+            <div class="subject-icon">Aa</div>
+            <div class="subject-number">01</div>
+            <h3>Grammar</h3>
+            <p>Parts of speech, clauses, sentence structure, agreement and the rules behind clear English.</p>
+            <a href="#">Explore grammar <span>↗</span></a>
+            <div class="card-orb"></div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-icon">,;</div>
+            <div class="subject-number">02</div>
+            <h3>Punctuation</h3>
+            <p>Commas, apostrophes, hyphens, colons, quotations and every mark in between.</p>
+            <a href="#">Master punctuation <span>↗</span></a>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-icon">✎</div>
+            <div class="subject-number">03</div>
+            <h3>Writing</h3>
+            <p>Write with more clarity, confidence, rhythm and impact — at school or at work.</p>
+            <a href="#">Improve your writing <span>↗</span></a>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-icon">ABC</div>
+            <div class="subject-number">04</div>
+            <h3>Vocabulary</h3>
+            <p>Build a bigger, sharper vocabulary and choose the right word with confidence.</p>
+            <a href="#">Build vocabulary <span>↗</span></a>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-icon">✓</div>
+            <div class="subject-number">05</div>
+            <h3>Spelling</h3>
+            <p>Common mistakes, memorable patterns and simple techniques that actually stick.</p>
+            <a href="#">Improve spelling <span>↗</span></a>
+          </article>
+
+          <article class="subject-card subject-dark">
+            <div class="subject-icon">★</div>
+            <div class="subject-number">06</div>
+            <h3>Games & Tests</h3>
+            <p>Turn knowledge into instinct with quick interactive challenges and practice.</p>
+            <a href="#quiz">Challenge yourself <span>↗</span></a>
+            <div class="dark-glow"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section path-section" id="paths">
+      <div class="shell">
+        <div class="path-intro">
+          <span class="kicker light-kicker">FIND YOUR WAY IN</span>
+          <h2>There’s a Grammar Monster<br>path for everyone.</h2>
+          <p>Pick the version of you that walked through the door today.</p>
+        </div>
+
+        <div class="path-cards">
+          <article class="path-card">
+            <span class="path-emoji">📗</span>
+            <span class="path-tag">NATIVE SPEAKER</span>
+            <h3>I want stronger grammar.</h3>
+            <p>Understand the terminology, fix common errors and sharpen your everyday writing.</p>
+            <a href="#">Start this path →</a>
+          </article>
+
+          <article class="path-card">
+            <span class="path-emoji">🎓</span>
+            <span class="path-tag">STUDENT</span>
+            <h3>I want better writing.</h3>
+            <p>Build clearer sentences, stronger essays and more confident punctuation.</p>
+            <a href="#">Start this path →</a>
+          </article>
+
+          <article class="path-card">
+            <span class="path-emoji">💼</span>
+            <span class="path-tag">BUSINESS</span>
+            <h3>I want to sound professional.</h3>
+            <p>Cut ambiguity, improve tone and make every sentence earn its place.</p>
+            <a href="#">Start this path →</a>
+          </article>
+
+          <article class="path-card">
+            <span class="path-emoji">🎭</span>
+            <span class="path-tag">CREATIVE WRITER</span>
+            <h3>I want more flair.</h3>
+            <p>Explore rhetorical devices, sound, imagery, rhythm and style.</p>
+            <a href="#">Start this path →</a>
+          </article>
+
+          <article class="path-card">
+            <span class="path-emoji">🍎</span>
+            <span class="path-tag">BEGINNER</span>
+            <h3>Teach me the basics.</h3>
+            <p>Friendly explanations, essential vocabulary, games and simple examples.</p>
+            <a href="#">Start this path →</a>
+          </article>
+
+          <article class="path-card">
+            <span class="path-emoji">🌍</span>
+            <span class="path-tag">LANGUAGE LEARNER</span>
+            <h3>I need more words.</h3>
+            <p>Build practical English and vocabulary step by step, without the overwhelm.</p>
+            <a href="#">Start this path →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz">
+      <div class="shell quiz-grid">
+        <div class="quiz-copy">
+          <span class="kicker">PUT IT TO THE TEST</span>
+          <h2>Think you know your grammar?</h2>
+          <p>
+            Ten quick questions. No sign-up. No pressure. Just enough jeopardy to make
+            the right answer satisfying.
+          </p>
+
+          <div class="quiz-points">
+            <div><span>01</span><p>Answer each question</p></div>
+            <div><span>02</span><p>Get instant feedback</p></div>
+            <div><span>03</span><p>See your final score</p></div>
+          </div>
+
+          <div class="monster-sticker">
+            <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true">
+            <div>
+              <strong>Monster-approved.</strong>
+              <span>Probably.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="quiz-card">
+          <div class="quiz-top">
+            <div class="quiz-status">
+              <span class="live-dot"></span>
+              QUICK GRAMMAR CHALLENGE
+            </div>
+            <span id="score">0 correct</span>
+          </div>
+
+          <div class="question-progress">
+            <div class="progress-copy">
+              <span id="questionCount">Question 1 of 10</span>
+              <span id="progressPercent">10%</span>
+            </div>
+            <div class="progress-track"><div id="progressBar"></div></div>
+          </div>
+
+          <h3 id="questionText">Choose the correct sentence:</h3>
+          <div class="answers" id="answers"></div>
+          <div class="feedback" id="feedback" aria-live="polite"></div>
+
+          <button class="next-btn" id="nextBtn" disabled>
+            Next question
+            <span>→</span>
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="popular">
+      <div class="shell">
+        <div class="section-head popular-head">
+          <div>
+            <span class="kicker">POPULAR LESSONS</span>
+            <h2>The questions everyone asks.</h2>
+          </div>
+          <a class="view-all" href="#">View all lessons <span>↗</span></a>
+        </div>
+
+        <div class="lesson-grid" id="lessonGrid">
+          <article class="lesson-card" data-keywords="grammar parts speech nouns verbs">
+            <div class="lesson-art art-one">
+              <span>01</span>
+              <div>Aa</div>
+            </div>
+            <div class="lesson-body">
+              <span class="lesson-tag">GRAMMAR</span>
+              <h3>The parts of speech, explained simply</h3>
+              <p>Nouns, verbs, adjectives and the rest — without drowning in terminology.</p>
+              <div class="lesson-meta"><span>8 min read</span><span>Begin →</span></div>
+            </div>
+          </article>
+
+          <article class="lesson-card" data-keywords="punctuation commas which that who">
+            <div class="lesson-art art-two">
+              <span>02</span>
+              <div>,</div>
+            </div>
+            <div class="lesson-body">
+              <span class="lesson-tag">PUNCTUATION</span>
+              <h3>Commas before “which,” “that,” and “who”</h3>
+              <p>One of English punctuation’s most common sticking points, made clear.</p>
+              <div class="lesson-meta"><span>6 min read</span><span>Begin →</span></div>
+            </div>
+          </article>
+
+          <article class="lesson-card" data-keywords="writing run on sentence common errors">
+            <div class="lesson-art art-three">
+              <span>03</span>
+              <div>✎</div>
+            </div>
+            <div class="lesson-body">
+              <span class="lesson-tag">WRITING</span>
+              <h3>How to kill the run-on sentence</h3>
+              <p>Spot sprawling sentences and fix them without flattening your voice.</p>
+              <div class="lesson-meta"><span>7 min read</span><span>Begin →</span></div>
+            </div>
+          </article>
+        </div>
+
+        <p id="noResults" class="no-results" hidden>No matching demo lessons. Try “commas”, “verbs” or “writing”.</p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-cta-inner">
+        <div class="cta-monster-wrap">
+          <div class="cta-circle"></div>
+          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true">
+        </div>
+        <div class="cta-copy">
+          <span class="kicker light-kicker">NO LOGIN. NO PAYWALL. NO NONSENSE.</span>
+          <h2>Make friends with better English.</h2>
+          <p>Thousands of lessons, games, tests and explanations — all waiting when you are.</p>
+        </div>
+        <button class="lime-btn" data-scroll="#explore">Start learning <span>→</span></button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+const questions = [
+  {q:"Choose the correct sentence:",a:["This place is a dump.","This place are a dump."],c:0,why:"Correct — “place” is singular, so it takes “is.”"},
+  {q:"I shall marry ___ I like.",a:["whoever","whomever"],c:0,why:"“Whoever” works here because it functions as the subject within the clause."},
+  {q:"Choose the correct word:",a:["altogether","all together"],c:0,why:"“Altogether” means completely or on the whole."},
+  {q:"Do me a favour. ___ your technique.",a:["Alter","Altar"],c:0,why:"“Alter” is the verb meaning to change."},
+  {q:"Which word is a verb?",a:["plays","mother-in-law","green"],c:0,why:"“Plays” expresses an action."},
+  {q:"Identify the relative pronoun:",a:["who","when","how"],c:0,why:"“Who” can introduce a relative clause referring to a person."},
+  {q:"Which is a direct question?",a:["Why are you late?","Please explain why you're late."],c:0,why:"The first sentence directly asks a question."},
+  {q:"Which means 'not interested'?",a:["uninterested","disinterested"],c:0,why:"“Uninterested” means not interested; “disinterested” traditionally means impartial."},
+  {q:"Choose the correct spelling:",a:["vie","vye"],c:0,why:"The verb is spelled “vie.”"},
+  {q:"What is a denotation of 'jolly'?",a:["happy","sailor","Roger"],c:0,why:"“Jolly” can mean cheerful or happy."}
+];
+
+const tips = [
+  "A semicolon can join two closely related complete sentences.",
+  "Use “fewer” for things you can count and “less” for quantities you cannot.",
+  "An apostrophe does not make an ordinary noun plural.",
+  "A strong verb usually beats a weak verb plus an adverb.",
+  "If removing a clause changes the identity of the noun, you probably do not need commas around it.",
+  "Read difficult sentences aloud. Your ear often catches what your eyes miss."
+];
+
+let current=0,score=0,answered=false;
+const qText=document.getElementById("questionText");
+const answers=document.getElementById("answers");
+const feedback=document.getElementById("feedback");
+const next=document.getElementById("nextBtn");
+const qCount=document.getElementById("questionCount");
+const scoreEl=document.getElementById("score");
+const bar=document.getElementById("progressBar");
+const pct=document.getElementById("progressPercent");
+
+function renderQuestion(){
+  answered=false; next.disabled=true; feedback.textContent="";
+  const item=questions[current];
+  qText.textContent=item.q;
+  qCount.textContent=`Question ${current+1} of ${questions.length}`;
+  scoreEl.textContent=`${score} correct`;
+  const progress=Math.round(((current+1)/questions.length)*100);
+  bar.style.width=`${progress}%`; pct.textContent=`${progress}%`;
+  answers.innerHTML="";
+  item.a.forEach((txt,i)=>{
+    const btn=document.createElement("button");
+    btn.className="answer"; btn.textContent=txt;
+    btn.addEventListener("click",()=>selectAnswer(btn,i));
+    answers.appendChild(btn);
+  });
+}
+
+function selectAnswer(btn,index){
+  if(answered)return;
+  answered=true;
+  const item=questions[current];
+  const all=[...document.querySelectorAll(".answer")];
+  if(index===item.c){
+    score++;btn.classList.add("correct");
+    feedback.textContent="✓ "+item.why;
+  }else{
+    btn.classList.add("wrong");
+    all[item.c].classList.add("correct");
+    feedback.textContent="Not quite. "+item.why;
+  }
+  scoreEl.textContent=`${score} correct`;
+  next.disabled=false;
+}
+
+function restartQuiz(){
+  current=0;score=0;
+  next.innerHTML='Next question <span>→</span>';
+  next.onclick=null;
+  renderQuestion();
+}
+
+next.addEventListener("click",()=>{
+  if(current<questions.length-1){current++;renderQuestion();return}
+  qText.textContent=`You scored ${score} out of ${questions.length}.`;
+  answers.innerHTML="";
+  feedback.textContent=score>=8?"Monster level: impressive.":"A respectable start. Want another go?";
+  qCount.textContent="Challenge complete";pct.textContent="100%";bar.style.width="100%";
+  next.disabled=false;next.innerHTML='Restart challenge <span>↻</span>';
+  next.onclick=restartQuiz;
+});
+
+renderQuestion();
+
+document.getElementById("newTipBtn").addEventListener("click",()=>{
+  const tip=document.getElementById("monsterTip");
+  let nextTip=tips[Math.floor(Math.random()*tips.length)];
+  while(nextTip===tip.textContent && tips.length>1){nextTip=tips[Math.floor(Math.random()*tips.length)]}
+  tip.animate([{opacity:.2,transform:"translateY(3px)"},{opacity:1,transform:"translateY(0)"}],{duration:260});
+  tip.textContent=nextTip;
+});
+
+document.querySelectorAll("[data-scroll]").forEach(el=>{
+  el.addEventListener("click",()=>document.querySelector(el.dataset.scroll)?.scrollIntoView({behavior:"smooth"}))
+});
+
+const search=document.getElementById("lessonSearch");
+const cards=[...document.querySelectorAll(".lesson-card")];
+const none=document.getElementById("noResults");
+function runSearch(value){
+  const term=value.trim().toLowerCase();
+  let visible=0;
+  cards.forEach(card=>{
+    const match=!term||(card.textContent+" "+card.dataset.keywords).toLowerCase().includes(term);
+    card.style.display=match?"block":"none";
+    if(match)visible++;
+  });
+  none.hidden=visible!==0;
+  document.getElementById("popular").scrollIntoView({behavior:"smooth"});
+}
+document.getElementById("searchBtn").addEventListener("click",()=>runSearch(search.value));
+search.addEventListener("keydown",e=>{if(e.key==="Enter")runSearch(search.value)});
+document.querySelectorAll("[data-search]").forEach(btn=>{
+  btn.addEventListener("click",()=>{search.value=btn.dataset.search;runSearch(btn.dataset.search)})
+});
+
+const mobileMenu=document.getElementById("mobileMenu");
+const mobilePanel=document.getElementById("mobilePanel");
+mobileMenu.addEventListener("click",()=>{
+  const open=mobilePanel.classList.toggle("open");
+  mobileMenu.setAttribute("aria-expanded",String(open));
+});
+mobilePanel.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>mobilePanel.classList.remove("open")));
+
+  </script>
+</BaseLayout>
