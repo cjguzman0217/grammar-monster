@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/punctuation-hub.css";
+
+const categories = [
+  ["’","Apostrophes","Possession, contractions, plurals and awkward edge cases."],
+  ["( )","Brackets & Parentheses","Add extra information clearly without disrupting the sentence."],
+  [",","Commas","Lists, clauses, direct address, quotations and the Oxford comma."],
+  [":","Colons","Introduce lists, explanations, quotations and supporting detail."],
+  ["-","Hyphens","Prefixes, compound words, ages and number ranges."],
+  ["—","Dashes","Dates, parenthetical breaks and deliberate emphasis."],
+  [";","Semicolons","Join related clauses and make complex lists easier to read."],
+  ["“ ”","Quotation Marks","Dialogue, quotations, titles and punctuation placement."],
+  ["…","Ellipsis","Show omission, hesitation or an unfinished thought."],
+  ["!","Exclamation Marks","Express strong feeling, emphasis and force."],
+  ["?","Question Marks","Direct questions, uncertainty and enquiry."],
+  [".","Periods / Full Stops","End statements cleanly and keep ideas under control."]
+];
+
+const deep = [
+  ["’","Apostrophes",["Apostrophes for possession","Apostrophe-placement rules","Apostrophe after s","Apostrophe after z","Apostrophe before s","Apostrophes in contractions"]],
+  [",","Commas",['Commas with “Dear,” “Hello,” and “Hi”',"Commas after a dependent clause",'Commas after words like “however”',"Commas in lists","The comma run-on error","The Oxford comma"]],
+  [":","Colons",["Colons before long quotations","Colons with bullet points","Colons for introductions","Colons in references","Colons with appositives","Colons before lists"]],
+  ["-","Hyphens",["Hyphens in prefixes","Hyphens in compound nouns","Hyphens in compound adjectives","Alternatives to hyphens","Hyphens between numbers","Hyphens in ages"]]
+];
+
+const related = ["Overview of punctuation usage","Grammar glossary","Easily confused words","Common errors","Grammar tests","Sayings and proverbs"];
+---
+
+<BaseLayout title="Punctuation Lessons | Grammar Monster" description="Explore punctuation lessons, summaries, tests and teacher resources.">
+<div class="ph">
+  <section class="ph-hero">
+    <div class="ph-shell ph-hero-grid">
+      <div>
+        <div class="eyebrow"><span></span>PUNCTUATION LESSONS</div>
+        <h1>Punctuation,<br><em>made brilliantly clear.</em></h1>
+        <p>Learn the marks that control how writing flows, how ideas are grouped and how meaning is understood.</p>
+        <div class="actions"><a href="#marks">Explore punctuation</a><a class="ghost" href="#practice">Test yourself</a></div>
+        <div class="meta"><b>12<small>core marks</small></b><i></i><b>100s<small>of lessons</small></b><i></i><b>Free<small>to learn</small></b></div>
+      </div>
+      <div class="art">
+        <div class="orb"></div>
+        <div class="mark m1">,</div><div class="mark m2">;</div><div class="mark m3">?</div><div class="mark m4">!</div>
+        <img src="/assets/images/grammarMonsterEye.webp" alt="" />
+        <div class="tip"><small>MONSTER TIP</small><p>Punctuation controls how readers absorb the text presented.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="marks">
+    <div class="ph-shell">
+      <div class="head"><div><small>START HERE</small><h2>Choose the mark you want to master.</h2></div><p>Each category becomes a doorway into Grammar Monster’s deeper lesson library.</p></div>
+      <div class="grid">
+        {categories.map((c,i)=><a href="#" class:list={["card",i===2&&"featured"]}><div class="cardtop"><span>{c[0]}</span><i>{String(i+1).padStart(2,"0")}</i></div><h3>{c[1]}</h3><p>{c[2]}</p><b>View lessons →</b></a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="ph-shell whygrid">
+      <div><small>WHY PUNCTUATION MATTERS</small><h2>Small marks. Huge difference.</h2><p>Punctuation adds clarity, precision and rhythm. The wrong mark can change meaning completely.</p>
+        <div class="examples"><div><small>WITHOUT THE COMMA</small><strong>Let’s eat grandma.</strong></div><div><small>WITH THE COMMA</small><strong>Let’s eat, grandma.</strong></div></div>
+      </div>
+      <div class="summary"><small>QUICK SUMMARY</small><h3>All punctuation at a glance.</h3><p>Start with a concise overview of the core punctuation marks and what each one does.</p><a href="#">Read the punctuation summary ↗</a></div>
+    </div>
+  </section>
+
+  <section class="section deep">
+    <div class="ph-shell">
+      <div class="head"><div><small>DETAILED LESSONS</small><h2>Go deeper by punctuation type.</h2></div><p>A reusable pattern for exposing dozens of existing lessons without the old wall-of-links feel.</p></div>
+      <div class="deepgrid">
+        {deep.map(g=><article class="deepcard"><div class="deephead"><span>{g[0]}</span><div><h3>All {g[1]} Lessons</h3><p>Focused lessons and practical examples.</p></div></div><div class="links">{g[2].map(x=><a href="#">{x}<b>→</b></a>)}</div><a class="all" href="#">View all {String(g[1]).toLowerCase()} lessons ↗</a></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="practice" id="practice">
+    <div class="ph-shell practicegrid">
+      <div><small>PRACTICE & TEST</small><h2>Learn it. Test it. Remember it.</h2><p>The existing page already combines lessons and testing. This version makes those routes far easier to discover.</p><div class="actions"><a class="lime" href="#">Take the multi-choice test</a><a class="outline" href="/games/">Explore games & tests</a></div></div>
+      <div class="practicecards">
+        <a href="#"><span>01</span><div><b>Multi-choice punctuation test</b><small>Printable • Sendable • Classroom-friendly</small></div><strong>→</strong></a>
+        <a href="#"><span>02</span><div><b>Choose the right punctuation</b><small>Quick game • Instant feedback</small></div><strong>→</strong></a>
+        <a href="#"><span>03</span><div><b>Learn commas properly</b><small>Focused test • Common errors</small></div><strong>→</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="ph-shell teacher">
+      <div><small>TEACHERS’ ZONE</small><h2>Built for the classroom too.</h2><p>Turn a lesson into a handout, homework task, quick test or shareable resource.</p><div class="teacherbuttons"><a href="#">Print as handout</a><a href="#">Send as homework</a><a href="#">Show as slides</a><a href="#">Expand to full page</a></div></div>
+      <div class="teachermonster"><div></div><img src="/assets/images/grammarMonsterEye.webp" alt="" /><span>Teacher-friendly by design.</span></div>
+    </div>
+  </section>
+
+  <section class="section related">
+    <div class="ph-shell">
+      <div class="head"><div><small>KEEP EXPLORING</small><h2>You might also like…</h2></div></div>
+      <div class="relatedgrid">{related.map(x=><a href="#">{x}<span>↗</span></a>)}</div>
+      <div class="author"><span>✎</span><div><small>ORIGINAL CONTENT</small><b>This page was written by Craig Shrives.</b></div></div>
+    </div>
+  </section>
+</div>
+</BaseLayout>
