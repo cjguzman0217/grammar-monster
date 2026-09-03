@@ -118,69 +118,154 @@ import "../styles/homepage.css";
       </div>
     </section>
 
-    <section class="section" id="explore">
+
+    <section class="explore-command" id="explore">
       <div class="shell">
-        <div class="section-head">
-          <div>
-            <span class="kicker">EXPLORE THE LIBRARY</span>
-            <h2>Everything you need,<br>without the textbook fog.</h2>
+        <div class="explore-command__top">
+          <div class="explore-command__intro">
+            <span class="kicker">EXPLORE GRAMMAR MONSTER</span>
+            <h2>Your shortcut to<br><span>everything English.</span></h2>
+            <p>
+              Craig has built a huge library of lessons, tests, word lists and writing resources.
+              This is the fast way in — choose a library, search a topic, or simply start exploring.
+            </p>
           </div>
-          <p>
-            Choose a subject and jump straight in. Every section is designed to make
-            the rules easier to understand, easier to practise and easier to remember.
-          </p>
+
+          <div class="explore-command__stats" aria-label="Grammar Monster library highlights">
+            <div><strong>2,000+</strong><span>free lessons</span></div>
+            <div><strong>100s</strong><span>tests & games</span></div>
+            <div><strong>1</strong><span>monster-sized library</span></div>
+          </div>
         </div>
 
-        <div class="subject-grid">
-          <article class="subject-card subject-featured">
-            <div class="subject-icon">Aa</div>
-            <div class="subject-number">01</div>
-            <h3>Grammar</h3>
-            <p>Parts of speech, clauses, sentence structure, agreement and the rules behind clear English.</p>
-            <a href="#">Explore grammar <span>↗</span></a>
-            <div class="card-orb"></div>
-          </article>
+        <div class="explore-console">
+          <div class="explore-console__glow"></div>
+          <div class="explore-console__search">
+            <div class="explore-console__label">
+              <span class="console-live-dot"></span>
+              KNOWLEDGE NAVIGATOR
+            </div>
 
-          <article class="subject-card">
-            <div class="subject-icon">,;</div>
-            <div class="subject-number">02</div>
+            <div class="explore-searchbox">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"/>
+              </svg>
+              <input
+                id="commandSearch"
+                type="search"
+                placeholder="Try nouns, commas, irregular verbs, idioms..."
+                aria-label="Search Grammar Monster libraries"
+              >
+              <kbd>/</kbd>
+            </div>
+
+            <div class="explore-console__suggestions">
+              <span>Popular:</span>
+              <button type="button" data-command-search="nouns">Nouns</button>
+              <button type="button" data-command-search="verbs">Verbs</button>
+              <button type="button" data-command-search="commas">Commas</button>
+              <button type="button" data-command-search="idioms">Idioms</button>
+              <button type="button" data-command-search="">Show all</button>
+            </div>
+          </div>
+
+          <div class="explore-console__map">
+            <span>KNOWLEDGE MAP</span>
+            <div class="knowledge-map__line">
+              <i></i><b>Learn</b><em>→</em><b>Practise</b><em>→</em><b>Remember</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="library-grid" id="libraryGrid">
+          <a class="library-card library-card--hero" href="#" data-library-search="grammar terms glossary parts of speech nouns verbs adjectives adverbs clauses sentences">
+            <div class="library-card__eyebrow">CORE LIBRARY</div>
+            <div class="library-card__icon">Aa</div>
+            <h3>Grammar & Terms</h3>
+            <p>Parts of speech, sentence structure, clauses, phrases and the terminology behind clear English.</p>
+            <div class="library-card__footer"><span>Explore the grammar library</span><b>↗</b></div>
+            <div class="library-card__orb"></div>
+          </a>
+
+          <a class="library-card library-card--mint" href="/punctuation-lessons/" data-library-search="punctuation commas apostrophes semicolons colons hyphens dashes quotation marks">
+            <div class="library-card__eyebrow">PUNCTUATION</div>
+            <div class="library-card__icon">,;</div>
             <h3>Punctuation</h3>
             <p>Commas, apostrophes, hyphens, colons, quotations and every mark in between.</p>
-            <a href="#">Master punctuation <span>↗</span></a>
-          </article>
+            <div class="library-card__footer"><span>Master punctuation</span><b>↗</b></div>
+          </a>
 
-          <article class="subject-card">
-            <div class="subject-icon">✎</div>
-            <div class="subject-number">03</div>
-            <h3>Writing</h3>
-            <p>Write with more clarity, confidence, rhythm and impact — at school or at work.</p>
-            <a href="#">Improve your writing <span>↗</span></a>
-          </article>
-
-          <article class="subject-card">
-            <div class="subject-icon">ABC</div>
-            <div class="subject-number">04</div>
+          <a class="library-card library-card--warm" href="#" data-library-search="vocabulary words definitions word choice interesting words">
+            <div class="library-card__eyebrow">WORDS</div>
+            <div class="library-card__icon">ABC</div>
             <h3>Vocabulary</h3>
             <p>Build a bigger, sharper vocabulary and choose the right word with confidence.</p>
-            <a href="#">Build vocabulary <span>↗</span></a>
-          </article>
+            <div class="library-card__footer"><span>Build vocabulary</span><b>↗</b></div>
+          </a>
 
-          <article class="subject-card">
-            <div class="subject-icon">✓</div>
-            <div class="subject-number">05</div>
+          <a class="library-card library-card--sky" href="#" data-library-search="spelling vocabulary spelling rules common mistakes">
+            <div class="library-card__eyebrow">SPELLING</div>
+            <div class="library-card__icon">✓</div>
             <h3>Spelling</h3>
             <p>Common mistakes, memorable patterns and simple techniques that actually stick.</p>
-            <a href="#">Improve spelling <span>↗</span></a>
-          </article>
+            <div class="library-card__footer"><span>Improve spelling</span><b>↗</b></div>
+          </a>
 
-          <article class="subject-card subject-dark">
-            <div class="subject-icon">★</div>
-            <div class="subject-number">06</div>
+          <a class="library-card library-card--lavender" href="#" data-library-search="confused words affect effect advice advise commonly confused words">
+            <div class="library-card__eyebrow">WORD CHOICE</div>
+            <div class="library-card__icon">≠</div>
+            <h3>Confused Words</h3>
+            <p>Untangle the word pairs that trip people up and understand exactly when to use each one.</p>
+            <div class="library-card__footer"><span>Clear up the confusion</span><b>↗</b></div>
+          </a>
+
+          <a class="library-card library-card--cream" href="#" data-library-search="writing creative writing rhetorical devices techniques style prose">
+            <div class="library-card__eyebrow">WRITING</div>
+            <div class="library-card__icon">✎</div>
+            <h3>Writing</h3>
+            <p>Writing techniques, style, rhetoric, figurative language and tools for stronger prose.</p>
+            <div class="library-card__footer"><span>Improve your writing</span><b>↗</b></div>
+          </a>
+
+          <a class="library-card library-card--leaf" href="#" data-library-search="word lists collective nouns irregular verbs latin terms sayings proverbs interesting words">
+            <div class="library-card__eyebrow">REFERENCE</div>
+            <div class="library-card__icon">☰</div>
+            <h3>Word Lists</h3>
+            <p>Collective nouns, irregular verbs, Latin terms, sayings, proverbs and useful reference lists.</p>
+            <div class="library-card__footer"><span>Browse word lists</span><b>↗</b></div>
+          </a>
+
+          <a class="library-card library-card--dark" href="/games/" data-library-search="games tests quizzes wordle practice grammar tests vocabulary tests">
+            <div class="library-card__eyebrow">PRACTISE</div>
+            <div class="library-card__icon">★</div>
             <h3>Games & Tests</h3>
-            <p>Turn knowledge into instinct with quick interactive challenges and practice.</p>
-            <a href="/games/">Explore games & tests <span>↗</span></a>
-            <div class="dark-glow"></div>
-          </article>
+            <p>Turn knowledge into instinct with interactive games, quick challenges and hundreds of tests.</p>
+            <div class="library-card__footer"><span>Play & practise</span><b>↗</b></div>
+            <div class="library-card__dark-glow"></div>
+          </a>
+        </div>
+
+        <p class="library-no-results" id="libraryNoResults" hidden>
+          No matching library in this prototype yet. Try a broader topic.
+        </p>
+
+        <div class="more-libraries">
+          <div class="more-libraries__head">
+            <div>
+              <span class="kicker">AND THERE’S MORE</span>
+              <h3>Some of Craig’s other libraries.</h3>
+            </div>
+            <a href="#" class="knowledge-map-link">Browse the full knowledge map <span>↗</span></a>
+          </div>
+
+          <div class="more-libraries__rail">
+            <a href="#" data-library-search="teachers teaching resources worksheets pdf worksheets"><span>01</span><strong>Teacher Resources</strong><b>→</b></a>
+            <a href="#" data-library-search="beginners esl foreign language lessons role play scenarios"><span>02</span><strong>Beginners & ESL</strong><b>→</b></a>
+            <a href="#" data-library-search="sayings proverbs idioms"><span>03</span><strong>Sayings & Proverbs</strong><b>→</b></a>
+            <a href="#" data-library-search="latin terms"><span>04</span><strong>Latin Terms</strong><b>→</b></a>
+            <a href="#" data-library-search="irregular verbs verbs"><span>05</span><strong>Irregular Verbs</strong><b>→</b></a>
+            <a href="#" data-library-search="collective nouns nouns animals"><span>06</span><strong>Collective Nouns</strong><b>→</b></a>
+          </div>
         </div>
       </div>
     </section>
@@ -486,6 +571,45 @@ document.getElementById("searchBtn").addEventListener("click",()=>runSearch(sear
 search.addEventListener("keydown",e=>{if(e.key==="Enter")runSearch(search.value)});
 document.querySelectorAll("[data-search]").forEach(btn=>{
   btn.addEventListener("click",()=>{search.value=btn.dataset.search;runSearch(btn.dataset.search)})
+});
+
+
+const commandSearch=document.getElementById("commandSearch");
+const libraryItems=[...document.querySelectorAll("[data-library-search]")];
+const libraryNoResults=document.getElementById("libraryNoResults");
+
+function runCommandSearch(value){
+  const term=(value||"").trim().toLowerCase();
+  let visible=0;
+  libraryItems.forEach(item=>{
+    const haystack=((item.dataset.librarySearch||"")+" "+item.textContent).toLowerCase();
+    const match=!term||haystack.includes(term);
+    item.classList.toggle("library-search-hidden",!match);
+    if(match)visible++;
+  });
+  if(libraryNoResults) libraryNoResults.hidden=visible!==0;
+}
+
+commandSearch?.addEventListener("input",()=>runCommandSearch(commandSearch.value));
+commandSearch?.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    commandSearch.value="";
+    runCommandSearch("");
+    commandSearch.blur();
+  }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="/" && document.activeElement?.tagName!=="INPUT" && document.activeElement?.tagName!=="TEXTAREA"){
+    e.preventDefault();
+    commandSearch?.focus();
+  }
+});
+document.querySelectorAll("[data-command-search]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const value=btn.dataset.commandSearch||"";
+    if(commandSearch) commandSearch.value=value;
+    runCommandSearch(value);
+  });
 });
 
 
