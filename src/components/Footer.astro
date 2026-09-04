@@ -1,58 +1,485 @@
-<footer class="site-footer">
-  <div class="site-footer__glow"></div>
+---
+const year = new Date().getFullYear();
 
-  <div class="site-footer__inner">
-    <div class="site-footer__brand">
-      <a href="/" class="site-footer__logo">
-        <img src="/assets/images/grammarMonsterEye.webp" alt="Grammar Monster" />
-        <span>Grammar <strong>Monster</strong></span>
+const linkGroups = [
+  {
+    title: "Learn",
+    links: [
+      { label: "Grammar & Terms", href: "/grammar-terms/" },
+      { label: "Punctuation Lessons", href: "/punctuation-lessons/" },
+      { label: "Easily Confused Words", href: "/easily-confused-words/" },
+      { label: "Spelling & Vocabulary", href: "/spelling-vocabulary/" }
+    ]
+  },
+  {
+    title: "Practice",
+    links: [
+      { label: "Games & Tests", href: "/games/" },
+      { label: "Wordle", href: "/games/wordle/" },
+      { label: "Quick Grammar Challenge", href: "/#quiz" },
+      { label: "Paper-Free Learning", href: "/#paper-free-learning" }
+    ]
+  },
+  {
+    title: "Explore",
+    links: [
+      { label: "Knowledge Navigator", href: "/explore/" },
+      { label: "Learning Paths", href: "/#paths" },
+      { label: "Popular Lessons", href: "/#popular" },
+      { label: "Main Libraries", href: "/#explore" }
+    ]
+  },
+  {
+    title: "For Learners",
+    links: [
+      { label: "Beginners & Kids", href: "/#beginners" },
+      { label: "Teachers' Zone", href: "/#teachers-zone" },
+      { label: "Word Lists", href: "/#word-lists" },
+      { label: "Random Grammar Questions", href: "/#quiz" }
+    ]
+  }
+];
+---
+
+<footer class="gm-footer">
+  <div class="gm-footer__glow gm-footer__glow--one"></div>
+  <div class="gm-footer__glow gm-footer__glow--two"></div>
+
+  <div class="gm-footer__inner">
+    <div class="gm-footer__hero">
+      <div class="gm-footer__eyebrow">FREE ENGLISH LEARNING, REIMAGINED</div>
+
+      <a href="/" class="gm-footer__brand" aria-label="Grammar Monster home">
+        <span class="gm-footer__brand-mark">
+          <img src="/assets/images/grammarMonsterEye.webp" alt="" />
+        </span>
+
+        <span class="gm-footer__brand-copy">
+          <span>Grammar</span>
+          <strong>Monster</strong>
+        </span>
       </a>
 
+      <h2>Everything you need to learn, practise and explore English with confidence.</h2>
+
       <p>
-        Clear explanations, useful practice and a little monster mischief —
-        helping English make more sense.
+        Grammar Monster brings together clear explanations, memorable examples,
+        fast practice and learner-friendly navigation — all with the warmth and
+        personality that made the original site so valuable.
       </p>
 
-      <div class="site-footer__promise">
-        <span></span>
-        2,000+ free lessons • no login required
+      <div class="gm-footer__promise">
+        <span class="gm-footer__promise-dot"></span>
+        <strong>2,000+ free lessons</strong>
+        <small>No login required</small>
+      </div>
+
+      <div class="gm-footer__actions">
+        <a href="/explore/" class="gm-footer__primary">
+          <span>Open Knowledge Navigator</span>
+          <b aria-hidden="true">→</b>
+        </a>
+
+        <a href="/games/" class="gm-footer__secondary">
+          <span>Play Games & Tests</span>
+          <b aria-hidden="true">↗</b>
+        </a>
       </div>
     </div>
 
-    <div class="site-footer__links">
-      <div>
-        <strong>Learn</strong>
-        <a href="/#explore">Grammar</a>
-        <a href="/#explore">Punctuation</a>
-        <a href="/#explore">Writing</a>
-        <a href="/#explore">Vocabulary</a>
-      </div>
-
-      <div>
-        <strong>Practice</strong>
-        <a href="/games/">Games & tests</a>
-        <a href="/games/wordle/">Wordle</a>
-        <a href="/#quiz">Quick challenge</a>
-      </div>
-
-      <div>
-        <strong>Explore</strong>
-        <a href="/#paths">Learning paths</a>
-        <a href="/#popular">Popular lessons</a>
-        <a href="/#explore">Grammar glossary</a>
-      </div>
-
-      <div>
-        <strong>More</strong>
-        <a href="/#paths">For learners</a>
-        <a href="/#paths">For teachers</a>
-        <a href="/#shop">Shop</a>
-      </div>
+    <div class="gm-footer__nav">
+      {
+        linkGroups.map((group) => (
+          <div class="gm-footer__group">
+            <strong>{group.title}</strong>
+            <div class="gm-footer__links">
+              {
+                group.links.map((link) => (
+                  <a href={link.href}>{link.label}</a>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 
-  <div class="site-footer__bottom">
-    <span>© {new Date().getFullYear()} Grammar Monster</span>
-    <span>English, made brilliantly clear.</span>
+  <div class="gm-footer__meta">
+    <div class="gm-footer__meta-left">
+      <span>© {year} Grammar Monster</span>
+      <span>English, made brilliantly clear.</span>
+    </div>
+
+    <div class="gm-footer__meta-right">
+      <a href="/">Home</a>
+      <a href="/explore/">Explore</a>
+      <a href="/games/">Games</a>
+    </div>
   </div>
 </footer>
+
+<style>
+  .gm-footer{
+    --footer-bg:#062c21;
+    --footer-deep:#041d16;
+    --footer-green:#0d6e52;
+    --footer-lime:#a8ef62;
+    --footer-mint:#d7f0dd;
+    --footer-copy:#c5d3cc;
+    --footer-line:rgba(255,255,255,.1);
+    position:relative;
+    overflow:hidden;
+    margin-top:clamp(56px,8vw,96px);
+    color:#fff;
+    background:
+      radial-gradient(circle at 12% 14%,rgba(168,239,98,.11),transparent 26%),
+      radial-gradient(circle at 88% 18%,rgba(59,180,127,.12),transparent 24%),
+      linear-gradient(180deg,#08382b 0%, var(--footer-bg) 38%, var(--footer-deep) 100%);
+    border-top:1px solid rgba(255,255,255,.06);
+  }
+
+  .gm-footer__glow{
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(12px);
+    opacity:.55;
+  }
+
+  .gm-footer__glow--one{
+    top:-110px;
+    left:-40px;
+    width:260px;
+    height:260px;
+    background:radial-gradient(circle,rgba(168,239,98,.18),transparent 68%);
+  }
+
+  .gm-footer__glow--two{
+    right:-70px;
+    bottom:-120px;
+    width:320px;
+    height:320px;
+    background:radial-gradient(circle,rgba(52,167,119,.22),transparent 68%);
+  }
+
+  .gm-footer__inner{
+    position:relative;
+    z-index:1;
+    width:min(1180px,calc(100% - 40px));
+    margin:0 auto;
+    padding:clamp(38px,6vw,64px) 0 28px;
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:42px;
+  }
+
+  .gm-footer__hero{
+    max-width:660px;
+  }
+
+  .gm-footer__eyebrow{
+    display:inline-flex;
+    margin-bottom:14px;
+    padding:7px 11px;
+    border:1px solid rgba(168,239,98,.18);
+    border-radius:999px;
+    background:rgba(255,255,255,.05);
+    color:var(--footer-lime);
+    font-size:11px;
+    font-weight:850;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+
+  .gm-footer__brand{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    color:#fff;
+    text-decoration:none;
+  }
+
+  .gm-footer__brand-mark{
+    width:54px;
+    height:54px;
+    display:grid;
+    place-items:center;
+    border-radius:16px;
+    background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.09),
+      0 15px 40px rgba(0,0,0,.18);
+  }
+
+  .gm-footer__brand-mark img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+  }
+
+  .gm-footer__brand-copy{
+    display:flex;
+    align-items:baseline;
+    gap:4px;
+    font-family:"Manrope",sans-serif;
+    font-size:26px;
+    letter-spacing:-.04em;
+  }
+
+  .gm-footer__brand-copy span{font-weight:750}
+  .gm-footer__brand-copy strong{font-weight:850;color:#fff}
+
+  .gm-footer__hero h2{
+    margin:22px 0 14px;
+    max-width:12ch;
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(32px,4vw,48px);
+    line-height:1.02;
+    letter-spacing:-.055em;
+  }
+
+  .gm-footer__hero p{
+    max-width:62ch;
+    margin:0;
+    color:var(--footer-copy);
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .gm-footer__promise{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:24px;
+    padding:12px 14px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    background:rgba(255,255,255,.05);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  }
+
+  .gm-footer__promise-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--footer-lime);
+    box-shadow:0 0 0 8px rgba(168,239,98,.08);
+  }
+
+  .gm-footer__promise strong{
+    font-size:14px;
+    letter-spacing:-.01em;
+  }
+
+  .gm-footer__promise small{
+    color:#b7c8c0;
+    font-size:13px;
+  }
+
+  .gm-footer__actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:26px;
+  }
+
+  .gm-footer__primary,
+  .gm-footer__secondary{
+    min-height:48px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:0 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:850;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  }
+
+  .gm-footer__primary{
+    background:linear-gradient(135deg,#f5ffd7,#a8ef62);
+    color:#103225;
+    box-shadow:0 16px 36px rgba(0,0,0,.16);
+  }
+
+  .gm-footer__secondary{
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(255,255,255,.05);
+    color:#fff;
+  }
+
+  .gm-footer__primary:hover,
+  .gm-footer__secondary:hover{
+    transform:translateY(-2px);
+  }
+
+  .gm-footer__secondary:hover{
+    border-color:rgba(255,255,255,.22);
+    background:rgba(255,255,255,.08);
+  }
+
+  .gm-footer__nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    align-content:start;
+  }
+
+  .gm-footer__group{
+    padding:18px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  }
+
+  .gm-footer__group strong{
+    display:block;
+    margin-bottom:12px;
+    color:#fff;
+    font-size:16px;
+    letter-spacing:-.02em;
+  }
+
+  .gm-footer__links{
+    display:grid;
+    gap:8px;
+  }
+
+  .gm-footer__links a{
+    color:var(--footer-copy);
+    text-decoration:none;
+    font-size:14px;
+    line-height:1.4;
+    transition:color .16s ease, transform .16s ease;
+  }
+
+  .gm-footer__links a:hover{
+    color:#fff;
+    transform:translateX(2px);
+  }
+
+  .gm-footer__meta{
+    position:relative;
+    z-index:1;
+    width:min(1180px,calc(100% - 40px));
+    margin:0 auto;
+    padding:18px 0 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    border-top:1px solid var(--footer-line);
+  }
+
+  .gm-footer__meta-left,
+  .gm-footer__meta-right{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px;
+  }
+
+  .gm-footer__meta-left span,
+  .gm-footer__meta-right a{
+    color:#aebeb7;
+    font-size:13px;
+    text-decoration:none;
+  }
+
+  .gm-footer__meta-right a:hover{
+    color:#fff;
+  }
+
+  @media (max-width: 980px){
+    .gm-footer__inner{
+      grid-template-columns:1fr;
+    }
+
+    .gm-footer__hero h2{
+      max-width:16ch;
+    }
+  }
+
+  @media (max-width: 720px){
+    .gm-footer__inner{
+      width:min(100% - 28px,1180px);
+      padding-top:34px;
+      gap:28px;
+    }
+
+    .gm-footer__nav{
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+
+    .gm-footer__brand-copy{
+      font-size:23px;
+    }
+
+    .gm-footer__hero p{
+      font-size:15px;
+    }
+
+    .gm-footer__meta{
+      width:min(100% - 28px,1180px);
+      flex-direction:column;
+      align-items:flex-start;
+      padding-bottom:24px;
+    }
+  }
+
+  @media (max-width: 480px){
+    .gm-footer__eyebrow{
+      font-size:10px;
+    }
+
+    .gm-footer__brand-mark{
+      width:48px;
+      height:48px;
+    }
+
+    .gm-footer__brand-mark img{
+      width:43px;
+      height:43px;
+    }
+
+    .gm-footer__brand-copy{
+      font-size:21px;
+    }
+
+    .gm-footer__hero h2{
+      font-size:30px;
+      max-width:12ch;
+    }
+
+    .gm-footer__hero p{
+      font-size:14.5px;
+      line-height:1.68;
+    }
+
+    .gm-footer__primary,
+    .gm-footer__secondary{
+      width:100%;
+      justify-content:space-between;
+    }
+
+    .gm-footer__promise{
+      width:100%;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      row-gap:5px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .gm-footer__primary,
+    .gm-footer__secondary,
+    .gm-footer__links a{
+      transition:none !important;
+    }
+  }
+</style>
