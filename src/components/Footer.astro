@@ -62,7 +62,7 @@ const utilityCards = [
     text: "Found a typo, unclear explanation or something that needs attention?",
     action: "Please tell us",
     href: "https://www.grammar-monster.com/admin/contact_us.htm",
-    icon: "!"
+    image: "/assets/images/help-something-wrong.png"
   },
   {
     id: "gm",
@@ -71,7 +71,7 @@ const utilityCards = [
     text: "Grammar Monster’s shorthand for finding and sharing useful pages quickly.",
     action: "More info",
     href: "https://www.grammar-monster.com/admin/hashtag-GM.htm",
-    icon: "#"
+    image: "/assets/images/help-hashtag-gm.png"
   },
   {
     id: "share",
@@ -80,7 +80,7 @@ const utilityCards = [
     text: "Share the page you’re reading or copy its link in one click.",
     action: "Share page",
     href: "#share",
-    icon: "↗"
+    image: "/assets/images/help-share-page.png"
   },
   {
     id: "qr",
@@ -89,7 +89,7 @@ const utilityCards = [
     text: "Turn this page into a scannable code for lessons, handouts or screens.",
     action: "Create QR",
     href: "#qr",
-    icon: "⌗"
+    image: "/assets/images/help-qr-code.png"
   }
 ];
 
@@ -147,7 +147,9 @@ const isExternal = (href) => href.startsWith("http://") || href.startsWith("http
         {
           utilityCards.map((card, index) => (
             <article class:list={["gm-help-card", `gm-help-card--${index + 1}`]}>
-              <div class="gm-help-card__icon" aria-hidden="true">{card.icon}</div>
+              <div class="gm-help-card__art" aria-hidden="true">
+                <img src={card.image} alt="" loading="lazy" />
+              </div>
               <div class="gm-help-card__copy">
                 <small>{card.eyebrow}</small>
                 <h3>{card.title}</h3>
@@ -465,7 +467,7 @@ const isExternal = (href) => href.startsWith("http://") || href.startsWith("http
   .gm-help-card{
     --accent:#08745a;
     --soft:rgba(8,116,90,.10);
-    min-height:250px;
+    min-height:264px;
     display:flex;
     flex-direction:column;
     padding:20px;
@@ -481,16 +483,37 @@ const isExternal = (href) => href.startsWith("http://") || href.startsWith("http
   .gm-help-card--3{--accent:#8c76c8;--soft:rgba(140,118,200,.11)}
   .gm-help-card--4{--accent:#d6a33f;--soft:rgba(214,163,63,.12)}
 
-  .gm-help-card__icon{
-    width:44px;
-    height:44px;
+  .gm-help-card__art{
+    width:72px;
+    height:72px;
     display:grid;
     place-items:center;
-    margin-bottom:25px;
-    border-radius:14px;
-    background:var(--soft);
-    color:var(--accent);
-    font:850 17px/1 "Manrope",sans-serif;
+    margin-bottom:22px;
+    border:1px solid color-mix(in srgb,var(--accent) 16%,transparent);
+    border-radius:20px;
+    background:
+      radial-gradient(circle at 36% 28%,#fff 0 24%,transparent 58%),
+      var(--soft);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.78),
+      0 12px 24px rgba(18,70,50,.06);
+  }
+
+  .gm-help-card__art img{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    filter:drop-shadow(0 6px 8px rgba(11,48,35,.10));
+  }
+
+  .gm-help-card--4 .gm-help-card__art{
+    width:80px;
+    height:80px;
+  }
+
+  .gm-help-card--4 .gm-help-card__art img{
+    width:66px;
+    height:66px;
   }
 
   .gm-help-card__copy small{
