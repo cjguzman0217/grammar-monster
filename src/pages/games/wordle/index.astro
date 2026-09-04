@@ -1,47 +1,405 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import "../../../styles/wordle.css";
+
+const relatedGames = [
+  {
+    title: "WordUp",
+    description: "Build a ladder of words to reach the top.",
+    href: "https://www.grammar-monster.com/learning_games/wordup.htm",
+    number: "01"
+  },
+  {
+    title: "Word Builder",
+    description: "See how many words you can find.",
+    href: "https://www.grammar-monster.com/learning_games/wordBuilder.htm",
+    number: "02"
+  },
+  {
+    title: "Hangman",
+    description: "Find the secret word before time runs out.",
+    href: "https://www.grammar-monster.com/learning_games/hangMan.htm",
+    number: "03"
+  },
+  {
+    title: "Countdown",
+    description: "Find the longest word you can.",
+    href: "https://www.grammar-monster.com/learning_games/countdown.htm",
+    number: "04"
+  }
+];
+
+const teacherLinks = [
+  ["Word Builder", "https://www.grammar-monster.com/learning_games/wordBuilder.htm"],
+  ["WordUp", "https://www.grammar-monster.com/learning_games/wordup.htm"],
+  ["Hangman", "https://www.grammar-monster.com/learning_games/hangMan.htm"],
+  ["Countdown", "https://www.grammar-monster.com/learning_games/countdown.htm"],
+  ["Look-cover-write-check", "https://www.grammar-monster.com/tests/look-cover-write-check.htm"],
+  ["Spelling & vocabulary", "/spelling-vocabulary/"]
+];
 ---
 
 <BaseLayout
   title="Wordle | Grammar Monster"
-  description="Play Grammar Monster Wordle — a five-letter vocabulary challenge with learner and advanced modes."
+  description="Play Grammar Monster Wordle. Guess the secret five-letter word in six tries, with advanced and learner modes."
 >
-<div class="wordle-page">
-<section class="hero"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow"><i></i> DAILY VOCABULARY CHALLENGE</div><h1>Wordle,<br><span>Monster style.</span></h1><p>Find the hidden five-letter word in six tries. Every guess gives you a clue — and every round quietly builds vocabulary, spelling and pattern recognition.</p><div class="actions"><button id="how" class="soft">How to play</button><button id="random" class="dark">Random challenge ↻</button></div><div class="hero-meta"><div><b>5</b><small>letters</small></div><em></em><div><b>6</b><small>tries</small></div><em></em><div><b>2</b><small>modes</small></div></div></div><div class="hero-art"><div class="orb"></div><div class="float f1">W</div><div class="float f2">O</div><div class="float f3">R</div><div class="float f4">D</div><img src="/assets/images/grammarMonsterEye.webp" alt=""><div class="hero-tip"><small>MONSTER TIP</small><p>Start with common vowels and consonants.</p></div></div></div></section>
-<div class="wordle-game-layout">
-<aside class="panel mode-panel"><small>GAME MODE</small><h2>Pick your challenge.</h2><button id="learner" class="mode active"><span>🌱</span><div><b>Learner</b><em>Common everyday words</em></div><i>✓</i></button><button id="advanced" class="mode"><span>⚡</span><div><b>Advanced</b><em>Broader vocabulary</em></div><i>✓</i></button><div class="today"><span></span><div><b>Today's challenge</b><small id="date"></small></div></div><button id="restart" class="link">Restart today's game</button></aside>
-<section class="game"><div class="top"><div><small>GRAMMAR MONSTER WORDLE</small><h2 id="title">Today's word</h2></div><div class="tries"><b id="tries">0</b><span>/ 6</span></div></div><div id="toast"></div><div id="board" class="board"></div><div class="legend"><span><i class="l exact"></i> Right place</span><span><i class="l present"></i> Wrong place</span><span><i class="l absent"></i> Not in word</span></div><div id="keyboard"></div><div id="result" class="result" hidden><div class="result-monster"><span></span><img src="/assets/images/grammarMonsterEye.webp" alt=""></div><div><small>CHALLENGE COMPLETE</small><h3 id="resultTitle"></h3><p id="resultText"></p><div class="result-actions"><button id="share" class="dark">Share result</button><button id="again" class="soft">Random word ↻</button></div></div></div></section>
-<aside class="panel"><small>YOUR STATS</small><div class="stats"><div><b id="played">0</b><span>Played</span></div><div><b id="win">0%</b><span>Win rate</span></div><div><b id="streak">0</b><span>Streak</span></div><div><b id="best">0</b><span>Best</span></div></div><div class="tip"><img src="/assets/images/grammarMonsterEye.webp" alt=""><p><small>MONSTER TIP</small><br><span id="tip">Start with common vowels and consonants.</span></p></div><div class="more"><small>KEEP PLAYING</small><a href="/games/">WordUp! <b>→</b></a><a href="/games/">Word Builder <b>→</b></a><a href="/games/">Hangman <b>→</b></a><a href="/games/">Countdown <b>→</b></a></div></aside>
-</div>
-<section class="learn"><div><div><small>MORE THAN A GAME</small><h2>Build vocabulary while you play.</h2><p>Wordle combines pattern recognition, spelling and vocabulary. Learner Mode keeps things approachable; Advanced Mode widens the challenge.</p></div><div class="why"><b>WHY IT WORKS</b><div><span>01</span><p>Repeated retrieval strengthens spelling memory.</p></div><div><span>02</span><p>Letter patterns build word awareness.</p></div><div><span>03</span><p>Quick feedback rewards logical deduction.</p></div></div></div></section>
-<dialog id="dialog"><button id="close">×</button><small>HOW TO PLAY</small><h2>Find the word in six tries.</h2><p>Enter a five-letter word and press <b>Enter</b>. Green means the right letter in the right place, gold means the right letter in the wrong place, and grey means the letter is not in the word.</p><button id="go" class="dark wide">Got it — let's play</button></dialog>
-</div>
-
-  <script>
-const learner=["apple","beach","bread","chair","cloud","dream","earth","field","fruit","glass","green","happy","heart","house","light","money","music","night","ocean","paper","plant","quick","river","round","school","shirt","smile","sound","space","stone","table","teach","today","train","water","white","world","write","young","zebra","mouse","phone","clock","grape","sweet","laugh","story","small","great","under","every","never"];
-const advanced=["abide","acute","adorn","amble","ardor","beget","blithe","brisk","cairn","chasm","civic","crave","deign","droll","edict","elate","ethos","fable","flair","forge","guile","hasty","idiom","jaunt","knack","lithe","lucid","mirth","naive","niche","ovary","pique","quell","realm","rebus","rivet","savor","stoic","tacit","tenet","tryst","ultra","vigor","waive","wryly","yearn","zesty","adage","aloof","brine","caste","deter","feign","gruel","hoist","inert","joust","knead","leery","motif"];
-const tips=["Start with common vowels and consonants.","Gold letters belong in the word, but need to move.","The secret word may contain the same letter twice.","Use early guesses to test several new letters."];
-let mode="learner",secret="",row=0,guess="",done=false,history=[];
-const $=id=>document.getElementById(id);
-function list(){return mode==="learner"?learner:[...learner,...advanced]}
-function day(){return Math.floor((Date.now()-Date.UTC(2024,0,1))/86400000)}
-function choose(random=false){const a=list();return random?a[Math.floor(Math.random()*a.length)]:a[(day()*17+(mode==="advanced"?11:0))%a.length]}
-function board(){ $("board").innerHTML="";for(let r=0;r<6;r++){let d=document.createElement("div");d.className="row";for(let c=0;c<5;c++){let t=document.createElement("div");t.className="tile";t.dataset.r=r;t.dataset.c=c;d.appendChild(t)}$("board").appendChild(d)}}
-function keyboard(){let k=$("keyboard");k.innerHTML="";["QWERTYUIOP","ASDFGHJKL"].forEach(s=>{let d=document.createElement("div");d.className="keyrow";[...s].forEach(x=>d.appendChild(key(x)));k.appendChild(d)});let d=document.createElement("div");d.className="keyrow";d.appendChild(key("ENTER",1));[..."ZXCVBNM"].forEach(x=>d.appendChild(key(x)));d.appendChild(key("⌫",1));k.appendChild(d)}
-function key(x,w){let b=document.createElement("button");b.className="key"+(w?" wide":"");b.textContent=x;b.dataset.key=x;b.onclick=()=>press(x);return b}
-function paint(){document.querySelectorAll(`[data-r="${row}"]`).forEach((t,i)=>{t.textContent=guess[i]||"";t.classList.toggle("filled",!!guess[i])})}
-function evalGuess(g){let out=Array(5).fill("absent"),rem=secret.split("");for(let i=0;i<5;i++)if(g[i]===secret[i]){out[i]="exact";rem[i]=null}for(let i=0;i<5;i++)if(out[i]!=="exact"){let j=rem.indexOf(g[i]);if(j>-1){out[i]="present";rem[j]=null}}return out}
-function press(k){if(done)return;if(k==="⌫"||k==="Backspace"){guess=guess.slice(0,-1);paint();return}if(k==="ENTER"){submit();return}if(/^[A-Z]$/i.test(k)&&guess.length<5){guess+=k.toLowerCase();paint()}}
-function submit(){if(guess.length!==5){document.querySelectorAll(`[data-r="${row}"]`).forEach(t=>{t.classList.remove("shake");void t.offsetWidth;t.classList.add("shake")});toast("Five letters, please.");return}let g=guess,e=evalGuess(g);history.push({g,e});document.querySelectorAll(`[data-r="${row}"]`).forEach((t,i)=>{t.classList.add("reveal",e[i]);let kb=document.querySelector(`[data-key="${g[i].toUpperCase()}"]`);if(kb&&!kb.classList.contains("exact"))kb.classList.add(e[i])});row++;$("tries").textContent=row;if(g===secret){done=true;setTimeout(()=>finish(true),250)}else if(row===6){done=true;setTimeout(()=>finish(false),250)}else{guess="";paint()}}
-function toast(x){$("toast").textContent=x;setTimeout(()=>$("toast").textContent="",1500)}
-function stats(){try{return JSON.parse(localStorage.gmWordle)||{p:0,w:0,s:0,b:0}}catch{return{p:0,w:0,s:0,b:0}}}
-function showStats(){let s=stats();$("played").textContent=s.p;$("win").textContent=s.p?Math.round(s.w/s.p*100)+"%":"0%";$("streak").textContent=s.s;$("best").textContent=s.b||0}
-function finish(win){let s=stats();s.p++;if(win){s.w++;s.s++;s.b=s.b?Math.min(s.b,row):row}else s.s=0;localStorage.gmWordle=JSON.stringify(s);showStats();$("result").hidden=false;$("resultTitle").textContent=win?"Monster-approved.":"The word escaped.";$("resultText").textContent=win?`You found ${secret.toUpperCase()} in ${row} tries.`:`The word was ${secret.toUpperCase()}.`}
-function start(random=false){secret=choose(random);row=0;guess="";done=false;history=[];board();keyboard();$("tries").textContent=0;$("title").textContent=random?"Random challenge":"Today's word";$("result").hidden=true;$("tip").textContent=tips[Math.floor(Math.random()*tips.length)]}
-function switchMode(m){mode=m;$("learner").classList.toggle("active",m==="learner");$("advanced").classList.toggle("active",m==="advanced");start()}
-$("learner").onclick=()=>switchMode("learner");$("advanced").onclick=()=>switchMode("advanced");$("random").onclick=()=>start(true);$("again").onclick=()=>start(true);$("restart").onclick=()=>start(false);
-$("share").onclick=()=>{let map={exact:"🟩",present:"🟨",absent:"⬜"},txt=`Grammar Monster Wordle ${row}/6\n`+history.map(x=>x.e.map(y=>map[y]).join("")).join("\n");navigator.clipboard?.writeText(txt);toast("Result copied!")};
-const dlg=$("dialog");$("how").onclick=()=>dlg.showModal();$("close").onclick=()=>dlg.close();$("go").onclick=()=>dlg.close();document.addEventListener("keydown",e=>{if(e.key==="Enter")press("ENTER");else if(e.key==="Backspace")press("Backspace");else if(/^[a-z]$/i.test(e.key))press(e.key)});if(document.getElementById("date")){document.getElementById("date").textContent=new Date().toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});}showStats();start();
+  <script is:inline>
+    window.vitag = window.vitag || {};
+    window.vitag.smartBannerConfig = { enablePC: false, enableMobile: false };
   </script>
+  <script is:inline async src="https://services.vlitag.com/adv1/?q=30b982bcceb31097305670acdcf26233"></script>
+
+  <main class="gm-wordle">
+    <section class="wordle-hero">
+      <div class="wordle-shell wordle-hero__grid">
+        <div class="wordle-hero__copy">
+          <nav class="wordle-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/games/">Games & Tests</a>
+            <span>›</span>
+            <strong>Wordle</strong>
+          </nav>
+
+          <span class="wordle-kicker wordle-kicker--lime">GRAMMAR MONSTER GAME</span>
+          <h1>Welcome to<br /><em>Wordle!</em></h1>
+
+          <p class="wordle-hero__lede">
+            Wordle is a popular online game based on the 1970s board game
+            “Mastermind” and its 1975 follow-up “Word Mastermind.”
+          </p>
+
+          <div class="wordle-hero__stats" aria-label="Game format">
+            <div><strong>5</strong><span>letters</span></div>
+            <i></i>
+            <div><strong>6</strong><span>tries</span></div>
+            <i></i>
+            <div><strong>2</strong><span>modes</span></div>
+          </div>
+
+          <div class="wordle-hero__actions">
+            <a href="#play">Play today's game <span>↓</span></a>
+            <button type="button" data-open-instructions>How to play</button>
+          </div>
+        </div>
+
+        <div class="wordle-hero__visual">
+          <div class="wordle-hero__halo"></div>
+          <div class="wordle-art-card">
+            <img src="/assets/images/wordle.webp" alt="Grammar Monster Wordle game artwork" />
+          </div>
+          <div class="wordle-float wordle-float--one"><span>●</span> DAILY WORD</div>
+          <div class="wordle-float wordle-float--two"><span>✓</span> LEARNER MODE</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wordle-intro">
+      <div class="wordle-shell wordle-intro__grid">
+        <div>
+          <span class="wordle-kicker">LET'S PLAY WORDLE</span>
+          <h2>Logic meets<br /><em>vocabulary.</em></h2>
+        </div>
+        <div class="wordle-intro__copy">
+          <p>
+            It is a word-guessing game that challenges players to uncover a hidden
+            five-letter word in just six tries. With each guess, players receive
+            feedback in the form of colour-coded tiles.
+          </p>
+          <p>
+            The game combines logic and vocabulary into a daily brain teaser.
+            Wordle was created by
+            <a href="https://en.wikipedia.org/wiki/Wordle" target="_blank" rel="noopener">Josh Wardle</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wordle-ad-stage" aria-label="Advertisement">
+      <div class="wordle-shell">
+        <div class="wordle-ad-stage__label">ADVERTISEMENT <span>Ads help keep Grammar Monster free.</span></div>
+        <div class="wordle-ad-stage__slots">
+          <div class="wordle-ad-slot" data-wordle-ad-shell>
+            <div class="wordle-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Free games, supported by ads.</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342100586"></div>
+          </div>
+          <div class="wordle-ad-slot wordle-ad-slot--secondary" data-wordle-ad-shell>
+            <div class="wordle-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Grammar Monster stays free.</strong>
+              <small>Thanks for supporting the site.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112530"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wordle-play" id="play">
+      <div class="wordle-shell">
+        <div class="wordle-play__head">
+          <div>
+            <span class="wordle-kicker">TODAY'S WORDLE</span>
+            <h2>Find the secret word.</h2>
+          </div>
+          <div class="wordle-mode" role="group" aria-label="Choose difficulty">
+            <button type="button" class="is-active" data-wordle-mode="advanced">
+              <strong>Advanced</strong>
+              <span>Any valid 5-letter word</span>
+            </button>
+            <button type="button" data-wordle-mode="learner">
+              <strong>Learner</strong>
+              <span>Common 5-letter words</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="wordle-game-shell">
+          <div class="wordle-game-shell__top">
+            <div>
+              <span class="wordle-game-dot"></span>
+              <strong data-game-label>DAILY GAME</strong>
+            </div>
+            <p data-game-date></p>
+            <button type="button" data-open-instructions aria-label="Open instructions">?</button>
+          </div>
+
+          <div class="wordle-status" data-wordle-status aria-live="polite">
+            Find the secret word.
+          </div>
+
+          <div
+            class="wordle-board"
+            data-wordle-board
+            role="grid"
+            aria-label="Wordle board: six guesses of five letters"
+          ></div>
+
+          <div class="wordle-keyboard" data-wordle-keyboard aria-label="On-screen keyboard"></div>
+
+          <div class="wordle-game-actions">
+            <button type="button" data-restart-daily>
+              <span>↻</span>
+              <div><strong>Restart today's game</strong><small data-mode-caption>Advanced mode</small></div>
+            </button>
+            <button type="button" data-random-game>
+              <span>✦</span>
+              <div><strong>Play a random game</strong><small data-mode-caption>Advanced mode</small></div>
+            </button>
+            <button type="button" class="wordle-share-result" data-share-result hidden>
+              <span>↗</span>
+              <div><strong>Share result</strong><small>No answer revealed</small></div>
+            </button>
+          </div>
+        </div>
+
+        <p class="wordle-play__tip">
+          You can use your physical keyboard too. Press <kbd>Enter</kbd> to submit
+          and <kbd>Backspace</kbd> to delete.
+        </p>
+      </div>
+    </section>
+
+    <section class="wordle-how" id="how-to-play">
+      <div class="wordle-shell wordle-how__grid">
+        <div class="wordle-how__copy">
+          <span class="wordle-kicker">HOW TO PLAY</span>
+          <h2>Six tries.<br /><em>Three clues.</em></h2>
+          <p>
+            Guess the secret word in six tries. Each guess must be a valid
+            five-letter word. After every guess, the tiles tell you how close you are.
+          </p>
+
+          <div class="wordle-clues">
+            <div class="wordle-clue wordle-clue--correct">
+              <span>A</span>
+              <div><strong>Green</strong><p>Correct letter, correct position.</p></div>
+            </div>
+            <div class="wordle-clue wordle-clue--present">
+              <span>P</span>
+              <div><strong>Orange</strong><p>Correct letter, wrong position.</p></div>
+            </div>
+            <div class="wordle-clue wordle-clue--absent">
+              <span>Y</span>
+              <div><strong>Gray</strong><p>The letter is not in the secret word.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wordle-example">
+          <span class="wordle-example__label">EXAMPLE</span>
+          <h3>If the secret word were <strong>MAPLE</strong>…</h3>
+          <div class="wordle-example__tiles" aria-label="Example guess APPLY">
+            <span class="is-present">A</span>
+            <span class="is-absent">P</span>
+            <span class="is-correct">P</span>
+            <span class="is-correct">L</span>
+            <span class="is-absent">Y</span>
+          </div>
+          <p>
+            Two letters are in exactly the right place, one belongs elsewhere,
+            and two do not feature in the word.
+          </p>
+
+          <div class="wordle-learner-note">
+            <span>LEARNER MODE</span>
+            <h3>Keep the vocabulary familiar.</h3>
+            <p>
+              In learner mode, the secret word is chosen from a list of common
+              five-letter words.
+            </p>
+            <button type="button" data-show-common>Show the common words →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wordle-video">
+      <div class="wordle-shell wordle-video__grid">
+        <div>
+          <span class="wordle-kicker wordle-kicker--lime">WATCH & LEARN</span>
+          <h2>Prefer video<br />to text?</h2>
+          <p>
+            Craig's original Wordle page includes this video explanation. It stays
+            right here alongside the game.
+          </p>
+          <a href="https://www.grammar-monster.com/grammar-videos.htm" target="_blank" rel="noopener">
+            Browse all Grammar Monster videos ↗
+          </a>
+        </div>
+
+        <div class="wordle-video__frame">
+          <iframe
+            loading="lazy"
+            src="https://www.youtube.com/embed/OuTwsiPOzIc"
+            title="Grammar Monster Wordle explanatory video"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="wordle-more">
+      <div class="wordle-shell">
+        <div class="wordle-more__head">
+          <div>
+            <span class="wordle-kicker">YOU MIGHT ALSO LIKE</span>
+            <h2>More ways to<br /><em>play with words.</em></h2>
+          </div>
+          <a href="/games/">Browse all Games & Tests →</a>
+        </div>
+
+        <div class="wordle-related-grid">
+          {
+            relatedGames.map((game) => (
+              <a href={game.href} target="_blank" rel="noopener">
+                <span>{game.number}</span>
+                <div>
+                  <strong>{game.title}</strong>
+                  <p>{game.description}</p>
+                </div>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="wordle-teacher">
+          <div class="wordle-teacher__copy">
+            <span class="wordle-kicker wordle-kicker--lime">TEACHERS' ZONE</span>
+            <h2>Useful for class,<br />not just downtime.</h2>
+            <p>More games, vocabulary tools and spelling practice from Grammar Monster.</p>
+          </div>
+          <div class="wordle-teacher__links">
+            {
+              teacherLinks.map(([label, href], index) => (
+                <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener" : undefined}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{label}</strong>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="wordle-author">
+          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+          <div>
+            <span>ABOUT THIS PAGE</span>
+            <p>
+              This page was written by
+              <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm" target="_blank" rel="noopener">Craig Shrives</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wordle-ad-stage wordle-ad-stage--bottom" aria-label="Advertisement">
+      <div class="wordle-shell">
+        <div class="wordle-ad-stage__label">ADVERTISEMENT <span>Helping keep the game free.</span></div>
+        <div class="wordle-ad-stage__slots">
+          <div class="wordle-ad-slot" data-wordle-ad-shell>
+            <div class="wordle-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>More free Grammar Monster.</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112533"></div>
+          </div>
+          <div class="wordle-ad-slot wordle-ad-slot--secondary" data-wordle-ad-shell>
+            <div class="wordle-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Learning without a paywall.</strong>
+              <small>Thanks for supporting the site.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112534"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="wordle-dialog" data-instructions-dialog>
+      <div class="wordle-dialog__inner">
+        <button type="button" class="wordle-dialog__close" data-close-instructions aria-label="Close instructions">×</button>
+        <span class="wordle-kicker">HOW TO PLAY</span>
+        <h2>Guess the secret word in 6 tries.</h2>
+        <ul>
+          <li>Each guess must be a valid five-letter word.</li>
+          <li>Green means the letter is correct and in the correct position.</li>
+          <li>Orange means the letter is in the word but in the wrong position.</li>
+          <li>Gray means the letter is not in the secret word.</li>
+        </ul>
+        <div class="wordle-dialog__example">
+          <span class="is-present">A</span><span class="is-absent">P</span><span class="is-correct">P</span><span class="is-correct">L</span><span class="is-absent">Y</span>
+        </div>
+        <p>
+          Switch to <strong>Learner mode</strong> if you want the secret word to
+          come from Grammar Monster's common-word list.
+        </p>
+        <button type="button" class="wordle-dialog__done" data-close-instructions>Let's play</button>
+      </div>
+    </dialog>
+
+    <dialog class="wordle-dialog wordle-dialog--words" data-common-dialog>
+      <div class="wordle-dialog__inner">
+        <button type="button" class="wordle-dialog__close" data-close-common aria-label="Close common words">×</button>
+        <span class="wordle-kicker">LEARNER MODE</span>
+        <h2>Common five-letter words.</h2>
+        <p>These are the words used as secret answers in learner mode.</p>
+        <div class="wordle-common-list" data-common-list></div>
+        <button type="button" class="wordle-dialog__done" data-close-common>Done</button>
+      </div>
+    </dialog>
+
+    <div class="wordle-toast" data-wordle-toast aria-live="polite" hidden></div>
+  </main>
+
+  <script is:inline src="/assets/js/wordle/wordle-words.js"></script>
+  <script is:inline src="/assets/js/wordle/wordle-game.js"></script>
 </BaseLayout>
