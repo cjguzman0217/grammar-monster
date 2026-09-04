@@ -2,321 +2,1134 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/games.css";
 
-const featured = [
+const featuredGames = [
   {
-    title: "Wordle",
-    description: "Find the hidden five-letter word in six tries. A daily vocabulary challenge with learner and advanced modes.",
-    tag: "DAILY WORD GAME",
-    meta: "5 letters • 6 tries",
-    href: "/games/wordle/",
-    icon: "W",
-    className: "feature-wordle"
+    "title": "Wordle",
+    "eyebrow": "DAILY WORD GAME",
+    "description": "Find the hidden five-letter word in six tries, with learner and advanced modes.",
+    "meta": "5 letters · 6 tries",
+    "href": "/games/wordle/",
+    "badge": "LIVE",
+    "glyph": "W"
   },
   {
-    title: "WordUp!",
-    description: "Build words quickly, test your vocabulary and keep the pressure on.",
-    tag: "VOCABULARY",
-    meta: "Fast-paced",
-    href: "#",
-    icon: "↑",
-    className: "feature-wordup"
+    "title": "Countdown",
+    "eyebrow": "DAILY WORD CHALLENGE",
+    "description": "Find the longest word you can from nine letters before the clock runs out.",
+    "meta": "9 letters · 45 seconds",
+    "href": "/games/countdown/",
+    "badge": "LIVE",
+    "glyph": "9"
   },
   {
-    title: "Word Builder",
-    description: "Turn letters into words and stretch your vocabulary one combination at a time.",
-    tag: "WORD GAME",
-    meta: "Build & discover",
-    href: "#",
-    icon: "Aa",
-    className: "feature-builder"
+    "title": "WordUp!",
+    "eyebrow": "VOCABULARY",
+    "description": "Build a ladder of words to reach the top.",
+    "meta": "Classic Grammar Monster game",
+    "href": "https://www.grammar-monster.com/learning_games/wordup.htm",
+    "badge": "PLAY",
+    "glyph": "↑"
+  },
+  {
+    "title": "Word Builder",
+    "eyebrow": "VOCABULARY",
+    "description": "How many words can you find?",
+    "meta": "Word-building challenge",
+    "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm",
+    "badge": "PLAY",
+    "glyph": "Aa"
+  },
+  {
+    "title": "Hangman",
+    "eyebrow": "VOCABULARY",
+    "description": "Find the secret word before your guesses run out.",
+    "meta": "Classic word game",
+    "href": "https://www.grammar-monster.com/learning_games/hangMan.htm",
+    "badge": "PLAY",
+    "glyph": "?"
+  },
+  {
+    "title": "Memory Test",
+    "eyebrow": "MEMORY + GRAMMAR",
+    "description": "Test your memory — with a Grammar Monster angle.",
+    "meta": "Quick challenge",
+    "href": "https://www.grammar-monster.com/tests/squares_test.htm",
+    "badge": "PLAY",
+    "glyph": "◆"
+  }
+];
+const vocabularyGames = [
+  {
+    "label": "WordUp!",
+    "href": "https://www.grammar-monster.com/learning_games/wordup.htm"
+  },
+  {
+    "label": "word-builder game",
+    "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm"
+  },
+  {
+    "label": "hangman game",
+    "href": "https://www.grammar-monster.com/learning_games/hangMan.htm"
+  },
+  {
+    "label": "countdown",
+    "href": "/games/countdown/"
+  },
+  {
+    "label": "Wordle",
+    "href": "/games/wordle/"
+  },
+  {
+    "label": "memory test (with grammar angle)",
+    "href": "https://www.grammar-monster.com/tests/squares_test.htm"
+  },
+  {
+    "label": "look-cover- write-check",
+    "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm"
+  }
+];
+const partsOfSpeechGroups = [
+  {
+    "title": "Parts of Speech",
+    "links": [
+      {
+        "label": "match the pairs",
+        "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-parts-of-speech.htm"
+      },
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_parts_of_speech.htm"
+      },
+      {
+        "label": "drag & drop",
+        "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_parts_of_speech.htm"
+      }
+    ]
+  },
+  {
+    "title": "Adjectives",
+    "links": [
+      {
+        "label": "hangman",
+        "href": "https://www.grammar-monster.com/tests/adjectives_hangman.htm"
+      },
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_adjectives.htm"
+      },
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/adjectives_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/adjectives_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/adjectives_fish_game.htm"
+      }
+    ]
+  },
+  {
+    "title": "Adverbs",
+    "links": [
+      {
+        "label": "hangman",
+        "href": "https://www.grammar-monster.com/tests/adverbs_hangman.htm"
+      },
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_adverbs.htm"
+      },
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/adverbs_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/adverbs_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/adverbs_fish_game.htm"
+      }
+    ]
+  },
+  {
+    "title": "Conjunctions",
+    "links": [
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_conjunctions.htm"
+      },
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/conjunctions_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/conjunctions_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/conjunctions_fish_game.htm"
+      },
+      {
+        "label": "drag & drop",
+        "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_conjunctions.htm"
+      }
+    ]
+  },
+  {
+    "title": "Determiners",
+    "links": [
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/determiners_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/determiners_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/determiners_fish_game.htm"
+      },
+      {
+        "label": "drag & drop",
+        "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_determiners.htm"
+      }
+    ]
+  },
+  {
+    "title": "Interjections",
+    "links": [
+      {
+        "label": "hangman",
+        "href": "https://www.grammar-monster.com/tests/interjections_hangman.htm"
+      },
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_interjections.htm"
+      }
+    ]
+  },
+  {
+    "title": "Nouns",
+    "links": [
+      {
+        "label": "hangman",
+        "href": "https://www.grammar-monster.com/tests/nouns_hangman.htm"
+      },
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_nouns.htm"
+      },
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/nouns_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/nouns_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/nouns_fish_game.htm"
+      }
+    ]
+  },
+  {
+    "title": "Prepositions",
+    "links": [
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_prepositions.htm"
+      },
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/prepositions_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/prepositions_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/prepositions_fish_game.htm"
+      },
+      {
+        "label": "drag & drop",
+        "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_prepositions.htm"
+      }
+    ]
+  },
+  {
+    "title": "Pronouns",
+    "links": [
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_pronouns.htm"
+      },
+      {
+        "label": "bubble pop",
+        "href": "https://www.grammar-monster.com/tests/pronouns_bubble_pop_test.htm"
+      },
+      {
+        "label": "whack-a-mole",
+        "href": "https://www.grammar-monster.com/tests/pronouns_whack_a_word_game.htm"
+      },
+      {
+        "label": "fish game",
+        "href": "https://www.grammar-monster.com/tests/pronouns_fish_game.htm"
+      },
+      {
+        "label": "drag & drop",
+        "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_pronouns.htm"
+      },
+      {
+        "label": "match the pairs",
+        "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-types-of-pronoun.htm"
+      }
+    ]
+  },
+  {
+    "title": "Verbs",
+    "links": [
+      {
+        "label": "word finder",
+        "href": "https://www.grammar-monster.com/tests/test_verbs.htm"
+      }
+    ]
+  }
+];
+const punctuationTests = [
+  {
+    "label": "apostrophes test (key-stage 2 style)",
+    "href": "https://www.grammar-monster.com/tests/test_apostrophes_general_use.htm"
+  },
+  {
+    "label": "apostrophes test (multiple choice)",
+    "href": "https://www.grammar-monster.com/tests/apostrophe_test.htm"
+  },
+  {
+    "label": "apostrophes in time expressions (e.g. 2 years' pay)",
+    "href": "https://www.grammar-monster.com/tests/apostrophes_time_expressions.htm"
+  },
+  {
+    "label": "apostrophes (tetris)",
+    "href": "https://www.grammar-monster.com/tests/apostrophe_placement_game.htm"
+  },
+  {
+    "label": "apostrophes in times (tetris)",
+    "href": "https://www.grammar-monster.com/tests/apostrophe_placement_in_time_expressions_game.htm"
+  },
+  {
+    "label": "commas test (key-stage 2 style)",
+    "href": "https://www.grammar-monster.com/tests/test_commas_general_use.htm"
+  },
+  {
+    "label": "commas test (a timed test)",
+    "href": "https://www.grammar-monster.com/tests/test_commas.htm"
+  },
+  {
+    "label": "hyphens test (key-stage 2 style)",
+    "href": "https://www.grammar-monster.com/tests/test_hyphens_general_use.htm"
+  },
+  {
+    "label": "semicolons test (key-stage 2 style)",
+    "href": "https://www.grammar-monster.com/tests/test_semicolons_general_use.htm"
+  },
+  {
+    "label": "punctuation test (general use of punctuation)",
+    "href": "https://www.grammar-monster.com/tests/test_punctuation.htm"
+  },
+  {
+    "label": "quirks with parenthesis",
+    "href": "https://www.grammar-monster.com/tests/test_parenthesis.htm"
+  },
+  {
+    "label": "test your use of quotation marks",
+    "href": "https://www.grammar-monster.com/tests/test_quotation_marks.htm"
+  }
+];
+const grammarTermTests = [
+  {
+    "label": "abbreviations test",
+    "href": "https://www.grammar-monster.com/tests/abbreviations_test.htm"
+  },
+  {
+    "label": "absolute possessive pronouns test",
+    "href": "https://www.grammar-monster.com/tests/absolute_possessives_test.htm"
+  },
+  {
+    "label": "abstract nouns test",
+    "href": "https://www.grammar-monster.com/tests/abstract_nouns_test.htm"
+  },
+  {
+    "label": "acronyms test",
+    "href": "https://www.grammar-monster.com/tests/acronyms_test.htm"
+  },
+  {
+    "label": "accusative case test",
+    "href": "https://www.grammar-monster.com/tests/accusative_case_test.htm"
+  },
+  {
+    "label": "abstract nouns (hangman)",
+    "href": "https://www.grammar-monster.com/tests/abstract_nouns_hangman.htm"
+  },
+  {
+    "label": "adjectives test",
+    "href": "https://www.grammar-monster.com/tests/test_adjectives.htm"
+  },
+  {
+    "label": "adverbs test",
+    "href": "https://www.grammar-monster.com/tests/adverbs_test.htm"
+  },
+  {
+    "label": "affix test",
+    "href": "https://www.grammar-monster.com/tests/affix_test.htm"
+  },
+  {
+    "label": "apostrophes test",
+    "href": "https://www.grammar-monster.com/tests/apostrophe_test.htm"
+  },
+  {
+    "label": "apostrophes showing possession test",
+    "href": "https://www.grammar-monster.com/tests/apostrophe_possession_test.htm"
+  },
+  {
+    "label": "articles test",
+    "href": "https://www.grammar-monster.com/tests/articles_test.htm"
+  },
+  {
+    "label": "collective nouns test",
+    "href": "https://www.grammar-monster.com/tests/collective_nouns_test.htm"
+  },
+  {
+    "label": "compound adjectives test",
+    "href": "https://www.grammar-monster.com/tests/compound_adjectives_test.htm"
+  },
+  {
+    "label": "compound nouns test",
+    "href": "https://www.grammar-monster.com/tests/compound_nouns_test.htm"
+  },
+  {
+    "label": "concrete nouns bubble pop",
+    "href": "https://www.grammar-monster.com/tests/concrete_nouns_bubble_pop_test.htm"
+  },
+  {
+    "label": "concrete nouns whack a mole",
+    "href": "https://www.grammar-monster.com/tests/concrete_nouns_whack_a_word_game.htm"
+  },
+  {
+    "label": "concrete nouns fish game",
+    "href": "https://www.grammar-monster.com/tests/concrete_nouns_fish_game.htm"
+  },
+  {
+    "label": "definite articles test",
+    "href": "https://www.grammar-monster.com/tests/definite_articles_test.htm"
+  },
+  {
+    "label": "demonstrative adjectives test",
+    "href": "https://www.grammar-monster.com/tests/demonstrative_adjectives_test.htm"
+  },
+  {
+    "label": "demonstrative pronouns test",
+    "href": "https://www.grammar-monster.com/tests/demonstrative_pronouns_test.htm"
+  },
+  {
+    "label": "future perfect progressive tense test",
+    "href": "https://www.grammar-monster.com/tests/future_perfect_progressive_test.htm"
+  },
+  {
+    "label": "future progressive tense test",
+    "href": "https://www.grammar-monster.com/tests/future_progressive_test.htm"
+  },
+  {
+    "label": "gender-specific nouns test",
+    "href": "https://www.grammar-monster.com/tests/gender_specific_nouns_test.htm"
+  },
+  {
+    "label": "indefinite adjectives test",
+    "href": "https://www.grammar-monster.com/tests/indefinite_adjectives_test.htm"
+  },
+  {
+    "label": "indefinite articles test",
+    "href": "https://www.grammar-monster.com/tests/indefinite_articles_test.htm"
+  },
+  {
+    "label": "indefinite pronouns test",
+    "href": "https://www.grammar-monster.com/tests/indefinite_pronouns_test.htm"
+  },
+  {
+    "label": "interrogative adjectives test",
+    "href": "https://www.grammar-monster.com/tests/interrogative_adjectives_test.htm"
+  },
+  {
+    "label": "interrogative pronouns test",
+    "href": "https://www.grammar-monster.com/tests/interrogative_pronouns_test.htm"
+  },
+  {
+    "label": "non-binary pronouns test",
+    "href": "https://www.grammar-monster.com/lessons/using_non-binary_pronouns_examples_and_test.htm#exam"
+  },
+  {
+    "label": "non-countable nouns test",
+    "href": "https://www.grammar-monster.com/tests/non_countable_nouns_test.htm"
+  },
+  {
+    "label": "object of a preposition test",
+    "href": "https://www.grammar-monster.com/tests/object_of_a_preposition_test.htm"
+  },
+  {
+    "label": "past participles test",
+    "href": "https://www.grammar-monster.com/tests/test_past_participles.htm"
+  },
+  {
+    "label": "present participles test",
+    "href": "https://www.grammar-monster.com/tests/test_present_participles.htm"
+  },
+  {
+    "label": "past perfect tense test",
+    "href": "https://www.grammar-monster.com/tests/past_perfect_tense_test.htm"
+  },
+  {
+    "label": "past perfect progressive tense test",
+    "href": "https://www.grammar-monster.com/tests/past_perfect_progressive_test.htm"
+  },
+  {
+    "label": "past progressive tense test",
+    "href": "https://www.grammar-monster.com/tests/past_progressive_test.htm"
+  },
+  {
+    "label": "personal pronouns bubble pop",
+    "href": "https://www.grammar-monster.com/tests/personal_pronouns_bubble_pop_test.htm"
+  },
+  {
+    "label": "personal pronouns whack a mole",
+    "href": "https://www.grammar-monster.com/tests/personal_pronouns_whack_a_word_game.htm"
+  },
+  {
+    "label": "personal pronouns fish game",
+    "href": "https://www.grammar-monster.com/tests/personal_pronouns_fish_game.htm"
+  },
+  {
+    "label": "plurals test",
+    "href": "https://www.grammar-monster.com/tests/plurals_test.htm"
+  },
+  {
+    "label": "possessive adjectives test",
+    "href": "https://www.grammar-monster.com/tests/possessive_adjectives_test.htm"
+  },
+  {
+    "label": "possessive case test",
+    "href": "https://www.grammar-monster.com/tests/possessive_case_test.htm"
+  },
+  {
+    "label": "present perfect tense test",
+    "href": "https://www.grammar-monster.com/tests/present_perfect_tense_test.htm"
+  },
+  {
+    "label": "present perfect progressive tense test",
+    "href": "https://www.grammar-monster.com/tests/present_perfect_progressive_test.htm"
+  },
+  {
+    "label": "present progressive tense test",
+    "href": "https://www.grammar-monster.com/tests/present_progressive_test.htm"
+  },
+  {
+    "label": "progressive tenses test",
+    "href": "https://www.grammar-monster.com/tests/progressive_tense_test.htm"
+  },
+  {
+    "label": "proper nouns test",
+    "href": "https://www.grammar-monster.com/tests/proper_nouns_test.htm"
+  },
+  {
+    "label": "simple future tense test",
+    "href": "https://www.grammar-monster.com/tests/simple_future_tense_test.htm"
+  },
+  {
+    "label": "simple past tense test",
+    "href": "https://www.grammar-monster.com/tests/simple_past_tense_test.htm"
+  },
+  {
+    "label": "simple present tense test",
+    "href": "https://www.grammar-monster.com/tests/simple_present_tense_test.htm"
+  },
+  {
+    "label": "simple tenses test",
+    "href": "https://www.grammar-monster.com/tests/simple_tenses_test.htm"
+  },
+  {
+    "label": "syllables (drag & drop)",
+    "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_types_of_syllables.htm"
+  },
+  {
+    "label": "verb tenses (all) test 1",
+    "href": "https://www.grammar-monster.com/tests/verb_tenses_test.htm"
+  },
+  {
+    "label": "verb tenses (all) test 2",
+    "href": "https://www.grammar-monster.com/tests/all_verb_tenses_test.htm"
+  },
+  {
+    "label": "all tenses (drag & drop)",
+    "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_tenses.htm"
+  }
+];
+const confusedWordTests = [
+  {
+    "label": "confused words (tetris)",
+    "href": "https://www.grammar-monster.com/tests/easily_confused_words_tetris_game.htm"
+  },
+  {
+    "label": "our main easily confused words test",
+    "href": "https://www.grammar-monster.com/tests/confused_words_test.htm"
+  }
+];
+const usefulTests = [
+  {
+    "label": "grammatical-terms test",
+    "href": "https://www.grammar-monster.com/tests/grammatical_terms.htm"
+  },
+  {
+    "label": "a test on pronouns, adjectives, and adverbs",
+    "href": "https://www.grammar-monster.com/tests/interactive_test_parts_of_speech.htm"
+  },
+  {
+    "label": "a test on abstract nouns, compound nouns, collective nouns, and gerunds",
+    "href": "https://www.grammar-monster.com/tests/types_of_nouns_test.htm"
+  },
+  {
+    "label": "an or a",
+    "href": "https://www.grammar-monster.com/tests/test_an_or_a.htm"
+  },
+  {
+    "label": "capital letters",
+    "href": "https://www.grammar-monster.com/tests/capital_letters.htm"
+  },
+  {
+    "label": "quirks with abbreviations",
+    "href": "https://www.grammar-monster.com/tests/test_using_abbreviations.htm"
+  },
+  {
+    "label": "too and to",
+    "href": "https://www.grammar-monster.com/tests/test_too_or_to.htm"
+  },
+  {
+    "label": "who and whom",
+    "href": "https://www.grammar-monster.com/tests/test_who_and_whom.htm"
+  },
+  {
+    "label": "\"either/or\" and \"neither/nor\"",
+    "href": "https://www.grammar-monster.com/tests/test_either_neither.htm"
+  },
+  {
+    "label": "writing numbers",
+    "href": "https://www.grammar-monster.com/tests/test_numbers.htm"
+  },
+  {
+    "label": "all, all of, alright, and all right",
+    "href": "https://www.grammar-monster.com/tests/test_all_of_alright_all_right.htm"
+  },
+  {
+    "label": "Craig Shrives",
+    "href": "https://www.grammar-monster.com/Craig_Shrives_author.htm"
+  }
+];
+const teacherZone = [
+  {
+    "label": "the big timed test",
+    "href": "https://www.grammar-monster.com/tests/monster_grammar_test.htm"
+  },
+  {
+    "label": "match the pairs (parts of speech)",
+    "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-parts-of-speech.htm"
+  },
+  {
+    "label": "hangman",
+    "href": "https://www.grammar-monster.com/learning_games/hangMan.htm"
+  },
+  {
+    "label": "look-cover-write-check",
+    "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm"
+  },
+  {
+    "label": "common writing errors",
+    "href": "https://www.grammar-monster.com/common_grammar_errors.htm"
+  },
+  {
+    "label": "parts-of-speech lists",
+    "href": "https://www.grammar-monster.com/parts_of_speech_lists.htm"
+  },
+  {
+    "label": "easily confused words",
+    "href": "https://www.grammar-monster.com/easily_confused_words.htm"
+  },
+  {
+    "label": "grammar glossary",
+    "href": "https://www.grammar-monster.com/grammar_terms_and_definitions.htm"
+  },
+  {
+    "label": "all punctuation lessons",
+    "href": "https://www.grammar-monster.com/punctuation_lessons.htm"
+  }
+];
+const relatedLinks = [
+  {
+    "label": "A list of common grammar errors",
+    "href": "https://www.grammar-monster.com/common_grammar_errors.htm"
+  },
+  {
+    "label": "A list of easily confused words",
+    "href": "https://www.grammar-monster.com/easily_confused_words.htm"
+  },
+  {
+    "label": "A list of sayings and proverbs",
+    "href": "https://www.grammar-monster.com/sayings_proverbs.htm"
   }
 ];
 
-const games = [
-  { title: "Hangman", category: "Vocabulary", difficulty: "All levels", icon: "◌", href: "#" },
-  { title: "Countdown", category: "Word game", difficulty: "Intermediate", icon: "10", href: "#" },
-  { title: "Speed Test", category: "Grammar", difficulty: "Timed", icon: "⚡", href: "#" },
-  { title: "Memory Test", category: "Vocabulary", difficulty: "All levels", icon: "◆", href: "#" },
-  { title: "Confused Words Tetris", category: "Confused words", difficulty: "Intermediate", icon: "▦", href: "#" },
-  { title: "Confidence Game", category: "Grammar", difficulty: "Advanced", icon: "✓", href: "#" }
-];
-
-const testCollections = [
-  {
-    title: "Grammar Tests",
-    description: "Parts of speech, clauses, agreement, verb forms and the rules behind clear English.",
-    count: "100s of tests",
-    icon: "Aa",
-    items: ["Parts of speech", "Verb tenses", "Pronouns", "Clauses"]
-  },
-  {
-    title: "Punctuation Tests",
-    description: "Commas, apostrophes, semicolons, quotation marks and everything in between.",
-    count: "Topic practice",
-    icon: ",;",
-    items: ["Commas", "Apostrophes", "Semicolons", "Quotation marks"]
-  },
-  {
-    title: "Vocabulary & Confused Words",
-    description: "Choose the right word, sharpen definitions and practise commonly confused pairs.",
-    count: "Vocabulary practice",
-    icon: "ABC",
-    items: ["Affect or effect?", "Advice or advise?", "Word choice", "Definitions"]
-  },
-  {
-    title: "Teacher & Classroom Practice",
-    description: "Quick checks, shareable activities and classroom-friendly practice for lessons and homework.",
-    count: "Teacher tools",
-    icon: "✎",
-    items: ["Quick checks", "Homework practice", "Printable tests", "Classroom games"]
-  }
-];
+const totalListed =
+  vocabularyGames.length +
+  partsOfSpeechGroups.reduce((sum, group) => sum + group.links.length, 0) +
+  punctuationTests.length +
+  grammarTermTests.length +
+  confusedWordTests.length +
+  usefulTests.length;
 ---
 
 <BaseLayout
-  title="Games & Tests | Grammar Monster"
-  description="Explore Grammar Monster games, grammar tests, vocabulary challenges and classroom practice."
+  title="Free Grammar Tests & Games | Grammar Monster"
+  description="Hundreds of free Grammar Monster tests and games, grouped by grammar topic, punctuation, vocabulary and parts of speech."
 >
-  <div class="games-page">
+  <script is:inline>
+    window.vitag = window.vitag || {};
+    window.vitag.smartBannerConfig = { enablePC: false, enableMobile: false };
+  </script>
+  <script is:inline async src="https://services.vlitag.com/adv1/?q=30b982bcceb31097305670acdcf26233"></script>
+
+  <main class="gm-games">
     <section class="games-hero">
       <div class="games-shell games-hero__grid">
         <div class="games-hero__copy">
-          <div class="games-eyebrow">
-            <span></span>
-            PRACTISE. PLAY. REMEMBER.
-          </div>
+          <nav class="games-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span><strong>Games & Tests</strong>
+          </nav>
 
-          <h1>Games & tests<br><span>without the boring bits.</span></h1>
+          <span class="games-kicker games-kicker--lime">PRACTISE · PLAY · REMEMBER</span>
+          <h1>Free grammar tests.<br /><em>Thousands of ways to practise.</em></h1>
 
-          <p>
-            Turn grammar, vocabulary and punctuation into something you can actually
-            practise. Pick a game, test yourself by topic or find a quick classroom challenge.
+          <p class="games-hero__lede">
+            Explore free tests and games on English grammar, grouped by part of speech
+            and major topics such as punctuation and vocabulary.
           </p>
+
+          <div class="games-hero__facts">
+            <div><strong>100s</strong><span>listed here</span></div>
+            <i></i>
+            <div><strong>1000s</strong><span>across the site</span></div>
+            <i></i>
+            <div><strong>0</strong><span>accounts required</span></div>
+          </div>
 
           <div class="games-search">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"/>
+              <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"></path>
             </svg>
             <input
-              id="gameSearch"
+              id="gamesSearch"
               type="search"
-              placeholder="Search Wordle, commas, verbs, vocabulary..."
-              aria-label="Search games and tests"
+              placeholder="Search adjectives, commas, Wordle, pronouns..."
+              aria-label="Search Grammar Monster games and tests"
             />
-            <button id="gameSearchBtn" type="button">Search</button>
+            <button id="gamesSearchButton" type="button">Search</button>
           </div>
 
-          <div class="games-filter-row" aria-label="Filter games and tests">
-            <button class="games-filter is-active" data-filter="all">All</button>
-            <button class="games-filter" data-filter="games">Games</button>
-            <button class="games-filter" data-filter="grammar">Grammar</button>
-            <button class="games-filter" data-filter="punctuation">Punctuation</button>
-            <button class="games-filter" data-filter="vocabulary">Vocabulary</button>
-            <button class="games-filter" data-filter="teachers">Teachers</button>
+          <div class="games-filter-row" aria-label="Jump to a section">
+            <a href="#games">Games</a>
+            <a href="#parts-of-speech">Parts of speech</a>
+            <a href="#punctuation">Punctuation</a>
+            <a href="#grammar-terms">Grammar terms</a>
+            <a href="#teachers">Teachers</a>
           </div>
         </div>
 
-        <div class="games-hero__art">
-          <div class="games-orb"></div>
-          <div class="letter-card lc-one">A</div>
-          <div class="letter-card lc-two">?</div>
-          <div class="letter-card lc-three">✓</div>
-          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+        <div class="games-hero__visual">
+          <div class="games-hero__rings"></div>
+          <div class="games-hero__art-card">
+            <img
+              src="https://www.grammar-monster.com/images/free-grammar-tests.webp"
+              alt="Grammar Monster free grammar tests"
+            />
+          </div>
+          <div class="games-float games-float--one"><span>✓</span> FREE TO USE</div>
+          <div class="games-float games-float--two"><span>↗</span> SENDABLE TESTS</div>
+        </div>
+      </div>
+    </section>
 
-          <div class="games-tip">
-            <span>MONSTER PICK</span>
-            <strong>Start with today’s Wordle.</strong>
-            <a href="/games/wordle/">Play now →</a>
+    <section class="games-intro">
+      <div class="games-shell games-intro__grid">
+        <div>
+          <span class="games-kicker">LIST OF ENGLISH GRAMMAR TESTS</span>
+          <h2>Practise by topic.<br /><em>Teach without the admin.</em></h2>
+        </div>
+
+        <div class="games-intro__copy">
+          <p>
+            The tests on this page are just a sample. Every lesson on Grammar Monster has
+            at least one multiple-choice interactive test, and those lesson tests are
+            editable and printable.
+          </p>
+          <p>
+            The vast majority of Grammar Monster tests are also sendable. Teachers can set
+            assignments without requiring students to create accounts or log in; question
+            and answer data is passed through the URLs shared between teacher and student.
+          </p>
+          <a href="https://www.grammar-monster.com/admin/paper-free-learning.htm">
+            Learn about paper-free learning →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="games-ad-stage" aria-label="Advertisement">
+      <div class="games-shell">
+        <div class="games-ad-label">ADVERTISEMENT <span>Ads help keep Grammar Monster free.</span></div>
+        <div class="games-ad-grid">
+          <div class="games-ad-slot" data-games-ad-shell>
+            <div class="games-ad-placeholder"><span>ADVERTISEMENT</span><strong>Grammar Monster stays free.</strong><small>Live ad inventory may appear here.</small></div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342100586"></div>
+          </div>
+          <div class="games-ad-slot games-ad-slot--secondary" data-games-ad-shell>
+            <div class="games-ad-placeholder"><span>ADVERTISEMENT</span><strong>Free learning, supported by ads.</strong><small>Thanks for supporting the site.</small></div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112530"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="featured-section">
+    <section class="games-featured" id="games" data-library-section>
       <div class="games-shell">
         <div class="games-section-head">
           <div>
-            <span class="games-kicker">FEATURED GAMES</span>
+            <span class="games-kicker">VOCABULARY GAMES</span>
             <h2>Start with something fun.</h2>
           </div>
-          <p>
-            Quick challenges for spelling, vocabulary, pattern recognition and grammar instinct.
-          </p>
+          <p>Daily challenges and Grammar Monster classics for vocabulary, spelling and word-building.</p>
         </div>
 
-        <div class="featured-grid">
-          {featured.map((item) => (
-            <article
-              class:list={["featured-card", item.className]}
-              data-type="games"
-              data-search={`${item.title} ${item.description} ${item.tag}`}
+        <div class="games-featured-grid">
+          {featuredGames.map((game, index) => (
+            <a
+              class:list={["games-feature-card", index < 2 && "games-feature-card--live"]}
+              href={game.href}
+              data-library-item
+              data-search={`${game.title} ${game.eyebrow} ${game.description} ${game.meta} vocabulary games`}
             >
-              <div class="featured-card__top">
-                <span class="featured-tag">{item.tag}</span>
-                <span class="featured-meta">{item.meta}</span>
+              <div class="games-feature-card__top">
+                <span>{game.eyebrow}</span>
+                <b>{game.badge}</b>
               </div>
-
-              <div class="featured-icon">{item.icon}</div>
-
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-
-              <a href={item.href}>
-                {item.href === "#" ? "Coming soon" : "Play now"}
-                <span>↗</span>
-              </a>
-            </article>
+              <div class="games-feature-card__glyph">{game.glyph}</div>
+              <h3>{game.title}</h3>
+              <p>{game.description}</p>
+              <div class="games-feature-card__bottom">
+                <span>{game.meta}</span>
+                <strong>Play →</strong>
+              </div>
+            </a>
           ))}
         </div>
-      </div>
-    </section>
 
-    <section class="quick-section">
-      <div class="games-shell">
-        <div class="games-section-head compact-head">
-          <div>
-            <span class="games-kicker">QUICK GAMES</span>
-            <h2>Pick a challenge.</h2>
-          </div>
-        </div>
-
-        <div class="quick-grid">
-          {games.map((game) => (
-            <a
-              href={game.href}
-              class="quick-card"
-              data-type={`games ${game.category.toLowerCase()}`}
-              data-search={`${game.title} ${game.category} ${game.difficulty}`}
-            >
-              <div class="quick-icon">{game.icon}</div>
-              <div class="quick-copy">
-                <strong>{game.title}</strong>
-                <span>{game.category} • {game.difficulty}</span>
-              </div>
-              <b>→</b>
+        <div class="games-classic-links">
+          {vocabularyGames.map((game) => (
+            <a href={game.href} data-library-item data-search={`${game.label} vocabulary game`}>
+              <span>WORD GAME</span>
+              <strong>{game.label}</strong>
+              <b>↗</b>
             </a>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="test-section">
+    <section class="games-library games-library--tinted" id="parts-of-speech" data-library-section>
       <div class="games-shell">
-        <div class="games-section-head">
+        <div class="games-section-head games-section-head--wide">
           <div>
-            <span class="games-kicker">TEST YOURSELF BY TOPIC</span>
-            <h2>Find exactly what you need.</h2>
+            <span class="games-kicker">TESTS ON THE PARTS OF SPEECH</span>
+            <h2>Grammar practice,<br /><em>one word class at a time.</em></h2>
           </div>
-          <p>
-            Use these collections as the doorway into Grammar Monster’s much larger test library.
-          </p>
+          <p>Word finders, hangman, bubble pop, whack-a-word, fish games, drag-and-drop and matching activities.</p>
         </div>
 
-        <div class="test-grid">
-          {testCollections.map((collection, index) => (
-            <article
-              class="test-card"
-              data-type={
-                index === 0 ? "grammar" :
-                index === 1 ? "punctuation" :
-                index === 2 ? "vocabulary" :
-                "teachers"
-              }
-              data-search={`${collection.title} ${collection.description} ${collection.items.join(" ")}`}
-            >
-              <div class="test-card__icon">{collection.icon}</div>
-
-              <div class="test-card__head">
-                <span>{collection.count}</span>
-                <h3>{collection.title}</h3>
-                <p>{collection.description}</p>
+        <div class="games-topic-grid">
+          {partsOfSpeechGroups.map((group, index) => (
+            <article class="games-topic-card" data-library-card>
+              <div class="games-topic-card__head">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{group.title}</h3>
+                  <small>{group.links.length} {group.links.length === 1 ? "activity" : "activities"}</small>
+                </div>
               </div>
 
-              <div class="test-card__links">
-                {collection.items.map((item) => (
-                  <a href="#">
-                    <span>{item}</span>
-                    <b>→</b>
+              <div class="games-link-list">
+                {group.links.map((link) => (
+                  <a href={link.href} data-library-item data-search={`${group.title} ${link.label} grammar parts of speech`}>
+                    <span>{link.label}</span><b>→</b>
                   </a>
                 ))}
               </div>
-
-              <a class="test-card__all" href="#">
-                Explore all
-                <span>↗</span>
-              </a>
             </article>
           ))}
         </div>
+      </div>
+    </section>
 
-        <p id="gamesNoResults" class="games-no-results" hidden>
-          No matching demo games or tests yet. Try “Wordle”, “grammar”, “commas” or “vocabulary”.
+    <section class="games-library" id="punctuation" data-library-section>
+      <div class="games-shell games-library__split">
+        <div class="games-library__intro">
+          <span class="games-kicker">PUNCTUATION</span>
+          <h2>Put every mark<br /><em>in its place.</em></h2>
+          <p>Apostrophes, commas, hyphens, semicolons, quotation marks and general punctuation practice.</p>
+          <a href="/punctuation-lessons/">Browse punctuation lessons →</a>
+        </div>
+
+        <div class="games-link-panel">
+          {punctuationTests.map((link, index) => (
+            <a href={link.href} data-library-item data-search={`${link.label} punctuation apostrophes commas hyphens semicolons quotation marks`}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{link.label}</strong>
+              <b>↗</b>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="games-library games-library--dark" id="grammar-terms" data-library-section>
+      <div class="games-shell">
+        <div class="games-section-head games-section-head--dark">
+          <div>
+            <span class="games-kicker games-kicker--lime">GRAMMAR TERMS & DEFINITIONS</span>
+            <h2>A deep test library.<br /><em>Pick the exact concept.</em></h2>
+          </div>
+          <p>From abbreviations and affixes to pronouns, participles, tenses and syllables.</p>
+        </div>
+
+        <div class="games-term-toolbar">
+          <strong>{grammarTermTests.length} listed tests</strong>
+          <a href="/grammar-terms/">Open the Grammar & Terms library →</a>
+        </div>
+
+        <div class="games-term-grid">
+          {grammarTermTests.map((link, index) => (
+            <a href={link.href} data-library-item data-search={`${link.label} grammar terms definitions`}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{link.label}</strong>
+              <b>↗</b>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="games-library games-library--tinted" id="confused-words" data-library-section>
+      <div class="games-shell">
+        <div class="games-duo-grid">
+          <article class="games-special-card">
+            <span class="games-kicker">EASILY CONFUSED WORDS</span>
+            <h2>Know which word<br /><em>belongs where.</em></h2>
+            <p>Practise commonly confused words with the main test or the Tetris-style game.</p>
+            <div class="games-special-links">
+              {confusedWordTests.map((link) => (
+                <a href={link.href} data-library-item data-search={`${link.label} confused words vocabulary tetris`}>
+                  <strong>{link.label}</strong><b>→</b>
+                </a>
+              ))}
+            </div>
+            <a class="games-special-card__library" href="/easily-confused-words/">Explore Easily Confused Words →</a>
+          </article>
+
+          <article class="games-special-card games-special-card--blue">
+            <span class="games-kicker">MORE USEFUL GRAMMAR TESTS</span>
+            <h2>Quick checks for<br /><em>awkward little rules.</em></h2>
+            <p>From “an or a” and capital letters to “who and whom”, numbers and common usage choices.</p>
+            <div class="games-special-links games-special-links--compact">
+              {usefulTests.map((link) => (
+                <a href={link.href} data-library-item data-search={`${link.label} useful grammar test`}>
+                  <strong>{link.label}</strong><b>→</b>
+                </a>
+              ))}
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="games-teachers" id="teachers" data-library-section>
+      <div class="games-shell games-teachers__grid">
+        <div class="games-teachers__copy">
+          <span class="games-kicker games-kicker--lime">TEACHERS' ZONE</span>
+          <h2>Set practice.<br />Skip the paperwork.</h2>
+          <p>
+            Jump into classroom-friendly games, spelling practice, grammar references
+            and shareable tests.
+          </p>
+
+          <div class="games-teachers__badge">
+            <span>NO ACCOUNT</span>
+            <strong>Send tests as homework using a link.</strong>
+          </div>
+        </div>
+
+        <div class="games-teachers__links">
+          {teacherZone.map((link, index) => (
+            <a href={link.href} data-library-item data-search={`${link.label} teachers classroom homework`}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{link.label}</strong>
+              <b>↗</b>
+            </a>
+          ))}
+
+          <a class="games-teachers__quick" href="/#quiz" data-library-item data-search="multi choice test quick grammar challenge ten questions">
+            <span>10Q</span>
+            <strong>Quick Grammar Challenge</strong>
+            <b>→</b>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="games-more">
+      <div class="games-shell">
+        <div class="games-more__head">
+          <div>
+            <span class="games-kicker">KEEP EXPLORING</span>
+            <h2>You might also like...</h2>
+          </div>
+          <strong>{totalListed} direct activities listed on this page</strong>
+        </div>
+
+        <div class="games-related-grid">
+          {relatedLinks.map((link) => (
+            <a href={link.href}>
+              <strong>{link.label}</strong>
+              <span>Explore →</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="games-author">
+          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+          <div>
+            <span>ABOUT THIS PAGE</span>
+            <p>
+              This page was written by
+              <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm">Craig Shrives</a>.
+            </p>
+          </div>
+        </div>
+
+        <p class="games-no-results" id="gamesNoResults" hidden>
+          No matching games or tests found. Try another word or topic.
         </p>
       </div>
     </section>
 
-    <section class="games-cta">
-      <div class="games-shell games-cta__inner">
-        <div class="games-cta__monster">
-          <div></div>
-          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+    <section class="games-ad-stage games-ad-stage--bottom" aria-label="Advertisement">
+      <div class="games-shell">
+        <div class="games-ad-label">ADVERTISEMENT <span>Helping keep Grammar Monster free.</span></div>
+        <div class="games-ad-grid">
+          <div class="games-ad-slot" data-games-ad-shell>
+            <div class="games-ad-placeholder"><span>ADVERTISEMENT</span><strong>More free Grammar Monster.</strong><small>Live ad inventory may appear here.</small></div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112533"></div>
+          </div>
+          <div class="games-ad-slot games-ad-slot--secondary" data-games-ad-shell>
+            <div class="games-ad-placeholder"><span>ADVERTISEMENT</span><strong>Learning without a paywall.</strong><small>Thanks for supporting the site.</small></div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112534"></div>
+          </div>
         </div>
-
-        <div class="games-cta__copy">
-          <span>READY?</span>
-          <h2>One word. Six tries.</h2>
-          <p>Try the Grammar Monster Wordle prototype while the rest of the games library gets its new home.</p>
-        </div>
-
-        <a href="/games/wordle/">Play Wordle <span>→</span></a>
       </div>
     </section>
-  </div>
+  </main>
 
-  <script>
-    const searchInput = document.getElementById("gameSearch");
-    const searchButton = document.getElementById("gameSearchBtn");
-    const filters = [...document.querySelectorAll(".games-filter")];
-    const searchableCards = [...document.querySelectorAll("[data-search]")];
-    const noResults = document.getElementById("gamesNoResults");
+  <script is:inline>
+    (() => {
+      const input = document.getElementById("gamesSearch");
+      const button = document.getElementById("gamesSearchButton");
+      const items = [...document.querySelectorAll("[data-library-item]")];
+      const cards = [...document.querySelectorAll("[data-library-card]")];
+      const sections = [...document.querySelectorAll("[data-library-section]")];
+      const noResults = document.getElementById("gamesNoResults");
 
-    let activeFilter = "all";
+      function applySearch() {
+        const term = (input?.value || "").trim().toLowerCase();
+        let visible = 0;
 
-    function applyGamesFilter() {
-      const term = searchInput?.value.trim().toLowerCase() || "";
-      let visible = 0;
+        items.forEach((item) => {
+          const haystack = (item.getAttribute("data-search") || item.textContent || "").toLowerCase();
+          const show = !term || haystack.includes(term);
+          item.hidden = !show;
+          if (show) visible += 1;
+        });
 
-      searchableCards.forEach((card) => {
-        const haystack = (card.getAttribute("data-search") || "").toLowerCase();
-        const types = (card.getAttribute("data-type") || "").toLowerCase();
+        cards.forEach((card) => {
+          const cardItems = [...card.querySelectorAll("[data-library-item]")];
+          card.hidden = term !== "" && cardItems.every((item) => item.hidden);
+        });
 
-        const matchesSearch = !term || haystack.includes(term);
-        const matchesFilter = activeFilter === "all" || types.includes(activeFilter);
+        sections.forEach((section) => {
+          const sectionItems = [...section.querySelectorAll("[data-library-item]")];
+          section.classList.toggle("is-search-empty", term !== "" && sectionItems.length > 0 && sectionItems.every((item) => item.hidden));
+        });
 
-        const show = matchesSearch && matchesFilter;
-        card.classList.toggle("is-hidden", !show);
+        if (noResults) noResults.hidden = visible !== 0;
 
-        if (show) visible++;
+        if (term && visible > 0) {
+          const first = items.find((item) => !item.hidden);
+          first?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      button?.addEventListener("click", applySearch);
+      input?.addEventListener("input", () => {
+        if (!input.value.trim()) applySearch();
+      });
+      input?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") applySearch();
       });
 
-      if (noResults) noResults.hidden = visible !== 0;
-    }
+      const adSlots = ["vi_342100586", "vi_342112530", "vi_342112533", "vi_342112534"];
+      if (window.vitag) {
+        (window.vitag.Init = window.vitag.Init || []).push(() => {
+          adSlots.forEach((slot) => {
+            try { window.viAPItag?.display(slot); } catch (_) {}
+          });
+        });
+      }
 
-    filters.forEach((button) => {
-      button.addEventListener("click", () => {
-        activeFilter = button.dataset.filter || "all";
+      document.querySelectorAll("[data-games-ad-shell]").forEach((shell) => {
+        const ad = shell.querySelector(".adsbyvli");
+        const placeholder = shell.querySelector(".games-ad-placeholder");
+        if (!ad || !placeholder) return;
 
-        filters.forEach((item) => item.classList.remove("is-active"));
-        button.classList.add("is-active");
+        const update = () => {
+          const live = Boolean(ad.querySelector("iframe") || ad.children.length);
+          placeholder.hidden = live;
+          shell.classList.toggle("has-live-ad", live);
+        };
 
-        applyGamesFilter();
+        new MutationObserver(update).observe(ad, { childList: true, subtree: true });
+        setTimeout(update, 1800);
+        setTimeout(update, 4200);
       });
-    });
-
-    searchButton?.addEventListener("click", applyGamesFilter);
-
-    searchInput?.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") applyGamesFilter();
-    });
+    })();
   </script>
 </BaseLayout>
