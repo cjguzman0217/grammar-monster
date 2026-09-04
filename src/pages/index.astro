@@ -1,617 +1,678 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/homepage.css";
+
+const paths = [{"title": "I'm a native speaker. I am new to grammatical terms.", "image": "whoNew.webp", "links": [{"label": "1. \"The Parts of speech\" (video)", "href": "https://www.grammar-monster.com/videos/video-parts_of_speech.htm", "external": true}, {"label": "2. \"Warm up\" lesson on adjectives", "href": "https://www.grammar-monster.com/lessons/adjectives-for-kids.htm", "external": true}, {"label": "3. Full lesson on nouns", "href": "https://www.grammar-monster.com/lessons/nouns.htm", "external": true}, {"label": "4. Subjects", "href": "https://www.grammar-monster.com/glossary/subject.htm", "external": true}, {"label": "5. \"Warm up\" lesson on verbs", "href": "https://www.grammar-monster.com/lessons/verbs-for-kids.htm", "external": true}, {"label": "6. Introduction to verb conjugation", "href": "https://www.grammar-monster.com/glossary/verb_conjugation.htm", "external": true}, {"label": "7. Introduction to grammatical \"number\"", "href": "https://www.grammar-monster.com/glossary/number.htm", "external": true}, {"label": "8. Full lesson on phrases", "href": "https://www.grammar-monster.com/glossary/phrase.htm", "external": true}, {"label": "9. Introduction to sentence types", "href": "https://www.grammar-monster.com/glossary/sentences.htm", "external": true}, {"label": "10. Full lesson on the \"parts of speech\"", "href": "https://www.grammar-monster.com/glossary/parts_of_speech.htm", "external": true}], "label": "Grammar beginner", "kicker": "NATIVE SPEAKER"}, {"title": "I'm a native speaker. I want to take my grammar to an advanced level.", "image": "whoAdvanced.webp", "links": [{"label": "1. Misplaced modifiers", "href": "https://www.grammar-monster.com/glossary/misplaced_modifier.htm", "external": true}, {"label": "2. Restrictive modifiers", "href": "https://www.grammar-monster.com/glossary/restrictive_modifier.htm", "external": true}, {"label": "3. Parenthetical punctuation", "href": "https://www.grammar-monster.com/glossary/parentheses_parenthetical_punctuation.htm", "external": true}, {"label": "4. Compound predicates", "href": "https://www.grammar-monster.com/glossary/compound_predicate.htm", "external": true}, {"label": "5. Complements", "href": "https://www.grammar-monster.com/glossary/complement.htm", "external": true}, {"label": "6. Zeugma", "href": "https://www.grammar-monster.com/glossary/zeugma.htm", "external": true}, {"label": "7. Conjunctive adverbs", "href": "https://www.grammar-monster.com/videos/video-conjunctive_adverbs.htm", "external": true}, {"label": "8. Singular \"they\" (video)", "href": "https://www.grammar-monster.com/videos/video-his_her_their_they_singular_plural.htm", "external": true}, {"label": "9. Ending sentences with prepositions (the nuances)", "href": "https://www.grammar-monster.com/videos/video-prepositions_ending_a_sentence.htm", "external": true}, {"label": "10. Apostrophes for joint ownership", "href": "https://www.grammar-monster.com/punctuation/apostrophes_joint_ownership.htm", "external": true}], "label": "Advanced grammar", "kicker": "ADVANCED LEARNER"}, {"title": "I'm a student. I want to improve my writing skills.", "image": "whoStudent.webp", "links": [{"label": "1. The run-on sentence (a killer lesson!)", "href": "https://www.grammar-monster.com/lessons/commas_run-on_error.htm", "external": true}, {"label": "2. Verbs of attribution (for referencing)", "href": "https://www.grammar-monster.com/lessons/verbs-of-attribution.htm", "external": true}, {"label": "3. Using \"however\" properly", "href": "https://www.grammar-monster.com/lessons/starting_a_sentence_with_however.htm", "external": true}, {"label": "4. Most common punctuation errors", "href": "https://www.grammar-monster.com/lessons/top_10_punctuation_errors.htm", "external": true}, {"label": "5. Hyphens in compound adjectives", "href": "https://www.grammar-monster.com/lessons/hyphens_in_compound_adjectives.htm", "external": true}, {"label": "6. Commas before \"which,\" \"that,\" and \"who\"", "href": "https://www.grammar-monster.com/lessons/which_that_who_comma_or_not.htm", "external": true}, {"label": "7. Apostrophes in time expressions", "href": "https://www.grammar-monster.com/lessons/apostrophes_in_time_(temporal)_expressions.htm", "external": true}, {"label": "8. Square brackets in quotations", "href": "https://www.grammar-monster.com/lessons/brackets_square_brackets.htm", "external": true}, {"label": "9. Commas with fronted adverbials", "href": "https://www.grammar-monster.com/lessons/commas_after_a_sentence_introduction.htm", "external": true}, {"label": "10. Commas before conjunctions (and, but, or, etc.)", "href": "https://www.grammar-monster.com/lessons/conjunctions_and_commas.htm", "external": true}], "label": "Student writer", "kicker": "STUDENT"}, {"title": "I'm a business person. I want to sharpen my writing.", "image": "whoBusiness.webp", "links": [{"label": "1. Writing parallel lists (important lesson!)", "href": "https://www.grammar-monster.com/lessons/parallel_lists.htm", "external": true}, {"label": "2. Selecting the right words (i.e., diction)", "href": "https://www.grammar-monster.com/glossary/diction.htm", "external": true}, {"label": "3. Avoiding the run-on sentence (a common error)", "href": "https://www.grammar-monster.com/lessons/commas_run-on_error.htm", "external": true}, {"label": "4. Using \"however\" properly", "href": "https://www.grammar-monster.com/lessons/starting_a_sentence_with_however.htm", "external": true}, {"label": "5. Using hyphens in compound adjectives", "href": "https://www.grammar-monster.com/lessons/hyphens_in_compound_adjectives.htm", "external": true}, {"label": "6. Understanding subject-verb agreement", "href": "https://www.grammar-monster.com/lessons/subject_verb_agreement.htm", "external": true}, {"label": "7. Using commas before \"which,\" \"that,\" and \"who\"", "href": "https://www.grammar-monster.com/lessons/which_that_who_comma_or_not.htm", "external": true}, {"label": "8. Using commas before conjunctions (e.g., \"and\")", "href": "https://www.grammar-monster.com/lessons/conjunctions_and_commas.htm", "external": true}, {"label": "9. Saving words with participle phrases", "href": "https://www.grammar-monster.com/glossary/participle_phrases.htm", "external": true}, {"label": "10. Explaining through analogies", "href": "https://www.grammar-monster.com/glossary/analogy.htm", "external": true}], "label": "Business writer", "kicker": "BUSINESS"}, {"title": "I'm a creative writer. I want to generate some flair.", "image": "whoCreative.webp", "links": [{"label": "1. Anastrophe (playing with word order)", "href": "https://www.grammar-monster.com/glossary/anastrophe.htm", "external": true}, {"label": "2. Metonyms (using associated words)", "href": "https://www.grammar-monster.com/glossary/metonyms.htm", "external": true}, {"label": "3. Emotive language (being judge and jury)", "href": "https://www.grammar-monster.com/glossary/emotive_language.htm", "external": true}, {"label": "4. Assonance (adding flair with vowels)", "href": "https://www.grammar-monster.com/glossary/assonance.htm", "external": true}, {"label": "5. Consonance (adding flair with consonants)", "href": "https://www.grammar-monster.com/glossary/consonance.htm", "external": true}, {"label": "6. Anaphora (repeating deliberately)", "href": "https://www.grammar-monster.com/glossary/repetition_anaphora.htm", "external": true}, {"label": "7. Zeugma (playing with sentence structure)", "href": "https://www.grammar-monster.com/glossary/zeugma.htm", "external": true}, {"label": "8. Ethos (writing to influence)", "href": "https://www.grammar-monster.com/glossary/ethos.htm", "external": true}, {"label": "9. Point of view (writing to engage)", "href": "https://www.grammar-monster.com/glossary/point_of_view.htm", "external": true}, {"label": "10. Analogies (painting pictures with words)", "href": "https://www.grammar-monster.com/glossary/analogy.htm", "external": true}], "label": "Creative writer", "kicker": "CREATIVE WRITING"}, {"title": "I'm a tutor of absolute beginners.", "image": "whoBeginners.webp", "links": [{"label": "1. Useful vocabulary by category (lessons & games)", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-English-learners.htm", "external": true}, {"label": "2. \"Telling the time\" (interactive lesson)", "href": "https://www.grammar-monster.com/tests/telling-the-time-in-English.htm", "external": true}, {"label": "3. \"Counting in English\" (lesson & game)", "href": "https://www.grammar-monster.com/tests/counting-in-English.htm", "external": true}, {"label": "4. \"Introducing yourself\" (role-play lesson)", "href": "https://www.grammar-monster.com/role_play_scenarios/introducing-yourself.htm", "external": true}, {"label": "5. \"Talking about your family\" (role-play lesson)", "href": "https://www.grammar-monster.com/role_play_scenarios/talking-about-your-family.htm", "external": true}, {"label": "6. \"Colours\" (games & flashcards)", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-colors.htm", "external": true}, {"label": "7. \"Frequency adverbs\" (games & flashcards)", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-frequency-adverbs.htm", "external": true}, {"label": "8. \"Ordinals & fractions\" (games & flashcards)", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-numbers.htm", "external": true}, {"label": "9. \"Shapes\" (video)", "href": "https://www.grammar-monster.com/videos/video-ESL-vocabulary-shapes.htm", "external": true}, {"label": "10. \"English for beginners\" (list of resources)", "href": "https://www.grammar-monster.com/English-for-beginners.htm", "external": true}], "label": "Teach beginners", "kicker": "TUTOR"}, {"title": "I'm a tutor. I need word games and grammar tests.", "image": "heading-tests-and-games.webp", "links": [{"label": "1. Match the pairs (for the \"parts of speech\")", "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-parts-of-speech.htm", "external": true}, {"label": "2. \"Look-cover-write-check\" (for spelling)", "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm", "external": true}, {"label": "3. \"Word Builder\" (for vocabulary)", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "external": true}, {"label": "4. \"Word Up\" (for advanced vocabulary)", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "external": true}, {"label": "5. \"HangMan\" (for vocabulary)", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "external": true}, {"label": "6. 1,000 useful words (drag-and-drop game)", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-English-learners.htm", "external": true}, {"label": "7. \"Fish\" game (for identifying adverbs)", "href": "https://www.grammar-monster.com/tests/adverbs_fish_game.htm", "external": true}, {"label": "8. \"Bubble pop\" game (for identifying prepositions)", "href": "https://www.grammar-monster.com/tests/prepositions_bubble_pop_test.htm", "external": true}, {"label": "9. Match-the-pairs game (for identifying pronouns)", "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-types-of-pronoun.htm", "external": true}, {"label": "10. Insert-the-punctuation test (for all punctuation)", "href": "https://www.grammar-monster.com/tests/test_punctuation.htm", "external": true}], "label": "Games & tests", "kicker": "TUTOR"}, {"title": "I'm learning another language. I need to know more words.", "image": "whoLanguage.webp", "links": [{"label": "1. 1,000 useful Spanish words.", "href": "https://www.grammar-monster.com/vocabulary/Spanish-moreWords.htm", "external": true}, {"label": "2. 1,000 useful Spanish words (drag & drop)", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-Spanish-learners.htm", "external": true}, {"label": "3. Counting in Spanish", "href": "https://www.grammar-monster.com/tests/counting-in-Spanish.htm", "external": true}, {"label": "4. Telling the time in Spanish", "href": "https://www.grammar-monster.com/tests/telling-the-time-in-Spanish.htm", "external": true}, {"label": "5. 1,000 useful French words", "href": "https://www.grammar-monster.com/vocabulary/French-moreWords.htm", "external": true}, {"label": "6. Counting in French", "href": "https://www.grammar-monster.com/tests/counting-in-French.htm", "external": true}, {"label": "7. 1,000 useful German words", "href": "https://www.grammar-monster.com/vocabulary/German-moreWords.htm", "external": true}, {"label": "8. Counting in German", "href": "https://www.grammar-monster.com/tests/counting-in-German.htm", "external": true}, {"label": "9. 1,000 useful Italian words", "href": "https://www.grammar-monster.com/vocabulary/Italian-moreWords.htm", "external": true}, {"label": "10. Introduction to the Arabic alphabet", "href": "https://www.grammar-monster.com/Arabic-Lessons/Arabic-alphabet.htm", "external": true}], "label": "Language learner", "kicker": "LANGUAGE LEARNER"}, {"title": "I want to create my own curriculum.", "image": "whoNone.png", "links": [{"label": "choose your own lessons, tests, or videos from the sitemap", "href": "/explore/", "external": false}], "label": "Build your own", "kicker": "CUSTOM CURRICULUM"}];
+const libraries = [{"label": "A-Z Grammar Terms (278 terms)", "href": "/grammar-terms/", "external": false, "image": "heading-grammar-glossary.webp"}, {"label": "A-Z Confused Words (227 pairs)", "href": "/easily-confused-words/", "external": false, "image": "heading-confused-words.webp"}, {"label": "Common Errors (73 errors)", "href": "https://www.grammar-monster.com/common_grammar_errors.htm", "external": true, "image": "heading-common-grammar-errors.webp"}, {"label": "Punctuation Lessons (33 lessons)", "href": "/punctuation-lessons/", "external": false, "image": "heading-punctuation.webp"}, {"label": "A-Z Unusual Plurals (151 plurals)", "href": "https://www.grammar-monster.com/plurals.htm", "external": true, "image": "heading-plurals.webp"}, {"label": "A-Z Common Idioms (222 idioms)", "href": "https://www.grammar-monster.com/sayings_proverbs.htm", "external": true, "image": "heading-idioms.webp"}, {"label": "FAQs by writers (160 questions)", "href": "https://www.grammar-monster.com/FAQs.htm", "external": true, "image": "heading-FAQs.webp"}, {"label": "Grammar Tests and Games (137 games)", "href": "/games/", "external": false, "image": "heading-tests-and-games.webp"}];
+const popularAdvanced = [{"label": "9 parts of speech", "href": "https://www.grammar-monster.com/glossary/parts_of_speech.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "adjectives", "href": "https://www.grammar-monster.com/lessons/adjectives.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "adverbs", "href": "https://www.grammar-monster.com/lessons/adverbs.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "conjunctions", "href": "https://www.grammar-monster.com/lessons/conjunctions.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "determiners", "href": "https://www.grammar-monster.com/glossary/determiner.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "interjections", "href": "https://www.grammar-monster.com/lessons/interjections.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "nouns", "href": "https://www.grammar-monster.com/lessons/nouns.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "prepositions", "href": "https://www.grammar-monster.com/lessons/prepositions.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "pronouns", "href": "https://www.grammar-monster.com/lessons/pronouns.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "verbs", "href": "https://www.grammar-monster.com/lessons/verbs.htm", "external": true, "image": "heading-grammar-glossary.webp"}];
+const wordLists = [{"label": "top 50 adjectives", "href": "https://www.grammar-monster.com/lists/top-50-adjectives-in-English.htm", "external": true, "image": "top50Medal.webp"}, {"label": "top 30 adverbs", "href": "https://www.grammar-monster.com/lists/top-30-adverbs-in-English.htm", "external": true, "image": "top30Medal.webp"}, {"label": "top 3 conjunctions", "href": "https://www.grammar-monster.com/lists/top-3-conjunctions-in-English.htm", "external": true, "image": "top3Medal.webp"}, {"label": "top 10 interjections", "href": "https://www.grammar-monster.com/lists/top-10-interjections-in-English.htm", "external": true, "image": "top10Medal.webp"}, {"label": "top 50 nouns", "href": "https://www.grammar-monster.com/lists/top-50-nouns-in-English.htm", "external": true, "image": "top50Medal.webp"}, {"label": "top 10 prepositions", "href": "https://www.grammar-monster.com/lists/top-10-prepositions-in-English.htm", "external": true, "image": "top10Medal.webp"}, {"label": "top 10 irregular verbs", "href": "https://www.grammar-monster.com/lists/top-10-irregular-verbs-in-English.htm", "external": true, "image": "top10Medal.webp"}, {"label": "top 10 regular verbs", "href": "https://www.grammar-monster.com/lists/top-10-regular-verbs-in-English.htm", "external": true, "image": "top10Medal.webp"}, {"label": "100 most common verbs", "href": "https://www.grammar-monster.com/most-common-verbs-in-English.htm", "external": true, "image": "top100Medal.webp"}];
+const beginnerGroups = [{"title": "Vocabulary Lessons", "subtitle": "for Beginners or Kids", "image": "heading-grammar-glossary.webp", "links": [{"label": "vocabulary categories (83 categories)", "href": "/spelling-vocabulary/#vocabulary", "external": false, "image": "heading-grammar-glossary.webp"}, {"label": "important words (1500+ categorized words)", "href": "https://www.grammar-monster.com/lists/1500-essential-words-for-English-learners.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "role-play scenarios (14 scenarios)", "href": "https://www.grammar-monster.com/role-play-scenarios.htm", "external": true, "image": "heading-grammar-glossary.webp"}]}, {"title": "Spelling Lessons", "subtitle": "for Beginners or Kids", "image": "heading-spelling.webp", "links": [{"label": "top 10 spelling rules", "href": "/spelling-vocabulary/#spelling", "external": false, "image": "top10Medal.webp"}, {"label": "how to improve your spelling", "href": "/spelling-vocabulary/#spelling", "external": false, "image": "heading-spelling.webp"}, {"label": "top 20 misspellings", "href": "/spelling-vocabulary/#spelling", "external": false, "image": "top20Medal.webp"}, {"label": "stress placement in English words", "href": "https://www.grammar-monster.com/lessons/stress-placement-in-English.htm", "external": true, "image": "heading-grammar-glossary.webp"}]}, {"title": "Grammar Lessons", "subtitle": "for Beginners or Kids", "image": "heading-grammar-glossary.webp", "links": [{"label": "verbs for kids", "href": "https://www.grammar-monster.com/lessons/verbs-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "nouns for kids", "href": "https://www.grammar-monster.com/lessons/nouns-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "adjectives for kids", "href": "https://www.grammar-monster.com/lessons/adjectives-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "adverbs for kids", "href": "https://www.grammar-monster.com/lessons/adverbs-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "prepositions for kids", "href": "https://www.grammar-monster.com/lessons/prepositions-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "pronouns for kids", "href": "https://www.grammar-monster.com/lessons/pronouns-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}, {"label": "conjunctions for kids", "href": "https://www.grammar-monster.com/lessons/conjunctions-for-kids.htm", "external": true, "image": "heading-grammar-glossary.webp"}]}];
+const games = [{"label": "WordUp!", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "external": true, "image": "heading-WordUp.webp"}, {"label": "word-builder game", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "external": true, "image": "heading-wordbuilder.webp"}, {"label": "hangman game", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "external": true, "image": "heading-hangman.webp"}, {"label": "countdown", "href": "https://www.grammar-monster.com/learning_games/countdown.htm", "external": true, "image": "heading-countdown.webp"}, {"label": "Wordle", "href": "/games/wordle/", "external": false, "image": "heading-wordle.webp"}, {"label": "speed test (multi-discipline)", "href": "https://www.grammar-monster.com/tests/monster_grammar_test.htm", "external": true, "image": "heading-timed-test.webp"}, {"label": "memory test (with grammar angle)", "href": "https://www.grammar-monster.com/tests/squares_test.htm", "external": true, "image": "heading-memory-game.webp"}, {"label": "Tetris test (confused words)", "href": "https://www.grammar-monster.com/tests/easily_confused_words_tetris_game.htm", "external": true, "image": "heading-tetris.webp"}];
+const misc = [{"label": "A-Z Irregular Verbs", "href": "https://www.grammar-monster.com/important-irregular-verbs.htm", "external": true, "image": "heading-irregular-verbs.webp"}, {"label": "Tattoo Fails", "href": "https://www.grammar-monster.com/tattoo_fails.htm", "external": true, "image": "heading-tattoo-fails.webp"}, {"label": "Collective Nouns for Animals", "href": "https://www.grammar-monster.com/list_of_collective_nouns_for_animals.htm", "external": true, "image": "heading-collective-nouns.webp"}, {"label": "Latin Terms", "href": "https://www.grammar-monster.com/Latin_terms_in_English.html", "external": true, "image": "heading-Latin.webp"}, {"label": "Library of Video Lessons", "href": "https://www.grammar-monster.com/grammar-videos.htm", "external": true, "image": "heading-video-lessons.webp"}, {"label": "favo(u)rite-word lists", "href": "https://www.grammar-monster.com/favourite-words-the-top-tens.htm", "external": true, "image": "heading-favourite-words.webp"}];
+const teacherLinks = [{"label": "Timed grammar test", "href": "https://www.grammar-monster.com/tests/monster_grammar_test.htm", "external": true}, {"label": "Word Builder", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "external": true}, {"label": "WordUp", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "external": true}, {"label": "Wordle", "href": "/games/wordle/", "external": false}, {"label": "Hangman", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "external": true}, {"label": "Countdown", "href": "https://www.grammar-monster.com/learning_games/countdown.htm", "external": true}, {"label": "Look-cover-write-check", "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm", "external": true}, {"label": "Easily confused words", "href": "/easily-confused-words/", "external": false}, {"label": "Spelling and vocabulary lessons", "href": "/spelling-vocabulary/", "external": false}, {"label": "FAQs by writers", "href": "https://www.grammar-monster.com/FAQs.htm", "external": true}];
+const searchIndex = [{"label": "A-Z Grammar Terms (278 terms)", "category": "Main library", "href": "/grammar-terms/", "external": false}, {"label": "A-Z Confused Words (227 pairs)", "category": "Main library", "href": "/easily-confused-words/", "external": false}, {"label": "Common Errors (73 errors)", "category": "Main library", "href": "https://www.grammar-monster.com/common_grammar_errors.htm", "external": true}, {"label": "Punctuation Lessons (33 lessons)", "category": "Main library", "href": "/punctuation-lessons/", "external": false}, {"label": "A-Z Unusual Plurals (151 plurals)", "category": "Main library", "href": "https://www.grammar-monster.com/plurals.htm", "external": true}, {"label": "A-Z Common Idioms (222 idioms)", "category": "Main library", "href": "https://www.grammar-monster.com/sayings_proverbs.htm", "external": true}, {"label": "FAQs by writers (160 questions)", "category": "Main library", "href": "https://www.grammar-monster.com/FAQs.htm", "external": true}, {"label": "Grammar Tests and Games (137 games)", "category": "Main library", "href": "/games/", "external": false}, {"label": "9 parts of speech", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/glossary/parts_of_speech.htm", "external": true}, {"label": "adjectives", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/adjectives.htm", "external": true}, {"label": "adverbs", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/adverbs.htm", "external": true}, {"label": "conjunctions", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/conjunctions.htm", "external": true}, {"label": "determiners", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/glossary/determiner.htm", "external": true}, {"label": "interjections", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/interjections.htm", "external": true}, {"label": "nouns", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/nouns.htm", "external": true}, {"label": "prepositions", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/prepositions.htm", "external": true}, {"label": "pronouns", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/pronouns.htm", "external": true}, {"label": "verbs", "category": "Advanced lesson", "href": "https://www.grammar-monster.com/lessons/verbs.htm", "external": true}, {"label": "top 50 adjectives", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-50-adjectives-in-English.htm", "external": true}, {"label": "top 30 adverbs", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-30-adverbs-in-English.htm", "external": true}, {"label": "top 3 conjunctions", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-3-conjunctions-in-English.htm", "external": true}, {"label": "top 10 interjections", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-10-interjections-in-English.htm", "external": true}, {"label": "top 50 nouns", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-50-nouns-in-English.htm", "external": true}, {"label": "top 10 prepositions", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-10-prepositions-in-English.htm", "external": true}, {"label": "top 10 irregular verbs", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-10-irregular-verbs-in-English.htm", "external": true}, {"label": "top 10 regular verbs", "category": "Word list", "href": "https://www.grammar-monster.com/lists/top-10-regular-verbs-in-English.htm", "external": true}, {"label": "100 most common verbs", "category": "Word list", "href": "https://www.grammar-monster.com/most-common-verbs-in-English.htm", "external": true}, {"label": "vocabulary categories (83 categories)", "category": "Vocabulary", "href": "/spelling-vocabulary/#vocabulary", "external": false}, {"label": "important words (1500+ categorized words)", "category": "Vocabulary", "href": "https://www.grammar-monster.com/lists/1500-essential-words-for-English-learners.htm", "external": true}, {"label": "role-play scenarios (14 scenarios)", "category": "Vocabulary", "href": "https://www.grammar-monster.com/role-play-scenarios.htm", "external": true}, {"label": "top 10 spelling rules", "category": "Spelling", "href": "/spelling-vocabulary/#spelling", "external": false}, {"label": "how to improve your spelling", "category": "Spelling", "href": "/spelling-vocabulary/#spelling", "external": false}, {"label": "top 20 misspellings", "category": "Spelling", "href": "/spelling-vocabulary/#spelling", "external": false}, {"label": "stress placement in English words", "category": "Spelling", "href": "https://www.grammar-monster.com/lessons/stress-placement-in-English.htm", "external": true}, {"label": "verbs for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/verbs-for-kids.htm", "external": true}, {"label": "nouns for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/nouns-for-kids.htm", "external": true}, {"label": "adjectives for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/adjectives-for-kids.htm", "external": true}, {"label": "adverbs for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/adverbs-for-kids.htm", "external": true}, {"label": "prepositions for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/prepositions-for-kids.htm", "external": true}, {"label": "pronouns for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/pronouns-for-kids.htm", "external": true}, {"label": "conjunctions for kids", "category": "Grammar for beginners", "href": "https://www.grammar-monster.com/lessons/conjunctions-for-kids.htm", "external": true}, {"label": "WordUp!", "category": "Game or test", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "external": true}, {"label": "word-builder game", "category": "Game or test", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "external": true}, {"label": "hangman game", "category": "Game or test", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "external": true}, {"label": "countdown", "category": "Game or test", "href": "https://www.grammar-monster.com/learning_games/countdown.htm", "external": true}, {"label": "Wordle", "category": "Game or test", "href": "/games/wordle/", "external": false}, {"label": "speed test (multi-discipline)", "category": "Game or test", "href": "https://www.grammar-monster.com/tests/monster_grammar_test.htm", "external": true}, {"label": "memory test (with grammar angle)", "category": "Game or test", "href": "https://www.grammar-monster.com/tests/squares_test.htm", "external": true}, {"label": "Tetris test (confused words)", "category": "Game or test", "href": "https://www.grammar-monster.com/tests/easily_confused_words_tetris_game.htm", "external": true}, {"label": "A-Z Irregular Verbs", "category": "More from Grammar Monster", "href": "https://www.grammar-monster.com/important-irregular-verbs.htm", "external": true}, {"label": "Tattoo Fails", "category": "More from Grammar Monster", "href": "https://www.grammar-monster.com/tattoo_fails.htm", "external": true}, {"label": "Collective Nouns for Animals", "category": "More from Grammar Monster", "href": "https://www.grammar-monster.com/list_of_collective_nouns_for_animals.htm", "external": true}, {"label": "Latin Terms", "category": "More from Grammar Monster", "href": "https://www.grammar-monster.com/Latin_terms_in_English.html", "external": true}, {"label": "Library of Video Lessons", "category": "More from Grammar Monster", "href": "https://www.grammar-monster.com/grammar-videos.htm", "external": true}, {"label": "favo(u)rite-word lists", "category": "More from Grammar Monster", "href": "https://www.grammar-monster.com/favourite-words-the-top-tens.htm", "external": true}, {"label": "Timed grammar test", "category": "Teachers' Zone", "href": "https://www.grammar-monster.com/tests/monster_grammar_test.htm", "external": true}, {"label": "Word Builder", "category": "Teachers' Zone", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "external": true}, {"label": "WordUp", "category": "Teachers' Zone", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "external": true}, {"label": "Hangman", "category": "Teachers' Zone", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "external": true}, {"label": "Look-cover-write-check", "category": "Teachers' Zone", "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm", "external": true}, {"label": "Easily confused words", "category": "Teachers' Zone", "href": "/easily-confused-words/", "external": false}, {"label": "Spelling and vocabulary lessons", "category": "Teachers' Zone", "href": "/spelling-vocabulary/", "external": false}, {"label": "FAQs by writers", "category": "Teachers' Zone", "href": "https://www.grammar-monster.com/FAQs.htm", "external": true}, {"label": "1. \"The Parts of speech\" (video)", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/videos/video-parts_of_speech.htm", "external": true}, {"label": "2. \"Warm up\" lesson on adjectives", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/lessons/adjectives-for-kids.htm", "external": true}, {"label": "3. Full lesson on nouns", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/lessons/nouns.htm", "external": true}, {"label": "4. Subjects", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/glossary/subject.htm", "external": true}, {"label": "5. \"Warm up\" lesson on verbs", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/lessons/verbs-for-kids.htm", "external": true}, {"label": "6. Introduction to verb conjugation", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/glossary/verb_conjugation.htm", "external": true}, {"label": "7. Introduction to grammatical \"number\"", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/glossary/number.htm", "external": true}, {"label": "8. Full lesson on phrases", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/glossary/phrase.htm", "external": true}, {"label": "9. Introduction to sentence types", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/glossary/sentences.htm", "external": true}, {"label": "10. Full lesson on the \"parts of speech\"", "category": "Grammar beginner", "href": "https://www.grammar-monster.com/glossary/parts_of_speech.htm", "external": true}, {"label": "1. Misplaced modifiers", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/glossary/misplaced_modifier.htm", "external": true}, {"label": "2. Restrictive modifiers", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/glossary/restrictive_modifier.htm", "external": true}, {"label": "3. Parenthetical punctuation", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/glossary/parentheses_parenthetical_punctuation.htm", "external": true}, {"label": "4. Compound predicates", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/glossary/compound_predicate.htm", "external": true}, {"label": "5. Complements", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/glossary/complement.htm", "external": true}, {"label": "6. Zeugma", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/glossary/zeugma.htm", "external": true}, {"label": "7. Conjunctive adverbs", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/videos/video-conjunctive_adverbs.htm", "external": true}, {"label": "8. Singular \"they\" (video)", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/videos/video-his_her_their_they_singular_plural.htm", "external": true}, {"label": "9. Ending sentences with prepositions (the nuances)", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/videos/video-prepositions_ending_a_sentence.htm", "external": true}, {"label": "10. Apostrophes for joint ownership", "category": "Advanced grammar", "href": "https://www.grammar-monster.com/punctuation/apostrophes_joint_ownership.htm", "external": true}, {"label": "1. The run-on sentence (a killer lesson!)", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/commas_run-on_error.htm", "external": true}, {"label": "2. Verbs of attribution (for referencing)", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/verbs-of-attribution.htm", "external": true}, {"label": "3. Using \"however\" properly", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/starting_a_sentence_with_however.htm", "external": true}, {"label": "4. Most common punctuation errors", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/top_10_punctuation_errors.htm", "external": true}, {"label": "5. Hyphens in compound adjectives", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/hyphens_in_compound_adjectives.htm", "external": true}, {"label": "6. Commas before \"which,\" \"that,\" and \"who\"", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/which_that_who_comma_or_not.htm", "external": true}, {"label": "7. Apostrophes in time expressions", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/apostrophes_in_time_(temporal)_expressions.htm", "external": true}, {"label": "8. Square brackets in quotations", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/brackets_square_brackets.htm", "external": true}, {"label": "9. Commas with fronted adverbials", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/commas_after_a_sentence_introduction.htm", "external": true}, {"label": "10. Commas before conjunctions (and, but, or, etc.)", "category": "Student writer", "href": "https://www.grammar-monster.com/lessons/conjunctions_and_commas.htm", "external": true}, {"label": "1. Writing parallel lists (important lesson!)", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/parallel_lists.htm", "external": true}, {"label": "2. Selecting the right words (i.e., diction)", "category": "Business writer", "href": "https://www.grammar-monster.com/glossary/diction.htm", "external": true}, {"label": "3. Avoiding the run-on sentence (a common error)", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/commas_run-on_error.htm", "external": true}, {"label": "4. Using \"however\" properly", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/starting_a_sentence_with_however.htm", "external": true}, {"label": "5. Using hyphens in compound adjectives", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/hyphens_in_compound_adjectives.htm", "external": true}, {"label": "6. Understanding subject-verb agreement", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/subject_verb_agreement.htm", "external": true}, {"label": "7. Using commas before \"which,\" \"that,\" and \"who\"", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/which_that_who_comma_or_not.htm", "external": true}, {"label": "8. Using commas before conjunctions (e.g., \"and\")", "category": "Business writer", "href": "https://www.grammar-monster.com/lessons/conjunctions_and_commas.htm", "external": true}, {"label": "9. Saving words with participle phrases", "category": "Business writer", "href": "https://www.grammar-monster.com/glossary/participle_phrases.htm", "external": true}, {"label": "10. Explaining through analogies", "category": "Business writer", "href": "https://www.grammar-monster.com/glossary/analogy.htm", "external": true}, {"label": "1. Anastrophe (playing with word order)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/anastrophe.htm", "external": true}, {"label": "2. Metonyms (using associated words)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/metonyms.htm", "external": true}, {"label": "3. Emotive language (being judge and jury)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/emotive_language.htm", "external": true}, {"label": "4. Assonance (adding flair with vowels)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/assonance.htm", "external": true}, {"label": "5. Consonance (adding flair with consonants)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/consonance.htm", "external": true}, {"label": "6. Anaphora (repeating deliberately)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/repetition_anaphora.htm", "external": true}, {"label": "7. Zeugma (playing with sentence structure)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/zeugma.htm", "external": true}, {"label": "8. Ethos (writing to influence)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/ethos.htm", "external": true}, {"label": "9. Point of view (writing to engage)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/point_of_view.htm", "external": true}, {"label": "10. Analogies (painting pictures with words)", "category": "Creative writer", "href": "https://www.grammar-monster.com/glossary/analogy.htm", "external": true}, {"label": "1. Useful vocabulary by category (lessons & games)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-English-learners.htm", "external": true}, {"label": "2. \"Telling the time\" (interactive lesson)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/tests/telling-the-time-in-English.htm", "external": true}, {"label": "3. \"Counting in English\" (lesson & game)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/tests/counting-in-English.htm", "external": true}, {"label": "4. \"Introducing yourself\" (role-play lesson)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/role_play_scenarios/introducing-yourself.htm", "external": true}, {"label": "5. \"Talking about your family\" (role-play lesson)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/role_play_scenarios/talking-about-your-family.htm", "external": true}, {"label": "6. \"Colours\" (games & flashcards)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-colors.htm", "external": true}, {"label": "7. \"Frequency adverbs\" (games & flashcards)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-frequency-adverbs.htm", "external": true}, {"label": "8. \"Ordinals & fractions\" (games & flashcards)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-numbers.htm", "external": true}, {"label": "9. \"Shapes\" (video)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/videos/video-ESL-vocabulary-shapes.htm", "external": true}, {"label": "10. \"English for beginners\" (list of resources)", "category": "Teach beginners", "href": "https://www.grammar-monster.com/English-for-beginners.htm", "external": true}, {"label": "1. Match the pairs (for the \"parts of speech\")", "category": "Games & tests", "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-parts-of-speech.htm", "external": true}, {"label": "2. \"Look-cover-write-check\" (for spelling)", "category": "Games & tests", "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm", "external": true}, {"label": "3. \"Word Builder\" (for vocabulary)", "category": "Games & tests", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "external": true}, {"label": "4. \"Word Up\" (for advanced vocabulary)", "category": "Games & tests", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "external": true}, {"label": "5. \"HangMan\" (for vocabulary)", "category": "Games & tests", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "external": true}, {"label": "6. 1,000 useful words (drag-and-drop game)", "category": "Games & tests", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-English-learners.htm", "external": true}, {"label": "7. \"Fish\" game (for identifying adverbs)", "category": "Games & tests", "href": "https://www.grammar-monster.com/tests/adverbs_fish_game.htm", "external": true}, {"label": "8. \"Bubble pop\" game (for identifying prepositions)", "category": "Games & tests", "href": "https://www.grammar-monster.com/tests/prepositions_bubble_pop_test.htm", "external": true}, {"label": "9. Match-the-pairs game (for identifying pronouns)", "category": "Games & tests", "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-types-of-pronoun.htm", "external": true}, {"label": "10. Insert-the-punctuation test (for all punctuation)", "category": "Games & tests", "href": "https://www.grammar-monster.com/tests/test_punctuation.htm", "external": true}, {"label": "1. 1,000 useful Spanish words.", "category": "Language learner", "href": "https://www.grammar-monster.com/vocabulary/Spanish-moreWords.htm", "external": true}, {"label": "2. 1,000 useful Spanish words (drag & drop)", "category": "Language learner", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-Spanish-learners.htm", "external": true}, {"label": "3. Counting in Spanish", "category": "Language learner", "href": "https://www.grammar-monster.com/tests/counting-in-Spanish.htm", "external": true}, {"label": "4. Telling the time in Spanish", "category": "Language learner", "href": "https://www.grammar-monster.com/tests/telling-the-time-in-Spanish.htm", "external": true}, {"label": "5. 1,000 useful French words", "category": "Language learner", "href": "https://www.grammar-monster.com/vocabulary/French-moreWords.htm", "external": true}, {"label": "6. Counting in French", "category": "Language learner", "href": "https://www.grammar-monster.com/tests/counting-in-French.htm", "external": true}, {"label": "7. 1,000 useful German words", "category": "Language learner", "href": "https://www.grammar-monster.com/vocabulary/German-moreWords.htm", "external": true}, {"label": "8. Counting in German", "category": "Language learner", "href": "https://www.grammar-monster.com/tests/counting-in-German.htm", "external": true}, {"label": "9. 1,000 useful Italian words", "category": "Language learner", "href": "https://www.grammar-monster.com/vocabulary/Italian-moreWords.htm", "external": true}, {"label": "10. Introduction to the Arabic alphabet", "category": "Language learner", "href": "https://www.grammar-monster.com/Arabic-Lessons/Arabic-alphabet.htm", "external": true}, {"label": "choose your own lessons, tests, or videos from the sitemap", "category": "Build your own", "href": "/explore/", "external": false}];
+const quizQuestions = [{"q": "Choose the correct sentence:", "a": ["This place is a dump.", "This place are a dump."], "c": 0, "why": "Correct — “place” is singular, so it takes “is.”"}, {"q": "I shall marry ___ I like.", "a": ["whoever", "whomever"], "c": 0, "why": "“Whoever” works here because it functions as the subject within the clause."}, {"q": "Choose the correct word:", "a": ["altogether", "all together"], "c": 0, "why": "“Altogether” means completely or on the whole."}, {"q": "Do me a favour. ___ your technique.", "a": ["Alter", "Altar"], "c": 0, "why": "“Alter” is the verb meaning to change."}, {"q": "Which word is a verb?", "a": ["plays", "mother-in-law", "green"], "c": 0, "why": "“Plays” expresses an action."}, {"q": "Identify the relative pronoun:", "a": ["who", "when", "how"], "c": 0, "why": "“Who” can introduce a relative clause referring to a person."}, {"q": "Which is a direct question?", "a": ["Why are you late?", "Please explain why you're late."], "c": 0, "why": "The first sentence directly asks a question."}, {"q": "Which means 'not interested'?", "a": ["uninterested", "disinterested"], "c": 0, "why": "“Uninterested” means not interested; “disinterested” traditionally means impartial."}, {"q": "Choose the correct spelling:", "a": ["vie", "vye"], "c": 0, "why": "The verb is spelled “vie.”"}, {"q": "What is a denotation of 'jolly'?", "a": ["happy", "sailor", "Roger"], "c": 0, "why": "“Jolly” can mean cheerful or happy."}];
+
+const firstPath = paths[0];
 ---
 
 <BaseLayout
-  title="Grammar Monster — English, made brilliantly clear."
-  description="Grammar Monster — free English grammar lessons, tests and games."
+  title="Free English Grammar Lessons and Tests | Grammar Monster"
+  description="Welcome to Grammar Monster. We have hundreds of free English grammar lessons and tests. There's a glossary of grammatical terms and a full list of common grammar errors. And, there's more. A lot more."
 >
-<div class="ambient ambient-a"></div>
-  <div class="ambient ambient-b"></div>
-<div id="top" class="homepage">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <div class="pill">
-            <span class="pill-dot"></span>
-            2,000+ free lessons • no login required
-          </div>
+  <div class="gm-home">
+    <section class="home-hero" id="top">
+      <div class="home-shell home-hero__grid">
+        <div class="home-hero__copy">
+          <div class="home-pill"><span></span> 2,000+ FREE LESSONS • NO LOG-IN REQUIRED</div>
 
-          <h1>
-            English, made
-            <span class="gradient-text">brilliantly clear.</span>
-          </h1>
+          <h1>English, made<br /><em>brilliantly clear.</em></h1>
 
-          <p class="hero-lede">
-            Grammar, punctuation, vocabulary and writing — explained with clarity,
-            personality and just enough monster mischief to make it stick.
-          </p>
+          <p class="home-hero__welcome">Welcome to Grammar Monster!</p>
+          <p class="home-hero__lede">We have over 2,000 lessons, covering everything from advanced tips for business writers to interactive games for English learners. The site is packed with learning and teaching resources, including step-by-step lessons with confirmatory tests, videos, printable word lists, and shareable homework tasks.</p>
 
-          <div class="search-wrap">
-            <div class="search-card">
+          <div class="home-search-wrap">
+            <div class="home-search">
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"/>
+                <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"></path>
               </svg>
-              <input id="lessonSearch" type="search" placeholder="Search grammar, commas, verbs, spelling..." aria-label="Search lessons">
-              <button id="searchBtn">Search</button>
-            </div>
-
-            <div class="popular-searches">
-              <span>Try:</span>
-              <button data-search="commas">Commas</button>
-              <button data-search="apostrophes">Apostrophes</button>
-              <button data-search="verbs">Verbs</button>
-              <button data-search="writing">Writing</button>
-            </div>
-          </div>
-
-          <div class="trust-row">
-            <div class="trust-item">
-              <strong>2,000+</strong>
-              <span>lessons</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-              <strong>Hundreds</strong>
-              <span>of tests & games</span>
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-              <strong>100%</strong>
-              <span>free to learn</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="monster-halo"></div>
-
-          <div class="floating-chip chip-a">
-            <span>✓</span>
-            Clear explanations
-          </div>
-          <div class="floating-chip chip-b">
-            <span>⚡</span>
-            Instant practice
-          </div>
-
-          <div class="monster-stage">
-            <div class="stage-shine"></div>
-            <img class="hero-monster" src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true">
-            <div class="speech-card">
-              <span class="speech-label">MONSTER TIP</span>
-              <p id="monsterTip">A semicolon can join two closely related complete sentences.</p>
-              <button id="newTipBtn">Another tip ↻</button>
-            </div>
-          </div>
-
-          <div class="mini-score-card">
-            <div class="mini-score-icon">A+</div>
-            <div>
-              <strong>Learn it. Test it.</strong>
-              <span>Remember it.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-wave"></div>
-    </section>
-
-    <section class="marquee-section" aria-label="Topics">
-      <div class="marquee">
-        <div class="marquee-track">
-          <span>GRAMMAR</span><i>•</i>
-          <span>PUNCTUATION</span><i>•</i>
-          <span>VOCABULARY</span><i>•</i>
-          <span>SPELLING</span><i>•</i>
-          <span>WRITING</span><i>•</i>
-          <span>GAMES</span><i>•</i>
-          <span>TESTS</span><i>•</i>
-          <span>GRAMMAR</span><i>•</i>
-          <span>PUNCTUATION</span><i>•</i>
-          <span>VOCABULARY</span><i>•</i>
-          <span>SPELLING</span><i>•</i>
-          <span>WRITING</span><i>•</i>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="explore-command" id="explore">
-      <div class="shell">
-        <div class="explore-command__top">
-          <div class="explore-command__intro">
-            <span class="kicker">EXPLORE GRAMMAR MONSTER</span>
-            <h2>Your shortcut to<br><span>everything English.</span></h2>
-            <p>
-              Craig has built a huge library of lessons, tests, word lists and writing resources.
-              This is the fast way in — choose a library, search a topic, or simply start exploring.
-            </p>
-          </div>
-
-          <div class="explore-command__stats" aria-label="Grammar Monster library highlights">
-            <div><strong>2,000+</strong><span>free lessons</span></div>
-            <div><strong>100s</strong><span>tests & games</span></div>
-            <div><strong>1</strong><span>monster-sized library</span></div>
-          </div>
-        </div>
-
-        <div class="explore-console">
-          <div class="explore-console__glow"></div>
-          <div class="explore-console__search">
-            <div class="explore-console__label">
-              <span class="console-live-dot"></span>
-              KNOWLEDGE NAVIGATOR
-            </div>
-
-            <div class="explore-searchbox">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"/>
-              </svg>
-              <input
-                id="commandSearch"
-                type="search"
-                placeholder="Try nouns, commas, irregular verbs, idioms..."
-                aria-label="Search Grammar Monster libraries"
-              >
+              <input id="homeSearch" type="search" placeholder="Search lessons, tests, words, punctuation..." autocomplete="off" />
               <kbd>/</kbd>
             </div>
 
-            <div class="explore-console__suggestions">
-              <span>Popular:</span>
-              <button type="button" data-command-search="nouns">Nouns</button>
-              <button type="button" data-command-search="verbs">Verbs</button>
-              <button type="button" data-command-search="commas">Commas</button>
-              <button type="button" data-command-search="idioms">Idioms</button>
-              <button type="button" data-command-search="">Show all</button>
+            <div class="home-search-results" id="homeSearchResults" hidden></div>
+
+            <div class="home-search-quick">
+              <span>Try:</span>
+              <button type="button" data-search-quick="commas">Commas</button>
+              <button type="button" data-search-quick="verbs">Verbs</button>
+              <button type="button" data-search-quick="spelling">Spelling</button>
+              <button type="button" data-search-quick="games">Games</button>
+              <a href="/explore/">Browse everything ↗</a>
             </div>
           </div>
 
-          <div class="explore-console__map">
-            <span>KNOWLEDGE MAP</span>
-            <div class="knowledge-map__line">
-              <i></i><b>Learn</b><em>→</em><b>Practise</b><em>→</em><b>Remember</b>
-            </div>
+          <div class="home-proof">
+            <div><strong>2,000+</strong><span>lessons</span></div>
+            <i></i>
+            <div><strong>Hundreds</strong><span>of tests & games</span></div>
+            <i></i>
+            <div><strong>Everything</strong><span>free to learn</span></div>
           </div>
         </div>
 
-        <div class="library-grid" id="libraryGrid">
-          <a class="library-card library-card--hero" href="#" data-library-search="grammar terms glossary parts of speech nouns verbs adjectives adverbs clauses sentences">
-            <div class="library-card__eyebrow">CORE LIBRARY</div>
-            <div class="library-card__icon">Aa</div>
-            <h3>Grammar & Terms</h3>
-            <p>Parts of speech, sentence structure, clauses, phrases and the terminology behind clear English.</p>
-            <div class="library-card__footer"><span>Explore the grammar library</span><b>↗</b></div>
-            <div class="library-card__orb"></div>
-          </a>
+        <div class="home-hero__visual">
+          <div class="home-hero__halo"></div>
+          <div class="home-chip home-chip--one"><span>✓</span> Clear explanations</div>
+          <div class="home-chip home-chip--two"><span>⚡</span> Instant practice</div>
 
-          <a class="library-card library-card--mint" href="/punctuation-lessons/" data-library-search="punctuation commas apostrophes semicolons colons hyphens dashes quotation marks">
-            <div class="library-card__eyebrow">PUNCTUATION</div>
-            <div class="library-card__icon">,;</div>
-            <h3>Punctuation</h3>
-            <p>Commas, apostrophes, hyphens, colons, quotations and every mark in between.</p>
-            <div class="library-card__footer"><span>Master punctuation</span><b>↗</b></div>
-          </a>
-
-          <a class="library-card library-card--warm" href="#" data-library-search="vocabulary words definitions word choice interesting words">
-            <div class="library-card__eyebrow">WORDS</div>
-            <div class="library-card__icon">ABC</div>
-            <h3>Vocabulary</h3>
-            <p>Build a bigger, sharper vocabulary and choose the right word with confidence.</p>
-            <div class="library-card__footer"><span>Build vocabulary</span><b>↗</b></div>
-          </a>
-
-          <a class="library-card library-card--sky" href="#" data-library-search="spelling vocabulary spelling rules common mistakes">
-            <div class="library-card__eyebrow">SPELLING</div>
-            <div class="library-card__icon">✓</div>
-            <h3>Spelling</h3>
-            <p>Common mistakes, memorable patterns and simple techniques that actually stick.</p>
-            <div class="library-card__footer"><span>Improve spelling</span><b>↗</b></div>
-          </a>
-
-          <a class="library-card library-card--lavender" href="#" data-library-search="confused words affect effect advice advise commonly confused words">
-            <div class="library-card__eyebrow">WORD CHOICE</div>
-            <div class="library-card__icon">≠</div>
-            <h3>Confused Words</h3>
-            <p>Untangle the word pairs that trip people up and understand exactly when to use each one.</p>
-            <div class="library-card__footer"><span>Clear up the confusion</span><b>↗</b></div>
-          </a>
-
-          <a class="library-card library-card--cream" href="#" data-library-search="writing creative writing rhetorical devices techniques style prose">
-            <div class="library-card__eyebrow">WRITING</div>
-            <div class="library-card__icon">✎</div>
-            <h3>Writing</h3>
-            <p>Writing techniques, style, rhetoric, figurative language and tools for stronger prose.</p>
-            <div class="library-card__footer"><span>Improve your writing</span><b>↗</b></div>
-          </a>
-
-          <a class="library-card library-card--leaf" href="#" data-library-search="word lists collective nouns irregular verbs latin terms sayings proverbs interesting words">
-            <div class="library-card__eyebrow">REFERENCE</div>
-            <div class="library-card__icon">☰</div>
-            <h3>Word Lists</h3>
-            <p>Collective nouns, irregular verbs, Latin terms, sayings, proverbs and useful reference lists.</p>
-            <div class="library-card__footer"><span>Browse word lists</span><b>↗</b></div>
-          </a>
-
-          <a class="library-card library-card--dark" href="/games/" data-library-search="games tests quizzes wordle practice grammar tests vocabulary tests">
-            <div class="library-card__eyebrow">PRACTISE</div>
-            <div class="library-card__icon">★</div>
-            <h3>Games & Tests</h3>
-            <p>Turn knowledge into instinct with interactive games, quick challenges and hundreds of tests.</p>
-            <div class="library-card__footer"><span>Play & practise</span><b>↗</b></div>
-            <div class="library-card__dark-glow"></div>
-          </a>
-        </div>
-
-        <p class="library-no-results" id="libraryNoResults" hidden>
-          No matching library in this prototype yet. Try a broader topic.
-        </p>
-
-        <div class="more-libraries">
-          <div class="more-libraries__head">
-            <div>
-              <span class="kicker">AND THERE’S MORE</span>
-              <h3>Some of Craig’s other libraries.</h3>
-            </div>
-            <a href="#" class="knowledge-map-link">Browse the full knowledge map <span>↗</span></a>
+          <div class="home-monster-stage">
+            <div class="home-stage-shine"></div>
+            <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
           </div>
 
-          <div class="more-libraries__rail">
-            <a href="#" data-library-search="teachers teaching resources worksheets pdf worksheets"><span>01</span><strong>Teacher Resources</strong><b>→</b></a>
-            <a href="#" data-library-search="beginners esl foreign language lessons role play scenarios"><span>02</span><strong>Beginners & ESL</strong><b>→</b></a>
-            <a href="#" data-library-search="sayings proverbs idioms"><span>03</span><strong>Sayings & Proverbs</strong><b>→</b></a>
-            <a href="#" data-library-search="latin terms"><span>04</span><strong>Latin Terms</strong><b>→</b></a>
-            <a href="#" data-library-search="irregular verbs verbs"><span>05</span><strong>Irregular Verbs</strong><b>→</b></a>
-            <a href="#" data-library-search="collective nouns nouns animals"><span>06</span><strong>Collective Nouns</strong><b>→</b></a>
+          <div class="home-tip">
+            <small>MONSTER TIP</small>
+            <strong>Learn it. Test it. Remember it.</strong>
+            <span>Step-by-step lessons with confirmatory tests.</span>
+          </div>
+
+          <div class="home-free-card">
+            <strong>FREE</strong>
+            <span>No login. No paywall.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section path-section" id="paths">
-      <div class="shell">
-        <div class="path-intro">
-          <span class="kicker light-kicker">FIND YOUR WAY IN</span>
-          <h2>There’s a Grammar Monster<br>path for everyone.</h2>
-          <p>Pick the version of you that walked through the door today.</p>
+    <section class="home-source-intro">
+      <div class="home-shell home-source-intro__grid">
+        <div>
+          <span class="home-kicker">FREE ENGLISH GRAMMAR LESSONS AND TESTS</span>
+          <h2>A huge learning library.<br /><em>No locked doors.</em></h2>
         </div>
-
-        <div class="path-cards">
-          <article class="path-card">
-            <span class="path-emoji">📗</span>
-            <span class="path-tag">NATIVE SPEAKER</span>
-            <h3>I want stronger grammar.</h3>
-            <p>Understand the terminology, fix common errors and sharpen your everyday writing.</p>
-            <a href="#">Start this path →</a>
-          </article>
-
-          <article class="path-card">
-            <span class="path-emoji">🎓</span>
-            <span class="path-tag">STUDENT</span>
-            <h3>I want better writing.</h3>
-            <p>Build clearer sentences, stronger essays and more confident punctuation.</p>
-            <a href="#">Start this path →</a>
-          </article>
-
-          <article class="path-card">
-            <span class="path-emoji">💼</span>
-            <span class="path-tag">BUSINESS</span>
-            <h3>I want to sound professional.</h3>
-            <p>Cut ambiguity, improve tone and make every sentence earn its place.</p>
-            <a href="#">Start this path →</a>
-          </article>
-
-          <article class="path-card">
-            <span class="path-emoji">🎭</span>
-            <span class="path-tag">CREATIVE WRITER</span>
-            <h3>I want more flair.</h3>
-            <p>Explore rhetorical devices, sound, imagery, rhythm and style.</p>
-            <a href="#">Start this path →</a>
-          </article>
-
-          <article class="path-card">
-            <span class="path-emoji">🍎</span>
-            <span class="path-tag">BEGINNER</span>
-            <h3>Teach me the basics.</h3>
-            <p>Friendly explanations, essential vocabulary, games and simple examples.</p>
-            <a href="#">Start this path →</a>
-          </article>
-
-          <article class="path-card">
-            <span class="path-emoji">🌍</span>
-            <span class="path-tag">LANGUAGE LEARNER</span>
-            <h3>I need more words.</h3>
-            <p>Build practical English and vocabulary step by step, without the overwhelm.</p>
-            <a href="#">Start this path →</a>
-          </article>
+        <div class="home-source-intro__copy">
+          <p>We have over 2,000 lessons, covering everything from advanced tips for business writers to interactive games for English learners. The site is packed with learning and teaching resources, including step-by-step lessons with confirmatory tests, videos, printable word lists, and shareable homework tasks.</p>
+          <strong>There is no log-in, and everything is free!</strong>
         </div>
       </div>
     </section>
 
-    <section class="section quiz-section" id="quiz">
-      <div class="shell quiz-grid">
-        <div class="quiz-copy">
-          <span class="kicker">PUT IT TO THE TEST</span>
-          <h2>Think you know your grammar?</h2>
-          <p>
-            Ten quick questions. No sign-up. No pressure. Just enough jeopardy to make
-            the right answer satisfying.
-          </p>
+    <section class="home-explore" id="explore">
+      <div class="home-shell">
+        <div class="home-section-head">
+          <div>
+            <span class="home-kicker">EXPLORE GRAMMAR MONSTER</span>
+            <h2>The main libraries,<br /><em>beautifully easier to enter.</em></h2>
+          </div>
+          <div class="home-section-head__side">
+            <p>Start with one of the main Grammar Monster libraries, or use the full knowledge navigator to browse the wider site.</p>
+            <a href="/explore/">Open the full Knowledge Navigator →</a>
+          </div>
+        </div>
 
-          <div class="quiz-points">
+        <div class="home-library-grid">
+          {
+            libraries.map((item, index) => (
+              <a
+                class:list={[
+                  "home-library-card",
+                  `home-accent-${(index % 6) + 1}`,
+                  index === 0 && "home-library-card--lead",
+                  index === 7 && "home-library-card--dark"
+                ]}
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener" : undefined}
+              >
+                <div class="home-library-card__top">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {item.external && <small>LIVE SITE ↗</small>}
+                </div>
+                <div class="home-library-card__art">
+                  <img src={`/assets/images/${item.image}`} alt="" loading="lazy" />
+                </div>
+                <h3>{item.label}</h3>
+                <div class="home-library-card__go">Explore <b>↗</b></div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="home-paths" id="paths">
+      <div class="home-shell">
+        <div class="home-paths__intro">
+          <div>
+            <span class="home-kicker home-kicker--lime">WHAT DO YOU WANT?</span>
+            <h2>Choose where<br /><em>you’re starting from.</em></h2>
+          </div>
+          <p>Are you training for your black belt in grammar? Are you teaching new learners? Here are 10 sample lessons at different levels of requirement. Remember that these are just samples. We have thousands of free lessons, tests, and videos.</p>
+        </div>
+
+        <div class="home-path-selector">
+          <div class="home-path-tabs" role="tablist" aria-label="Choose a learning path">
+            {
+              paths.map((path, index) => (
+                <button
+                  type="button"
+                  class:list={["home-path-tab", index === 0 && "is-active"]}
+                  data-path-index={index}
+                  role="tab"
+                  aria-selected={index === 0 ? "true" : "false"}
+                >
+                  <img src={`/assets/images/${path.image}`} alt="" loading="lazy" />
+                  <div>
+                    <small>{path.kicker}</small>
+                    <strong>{path.label}</strong>
+                  </div>
+                </button>
+              ))
+            }
+          </div>
+
+          <div class="home-path-panel" id="homePathPanel">
+            <div class="home-path-panel__identity">
+              <div class="home-path-panel__image">
+                <img id="pathImage" src={`/assets/images/${firstPath.image}`} alt="" />
+              </div>
+              <div>
+                <span id="pathKicker">{firstPath.kicker}</span>
+                <h3 id="pathTitle">{firstPath.title}</h3>
+                <p>10 recommended Grammar Monster lessons for this learning need.</p>
+              </div>
+            </div>
+
+            <div class="home-path-panel__lessons" id="pathLessons">
+              {
+                firstPath.links.map((link) => (
+                  <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener" : undefined}>
+                    <span>{link.label}</span><b>↗</b>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-advanced">
+      <div class="home-shell home-advanced__grid">
+        <div class="home-advanced__popular">
+          <div class="home-mini-head">
+            <span class="home-kicker">POPULAR LESSONS FOR ADVANCED LEARNERS</span>
+            <h2>Go deeper.</h2>
+          </div>
+
+          <div class="home-popular-list">
+            {
+              popularAdvanced.map((item, index) => (
+                <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener" : undefined}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{item.label}</strong>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="home-wordlists">
+          <div class="home-mini-head">
+            <span class="home-kicker">WORD LISTS</span>
+            <h2>Useful words.<br /><em>Ready to use.</em></h2>
+          </div>
+
+          <div class="home-medal-grid">
+            {
+              wordLists.map((item, index) => (
+                <a class:list={[`home-accent-${(index % 6) + 1}`]} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener" : undefined}>
+                  <img src={`/assets/images/${item.image}`} alt="" loading="lazy" />
+                  <strong>{item.label}</strong>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-beginners">
+      <div class="home-shell">
+        <div class="home-section-head">
+          <div>
+            <span class="home-kicker">BEGINNERS OR KIDS</span>
+            <h2>Start simple.<br /><em>Build from there.</em></h2>
+          </div>
+          <p>Vocabulary, spelling and grammar resources selected from the existing Grammar Monster homepage.</p>
+        </div>
+
+        <div class="home-beginner-grid">
+          {
+            beginnerGroups.map((group, index) => (
+              <article class:list={["home-beginner-card", `home-accent-${(index % 6) + 1}`]}>
+                <div class="home-beginner-card__top">
+                  <img src={`/assets/images/${group.image}`} alt="" loading="lazy" />
+                  <div>
+                    <small>{group.subtitle}</small>
+                    <h3>{group.title}</h3>
+                  </div>
+                </div>
+                <div class="home-beginner-card__links">
+                  {
+                    group.links.map((item) => (
+                      <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener" : undefined}>
+                        <span>{item.label}</span><b>↗</b>
+                      </a>
+                    ))
+                  }
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="home-games" id="games">
+      <div class="home-shell">
+        <div class="home-games__head">
+          <div>
+            <span class="home-kicker home-kicker--lime">LIST OF TESTS AND GAMES</span>
+            <h2>Learn it.<br />Then <em>play with it.</em></h2>
+          </div>
+          <div>
+            <p>Interactive practice for vocabulary, grammar, spelling and easily confused words.</p>
+            <a href="/games/">Open Games & Tests →</a>
+          </div>
+        </div>
+
+        <div class="home-games-grid">
+          {
+            games.map((game, index) => (
+              <a
+                class:list={[`home-accent-${(index % 6) + 1}`]}
+                href={game.href}
+                target={game.external ? "_blank" : undefined}
+                rel={game.external ? "noopener" : undefined}
+              >
+                <div class="home-game-art"><img src={`/assets/images/${game.image}`} alt="" loading="lazy" /></div>
+                <div class="home-game-copy">
+                  <small>{index === 4 ? "PLAY IN PROTOTYPE" : "GRAMMAR MONSTER GAME"}</small>
+                  <h3>{game.label}</h3>
+                  <span>Play <b>↗</b></span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="home-more">
+      <div class="home-shell">
+        <div class="home-section-head">
+          <div>
+            <span class="home-kicker">MISCELLANEOUS LISTS</span>
+            <h2>And then there’s<br /><em>all the other good stuff.</em></h2>
+          </div>
+          <p>Some of Grammar Monster’s other established libraries and collections.</p>
+        </div>
+
+        <div class="home-more-grid">
+          {
+            misc.map((item, index) => (
+              <a class:list={[`home-accent-${(index % 6) + 1}`]} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener" : undefined}>
+                <div><img src={`/assets/images/${item.image}`} alt="" loading="lazy" /></div>
+                <strong>{item.label}</strong>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="home-teaching">
+      <div class="home-shell home-teaching__grid">
+        <article class="home-paper">
+          <div class="home-paper__art">
+            <div class="home-paper__halo"></div>
+            <img src="/assets/images/green_heart_green.webp" alt="" loading="lazy" />
+          </div>
+          <div>
+            <span class="home-kicker">PAPER-FREE LEARNING</span>
+            <h2>Teach it without<br /><em>printing the planet.</em></h2>
+            <p>All of our lessons have confirmatory tests, which are editable and, if necessary, printable. To save paper, you can download most of the tests as Word documents for email attachments or present them as slide shows for the classroom. You can even send most of the tests using messaging apps such as WhatsApp, Google Classroom, and Messenger.</p>
+            <a href="https://www.grammar-monster.com/admin/paper-free-learning.htm" target="_blank" rel="noopener">Read more about paper-free learning ↗</a>
+          </div>
+        </article>
+
+        <article class="home-teacher-zone">
+          <div class="home-teacher-zone__head">
+            <span class="home-kicker home-kicker--lime">TEACHERS' ZONE</span>
+            <h2>Ready for class.</h2>
+            <p>Games, tests, lists and lessons that already exist across Grammar Monster.</p>
+          </div>
+
+          <div class="home-teacher-zone__links">
+            {
+              teacherLinks.map((item, index) => (
+                <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener" : undefined}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{item.label}</strong>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-quiz">
+      <div class="home-shell home-quiz__grid">
+        <div class="home-quiz__copy">
+          <span class="home-kicker">10 RANDOM GRAMMAR QUESTIONS</span>
+          <h2>Think you know<br /><em>your grammar?</em></h2>
+          <p>The existing homepage has a ten-question grammar test. This modern version keeps that quick challenge front and centre.</p>
+
+          <div class="home-quiz__points">
             <div><span>01</span><p>Answer each question</p></div>
             <div><span>02</span><p>Get instant feedback</p></div>
-            <div><span>03</span><p>See your final score</p></div>
+            <div><span>03</span><p>See your score</p></div>
           </div>
 
-          <div class="monster-sticker">
-            <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true">
-            <div>
-              <strong>Monster-approved.</strong>
-              <span>Probably.</span>
-            </div>
+          <div class="home-quiz__monster">
+            <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+            <div><strong>Ten questions.</strong><span>No pressure. Probably.</span></div>
           </div>
         </div>
 
-        <aside class="quiz-card">
-          <div class="quiz-top">
-            <div class="quiz-status">
-              <span class="live-dot"></span>
-              QUICK GRAMMAR CHALLENGE
-            </div>
-            <span id="score">0 correct</span>
+        <aside class="home-quiz-card">
+          <div class="home-quiz-card__top">
+            <div><span></span> QUICK GRAMMAR CHALLENGE</div>
+            <strong id="homeScore">0 correct</strong>
           </div>
 
-          <div class="question-progress">
-            <div class="progress-copy">
-              <span id="questionCount">Question 1 of 10</span>
-              <span id="progressPercent">10%</span>
-            </div>
-            <div class="progress-track"><div id="progressBar"></div></div>
+          <div class="home-quiz-card__progress">
+            <div><span id="homeQuestionCount">Question 1 of 10</span><span id="homeProgressPercent">10%</span></div>
+            <i><b id="homeProgressBar"></b></i>
           </div>
 
-          <h3 id="questionText">Choose the correct sentence:</h3>
-          <div class="answers" id="answers"></div>
-          <div class="feedback" id="feedback" aria-live="polite"></div>
+          <h3 id="homeQuestionText"></h3>
+          <div class="home-answers" id="homeAnswers"></div>
+          <div class="home-feedback" id="homeFeedback" aria-live="polite"></div>
 
-          <button class="next-btn" id="nextBtn" disabled>
-            Next question
-            <span>→</span>
-          </button>
+          <button id="homeNext" type="button" disabled>Next question <span>→</span></button>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="popular">
-      <div class="shell">
-        <div class="section-head popular-head">
-          <div>
-            <span class="kicker">POPULAR LESSONS</span>
-            <h2>The questions everyone asks.</h2>
+    <section class="home-story">
+      <div class="home-shell">
+        <div class="home-story__panel">
+          <div class="home-story__monster">
+            <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
           </div>
-          <a class="view-all" href="#">View all lessons <span>↗</span></a>
+          <div class="home-story__copy">
+            <span class="home-kicker home-kicker--lime">A NOTE FROM GRAMMAR MONSTER</span>
+            <h2>A one-man show.<br /><em>With a Jack Russell exception.</em></h2>
+            <p>Grammar Monster is a one-man show (if we don't count my Jack Russell). If you like the content and style, please promote it. If you're a training company, a school, or a home-school community, then please provide a link on your site to any useful Grammar Monster lessons. It really, really helps keep "the local patisseries afloat in the wake of the Walmarts."</p>
+            <p class="home-story__signoff">Thank you. Right, let's do some grammar…</p>
+          </div>
         </div>
-
-        <div class="lesson-grid" id="lessonGrid">
-          <article class="lesson-card" data-keywords="grammar parts speech nouns verbs">
-            <div class="lesson-art art-one">
-              <span>01</span>
-              <div>Aa</div>
-            </div>
-            <div class="lesson-body">
-              <span class="lesson-tag">GRAMMAR</span>
-              <h3>The parts of speech, explained simply</h3>
-              <p>Nouns, verbs, adjectives and the rest — without drowning in terminology.</p>
-              <div class="lesson-meta"><span>8 min read</span><span>Begin →</span></div>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-keywords="punctuation commas which that who">
-            <div class="lesson-art art-two">
-              <span>02</span>
-              <div>,</div>
-            </div>
-            <div class="lesson-body">
-              <span class="lesson-tag">PUNCTUATION</span>
-              <h3>Commas before “which,” “that,” and “who”</h3>
-              <p>One of English punctuation’s most common sticking points, made clear.</p>
-              <div class="lesson-meta"><span>6 min read</span><span>Begin →</span></div>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-keywords="writing run on sentence common errors">
-            <div class="lesson-art art-three">
-              <span>03</span>
-              <div>✎</div>
-            </div>
-            <div class="lesson-body">
-              <span class="lesson-tag">WRITING</span>
-              <h3>How to kill the run-on sentence</h3>
-              <p>Spot sprawling sentences and fix them without flattening your voice.</p>
-              <div class="lesson-meta"><span>7 min read</span><span>Begin →</span></div>
-            </div>
-          </article>
-        </div>
-
-        <p id="noResults" class="no-results" hidden>No matching demo lessons. Try “commas”, “verbs” or “writing”.</p>
       </div>
     </section>
 
-    <section class="final-cta" id="shop">
-      <div class="shell final-cta-inner">
-        <div class="cta-monster-wrap">
-          <div class="cta-circle"></div>
-          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true">
+    <section class="home-final">
+      <div class="home-shell home-final__inner">
+        <div>
+          <span class="home-kicker home-kicker--lime">NO LOG-IN. EVERYTHING IS FREE.</span>
+          <h2>Make friends with<br />better English.</h2>
+          <p>Thousands of lessons, tests, videos, word lists and learning resources — ready whenever you are.</p>
         </div>
-        <div class="cta-copy">
-          <span class="kicker light-kicker">NO LOGIN. NO PAYWALL. NO NONSENSE.</span>
-          <h2>Make friends with better English.</h2>
-          <p>Thousands of lessons, games, tests and explanations — all waiting when you are.</p>
+        <div class="home-final__actions">
+          <a href="#paths">Find my learning path →</a>
+          <a href="/explore/">Explore everything ↗</a>
         </div>
-        <button class="lime-btn" data-scroll="#explore">Start learning <span>→</span></button>
       </div>
     </section>
   </div>
 
+  <script id="homePathsData" type="application/json" set:html={JSON.stringify(paths)}></script>
+  <script id="homeSearchData" type="application/json" set:html={JSON.stringify(searchIndex)}></script>
+  <script id="homeQuizData" type="application/json" set:html={JSON.stringify(quizQuestions)}></script>
+
   <script>
-const questions = [
-  {q:"Choose the correct sentence:",a:["This place is a dump.","This place are a dump."],c:0,why:"Correct — “place” is singular, so it takes “is.”"},
-  {q:"I shall marry ___ I like.",a:["whoever","whomever"],c:0,why:"“Whoever” works here because it functions as the subject within the clause."},
-  {q:"Choose the correct word:",a:["altogether","all together"],c:0,why:"“Altogether” means completely or on the whole."},
-  {q:"Do me a favour. ___ your technique.",a:["Alter","Altar"],c:0,why:"“Alter” is the verb meaning to change."},
-  {q:"Which word is a verb?",a:["plays","mother-in-law","green"],c:0,why:"“Plays” expresses an action."},
-  {q:"Identify the relative pronoun:",a:["who","when","how"],c:0,why:"“Who” can introduce a relative clause referring to a person."},
-  {q:"Which is a direct question?",a:["Why are you late?","Please explain why you're late."],c:0,why:"The first sentence directly asks a question."},
-  {q:"Which means 'not interested'?",a:["uninterested","disinterested"],c:0,why:"“Uninterested” means not interested; “disinterested” traditionally means impartial."},
-  {q:"Choose the correct spelling:",a:["vie","vye"],c:0,why:"The verb is spelled “vie.”"},
-  {q:"What is a denotation of 'jolly'?",a:["happy","sailor","Roger"],c:0,why:"“Jolly” can mean cheerful or happy."}
-];
+    const pathData = JSON.parse(document.getElementById("homePathsData")?.textContent || "[]");
+    const pathTabs = [...document.querySelectorAll("[data-path-index]")];
+    const pathImage = document.getElementById("pathImage");
+    const pathKicker = document.getElementById("pathKicker");
+    const pathTitle = document.getElementById("pathTitle");
+    const pathLessons = document.getElementById("pathLessons");
 
-const tips = [
-  "A semicolon can join two closely related complete sentences.",
-  "Use “fewer” for things you can count and “less” for quantities you cannot.",
-  "An apostrophe does not make an ordinary noun plural.",
-  "A strong verb usually beats a weak verb plus an adverb.",
-  "If removing a clause changes the identity of the noun, you probably do not need commas around it.",
-  "Read difficult sentences aloud. Your ear often catches what your eyes miss."
-];
+    function renderPath(index) {
+      const path = pathData[index];
+      if (!path) return;
 
-let current=0,score=0,answered=false;
-const qText=document.getElementById("questionText");
-const answers=document.getElementById("answers");
-const feedback=document.getElementById("feedback");
-const next=document.getElementById("nextBtn");
-const qCount=document.getElementById("questionCount");
-const scoreEl=document.getElementById("score");
-const bar=document.getElementById("progressBar");
-const pct=document.getElementById("progressPercent");
+      pathTabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
 
-function renderQuestion(){
-  answered=false; next.disabled=true; feedback.textContent="";
-  const item=questions[current];
-  qText.textContent=item.q;
-  qCount.textContent=`Question ${current+1} of ${questions.length}`;
-  scoreEl.textContent=`${score} correct`;
-  const progress=Math.round(((current+1)/questions.length)*100);
-  bar.style.width=`${progress}%`; pct.textContent=`${progress}%`;
-  answers.innerHTML="";
-  item.a.forEach((txt,i)=>{
-    const btn=document.createElement("button");
-    btn.className="answer"; btn.textContent=txt;
-    btn.addEventListener("click",()=>selectAnswer(btn,i));
-    answers.appendChild(btn);
-  });
-}
+      if (pathImage) pathImage.src = `/assets/images/${path.image}`;
+      if (pathKicker) pathKicker.textContent = path.kicker;
+      if (pathTitle) pathTitle.textContent = path.title;
 
-function selectAnswer(btn,index){
-  if(answered)return;
-  answered=true;
-  const item=questions[current];
-  const all=[...document.querySelectorAll(".answer")];
-  if(index===item.c){
-    score++;btn.classList.add("correct");
-    feedback.textContent="✓ "+item.why;
-  }else{
-    btn.classList.add("wrong");
-    all[item.c].classList.add("correct");
-    feedback.textContent="Not quite. "+item.why;
-  }
-  scoreEl.textContent=`${score} correct`;
-  next.disabled=false;
-}
+      if (pathLessons) {
+        pathLessons.innerHTML = "";
+        path.links.forEach((link) => {
+          const a = document.createElement("a");
+          a.href = link.href;
+          if (link.external) {
+            a.target = "_blank";
+            a.rel = "noopener";
+          }
 
-function restartQuiz(){
-  current=0;score=0;
-  next.innerHTML='Next question <span>→</span>';
-  next.onclick=null;
-  renderQuestion();
-}
+          const span = document.createElement("span");
+          span.textContent = link.label;
+          const arrow = document.createElement("b");
+          arrow.textContent = "↗";
+          a.append(span, arrow);
+          pathLessons.appendChild(a);
+        });
+      }
+    }
 
-next.addEventListener("click",()=>{
-  if(current<questions.length-1){current++;renderQuestion();return}
-  qText.textContent=`You scored ${score} out of ${questions.length}.`;
-  answers.innerHTML="";
-  feedback.textContent=score>=8?"Monster level: impressive.":"A respectable start. Want another go?";
-  qCount.textContent="Challenge complete";pct.textContent="100%";bar.style.width="100%";
-  next.disabled=false;next.innerHTML='Restart challenge <span>↻</span>';
-  next.onclick=restartQuiz;
-});
+    pathTabs.forEach((tab) => {
+      tab.addEventListener("click", () => renderPath(Number(tab.dataset.pathIndex || 0)));
+    });
 
-renderQuestion();
+    const homeSearch = document.getElementById("homeSearch");
+    const homeSearchResults = document.getElementById("homeSearchResults");
+    const homeSearchData = JSON.parse(document.getElementById("homeSearchData")?.textContent || "[]");
 
-document.getElementById("newTipBtn").addEventListener("click",()=>{
-  const tip=document.getElementById("monsterTip");
-  let nextTip=tips[Math.floor(Math.random()*tips.length)];
-  while(nextTip===tip.textContent && tips.length>1){nextTip=tips[Math.floor(Math.random()*tips.length)]}
-  tip.animate([{opacity:.2,transform:"translateY(3px)"},{opacity:1,transform:"translateY(0)"}],{duration:260});
-  tip.textContent=nextTip;
-});
+    function renderSearch(value) {
+      const term = (value || "").trim().toLowerCase();
 
-document.querySelectorAll("[data-scroll]").forEach(el=>{
-  el.addEventListener("click",()=>document.querySelector(el.dataset.scroll)?.scrollIntoView({behavior:"smooth"}))
-});
+      if (!homeSearchResults || term.length < 2) {
+        if (homeSearchResults) homeSearchResults.hidden = true;
+        return;
+      }
 
-const search=document.getElementById("lessonSearch");
-const cards=[...document.querySelectorAll(".lesson-card")];
-const none=document.getElementById("noResults");
-function runSearch(value){
-  const term=value.trim().toLowerCase();
-  let visible=0;
-  cards.forEach(card=>{
-    const match=!term||(card.textContent+" "+card.dataset.keywords).toLowerCase().includes(term);
-    card.style.display=match?"block":"none";
-    if(match)visible++;
-  });
-  none.hidden=visible!==0;
-  document.getElementById("popular").scrollIntoView({behavior:"smooth"});
-}
-document.getElementById("searchBtn").addEventListener("click",()=>runSearch(search.value));
-search.addEventListener("keydown",e=>{if(e.key==="Enter")runSearch(search.value)});
-document.querySelectorAll("[data-search]").forEach(btn=>{
-  btn.addEventListener("click",()=>{search.value=btn.dataset.search;runSearch(btn.dataset.search)})
-});
+      const matches = homeSearchData
+        .filter((item) => `${item.label} ${item.category}`.toLowerCase().includes(term))
+        .slice(0, 8);
 
+      homeSearchResults.innerHTML = "";
 
-const commandSearch=document.getElementById("commandSearch");
-const libraryItems=[...document.querySelectorAll("[data-library-search]")];
-const libraryNoResults=document.getElementById("libraryNoResults");
+      if (!matches.length) {
+        const empty = document.createElement("div");
+        empty.className = "home-search-empty";
+        empty.textContent = "No quick match here — try the full Knowledge Navigator.";
+        homeSearchResults.appendChild(empty);
+      } else {
+        matches.forEach((item) => {
+          const a = document.createElement("a");
+          a.href = item.href;
 
-function runCommandSearch(value){
-  const term=(value||"").trim().toLowerCase();
-  let visible=0;
-  libraryItems.forEach(item=>{
-    const haystack=((item.dataset.librarySearch||"")+" "+item.textContent).toLowerCase();
-    const match=!term||haystack.includes(term);
-    item.classList.toggle("library-search-hidden",!match);
-    if(match)visible++;
-  });
-  if(libraryNoResults) libraryNoResults.hidden=visible!==0;
-}
+          if (item.external) {
+            a.target = "_blank";
+            a.rel = "noopener";
+          }
 
-commandSearch?.addEventListener("input",()=>runCommandSearch(commandSearch.value));
-commandSearch?.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    commandSearch.value="";
-    runCommandSearch("");
-    commandSearch.blur();
-  }
-});
-document.addEventListener("keydown",e=>{
-  if(e.key==="/" && document.activeElement?.tagName!=="INPUT" && document.activeElement?.tagName!=="TEXTAREA"){
-    e.preventDefault();
-    commandSearch?.focus();
-  }
-});
-document.querySelectorAll("[data-command-search]").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const value=btn.dataset.commandSearch||"";
-    if(commandSearch) commandSearch.value=value;
-    runCommandSearch(value);
-  });
-});
+          const div = document.createElement("div");
+          const small = document.createElement("small");
+          small.textContent = item.category;
+          const strong = document.createElement("strong");
+          strong.textContent = item.label;
+          div.append(small, strong);
 
+          const arrow = document.createElement("b");
+          arrow.textContent = "↗";
 
+          a.append(div, arrow);
+          homeSearchResults.appendChild(a);
+        });
+      }
+
+      const full = document.createElement("a");
+      full.href = `/explore/?q=${encodeURIComponent(term)}`;
+      full.className = "home-search-full";
+      full.innerHTML = "<div><small>FULL SITE</small><strong>Search the Knowledge Navigator</strong></div><b>→</b>";
+      homeSearchResults.appendChild(full);
+      homeSearchResults.hidden = false;
+    }
+
+    homeSearch?.addEventListener("input", () => renderSearch(homeSearch.value));
+
+    document.querySelectorAll("[data-search-quick]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.dataset.searchQuick || "";
+        if (homeSearch) {
+          homeSearch.value = value;
+          homeSearch.focus();
+        }
+        renderSearch(value);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!homeSearchResults?.contains(event.target) && event.target !== homeSearch) {
+        homeSearchResults.hidden = true;
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const tag = document.activeElement?.tagName;
+
+      if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") {
+        event.preventDefault();
+        homeSearch?.focus();
+      }
+
+      if (event.key === "Escape") {
+        if (document.activeElement === homeSearch && homeSearch) {
+          homeSearch.value = "";
+          homeSearch.blur();
+        }
+        if (homeSearchResults) homeSearchResults.hidden = true;
+      }
+    });
+
+    const quiz = JSON.parse(document.getElementById("homeQuizData")?.textContent || "[]");
+    const qText = document.getElementById("homeQuestionText");
+    const answers = document.getElementById("homeAnswers");
+    const feedback = document.getElementById("homeFeedback");
+    const next = document.getElementById("homeNext");
+    const scoreEl = document.getElementById("homeScore");
+    const countEl = document.getElementById("homeQuestionCount");
+    const percentEl = document.getElementById("homeProgressPercent");
+    const barEl = document.getElementById("homeProgressBar");
+
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    function renderQuestion() {
+      if (!quiz.length || !qText || !answers) return;
+
+      if (current >= quiz.length) {
+        qText.textContent = score === quiz.length
+          ? "Perfect score. The monster approves."
+          : `You scored ${score} out of ${quiz.length}.`;
+        answers.innerHTML = "";
+        feedback.textContent = "Want more? Head to Games & Tests.";
+        feedback.className = "home-feedback is-correct";
+        next.disabled = false;
+        next.innerHTML = 'Play again <span>↻</span>';
+        if (countEl) countEl.textContent = "Complete";
+        if (percentEl) percentEl.textContent = "100%";
+        if (barEl) barEl.style.width = "100%";
+        return;
+      }
+
+      const question = quiz[current];
+      answered = false;
+      qText.textContent = question.q;
+      answers.innerHTML = "";
+      feedback.textContent = "";
+      feedback.className = "home-feedback";
+      next.disabled = true;
+      next.innerHTML = current === quiz.length - 1
+        ? 'See score <span>→</span>'
+        : 'Next question <span>→</span>';
+
+      if (countEl) countEl.textContent = `Question ${current + 1} of ${quiz.length}`;
+      if (percentEl) percentEl.textContent = `${Math.round(((current + 1) / quiz.length) * 100)}%`;
+      if (barEl) barEl.style.width = `${((current + 1) / quiz.length) * 100}%`;
+
+      question.a.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = answer;
+
+        button.addEventListener("click", () => {
+          if (answered) return;
+          answered = true;
+
+          const correct = index === question.c;
+          if (correct) score++;
+
+          [...answers.querySelectorAll("button")].forEach((btn, buttonIndex) => {
+            btn.disabled = true;
+            if (buttonIndex === question.c) btn.classList.add("is-correct");
+            else if (buttonIndex === index && !correct) btn.classList.add("is-wrong");
+          });
+
+          feedback.textContent = question.why;
+          feedback.className = `home-feedback ${correct ? "is-correct" : "is-wrong"}`;
+          if (scoreEl) scoreEl.textContent = `${score} correct`;
+          next.disabled = false;
+        });
+
+        answers.appendChild(button);
+      });
+    }
+
+    next?.addEventListener("click", () => {
+      if (current >= quiz.length) {
+        current = 0;
+        score = 0;
+        if (scoreEl) scoreEl.textContent = "0 correct";
+        renderQuestion();
+        return;
+      }
+
+      current++;
+      renderQuestion();
+    });
+
+    renderQuestion();
   </script>
 </BaseLayout>
