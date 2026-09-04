@@ -20,6 +20,11 @@ const firstPath = paths[0];
   title="Free English Grammar Lessons and Tests | Grammar Monster"
   description="Welcome to Grammar Monster. We have hundreds of free English grammar lessons and tests. There's a glossary of grammatical terms and a full list of common grammar errors. And, there's more. A lot more."
 >
+  <script is:inline async src="https://services.vlitag.com/adv1/?q=30b982bcceb31097305670acdcf26233"></script>
+  <script is:inline>
+    window.vitag = window.vitag || {};
+    window.vitag.smartBannerConfig = { enablePC: false, enableMobile: false };
+  </script>
   <div class="gm-home">
     <section class="home-hero" id="top">
       <div class="home-shell home-hero__grid">
@@ -94,6 +99,40 @@ const firstPath = paths[0];
         <div class="home-source-intro__copy">
           <p>We have over 2,000 lessons, covering everything from advanced tips for business writers to interactive games for English learners. The site is packed with learning and teaching resources, including step-by-step lessons with confirmatory tests, videos, printable word lists, and shareable homework tasks.</p>
           <strong>There is no log-in, and everything is free!</strong>
+          <p class="home-source-intro__ad-note">
+            There are a couple of ads, and that's how I fund the site.
+            <span>(There are no ads in the lesson content. None. Not one.)</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="home-ad-stage home-ad-stage--top" aria-label="Advertisement">
+      <div class="home-shell">
+        <div class="home-ad-stage__head">
+          <span>ADVERTISEMENT</span>
+          <p>Ads help keep Grammar Monster free for everyone.</p>
+        </div>
+
+        <div class="home-ad-stage__slots">
+          <div class="home-ad-slot" data-ad-shell="vi_342100586">
+            <div class="home-ad-slot__placeholder" data-ad-placeholder>
+              <span>ADVERTISEMENT</span>
+              <strong>Grammar Monster stays free</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px; height:250px" data-ad-slot="vi_342100586"></div>
+          </div>
+
+          <div class="home-ad-slot home-ad-slot--secondary" data-ad-shell="vi_342112530">
+            <div class="home-ad-slot__placeholder" data-ad-placeholder>
+              <span>ADVERTISEMENT</span>
+              <strong>Free lessons. Supported by ads.</strong>
+              <small>No ads inside the lesson content.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px; height:250px" data-ad-slot="vi_342112530"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -103,7 +142,7 @@ const firstPath = paths[0];
         <div class="home-section-head">
           <div>
             <span class="home-kicker">EXPLORE GRAMMAR MONSTER</span>
-            <h2>The main libraries,<br /><em>beautifully easier to enter.</em></h2>
+            <h2>The main libraries,<br /><em>all in one place.</em></h2>
           </div>
           <div class="home-section-head__side">
             <p>Start with one of the main Grammar Monster libraries, or use the full knowledge navigator to browse the wider site.</p>
@@ -198,7 +237,7 @@ const firstPath = paths[0];
       </div>
     </section>
 
-    <section class="home-advanced">
+    <section class="home-advanced" id="popular">
       <div class="home-shell home-advanced__grid">
         <div class="home-advanced__popular">
           <div class="home-mini-head">
@@ -219,7 +258,7 @@ const firstPath = paths[0];
           </div>
         </div>
 
-        <div class="home-wordlists">
+        <div class="home-wordlists" id="word-lists">
           <div class="home-mini-head">
             <span class="home-kicker">WORD LISTS</span>
             <h2>Useful words.<br /><em>Ready to use.</em></h2>
@@ -240,14 +279,14 @@ const firstPath = paths[0];
       </div>
     </section>
 
-    <section class="home-beginners">
+    <section class="home-beginners" id="beginners">
       <div class="home-shell">
         <div class="home-section-head">
           <div>
             <span class="home-kicker">BEGINNERS OR KIDS</span>
             <h2>Start simple.<br /><em>Build from there.</em></h2>
           </div>
-          <p>Vocabulary, spelling and grammar resources selected from the existing Grammar Monster homepage.</p>
+          <p>Vocabulary, spelling and grammar resources for beginners, younger learners and tutors.</p>
         </div>
 
         <div class="home-beginner-grid">
@@ -301,13 +340,43 @@ const firstPath = paths[0];
               >
                 <div class="home-game-art"><img src={`/assets/images/${game.image}`} alt="" loading="lazy" /></div>
                 <div class="home-game-copy">
-                  <small>{index === 4 ? "PLAY IN PROTOTYPE" : "GRAMMAR MONSTER GAME"}</small>
+                  <small>{index === 4 ? "PLAY WORDLE" : "GRAMMAR MONSTER GAME"}</small>
                   <h3>{game.label}</h3>
                   <span>Play <b>↗</b></span>
                 </div>
               </a>
             ))
           }
+        </div>
+      </div>
+    </section>
+
+
+    <section class="home-ad-stage home-ad-stage--lower" aria-label="Advertisement">
+      <div class="home-shell">
+        <div class="home-ad-stage__head">
+          <span>ADVERTISEMENT</span>
+          <p>A small trade-off for thousands of free resources.</p>
+        </div>
+
+        <div class="home-ad-stage__slots">
+          <div class="home-ad-slot" data-ad-shell="vi_342112533">
+            <div class="home-ad-slot__placeholder" data-ad-placeholder>
+              <span>ADVERTISEMENT</span>
+              <strong>Supported by advertising</strong>
+              <small>Helping keep Grammar Monster open and free.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px; height:250px" data-ad-slot="vi_342112533"></div>
+          </div>
+
+          <div class="home-ad-slot home-ad-slot--secondary" data-ad-shell="vi_342112534">
+            <div class="home-ad-slot__placeholder" data-ad-placeholder>
+              <span>ADVERTISEMENT</span>
+              <strong>Learning without a paywall</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px; height:250px" data-ad-slot="vi_342112534"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -336,9 +405,9 @@ const firstPath = paths[0];
       </div>
     </section>
 
-    <section class="home-teaching">
+    <section class="home-teaching" id="teaching">
       <div class="home-shell home-teaching__grid">
-        <article class="home-paper">
+        <article class="home-paper" id="paper-free-learning">
           <div class="home-paper__art">
             <div class="home-paper__halo"></div>
             <img src="/assets/images/green_heart_green.webp" alt="" loading="lazy" />
@@ -351,7 +420,7 @@ const firstPath = paths[0];
           </div>
         </article>
 
-        <article class="home-teacher-zone">
+        <article class="home-teacher-zone" id="teachers-zone">
           <div class="home-teacher-zone__head">
             <span class="home-kicker home-kicker--lime">TEACHERS' ZONE</span>
             <h2>Ready for class.</h2>
@@ -373,12 +442,12 @@ const firstPath = paths[0];
       </div>
     </section>
 
-    <section class="home-quiz">
+    <section class="home-quiz" id="quiz">
       <div class="home-shell home-quiz__grid">
         <div class="home-quiz__copy">
           <span class="home-kicker">10 RANDOM GRAMMAR QUESTIONS</span>
           <h2>Think you know<br /><em>your grammar?</em></h2>
-          <p>The existing homepage has a ten-question grammar test. This modern version keeps that quick challenge front and centre.</p>
+          <p>Test your grammar with ten quick questions, instant feedback and a score at the end.</p>
 
           <div class="home-quiz__points">
             <div><span>01</span><p>Answer each question</p></div>
@@ -422,7 +491,16 @@ const firstPath = paths[0];
             <span class="home-kicker home-kicker--lime">A NOTE FROM GRAMMAR MONSTER</span>
             <h2>A one-man show.<br /><em>With a Jack Russell exception.</em></h2>
             <p>Grammar Monster is a one-man show (if we don't count my Jack Russell). If you like the content and style, please promote it. If you're a training company, a school, or a home-school community, then please provide a link on your site to any useful Grammar Monster lessons. It really, really helps keep "the local patisseries afloat in the wake of the Walmarts."</p>
+            <p class="home-story__request">
+              If Grammar Monster doesn't have the lesson you need,
+              <a href="https://www.grammar-monster.com/admin/contact_us.htm" target="_blank" rel="noopener">let me know</a>
+              — I'll write it!
+            </p>
             <p class="home-story__signoff">Thank you. Right, let's do some grammar…</p>
+            <div class="home-story__author">
+              <span>WRITTEN BY</span>
+              <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm" target="_blank" rel="noopener">Craig Shrives ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -437,7 +515,8 @@ const firstPath = paths[0];
         </div>
         <div class="home-final__actions">
           <a href="#paths">Find my learning path →</a>
-          <a href="/explore/">Explore everything ↗</a>
+          <a href="/grammar-terms/">Browse the A–Z glossary ↗</a>
+          <a href="/games/">Try games & tests ↗</a>
         </div>
       </div>
     </section>
@@ -674,5 +753,45 @@ const firstPath = paths[0];
     });
 
     renderQuestion();
+
+    // Existing Grammar Monster VI/VLI ad integration.
+    const gmAdSlots = ["vi_342100586", "vi_342112530", "vi_342112533", "vi_342112534"];
+
+    if (window.vitag) {
+      (window.vitag.Init = window.vitag.Init || []).push(function () {
+        gmAdSlots.forEach((slot) => {
+          try {
+            window.viAPItag?.display(slot);
+          } catch (_) {
+            // Keep the tasteful fallback frame visible if inventory cannot serve.
+          }
+        });
+      });
+    }
+
+    const updateAdShell = (shell) => {
+      const ad = shell.querySelector(".adsbyvli");
+      const placeholder = shell.querySelector("[data-ad-placeholder]");
+      if (!ad || !placeholder) return;
+
+      const hasRenderedAd =
+        ad.children.length > 0 ||
+        ad.querySelector("iframe") ||
+        ad.offsetHeight > 250;
+
+      placeholder.toggleAttribute("hidden", Boolean(hasRenderedAd));
+      shell.classList.toggle("has-live-ad", Boolean(hasRenderedAd));
+    };
+
+    document.querySelectorAll("[data-ad-shell]").forEach((shell) => {
+      const ad = shell.querySelector(".adsbyvli");
+      if (!ad) return;
+
+      const observer = new MutationObserver(() => updateAdShell(shell));
+      observer.observe(ad, { childList: true, subtree: true, attributes: true });
+
+      window.setTimeout(() => updateAdShell(shell), 1600);
+      window.setTimeout(() => updateAdShell(shell), 4000);
+    });
   </script>
 </BaseLayout>
