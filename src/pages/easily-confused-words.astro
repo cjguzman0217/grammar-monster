@@ -1,0 +1,397 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/confused-words.css";
+
+const description = "Easily confused words are word pairings that share a similar sound or spelling. The meanings of the words in these pairings can be very different (e.g., bare/bear) or close (e.g., breath/breathe). In English, there are hundreds of pairs of easily confused words.";
+const top10 = [{"label": "effect and affect", "href": "https://www.grammar-monster.com/easily_confused/affect_effect.htm"}, {"label": "its and it's", "href": "https://www.grammar-monster.com/easily_confused/its_its.htm"}, {"label": "you're and your", "href": "https://www.grammar-monster.com/easily_confused/youre_your.htm"}, {"label": "that and which", "href": "https://www.grammar-monster.com/lessons/which_that_who.htm"}, {"label": "their, there, and they're", "href": "https://www.grammar-monster.com/easily_confused/there_their_theyre.htm"}, {"label": "who or whom", "href": "https://www.grammar-monster.com/lessons/who_whom.htm"}, {"label": "who's and whose", "href": "https://www.grammar-monster.com/easily_confused/whos_whose.htm"}, {"label": "loose and lose", "href": "https://www.grammar-monster.com/easily_confused/loose_lose.htm"}, {"label": "lay and lie", "href": "https://www.grammar-monster.com/easily_confused/lay_lie.htm"}, {"label": "adverse and averse", "href": "https://www.grammar-monster.com/easily_confused/adverse_averse.htm"}];
+const letters = [{"letter": "A", "entries": [{"label": "accept and except", "href": "https://www.grammar-monster.com/easily_confused/accept_except.htm", "video": null}, {"label": "adoptive and adopted", "href": "https://www.grammar-monster.com/easily_confused/adopted_adoptive.htm", "video": null}, {"label": "advice and advise", "href": "https://www.grammar-monster.com/easily_confused/advice_advise.htm", "video": "https://youtu.be/ra1Tkmbsdos"}, {"label": "adverse and averse", "href": "https://www.grammar-monster.com/easily_confused/adverse_averse.htm", "video": "https://youtu.be/K-PCH6PppVQ"}, {"label": "affect and effect", "href": "https://www.grammar-monster.com/easily_confused/affect_effect.htm", "video": "https://youtu.be/8MauQrAsjbg"}, {"label": "affective or effective", "href": "https://www.grammar-monster.com/easily_confused/affective-or-effective.htm", "video": null}, {"label": "aid and aide", "href": "https://www.grammar-monster.com/easily_confused/aid_aide.htm", "video": "https://youtu.be/_uhkctBZ0FM"}, {"label": "airplane and aeroplane", "href": "https://www.grammar-monster.com/easily_confused/airplane_aeroplane.htm", "video": null}, {"label": "a lot, allot, and alot", "href": "https://www.grammar-monster.com/easily_confused/alot_a_lot_allot.htm", "video": "https://youtu.be/1jhbye0pe78"}, {"label": "aisle, isle, and I'll", "href": "https://www.grammar-monster.com/easily_confused/aisle_isle_ill.htm", "video": null}, {"label": "allowed and aloud", "href": "https://www.grammar-monster.com/easily_confused/allowed_aloud.htm", "video": null}, {"label": "allude and elude", "href": "https://www.grammar-monster.com/easily_confused/allude_elude.htm", "video": null}, {"label": "allusion and illusion", "href": "https://www.grammar-monster.com/easily_confused/allusion_illusion.htm", "video": null}, {"label": "already and all ready", "href": "https://www.grammar-monster.com/easily_confused/already_all_ready.htm", "video": null}, {"label": "alright or all right", "href": "https://www.grammar-monster.com/easily_confused/alright_all_right.htm", "video": null}, {"label": "altar and alter", "href": "https://www.grammar-monster.com/easily_confused/altar_alter.htm", "video": null}, {"label": "alternate and alternative", "href": "https://www.grammar-monster.com/easily_confused/alternate_alternative.htm", "video": "https://youtu.be/xWBlLrlEFHg"}, {"label": "altogether and all together", "href": "https://www.grammar-monster.com/easily_confused/altogether_all_together.htm", "video": null}, {"label": "among and amongst", "href": "https://www.grammar-monster.com/easily_confused/among_amongst.htm", "video": null}, {"label": "among and between", "href": "https://www.grammar-monster.com/easily_confused/between_among.htm", "video": "https://youtu.be/EFOD8W1h7Yw"}, {"label": "amoral and immoral", "href": "https://www.grammar-monster.com/easily_confused/immoral_amoral.htm", "video": null}, {"label": "amount, quantity, and number", "href": "https://www.grammar-monster.com/easily_confused/amount_quantity_and_number.htm", "video": null}, {"label": "angel and angle", "href": "https://www.grammar-monster.com/easily_confused/angel_angle.htm", "video": null}, {"label": "any more or anymore", "href": "https://www.grammar-monster.com/easily_confused/any_more_or_anymore.htm", "video": null}, {"label": "any one and anyone", "href": "https://www.grammar-monster.com/easily_confused/any_one_anyone.htm", "video": null}, {"label": "any thing and anything", "href": "https://www.grammar-monster.com/easily_confused/any_thing_anything.htm", "video": null}, {"label": "anywhere or any where", "href": "https://www.grammar-monster.com/easily_confused/anywhere_any_where.htm", "video": null}, {"label": "a part and apart", "href": "https://www.grammar-monster.com/easily_confused/a_part_apart.htm", "video": null}, {"label": "appraise and apprise", "href": "https://www.grammar-monster.com/easily_confused/appraise_apprise.htm", "video": "https://youtu.be/ngXyNvqcBLA"}, {"label": "are and our", "href": "https://www.grammar-monster.com/easily_confused/are_our.htm", "video": null}, {"label": "assistance and assistants", "href": "https://www.grammar-monster.com/easily_confused/assistance_assistants.htm", "video": null}, {"label": "assure, ensure, and insure", "href": "https://www.grammar-monster.com/easily_confused/assure_ensure_insure.htm", "video": null}, {"label": "avenge and revenge", "href": "https://www.grammar-monster.com/easily_confused/avenge_revenge.htm", "video": null}, {"label": "awe, or, oar, and ore", "href": "https://www.grammar-monster.com/easily_confused/awe_or_oar_ore.htm", "video": null}]}, {"letter": "B", "entries": [{"label": "bare and bear", "href": "https://www.grammar-monster.com/easily_confused/bare_bear.htm", "video": "https://youtu.be/ACYLxxECfZA"}, {"label": "balk, baulk, and bulk", "href": "https://www.grammar-monster.com/easily_confused/balk_baulk_bulk.htm", "video": null}, {"label": "ball and bawl", "href": "https://www.grammar-monster.com/easily_confused/ball_bawl.htm", "video": null}, {"label": "bazaar and bizarre", "href": "https://www.grammar-monster.com/easily_confused/bazaar_bizarre.htm", "video": null}, {"label": "being or been", "href": "https://www.grammar-monster.com/easily_confused/being_been.htm", "video": null}, {"label": "beside and besides", "href": "https://www.grammar-monster.com/easily_confused/beside_besides.htm", "video": null}, {"label": "between and among", "href": "https://www.grammar-monster.com/easily_confused/between_among.htm", "video": null}, {"label": "block and bloc", "href": "https://www.grammar-monster.com/easily_confused/block_bloc.htm", "video": null}, {"label": "blond and blonde", "href": "https://www.grammar-monster.com/easily_confused/blond_blonde.htm", "video": null}, {"label": "borrow and lend", "href": "https://www.grammar-monster.com/easily_confused/lend_borrow.htm", "video": null}, {"label": "bought and brought", "href": "https://www.grammar-monster.com/easily_confused/bought_brought.htm", "video": null}, {"label": "brake and break", "href": "https://www.grammar-monster.com/easily_confused/brake_break.htm", "video": "https://youtu.be/vcrkaBASu7I"}, {"label": "breathe and breath", "href": "https://www.grammar-monster.com/easily_confused/breathe_breath.htm", "video": null}]}, {"letter": "C", "entries": [{"label": "capital and Capitol", "href": "https://www.grammar-monster.com/easily_confused/capital_capitol.htm", "video": null}, {"label": "can and may", "href": "https://www.grammar-monster.com/easily_confused/can_may.htm", "video": null}, {"label": "can not and cannot", "href": "https://www.grammar-monster.com/easily_confused/can_not_cannot.htm", "video": null}, {"label": "canceled or cancelled", "href": "https://www.grammar-monster.com/easily_confused/cancelled-or-canceled.htm", "video": null}, {"label": "canvas and canvass", "href": "https://www.grammar-monster.com/easily_confused/canvas_canvass.htm", "video": null}, {"label": "censor, censure, and sensor", "href": "https://www.grammar-monster.com/easily_confused/censor_sensor_censure.htm", "video": null}, {"label": "center on and center around", "href": "https://www.grammar-monster.com/easily_confused/center_on_around.htm", "video": null}, {"label": "chilly, chili, and chile", "href": "https://www.grammar-monster.com/easily_confused/chilly_chilli_chile.htm", "video": "https://youtu.be/1_KwnKFBTok"}, {"label": "choose and choice", "href": "https://www.grammar-monster.com/easily_confused/choose_choice.htm", "video": null}, {"label": "chord or cord", "href": "https://www.grammar-monster.com/easily_confused/chord_cord.htm", "video": null}, {"label": "cite, sight, and site", "href": "https://www.grammar-monster.com/easily_confused/cite_sight_site.htm", "video": null}, {"label": "climactic and climatic", "href": "https://www.grammar-monster.com/easily_confused/climactic_climatic.htm", "video": null}, {"label": "coarse and course", "href": "https://www.grammar-monster.com/easily_confused/coarse_course.htm", "video": null}, {"label": "collectable or collectible", "href": "https://www.grammar-monster.com/easily_confused/collectable_collectible.htm", "video": null}, {"label": "complement and compliment", "href": "https://www.grammar-monster.com/easily_confused/complement_compliment.htm", "video": "https://youtu.be/UdWj9IW9ZZE"}, {"label": "compose and comprise ( comprise of and 'is comprised of')", "href": "https://www.grammar-monster.com/easily_confused/comprise_compose.htm", "video": null}, {"label": "confident, confidant, and confidante", "href": "https://www.grammar-monster.com/easily_confused/confident_confidant_confidante.htm", "video": null}, {"label": "coral and corral", "href": "https://www.grammar-monster.com/easily_confused/coral_corral.htm", "video": null}, {"label": "council and counsel", "href": "https://www.grammar-monster.com/easily_confused/council_counsel.htm", "video": null}, {"label": "cow's milk or cows' milk", "href": "https://www.grammar-monster.com/lessons/cows_milk_goats_cheese_apostrophe.htm", "video": null}, {"label": "currant and current", "href": "https://www.grammar-monster.com/easily_confused/currant_current.htm", "video": null}, {"label": "curb and kerb", "href": "https://www.grammar-monster.com/easily_confused/curb_kerb.htm", "video": null}]}, {"letter": "D", "entries": [{"label": "dependant and dependent", "href": "https://www.grammar-monster.com/easily_confused/dependant_dependent.htm", "video": "https://youtu.be/lSoZpNfFpx8"}, {"label": "decent, descent, and dissent", "href": "https://www.grammar-monster.com/easily_confused/decent_descent_dissent.htm", "video": null}, {"label": "defuse and diffuse", "href": "https://www.grammar-monster.com/easily_confused/defuse_diffuse.htm", "video": null}, {"label": "definite and definitive", "href": "https://www.grammar-monster.com/easily_confused/definite_definitive.htm", "video": null}, {"label": "desert and dessert", "href": "https://www.grammar-monster.com/easily_confused/desert_dessert.htm", "video": null}, {"label": "discreet and discrete", "href": "https://www.grammar-monster.com/easily_confused/discrete_discreet.htm", "video": "https://youtu.be/45HmruTTE3k"}, {"label": "disloyal and unloyal", "href": "https://www.grammar-monster.com/easily_confused/disloyal_unloyal.htm", "video": null}, {"label": "disinterested and uninterested", "href": "https://www.grammar-monster.com/easily_confused/disinterested_uninterested.htm", "video": "https://youtu.be/EM508tjykSM"}, {"label": "dived and dove", "href": "https://www.grammar-monster.com/easily_confused/dived_dove.htm", "video": null}, {"label": "drank and drunk", "href": "https://www.grammar-monster.com/easily_confused/drank_drunk.htm", "video": null}, {"label": "dual and duel", "href": "https://www.grammar-monster.com/easily_confused/dual_duel.htm", "video": null}]}, {"letter": "E", "entries": [{"label": "economic and economical", "href": "https://www.grammar-monster.com/easily_confused/economic_economical.htm", "video": null}, {"label": "effect and affect", "href": "https://www.grammar-monster.com/easily_confused/affect_effect.htm", "video": null}, {"label": "e.g. and i.e.", "href": "https://www.grammar-monster.com/easily_confused/eg_ie.htm", "video": "https://youtu.be/MeToW2g-wy8"}, {"label": "elicit and illicit", "href": "https://www.grammar-monster.com/easily_confused/elicit_illicit.htm", "video": null}, {"label": "elude and allude", "href": "https://www.grammar-monster.com/easily_confused/allude_elude.htm", "video": null}, {"label": "envelop and envelope", "href": "https://www.grammar-monster.com/easily_confused/envelop_envelope.htm", "video": null}, {"label": "empathy and sympathy", "href": "https://www.grammar-monster.com/easily_confused/empathy_sympathy.htm", "video": null}, {"label": "emigrate and immigrate", "href": "https://www.grammar-monster.com/easily_confused/emigrate_immigrate.htm", "video": "https://youtu.be/rG_Gt9ESWPI"}, {"label": "enquiry and inquiry", "href": "https://www.grammar-monster.com/easily_confused/enquiry_inquiry.htm", "video": null}, {"label": "ensure, assure, and insure", "href": "https://www.grammar-monster.com/easily_confused/assure_ensure_insure.htm", "video": null}, {"label": "envy and jealousy", "href": "https://www.grammar-monster.com/easily_confused/envy_jealousy.htm", "video": null}, {"label": "every one and everyone", "href": "https://www.grammar-monster.com/easily_confused/every_one_everyone.htm", "video": null}, {"label": "every day and everyday", "href": "https://www.grammar-monster.com/easily_confused/every_day_everyday.htm", "video": null}, {"label": "except and accept", "href": "https://www.grammar-monster.com/easily_confused/accept_except.htm", "video": "https://youtu.be/Dnv-NY6BVR4"}, {"label": "explicit and implicit", "href": "https://www.grammar-monster.com/easily_confused/explicit_implicit.htm", "video": null}]}, {"letter": "F", "entries": [{"label": "feel or touch", "href": "https://www.grammar-monster.com/easily_confused/touch_feel.htm", "video": null}, {"label": "fewer or less", "href": "https://www.grammar-monster.com/easily_confused/fewer_less.htm", "video": "https://youtu.be/Slnxey9AnLY"}, {"label": "fiancee or fiance", "href": "https://www.grammar-monster.com/easily_confused/fiancee_or_fiance.htm", "video": null}, {"label": "fish or fishes", "href": "https://www.grammar-monster.com/easily_confused/fish_fishes.htm", "video": "https://youtu.be/UAJaK0jzpfg"}, {"label": "flair and flare", "href": "https://www.grammar-monster.com/easily_confused/flair_flare.htm", "video": null}, {"label": "flier and flyer", "href": "https://www.grammar-monster.com/easily_confused/flier_flyer.htm", "video": null}, {"label": "foul and fowl", "href": "https://www.grammar-monster.com/easily_confused/foul_fowl.htm", "video": null}, {"label": "forego/forgo, forewent/forwent, foregone/forgone", "href": "https://www.grammar-monster.com/easily_confused/forego_forgo_foregone_forgone.htm", "video": null}, {"label": "fourth and forth", "href": "https://www.grammar-monster.com/easily_confused/forth_fourth.htm", "video": null}, {"label": "further and farther", "href": "https://www.grammar-monster.com/easily_confused/further_farther.htm", "video": null}]}, {"letter": "G", "entries": [{"label": "getaway and get away", "href": "https://www.grammar-monster.com/easily_confused/getaway_get_away.htm", "video": null}, {"label": "good and well", "href": "https://www.grammar-monster.com/easily_confused/good_well.htm", "video": null}, {"label": "gotten or got", "href": "https://www.grammar-monster.com/easily_confused/got_gotten.htm", "video": null}, {"label": "gray and grey", "href": "https://www.grammar-monster.com/easily_confused/gray_grey.htm", "video": null}, {"label": "grisly and grizzly", "href": "https://www.grammar-monster.com/easily_confused/grisly_grizzly.htm", "video": null}]}, {"letter": "H", "entries": [{"label": "hangar and hanger", "href": "https://www.grammar-monster.com/easily_confused/hangar_hanger.htm", "video": null}, {"label": "hanged and hung", "href": "https://www.grammar-monster.com/easily_confused/hanged_hung.htm", "video": "https://youtu.be/d6JaNUTq7OU"}, {"label": "he'll, heel, and heal", "href": "https://www.grammar-monster.com/easily_confused/hell_heel_heal.htm", "video": null}, {"label": "hear and listen", "href": "https://www.grammar-monster.com/easily_confused/hear_listen.htm", "video": null}, {"label": "heroine and heroin", "href": "https://www.grammar-monster.com/easily_confused/heroine_heroin.htm", "video": null}, {"label": "historic and historical", "href": "https://www.grammar-monster.com/easily_confused/historic_historical.htm", "video": null}, {"label": "high and tall", "href": "https://www.grammar-monster.com/easily_confused/high_tall.htm", "video": null}]}, {"letter": "I", "entries": [{"label": "i.e. and e.g.", "href": "https://www.grammar-monster.com/easily_confused/eg_ie.htm", "video": "https://youtu.be/MeToW2g-wy8"}, {"label": "idol, idle, and idyll", "href": "https://www.grammar-monster.com/easily_confused/idol_idle_idyll.htm", "video": null}, {"label": "if or whether", "href": "https://www.grammar-monster.com/easily_confused/if_and_whether.htm", "video": null}, {"label": "ill and sick", "href": "https://www.grammar-monster.com/easily_confused/ill_sick.htm", "video": null}, {"label": "illicit and elicit", "href": "https://www.grammar-monster.com/easily_confused/elicit_illicit.htm", "video": null}, {"label": "illusion and allusion", "href": "https://www.grammar-monster.com/easily_confused/allusion_illusion.htm", "video": null}, {"label": "immigrate and emigrate", "href": "https://www.grammar-monster.com/easily_confused/emigrate_immigrate.htm", "video": null}, {"label": "immoral and amoral", "href": "https://www.grammar-monster.com/easily_confused/immoral_amoral.htm", "video": null}, {"label": "impatient and patient", "href": "https://www.grammar-monster.com/easily_confused/impatient_inpatient.htm", "video": null}, {"label": "impending and pending", "href": "https://www.grammar-monster.com/easily_confused/impending_pending.htm", "video": null}, {"label": "imply and infer", "href": "https://www.grammar-monster.com/easily_confused/imply_infer.htm", "video": null}, {"label": "incidence and incidents", "href": "https://www.grammar-monster.com/easily_confused/incidence_incidents.htm", "video": null}, {"label": "incite and insight", "href": "https://www.grammar-monster.com/easily_confused/incite_insight.htm", "video": null}, {"label": "inquire or enquire", "href": "https://www.grammar-monster.com/easily_confused/inquire.htm", "video": null}, {"label": "inquiry and enquiry", "href": "https://www.grammar-monster.com/easily_confused/enquiry_inquiry.htm", "video": null}, {"label": "instance and instants", "href": "https://www.grammar-monster.com/easily_confused/instance_instants.htm", "video": null}, {"label": "insure, assure, and ensure", "href": "https://www.grammar-monster.com/easily_confused/assure_ensure_insure.htm", "video": null}, {"label": "into, onto, and up to", "href": "https://www.grammar-monster.com/easily_confused/into_onto_up_to.htm", "video": null}, {"label": "its and it's", "href": "https://www.grammar-monster.com/easily_confused/its_its.htm", "video": "https://youtu.be/lgT8ZDdvoKQ"}]}, {"letter": "J", "entries": [{"label": "jealousy and envy", "href": "https://www.grammar-monster.com/easily_confused/envy_jealousy.htm", "video": null}, {"label": "jewelry and jewellery", "href": "https://www.grammar-monster.com/easily_confused/jewelry_jewellery.htm", "video": null}]}, {"letter": "K", "entries": [{"label": "kerb and curb", "href": "https://www.grammar-monster.com/easily_confused/curb_kerb.htm", "video": null}]}, {"letter": "L", "entries": [{"label": "lasagna and lasagne", "href": "https://www.grammar-monster.com/easily_confused/lasagna_lasagne.htm", "video": null}, {"label": "law and lore", "href": "https://www.grammar-monster.com/easily_confused/law_lore.htm", "video": null}, {"label": "lay and lie", "href": "https://www.grammar-monster.com/easily_confused/lay_lie.htm", "video": "https://youtu.be/rY4G05wROfE"}, {"label": "lead and led", "href": "https://www.grammar-monster.com/easily_confused/lead_led.htm", "video": null}, {"label": "learned and learnt", "href": "https://www.grammar-monster.com/easily_confused/learned_learnt.htm", "video": "https://youtu.be/lrEPV8rToPM"}, {"label": "lend and borrow", "href": "https://www.grammar-monster.com/easily_confused/lend_borrow.htm", "video": null}, {"label": "let and let's", "href": "https://www.grammar-monster.com/easily_confused/let_lets.htm", "video": null}, {"label": "less and fewer", "href": "https://www.grammar-monster.com/easily_confused/fewer_less.htm", "video": null}, {"label": "licence and license", "href": "https://www.grammar-monster.com/easily_confused/licence_license.htm", "video": "https://youtu.be/MWvs84fe_MM"}, {"label": "lightening or lightning", "href": "https://www.grammar-monster.com/easily_confused/lightening_lightning.htm", "video": null}, {"label": "loath and loathe", "href": "https://www.grammar-monster.com/easily_confused/loath_loathe.htm", "video": null}, {"label": "look, see, and watch", "href": "https://www.grammar-monster.com/easily_confused/see_look_watch.htm", "video": null}, {"label": "loose and lose", "href": "https://www.grammar-monster.com/easily_confused/loose_lose.htm", "video": null}]}, {"letter": "M", "entries": [{"label": "makeup, make-up, or make up", "href": "https://www.grammar-monster.com/easily_confused/makeup_make-up_make_up.htm", "video": null}, {"label": "male and mail", "href": "https://www.grammar-monster.com/easily_confused/mail_male.htm", "video": null}, {"label": "many and much", "href": "https://www.grammar-monster.com/easily_confused/many_much.htm", "video": null}, {"label": "mantel or mantle", "href": "https://www.grammar-monster.com/easily_confused/mantel_mantle.htm", "video": null}, {"label": "marinade and marinate", "href": "https://www.grammar-monster.com/easily_confused/marinade_marinate.htm", "video": null}, {"label": "material and materiel", "href": "https://www.grammar-monster.com/easily_confused/material_materiel.htm", "video": "https://youtu.be/q-SY1Lp46LM"}, {"label": "may and can", "href": "https://www.grammar-monster.com/easily_confused/can_may.htm", "video": null}, {"label": "may and might", "href": "https://www.grammar-monster.com/easily_confused/might_may.htm", "video": null}, {"label": "may be and maybe", "href": "https://www.grammar-monster.com/easily_confused/maybe_may_be.htm", "video": null}, {"label": "me and myself", "href": "https://www.grammar-monster.com/lessons/me_myself.htm", "video": "https://youtu.be/AKI929-3E-M"}, {"label": "misspelled and misspelt", "href": "https://www.grammar-monster.com/easily_confused/misspelled_misspelt.htm", "video": null}, {"label": "moral and morale", "href": "https://www.grammar-monster.com/easily_confused/moral_morale.htm", "video": null}, {"label": "Ms, Miss, and Mrs", "href": "https://www.grammar-monster.com/easily_confused/Ms_Miss_Mrs.htm", "video": null}, {"label": "mucous mucus", "href": "https://www.grammar-monster.com/easily_confused/mucous_mucus.htm", "video": null}, {"label": "mute and moot", "href": "https://www.grammar-monster.com/easily_confused/moot_mute.htm", "video": null}]}, {"letter": "N", "entries": [{"label": "no-one and no one", "href": "https://www.grammar-monster.com/easily_confused/no-one_no_one.htm", "video": null}, {"label": "notable and noticeable", "href": "https://www.grammar-monster.com/easily_confused/notable_noticeable.htm", "video": null}, {"label": "nowhere or no where", "href": "https://www.grammar-monster.com/easily_confused/nowhere_no_where.htm", "video": null}, {"label": "number, amount, and quantity", "href": "https://www.grammar-monster.com/easily_confused/amount_quantity_and_number.htm", "video": null}]}, {"letter": "O", "entries": [{"label": "oar, or, ore, and awe", "href": "https://www.grammar-monster.com/easily_confused/awe_or_oar_ore.htm", "video": null}, {"label": "obligated or obliged", "href": "https://www.grammar-monster.com/easily_confused/obligated_obliged.htm", "video": null}, {"label": "off and of", "href": "https://www.grammar-monster.com/easily_confused/off_of.htm", "video": null}, {"label": "ordinance or ordnance", "href": "https://www.grammar-monster.com/easily_confused/ordinance_ordnance.htm", "video": null}, {"label": "onto, into, and up to", "href": "https://www.grammar-monster.com/easily_confused/into_onto_up_to.htm", "video": null}]}, {"letter": "P", "entries": [{"label": "past and passed", "href": "https://www.grammar-monster.com/easily_confused/past_passed.htm", "video": null}, {"label": "palate, palette, and pallet", "href": "https://www.grammar-monster.com/easily_confused/palate_palette_pallet.htm", "video": null}, {"label": "patients and patience", "href": "https://www.grammar-monster.com/easily_confused/patients_patience.htm", "video": null}, {"label": "peak, peek, and pique", "href": "https://www.grammar-monster.com/easily_confused/peak_peek_pique.htm", "video": null}, {"label": "plain and plane", "href": "https://www.grammar-monster.com/easily_confused/plain_plane.htm", "video": null}, {"label": "pleaded or pled", "href": "https://www.grammar-monster.com/easily_confused/plead_pleaded_pled.htm", "video": null}, {"label": "pedal and peddle", "href": "https://www.grammar-monster.com/easily_confused/pedal_peddle.htm", "video": null}, {"label": "pendant and pendent", "href": "https://www.grammar-monster.com/easily_confused/pendant_pendent.htm", "video": null}, {"label": "peace and piece", "href": "https://www.grammar-monster.com/easily_confused/peace_piece.htm", "video": null}, {"label": "pending and impending", "href": "https://www.grammar-monster.com/easily_confused/impending_pending.htm", "video": null}, {"label": "personal and personnel", "href": "https://www.grammar-monster.com/easily_confused/personal_personnel.htm", "video": null}, {"label": "poisonous or venomous", "href": "https://www.grammar-monster.com/easily_confused/poisonous_venomous.htm", "video": null}, {"label": "pore, pour, and poor", "href": "https://www.grammar-monster.com/easily_confused/pore_pour_poor.htm", "video": null}, {"label": "practice and practise", "href": "https://www.grammar-monster.com/easily_confused/practice_practise.htm", "video": "https://youtu.be/qD-2Th1h3Xs"}, {"label": "precedence and precedent", "href": "https://www.grammar-monster.com/easily_confused/precedence_precedent.htm", "video": null}, {"label": "pray and prey", "href": "https://www.grammar-monster.com/easily_confused/pray_prey.htm", "video": null}, {"label": "principal and principle", "href": "https://www.grammar-monster.com/easily_confused/principal_principle.htm", "video": "https://youtu.be/798--52vAnA"}, {"label": "precede and proceed", "href": "https://www.grammar-monster.com/easily_confused/precede_proceed.htm", "video": null}, {"label": "premise and premises", "href": "https://www.grammar-monster.com/easily_confused/premise_premises.htm", "video": null}, {"label": "program and programme", "href": "https://www.grammar-monster.com/easily_confused/program_programme.htm", "video": "https://youtu.be/JzEqlHa2OMk"}, {"label": "prophecy and prophesy", "href": "https://www.grammar-monster.com/easily_confused/prophecy_prophesy.htm", "video": null}, {"label": "proscribe and prescribe", "href": "https://www.grammar-monster.com/easily_confused/prescribe_proscribe.htm", "video": null}, {"label": "provided and providing", "href": "https://www.grammar-monster.com/easily_confused/provided_providing.htm", "video": null}]}, {"letter": "Q", "entries": [{"label": "qualitative and quantitative", "href": "https://www.grammar-monster.com/easily_confused/qualitative_quantitative.htm", "video": null}, {"label": "quantity, amount, and number", "href": "https://www.grammar-monster.com/easily_confused/amount_quantity_and_number.htm", "video": null}, {"label": "quicker and more quickly", "href": "https://www.grammar-monster.com/lessons/more_quickly_quicker.htm", "video": null}, {"label": "quiet and quite", "href": "https://www.grammar-monster.com/easily_confused/quiet_quite.htm", "video": null}]}, {"letter": "R", "entries": [{"label": "raise, rise, and raze", "href": "https://www.grammar-monster.com/easily_confused/raise_rise_raze.htm", "video": null}, {"label": "rain, rein, and reign", "href": "https://www.grammar-monster.com/easily_confused/rain_rein_reign.htm", "video": null}, {"label": "rational and rationale", "href": "https://www.grammar-monster.com/easily_confused/rational_rationale.htm", "video": null}, {"label": "regard or regards", "href": "https://www.grammar-monster.com/easily_confused/with_regard_to_regards_to.htm", "video": null}, {"label": "remember or remind", "href": "https://www.grammar-monster.com/easily_confused/remember_remind.htm", "video": null}, {"label": "revenge and avenge", "href": "https://www.grammar-monster.com/easily_confused/avenge_revenge.htm", "video": null}, {"label": "role and roll", "href": "https://www.grammar-monster.com/easily_confused/role_roll.htm", "video": null}]}, {"letter": "S", "entries": [{"label": "saw, soar, and sore", "href": "https://www.grammar-monster.com/easily_confused/saw_soar_sore.htm", "video": null}, {"label": "see, look, and watch", "href": "https://www.grammar-monster.com/easily_confused/see_look_watch.htm", "video": null}, {"label": "shall and will", "href": "https://www.grammar-monster.com/easily_confused/shall_will.htm", "video": null}, {"label": "site, cite, and sight", "href": "https://www.grammar-monster.com/easily_confused/cite_sight_site.htm", "video": null}, {"label": "somewhere or some where", "href": "https://www.grammar-monster.com/easily_confused/somewhere_some_where.htm", "video": null}, {"label": "spelled and spelt", "href": "https://www.grammar-monster.com/easily_confused/spelled_spelt.htm", "video": null}, {"label": "spilled and spilt", "href": "https://www.grammar-monster.com/easily_confused/spilled_spilt.htm", "video": null}, {"label": "spoiled and spoilt", "href": "https://www.grammar-monster.com/easily_confused/spoiled_spoilt.htm", "video": null}, {"label": "stationary and stationery", "href": "https://www.grammar-monster.com/easily_confused/stationary_stationery.htm", "video": null}, {"label": "sensor, censor, and censure", "href": "https://www.grammar-monster.com/easily_confused/censor_sensor_censure.htm", "video": null}, {"label": "story and storey", "href": "https://www.grammar-monster.com/easily_confused/storey_story.htm", "video": null}, {"label": "sympathy and empathy", "href": "https://www.grammar-monster.com/easily_confused/empathy_sympathy.htm", "video": "https://youtu.be/6_KhkzOr_7k"}]}, {"letter": "T", "entries": [{"label": "teach and learn", "href": "https://www.grammar-monster.com/easily_confused/teach_learn.htm", "video": null}, {"label": "tenant and tenet", "href": "https://www.grammar-monster.com/easily_confused/tenant_tenet.htm", "video": null}, {"label": "that, which, and who", "href": "https://www.grammar-monster.com/lessons/which_that_who.htm", "video": null}, {"label": "the and thee", "href": "https://www.grammar-monster.com/easily_confused/the_or_thee_pronunciation.htm", "video": null}, {"label": "their, there, and they're", "href": "https://www.grammar-monster.com/easily_confused/there_their_theyre.htm", "video": "https://youtu.be/ykbtOJQt7EE"}, {"label": "then and than", "href": "https://www.grammar-monster.com/easily_confused/than_then.htm", "video": null}, {"label": "tic or tick", "href": "https://www.grammar-monster.com/easily_confused/tic_tick.htm", "video": null}, {"label": "too or to", "href": "https://www.grammar-monster.com/easily_confused/too_to.htm", "video": "https://youtu.be/NzP20YL47Bw"}, {"label": "tortuous or torturous", "href": "https://www.grammar-monster.com/easily_confused/tortuous_torturous.htm", "video": null}, {"label": "touch and feel", "href": "https://www.grammar-monster.com/easily_confused/touch_feel.htm", "video": null}, {"label": "toward or towards", "href": "https://www.grammar-monster.com/easily_confused/toward_towards.htm", "video": "https://youtu.be/jEjJ1j4KF5I"}, {"label": "trier or tryer", "href": "https://www.grammar-monster.com/easily_confused/trier_tryer.htm", "video": null}, {"label": "try and or try to", "href": "https://www.grammar-monster.com/lessons/try_and_try_to.htm", "video": null}]}, {"letter": "U", "entries": [{"label": "up to, into, and onto", "href": "https://www.grammar-monster.com/easily_confused/into_onto_up_to.htm", "video": null}, {"label": "uninterested and disinterested", "href": "https://www.grammar-monster.com/easily_confused/disinterested_uninterested.htm", "video": "https://youtu.be/EM508tjykSM"}, {"label": "unloyal and disloyal", "href": "https://www.grammar-monster.com/easily_confused/disloyal_unloyal.htm", "video": null}, {"label": "upmost and utmost", "href": "https://www.grammar-monster.com/easily_confused/upmost_utmost.htm", "video": null}]}, {"letter": "V", "entries": [{"label": "vain, vein, and vane", "href": "https://www.grammar-monster.com/easily_confused/vain_vein_vane.htm", "video": null}, {"label": "vie or vye", "href": "https://www.grammar-monster.com/easily_confused/vie_vye.htm", "video": null}, {"label": "venomous or poisonous", "href": "https://www.grammar-monster.com/easily_confused/poisonous_venomous.htm", "video": null}]}, {"letter": "W", "entries": [{"label": "waist and waste", "href": "https://www.grammar-monster.com/easily_confused/waist_waste.htm", "video": null}, {"label": "wait and weight", "href": "https://www.grammar-monster.com/easily_confused/wait_weight.htm", "video": null}, {"label": "watch, look, and see", "href": "https://www.grammar-monster.com/easily_confused/see_look_watch.htm", "video": null}, {"label": "ware, wear, were, we're, and where", "href": "https://www.grammar-monster.com/easily_confused/wear_were_were_where.htm", "video": null}, {"label": "weather, whether, and wether", "href": "https://www.grammar-monster.com/easily_confused/weather_whether_wether.htm", "video": "https://youtu.be/be7d8004MHY"}, {"label": "weaved, wove, and woven", "href": "https://www.grammar-monster.com/easily_confused/weaved_wove_woven.htm", "video": null}, {"label": "well and good", "href": "https://www.grammar-monster.com/easily_confused/good_well.htm", "video": null}, {"label": "whoever and whomever", "href": "https://www.grammar-monster.com/easily_confused/whoever_whomever.htm", "video": null}, {"label": "whether or if", "href": "https://www.grammar-monster.com/easily_confused/if_and_whether.htm", "video": null}, {"label": "which, who, and that", "href": "https://www.grammar-monster.com/lessons/which_that_who.htm", "video": null}, {"label": "which and witch", "href": "https://www.grammar-monster.com/easily_confused/which_witch.htm", "video": null}, {"label": "while or whilst", "href": "https://www.grammar-monster.com/easily_confused/while_whilst.htm", "video": null}, {"label": "who or whom", "href": "https://www.grammar-monster.com/lessons/who_whom.htm", "video": null}, {"label": "who's and whose", "href": "https://www.grammar-monster.com/easily_confused/whos_whose.htm", "video": null}, {"label": "will and shall", "href": "https://www.grammar-monster.com/easily_confused/shall_will.htm", "video": null}, {"label": "with regard to or with regards to", "href": "https://www.grammar-monster.com/easily_confused/with_regard_to_regards_to.htm", "video": null}]}, {"letter": "X", "entries": []}, {"letter": "Y", "entries": [{"label": "you're and your", "href": "https://www.grammar-monster.com/easily_confused/youre_your.htm", "video": "https://youtu.be/UgLmSlR_X7Q"}]}, {"letter": "Z", "entries": []}];
+const teacherZone = [{"type": "Play", "label": "Tetris (easily confused words)", "href": "https://www.grammar-monster.com/tests/easily_confused_words_tetris_game.htm"}, {"type": "Play", "label": "Confidence game (easily confused words)", "href": "https://www.grammar-monster.com/tests/confused_words_test.htm"}, {"type": "Read", "label": "Most misspelled words in English", "href": "https://www.grammar-monster.com/lessons/most-misspelled-words.htm"}, {"type": "Read", "label": "Tattoo fails", "href": "https://www.grammar-monster.com/tattoo_fails.htm"}, {"type": "Read", "label": "FAQs by writers", "href": "https://www.grammar-monster.com/FAQs.htm"}];
+const related = [{"label": "Another game to test easily confused words", "href": "https://www.grammar-monster.com/tests/confused_words_test.htm"}, {"label": "Tetris-style game to learn easily confused words", "href": "https://www.grammar-monster.com/tests/easily_confused_words_tetris_game.htm"}, {"label": "Grammar glossary", "href": "/grammar-terms/"}, {"label": "Punctuation lessons", "href": "/punctuation-lessons/"}, {"label": "Common grammar errors", "href": "https://www.grammar-monster.com/common_grammar_errors.htm"}, {"label": "Grammar tests", "href": "/games/"}, {"label": "Sayings and proverbs", "href": "https://www.grammar-monster.com/sayings_proverbs.htm"}, {"label": "Tattoo fails", "href": "https://www.grammar-monster.com/tattoo_fails.htm"}];
+
+const glossaryCount = 220;
+---
+
+<BaseLayout
+  title="Easily Confused Words | Grammar Monster"
+  description={description}
+>
+  <div class="cw-page">
+    <section class="cw-hero">
+      <div class="cw-shell cw-hero__grid">
+        <div class="cw-hero__copy">
+          <div class="cw-kicker"><span></span> EASILY CONFUSED WORDS</div>
+          <h1>Similar words.<br /><em>Very different meanings.</em></h1>
+
+          <p class="cw-lead">
+            Easily confused words are word pairings that share a similar sound or spelling.
+            The meanings of the words in these pairings can be very different
+            (e.g., <strong>bare</strong>/<strong>bear</strong>) or close
+            (e.g., <strong>breath</strong>/<strong>breathe</strong>).
+          </p>
+
+          <p class="cw-sublead">
+            As the sounds, spellings, or meanings of the words in such pairings are the same
+            or similar, writers often choose the wrong one, causing a writing error.
+            In English, there are hundreds of pairs of easily confused words.
+            Our glossary contains 220 pairs.
+          </p>
+
+          <div class="cw-hero__actions">
+            <a href="#glossary">Browse all 220 pairs</a>
+            <a class="cw-button--ghost" href="#top10">See the Top 10</a>
+          </div>
+
+          <div class="cw-hero__stats">
+            <div><strong>220</strong><span>confused-word pairs</span></div>
+            <i></i>
+            <div><strong>A–Z</strong><span>searchable glossary</span></div>
+            <i></i>
+            <div><strong>Free</strong><span>interactive exercises</span></div>
+          </div>
+        </div>
+
+        <div class="cw-hero__visual">
+          <div class="cw-orbit cw-orbit--one"></div>
+          <div class="cw-orbit cw-orbit--two"></div>
+
+          <div class="cw-art-card">
+            <img src="/assets/images/easily-confused-words.webp" alt="Easily confused words illustration" />
+          </div>
+
+          <div class="cw-word cw-word--one"><span>bare</span><b>≠</b><span>bear</span></div>
+          <div class="cw-word cw-word--two"><span>affect</span><b>≠</b><span>effect</span></div>
+          <div class="cw-word cw-word--three"><span>your</span><b>≠</b><span>you're</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cw-top10" id="top10">
+      <div class="cw-shell">
+        <div class="cw-section-head">
+          <div>
+            <span class="cw-mini-label">TOP 10 EASILY CONFUSED WORDS</span>
+            <h2>The pairings that cause<br /><em>the most trouble.</em></h2>
+          </div>
+          <p>Here are the top 10 most confused word pairings, ordered from most to least common.</p>
+        </div>
+
+        <div class="cw-top10-grid">
+          {
+            top10.map((item, index) => (
+              <a
+                class:list={["cw-top-card", `cw-accent-${(index % 6) + 1}`, index < 3 && "cw-top-card--featured"]}
+                href={item.href}
+              >
+                <span class="cw-rank">{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="cw-explainer">
+      <div class="cw-shell">
+        <div class="cw-explainer__grid">
+          <article class="cw-explainer-card cw-explainer-card--dark">
+            <span class="cw-mini-label cw-mini-label--lime">HOMONYMS, HOMOPHONES & HOMOGRAPHS</span>
+            <h2>They can sound the same.<br />They can look the same.</h2>
+            <p>
+              Some of the easily confused pairs are <a href="https://www.grammar-monster.com/glossary/homonyms.htm">homonyms</a>.
+              These are words that either sound exactly the same or look exactly the same.
+            </p>
+            <p>
+              Homonyms that sound the same (e.g., <strong>bare</strong>/<strong>bear</strong>)
+              are called <em>homophones</em>, and homonyms that look the same
+              (e.g., <strong>lead</strong> of a pencil/<strong>lead</strong> a team)
+              are called <em>homographs</em>. In writing, homophones are the ones that cause problems.
+            </p>
+            <p>
+              Most of the easily confused pairs of words are <em>near homonyms</em>.
+              In other words, they are pairs that nearly sound or look the same.
+            </p>
+          </article>
+
+          <article class="cw-explainer-card cw-errors">
+            <span class="cw-mini-label">SPELLING ERRORS UNDERMINE YOUR WORK</span>
+            <h2>A spellchecker cannot save you from everything.</h2>
+            <p>
+              Choosing the wrong one in a pair of easily confused words is usually classified
+              as a spelling error rather than a grammatical error, but you cannot rely on your
+              spellchecker – or your grammar checker for that matter – to spot your error because
+              there's a fair chance the error will be a feasibly sound piece of English text.
+            </p>
+
+            <div class="cw-example-pairs">
+              <div>
+                <span>He had <strong>bare</strong> hands.</span>
+                <b>✓</b>
+                <small>no gloves</small>
+              </div>
+              <div>
+                <span>He had <strong>bear</strong> hands.</span>
+                <b>✓</b>
+                <small>hands like a bear</small>
+              </div>
+              <div>
+                <span>He went <strong>forth</strong>.</span>
+                <b>✓</b>
+                <small>forward</small>
+              </div>
+              <div>
+                <span>He went <strong>fourth</strong>.</span>
+                <b>✓</b>
+                <small>one after third</small>
+              </div>
+            </div>
+
+            <p class="cw-error-note">
+              Any errors in your work – especially <a href="https://www.grammar-monster.com/common_grammar_errors.htm">common ones</a> –
+              will undermine your credibility, and this can prevent your readers from accepting your message.
+              Put another way, your readers are likely to concentrate on your mistakes rather than what you're saying.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cw-glossary" id="glossary">
+      <div class="cw-shell">
+        <div class="cw-glossary__head">
+          <div>
+            <span class="cw-mini-label">A–Z GLOSSARY</span>
+            <h2>220 easily confused<br /><em>word pairings.</em></h2>
+          </div>
+          <p>
+            Here is our A-Z list of 220 easily confused word pairs.
+            Every link leads to a lesson with an interactive exercise, which is printable and sendable.
+          </p>
+        </div>
+
+        <div class="cw-search-panel">
+          <div class="cw-searchbox">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"></path>
+            </svg>
+            <input
+              id="confusedSearch"
+              type="search"
+              placeholder="Search 220 pairings — try ‘affect’, ‘there’, ‘principal’..."
+              autocomplete="off"
+            />
+            <kbd>/</kbd>
+          </div>
+
+          <div class="cw-search-meta">
+            <span id="confusedCount">220 pairs</span>
+            <button id="clearConfused" type="button">Clear search</button>
+          </div>
+        </div>
+
+        <nav class="cw-alphabet" aria-label="Jump to a letter">
+          {
+            letters.map((group) => (
+              <button
+                type="button"
+                data-letter={group.letter}
+                disabled={group.entries.length === 0}
+                title={group.entries.length === 0 ? `No ${group.letter} entries` : `Jump to ${group.letter}`}
+              >
+                {group.letter}
+              </button>
+            ))
+          }
+        </nav>
+
+        <div class="cw-letter-list">
+          {
+            letters.map((group, groupIndex) => (
+              <section
+                class:list={["cw-letter-section", `cw-accent-${(groupIndex % 6) + 1}`]}
+                data-pair-group
+                data-letter-section={group.letter}
+                hidden={group.entries.length === 0}
+              >
+                <div class="cw-letter-rail">
+                  <strong>{group.letter}</strong>
+                  <span>{group.entries.length} {group.entries.length === 1 ? "pair" : "pairs"}</span>
+                </div>
+
+                <div class="cw-pair-grid">
+                  {
+                    group.entries.map((entry) => (
+                      <div class="cw-pair" data-pair data-search={entry.label.toLowerCase()}>
+                        <a class="cw-pair__main" href={entry.href}>
+                          <span>{entry.label}</span>
+                          <b>↗</b>
+                        </a>
+
+                        {
+                          entry.video && (
+                            <a
+                              class="cw-pair__video"
+                              href={entry.video}
+                              target="_blank"
+                              rel="noopener"
+                              title="Video tutorial"
+                              aria-label={`Watch a video about ${entry.label}`}
+                            >
+                              ▶
+                            </a>
+                          )
+                        }
+                      </div>
+                    ))
+                  }
+                </div>
+              </section>
+            ))
+          }
+        </div>
+
+        <div class="cw-empty" id="confusedEmpty" hidden>
+          <span>?</span>
+          <h3>No matching word pairing found.</h3>
+          <p>Try a broader search or use the A–Z picker above.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cw-teacher">
+      <div class="cw-shell cw-teacher__grid">
+        <div class="cw-teacher__art">
+          <div class="cw-genius-disc">
+            <img src="/assets/images/genius.png" alt="Grammar Monster genius character" />
+          </div>
+          <div class="cw-genius-ring"></div>
+        </div>
+
+        <div class="cw-teacher__copy">
+          <span class="cw-mini-label cw-mini-label--lime">TEACHERS' ZONE</span>
+          <h2>Teach it.<br />Test it.<br /><em>Make it stick.</em></h2>
+          <p>
+            Use Grammar Monster's existing games, confidence tests and reference pages
+            to practise easily confused words in class or at home.
+          </p>
+
+          <div class="cw-teacher-links">
+            {
+              teacherZone.map((item, index) => (
+                <a href={item.href}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <small>{item.type}</small>
+                    <strong>{item.label}</strong>
+                  </div>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cw-related">
+      <div class="cw-shell">
+        <div class="cw-section-head">
+          <div>
+            <span class="cw-mini-label">KEEP EXPLORING</span>
+            <h2>You might also like…</h2>
+          </div>
+        </div>
+
+        <div class="cw-related-grid">
+          {
+            related.map((item, index) => (
+              <a class:list={[`cw-accent-${(index % 6) + 1}`]} href={item.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="cw-author">
+          <div class="cw-author__mark">✎</div>
+          <div>
+            <small>ORIGINAL GRAMMAR MONSTER CONTENT</small>
+            <p>
+              This page was written by
+              <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm">Craig Shrives</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const search = document.getElementById("confusedSearch");
+    const groups = [...document.querySelectorAll("[data-pair-group]")];
+    const count = document.getElementById("confusedCount");
+    const empty = document.getElementById("confusedEmpty");
+
+    function filterPairs(value) {
+      const term = (value || "").trim().toLowerCase();
+      let visible = 0;
+
+      groups.forEach((group) => {
+        let groupVisible = 0;
+
+        group.querySelectorAll("[data-pair]").forEach((item) => {
+          const match = !term || (item.dataset.search || "").includes(term);
+          item.hidden = !match;
+
+          if (match) {
+            visible++;
+            groupVisible++;
+          }
+        });
+
+        group.hidden = groupVisible === 0;
+      });
+
+      if (count) count.textContent = `${visible} ${visible === 1 ? "pair" : "pairs"}`;
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    search?.addEventListener("input", () => filterPairs(search.value));
+
+    document.getElementById("clearConfused")?.addEventListener("click", () => {
+      if (search) {
+        search.value = "";
+        search.focus();
+      }
+      filterPairs("");
+    });
+
+    document.querySelectorAll("[data-letter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = document.querySelector(`[data-letter-section="${button.dataset.letter}"]`);
+
+        if (search) search.value = "";
+        filterPairs("");
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const tag = document.activeElement?.tagName;
+
+      if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") {
+        event.preventDefault();
+        search?.focus();
+      }
+
+      if (event.key === "Escape" && document.activeElement === search) {
+        search.value = "";
+        filterPairs("");
+        search.blur();
+      }
+    });
+  </script>
+</BaseLayout>
