@@ -2,147 +2,1069 @@
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/";
 
-const isGames = currentPath.startsWith("/games");
-
 const groups = [
   {
     label: "Learn",
+    eyebrow: "Core learning",
+    description: "Clear explanations across grammar, punctuation, vocabulary and spelling.",
     items: [
-      { label: "Grammar", href: "/#explore" },
-      { label: "Punctuation", href: "/#explore" },
-      { label: "Writing", href: "/#explore" },
-      { label: "Vocabulary", href: "/#explore" },
-      { label: "Spelling", href: "/#explore" }
+      {
+        label: "Grammar & Terms",
+        description: "Browse the A–Z grammar glossary.",
+        href: "/grammar-terms/",
+        mark: "Aa"
+      },
+      {
+        label: "Punctuation",
+        description: "Master the marks that shape meaning.",
+        href: "/punctuation-lessons/",
+        mark: ";?"
+      },
+      {
+        label: "Confused Words",
+        description: "Untangle commonly mixed-up words.",
+        href: "/easily-confused-words/",
+        mark: "≠"
+      },
+      {
+        label: "Spelling & Vocabulary",
+        description: "Rules, patterns, word lists and more.",
+        href: "/spelling-vocabulary/",
+        mark: "ABC"
+      }
     ]
   },
   {
     label: "Practice",
+    eyebrow: "Learn by doing",
+    description: "Games, tests and quick challenges built around the learning library.",
     items: [
-      { label: "Games & tests", href: "/games/" },
-      { label: "Wordle", href: "/games/wordle/" },
-      { label: "Quick grammar challenge", href: "/#quiz" }
+      {
+        label: "Games & Tests",
+        description: "Explore the full practice hub.",
+        href: "/games/",
+        mark: "★"
+      },
+      {
+        label: "Wordle",
+        description: "Find the secret word in six tries.",
+        href: "/games/wordle/",
+        mark: "W"
+      },
+      {
+        label: "Quick Grammar Challenge",
+        description: "Ten fast questions on the homepage.",
+        href: "/#quiz",
+        mark: "10"
+      }
     ]
   },
   {
-    label: "For you",
+    label: "For You",
+    eyebrow: "Start in the right place",
+    description: "Choose a route based on who you are and what you want to improve.",
     items: [
-      { label: "Beginners", href: "/#paths" },
-      { label: "Students", href: "/#paths" },
-      { label: "English learners", href: "/#paths" },
-      { label: "Business writers", href: "/#paths" },
-      { label: "Creative writers", href: "/#paths" }
+      {
+        label: "Find Your Learning Path",
+        description: "Choose from the curated learning routes.",
+        href: "/#paths",
+        mark: "→"
+      },
+      {
+        label: "Beginners & Kids",
+        description: "Start simple and build from there.",
+        href: "/#paths",
+        mark: "1"
+      },
+      {
+        label: "Students",
+        description: "Improve academic writing and grammar.",
+        href: "/#paths",
+        mark: "S"
+      },
+      {
+        label: "Business & Creative Writers",
+        description: "Sharpen clarity, style and precision.",
+        href: "/#paths",
+        mark: "✎"
+      }
     ]
   },
   {
     label: "Explore",
+    eyebrow: "See the whole site",
+    description: "Discover the depth of Grammar Monster without getting lost in it.",
     items: [
-      { label: "Popular lessons", href: "/#popular" },
-      { label: "Learning paths", href: "/#paths" },
-      { label: "Grammar glossary", href: "/#explore" },
-      { label: "Confused words", href: "/#explore" },
-      { label: "Word lists", href: "/#explore" }
+      {
+        label: "Knowledge Navigator",
+        description: "Search and browse the full categorized sitemap.",
+        href: "/explore/",
+        mark: "⌘"
+      },
+      {
+        label: "Main Libraries",
+        description: "Jump into the biggest content collections.",
+        href: "/#explore",
+        mark: "▦"
+      },
+      {
+        label: "Learning Paths",
+        description: "Nine curated ways into the library.",
+        href: "/#paths",
+        mark: "↗"
+      },
+      {
+        label: "Games & Tests",
+        description: "Practice across the Grammar Monster library.",
+        href: "/games/",
+        mark: "✓"
+      }
     ]
   }
 ];
+
+const routeIsActive = (href) => {
+  if (href === "/") return currentPath === "/";
+  if (href.startsWith("/#")) return currentPath === "/";
+  const clean = href.split("#")[0];
+  return clean !== "/" && currentPath.startsWith(clean);
+};
+
+const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.href));
 ---
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="/" class="site-brand" aria-label="Grammar Monster home">
-      <img src="/assets/images/grammarMonsterEye.webp" alt="Grammar Monster" />
-      <span class="site-brand__text">
+<header class="gm-header" data-gm-header>
+  <div class="gm-header__bar">
+    <a href="/" class="gm-brand" aria-label="Grammar Monster home">
+      <span class="gm-brand__mark">
+        <img src="/assets/images/grammarMonsterEye.webp" alt="" />
+      </span>
+      <span class="gm-brand__name">
         <span>Grammar</span>
         <strong>Monster</strong>
       </span>
     </a>
 
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="gm-nav" aria-label="Primary navigation">
       {
-        groups.map((group) => (
-          <div class="site-nav__group">
-            <button class="site-nav__trigger" type="button" aria-expanded="false">
-              {group.label}
-              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+        groups.map((group, groupIndex) => (
+          <div class:list={["gm-nav__group", groupIsActive(group) && "is-current"]} data-nav-group>
+            <button
+              class="gm-nav__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls={`gm-menu-${groupIndex}`}
+              data-nav-trigger
+            >
+              <span>{group.label}</span>
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M2.5 4.5 6 8l3.5-3.5"></path>
+              </svg>
             </button>
 
-            <div class="site-nav__menu">
-              <div class="site-nav__menu-label">{group.label}</div>
-              {
-                group.items.map((item) => (
-                  <a
-                    href={item.href}
-                    class:list={[
-                      "site-nav__menu-link",
-                      isGames && item.href === "/games/" ? "is-active" : ""
-                    ]}
-                  >
-                    <span>{item.label}</span>
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                ))
-              }
+            <div
+              class="gm-nav__menu"
+              id={`gm-menu-${groupIndex}`}
+              data-nav-menu
+            >
+              <div class="gm-nav__menu-intro">
+                <small>{group.eyebrow}</small>
+                <strong>{group.label}</strong>
+                <p>{group.description}</p>
+              </div>
+
+              <div class="gm-nav__menu-links">
+                {
+                  group.items.map((item) => (
+                    <a
+                      href={item.href}
+                      class:list={["gm-nav__menu-link", routeIsActive(item.href) && "is-active"]}
+                    >
+                      <span class="gm-nav__item-mark">{item.mark}</span>
+                      <span class="gm-nav__item-copy">
+                        <strong>{item.label}</strong>
+                        <small>{item.description}</small>
+                      </span>
+                      <span class="gm-nav__item-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  ))
+                }
+              </div>
             </div>
           </div>
         ))
       }
-
-      <a class="site-nav__shop" href="/#shop">Shop</a>
     </nav>
 
-    <a
-      href={isHome ? "/games/" : "/"}
-      class="site-header__cta"
-    >
-      {isHome ? "Games & tests" : "Back home"}
-    </a>
+    <div class="gm-header__actions">
+      {!isHome && (
+        <a href="/" class="gm-header__home-link">
+          Home
+        </a>
+      )}
 
-    <button
-      class="site-menu-toggle"
-      type="button"
-      aria-label="Open navigation"
-      aria-expanded="false"
-      aria-controls="siteMobileNav"
-    >
-      <span></span><span></span><span></span>
-    </button>
+      <a href="/games/" class="gm-header__cta">
+        <span>Games & Tests</span>
+        <b aria-hidden="true">→</b>
+      </a>
+
+      <button
+        class="gm-menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="gm-mobile-nav"
+        data-menu-toggle
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 
-  <div class="site-mobile-nav" id="siteMobileNav">
-    {
-      groups.map((group) => (
-        <details>
-          <summary>{group.label}<span>+</span></summary>
-          <div>
-            {group.items.map((item) => <a href={item.href}>{item.label}</a>)}
-          </div>
-        </details>
-      ))
-    }
-    <a class="site-mobile-nav__shop" href="/#shop">Shop</a>
-    <a class="site-mobile-nav__cta" href={isHome ? "/games/" : "/"}>
-      {isHome ? "Explore games & tests" : "Back home"}
+  <div class="gm-mobile-backdrop" data-mobile-backdrop></div>
+
+  <div class="gm-mobile-nav" id="gm-mobile-nav" data-mobile-nav>
+    <div class="gm-mobile-nav__top">
+      <div>
+        <small>GRAMMAR MONSTER</small>
+        <strong>Explore the site</strong>
+      </div>
+      <button type="button" aria-label="Close navigation" data-mobile-close>×</button>
+    </div>
+
+    <a href="/" class="gm-mobile-home">
+      <span>Home</span>
+      <b>↗</b>
     </a>
+
+    <div class="gm-mobile-groups">
+      {
+        groups.map((group) => (
+          <details class="gm-mobile-group" open={groupIsActive(group)}>
+            <summary>
+              <span>{group.label}</span>
+              <b>+</b>
+            </summary>
+
+            <div class="gm-mobile-group__links">
+              {
+                group.items.map((item) => (
+                  <a href={item.href}>
+                    <span class="gm-mobile-item__mark">{item.mark}</span>
+                    <span>
+                      <strong>{item.label}</strong>
+                      <small>{item.description}</small>
+                    </span>
+                    <b>↗</b>
+                  </a>
+                ))
+              }
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <div class="gm-mobile-nav__footer">
+      <a href="/explore/" class="gm-mobile-explore">
+        <small>FULL SITE</small>
+        <strong>Open the Knowledge Navigator</strong>
+        <b>→</b>
+      </a>
+
+      <a href="/games/" class="gm-mobile-cta">
+        Explore Games & Tests
+        <span>→</span>
+      </a>
+    </div>
   </div>
 </header>
 
 <script>
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector(".site-menu-toggle");
-  const mobileNav = document.getElementById("siteMobileNav");
+  const header = document.querySelector("[data-gm-header]");
+  const groups = [...document.querySelectorAll("[data-nav-group]")];
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const mobileNav = document.querySelector("[data-mobile-nav]");
+  const mobileClose = document.querySelector("[data-mobile-close]");
+  const backdrop = document.querySelector("[data-mobile-backdrop]");
 
-  if (header && toggle && mobileNav) {
-    toggle.addEventListener("click", () => {
-      const open = header.classList.toggle("menu-open");
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+  const closeDesktopMenus = (except = null) => {
+    groups.forEach((group) => {
+      if (group === except) return;
+      group.classList.remove("is-open");
+      group.querySelector("[data-nav-trigger]")?.setAttribute("aria-expanded", "false");
+    });
+  };
+
+  groups.forEach((group) => {
+    const trigger = group.querySelector("[data-nav-trigger]");
+
+    trigger?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const willOpen = !group.classList.contains("is-open");
+      closeDesktopMenus(group);
+      group.classList.toggle("is-open", willOpen);
+      trigger.setAttribute("aria-expanded", String(willOpen));
     });
 
-    mobileNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        header.classList.remove("menu-open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open navigation");
-      });
+    group.addEventListener("mouseenter", () => {
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        closeDesktopMenus(group);
+        group.classList.add("is-open");
+        trigger?.setAttribute("aria-expanded", "true");
+      }
     });
-  }
+
+    group.addEventListener("mouseleave", () => {
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        group.classList.remove("is-open");
+        trigger?.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  const setMobileOpen = (open) => {
+    if (!header || !toggle) return;
+
+    header.classList.toggle("is-mobile-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    document.documentElement.classList.toggle("gm-nav-lock", open);
+  };
+
+  toggle?.addEventListener("click", () => {
+    setMobileOpen(!header?.classList.contains("is-mobile-open"));
+  });
+
+  mobileClose?.addEventListener("click", () => setMobileOpen(false));
+  backdrop?.addEventListener("click", () => setMobileOpen(false));
+
+  mobileNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMobileOpen(false));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!header?.contains(event.target)) closeDesktopMenus();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeDesktopMenus();
+      setMobileOpen(false);
+    }
+  });
+
+  const updateScrollState = () => {
+    header?.classList.toggle("is-scrolled", window.scrollY > 12);
+  };
+
+  updateScrollState();
+  window.addEventListener("scroll", updateScrollState, { passive: true });
 </script>
+
+<style>
+  :global(html.gm-nav-lock){
+    overflow:hidden;
+  }
+
+  .gm-header{
+    --header-green:#086a4f;
+    --header-deep:#063628;
+    --header-ink:#10271e;
+    --header-lime:#a7ef62;
+    --header-line:#dfe7df;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(251,252,247,.94);
+    border-bottom:1px solid rgba(16,66,48,.06);
+    backdrop-filter:blur(18px);
+    transition:box-shadow .2s ease,background .2s ease,border-color .2s ease;
+  }
+
+  .gm-header.is-scrolled{
+    background:rgba(251,252,247,.975);
+    border-color:rgba(16,66,48,.09);
+    box-shadow:0 12px 34px rgba(11,53,39,.07);
+  }
+
+  .gm-header__bar{
+    width:min(1180px,calc(100% - 40px));
+    min-height:82px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:32px;
+  }
+
+  .gm-brand{
+    display:inline-flex;
+    align-items:center;
+    gap:11px;
+    color:var(--header-ink);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .gm-brand__mark{
+    width:47px;
+    height:47px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:
+      radial-gradient(circle at 35% 25%,#fff,#eff7eb 70%);
+    box-shadow:
+      inset 0 0 0 1px rgba(8,106,79,.06),
+      0 9px 24px rgba(15,75,53,.08);
+    transition:transform .18s ease;
+  }
+
+  .gm-brand:hover .gm-brand__mark{
+    transform:rotate(-4deg) scale(1.035);
+  }
+
+  .gm-brand__mark img{
+    width:43px;
+    height:43px;
+    object-fit:contain;
+  }
+
+  .gm-brand__name{
+    display:flex;
+    align-items:baseline;
+    gap:4px;
+    font-family:"Manrope",sans-serif;
+    font-size:16px;
+    letter-spacing:-.035em;
+  }
+
+  .gm-brand__name span{font-weight:750}
+  .gm-brand__name strong{color:var(--header-green);font-weight:850}
+
+  .gm-nav{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:3px;
+  }
+
+  .gm-nav__group{
+    position:relative;
+  }
+
+  .gm-nav__trigger{
+    position:relative;
+    min-height:40px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:0 11px;
+    border:0;
+    border-radius:999px;
+    background:transparent;
+    color:#52675e;
+    font:800 9px/1 "DM Sans",sans-serif;
+    cursor:pointer;
+    transition:background .16s ease,color .16s ease;
+  }
+
+  .gm-nav__trigger:after{
+    content:"";
+    position:absolute;
+    left:14px;
+    right:14px;
+    bottom:5px;
+    height:2px;
+    border-radius:999px;
+    background:var(--header-green);
+    opacity:0;
+    transform:scaleX(.55);
+    transition:.16s ease;
+  }
+
+  .gm-nav__group.is-current .gm-nav__trigger,
+  .gm-nav__group.is-open .gm-nav__trigger,
+  .gm-nav__trigger:hover{
+    color:var(--header-green);
+    background:#edf6e9;
+  }
+
+  .gm-nav__group.is-current .gm-nav__trigger:after{
+    opacity:1;
+    transform:scaleX(1);
+  }
+
+  .gm-nav__trigger svg{
+    width:11px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.6;
+    transition:transform .18s ease;
+  }
+
+  .gm-nav__group.is-open .gm-nav__trigger svg{
+    transform:rotate(180deg);
+  }
+
+  .gm-nav__menu{
+    position:absolute;
+    top:calc(100% + 12px);
+    left:50%;
+    width:590px;
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:8px;
+    padding:8px;
+    border:1px solid rgba(14,77,53,.10);
+    border-radius:20px;
+    background:rgba(255,255,255,.985);
+    box-shadow:0 26px 70px rgba(8,50,35,.16);
+    opacity:0;
+    visibility:hidden;
+    transform:translate(-50%,-6px);
+    pointer-events:none;
+    transition:opacity .16s ease,transform .16s ease,visibility .16s ease;
+  }
+
+  .gm-nav__group.is-open .gm-nav__menu{
+    opacity:1;
+    visibility:visible;
+    transform:translate(-50%,0);
+    pointer-events:auto;
+  }
+
+  .gm-nav__menu:before{
+    content:"";
+    position:absolute;
+    top:-7px;
+    left:50%;
+    width:13px;
+    height:13px;
+    transform:translateX(-50%) rotate(45deg);
+    background:#fff;
+    border-left:1px solid rgba(14,77,53,.10);
+    border-top:1px solid rgba(14,77,53,.10);
+  }
+
+  .gm-nav__menu-intro{
+    position:relative;
+    overflow:hidden;
+    min-height:100%;
+    padding:18px;
+    border-radius:14px;
+    color:#fff;
+    background:
+      radial-gradient(circle at 85% 12%,rgba(167,239,98,.17),transparent 32%),
+      linear-gradient(145deg,#062a20,#0d4937);
+  }
+
+  .gm-nav__menu-intro:after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    right:-63px;
+    bottom:-67px;
+    border:1px solid rgba(167,239,98,.11);
+    border-radius:50%;
+    box-shadow:0 0 0 24px rgba(167,239,98,.022);
+  }
+
+  .gm-nav__menu-intro small{
+    display:block;
+    color:var(--header-lime);
+    font-size:6.5px;
+    font-weight:850;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+  }
+
+  .gm-nav__menu-intro strong{
+    display:block;
+    margin-top:7px;
+    font-family:"Manrope",sans-serif;
+    font-size:22px;
+    letter-spacing:-.045em;
+  }
+
+  .gm-nav__menu-intro p{
+    margin:10px 0 0;
+    color:#b6cac0;
+    font-size:8.5px;
+    line-height:1.55;
+  }
+
+  .gm-nav__menu-links{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+  }
+
+  .gm-nav__menu-link{
+    min-height:82px;
+    display:grid;
+    grid-template-columns:38px 1fr auto;
+    gap:10px;
+    align-items:center;
+    padding:10px;
+    border:1px solid transparent;
+    border-radius:12px;
+    color:var(--header-ink);
+    text-decoration:none;
+    transition:background .15s ease,border-color .15s ease,transform .15s ease;
+  }
+
+  .gm-nav__menu-link:hover,
+  .gm-nav__menu-link.is-active{
+    transform:translateY(-1px);
+    border-color:#dce7dd;
+    background:#f5f9f3;
+  }
+
+  .gm-nav__item-mark{
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border-radius:11px;
+    background:#eaf5e7;
+    color:var(--header-green);
+    font:850 9px/1 "Manrope",sans-serif;
+  }
+
+  .gm-nav__item-copy strong{
+    display:block;
+    font-size:9.5px;
+  }
+
+  .gm-nav__item-copy small{
+    display:block;
+    margin-top:3px;
+    color:#83938b;
+    font-size:7px;
+    line-height:1.35;
+  }
+
+  .gm-nav__item-arrow{
+    color:#8ea098;
+    font-size:9px;
+  }
+
+  .gm-header__actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .gm-header__home-link{
+    color:#62766c;
+    text-decoration:none;
+    font-size:8.5px;
+    font-weight:800;
+  }
+
+  .gm-header__home-link:hover{color:var(--header-green)}
+
+  .gm-header__cta{
+    min-height:40px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:0 15px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#063d2e,#075440);
+    color:#fff;
+    text-decoration:none;
+    font-size:8.5px;
+    font-weight:850;
+    box-shadow:0 10px 25px rgba(5,67,46,.15);
+    transition:transform .17s ease,box-shadow .17s ease;
+  }
+
+  .gm-header__cta:hover{
+    transform:translateY(-1px);
+    box-shadow:0 14px 30px rgba(5,67,46,.20);
+  }
+
+  .gm-header__cta b{
+    color:var(--header-lime);
+    font-size:11px;
+  }
+
+  .gm-menu-toggle{
+    display:none;
+    width:42px;
+    height:42px;
+    place-items:center;
+    align-content:center;
+    gap:4px;
+    padding:0;
+    border:1px solid #dce5dd;
+    border-radius:12px;
+    background:#fff;
+    cursor:pointer;
+  }
+
+  .gm-menu-toggle span{
+    width:17px;
+    height:1.5px;
+    border-radius:999px;
+    background:#365246;
+    transition:.18s ease;
+  }
+
+  .gm-mobile-backdrop,
+  .gm-mobile-nav{
+    display:none;
+  }
+
+  @media(max-width:1080px){
+    .gm-header__bar{
+      gap:20px;
+    }
+
+    .gm-brand__name{
+      display:none;
+    }
+
+    .gm-nav__trigger{
+      padding-inline:9px;
+    }
+
+    .gm-nav__menu{
+      width:560px;
+    }
+  }
+
+  @media(max-width:900px){
+    .gm-header__bar{
+      width:min(100% - 28px,1180px);
+      min-height:72px;
+      grid-template-columns:auto 1fr auto;
+    }
+
+    .gm-brand__name{
+      display:flex;
+    }
+
+    .gm-nav,
+    .gm-header__home-link{
+      display:none;
+    }
+
+    .gm-header__actions{
+      grid-column:3;
+    }
+
+    .gm-header__cta{
+      display:none;
+    }
+
+    .gm-menu-toggle{
+      display:grid;
+    }
+
+    .gm-header.is-mobile-open .gm-menu-toggle span:nth-child(1){
+      transform:translateY(5.5px) rotate(45deg);
+    }
+
+    .gm-header.is-mobile-open .gm-menu-toggle span:nth-child(2){
+      opacity:0;
+    }
+
+    .gm-header.is-mobile-open .gm-menu-toggle span:nth-child(3){
+      transform:translateY(-5.5px) rotate(-45deg);
+    }
+
+    .gm-mobile-backdrop{
+      display:block;
+      position:fixed;
+      inset:0;
+      z-index:999;
+      background:rgba(3,26,19,.42);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:.2s ease;
+      backdrop-filter:blur(4px);
+    }
+
+    .gm-mobile-nav{
+      display:flex;
+      position:fixed;
+      top:0;
+      right:0;
+      z-index:1001;
+      width:min(430px,92vw);
+      height:100dvh;
+      flex-direction:column;
+      overflow:auto;
+      padding:20px;
+      background:#fbfcf8;
+      box-shadow:-25px 0 65px rgba(4,38,27,.19);
+      transform:translateX(102%);
+      transition:transform .24s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .gm-header.is-mobile-open .gm-mobile-backdrop{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .gm-header.is-mobile-open .gm-mobile-nav{
+      transform:translateX(0);
+    }
+
+    .gm-mobile-nav__top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:3px 2px 17px;
+      border-bottom:1px solid #e1e8e1;
+    }
+
+    .gm-mobile-nav__top small{
+      display:block;
+      color:var(--header-green);
+      font-size:7px;
+      font-weight:850;
+      letter-spacing:.12em;
+    }
+
+    .gm-mobile-nav__top strong{
+      display:block;
+      margin-top:3px;
+      font-family:"Manrope",sans-serif;
+      font-size:20px;
+      letter-spacing:-.04em;
+    }
+
+    .gm-mobile-nav__top button{
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border:1px solid #dce5dd;
+      border-radius:11px;
+      background:#fff;
+      color:#53695e;
+      font-size:22px;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    .gm-mobile-home{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:11px;
+      padding:13px 14px;
+      border-radius:12px;
+      background:#edf6e9;
+      color:var(--header-green);
+      text-decoration:none;
+      font-size:10px;
+      font-weight:850;
+    }
+
+    .gm-mobile-groups{
+      display:grid;
+      gap:6px;
+      margin-top:10px;
+    }
+
+    .gm-mobile-group{
+      overflow:hidden;
+      border:1px solid #e0e8e1;
+      border-radius:13px;
+      background:#fff;
+    }
+
+    .gm-mobile-group summary{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:52px;
+      padding:0 14px;
+      color:#344f43;
+      font-size:10px;
+      font-weight:850;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .gm-mobile-group summary::-webkit-details-marker{display:none}
+
+    .gm-mobile-group summary b{
+      color:var(--header-green);
+      font-size:15px;
+      transition:.17s ease;
+    }
+
+    .gm-mobile-group[open] summary{
+      color:var(--header-green);
+      background:#f6faf4;
+    }
+
+    .gm-mobile-group[open] summary b{
+      transform:rotate(45deg);
+    }
+
+    .gm-mobile-group__links{
+      display:grid;
+      gap:5px;
+      padding:5px 7px 8px;
+      border-top:1px solid #eef2ee;
+    }
+
+    .gm-mobile-group__links a{
+      display:grid;
+      grid-template-columns:38px 1fr auto;
+      gap:10px;
+      align-items:center;
+      min-height:61px;
+      padding:8px;
+      border-radius:10px;
+      color:var(--header-ink);
+      text-decoration:none;
+    }
+
+    .gm-mobile-group__links a:hover{
+      background:#f3f8f1;
+    }
+
+    .gm-mobile-item__mark{
+      width:36px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:#eaf5e7;
+      color:var(--header-green);
+      font:850 9px/1 "Manrope",sans-serif;
+    }
+
+    .gm-mobile-group__links strong{
+      display:block;
+      font-size:9.5px;
+    }
+
+    .gm-mobile-group__links small{
+      display:block;
+      margin-top:3px;
+      color:#83938b;
+      font-size:7px;
+      line-height:1.35;
+    }
+
+    .gm-mobile-group__links>a>b{
+      color:#8fa198;
+      font-size:9px;
+    }
+
+    .gm-mobile-nav__footer{
+      margin-top:auto;
+      padding-top:14px;
+    }
+
+    .gm-mobile-explore{
+      display:grid;
+      grid-template-columns:1fr auto;
+      padding:14px;
+      border:1px solid #cfe0cf;
+      border-radius:14px;
+      background:linear-gradient(135deg,#eaf6e7,#f8fbf5);
+      color:var(--header-ink);
+      text-decoration:none;
+    }
+
+    .gm-mobile-explore small{
+      grid-column:1;
+      color:var(--header-green);
+      font-size:6.5px;
+      font-weight:850;
+      letter-spacing:.11em;
+    }
+
+    .gm-mobile-explore strong{
+      grid-column:1;
+      margin-top:3px;
+      font-size:10px;
+    }
+
+    .gm-mobile-explore b{
+      grid-column:2;
+      grid-row:1 / 3;
+      align-self:center;
+      color:var(--header-green);
+    }
+
+    .gm-mobile-cta{
+      min-height:47px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:8px;
+      padding:0 15px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#063d2e,#075440);
+      color:#fff;
+      text-decoration:none;
+      font-size:9px;
+      font-weight:850;
+    }
+
+    .gm-mobile-cta span{color:var(--header-lime)}
+  }
+
+  @media(max-width:480px){
+    .gm-header__bar{
+      min-height:68px;
+    }
+
+    .gm-brand__mark{
+      width:43px;
+      height:43px;
+    }
+
+    .gm-brand__mark img{
+      width:40px;
+      height:40px;
+    }
+
+    .gm-brand__name{
+      font-size:14px;
+    }
+
+    .gm-mobile-nav{
+      width:94vw;
+      padding:15px;
+    }
+  }
+
+  @media(max-width:380px){
+    .gm-brand__name{
+      display:none;
+    }
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .gm-header,
+    .gm-brand__mark,
+    .gm-nav__trigger,
+    .gm-nav__trigger svg,
+    .gm-nav__menu,
+    .gm-nav__menu-link,
+    .gm-header__cta,
+    .gm-menu-toggle span,
+    .gm-mobile-backdrop,
+    .gm-mobile-nav{
+      transition:none!important;
+    }
+  }
+</style>
