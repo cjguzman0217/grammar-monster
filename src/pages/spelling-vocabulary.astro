@@ -1,0 +1,319 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/spelling-vocabulary.css";
+
+const spellingLessons = [{"label": "Top 10 spelling rules", "href": "https://www.grammar-monster.com/lessons/spelling-rules-in-English.htm", "image": "heading-spellingRules.webp", "tag": "Rules"}, {"label": "Improve spelling", "href": "https://www.grammar-monster.com/lessons/how-to-improve-your-spelling-in-English.htm", "image": "heading-imroveSpelling.webp", "tag": "Technique"}, {"label": "Common misspellings", "href": "https://www.grammar-monster.com/lessons/most-misspelled-words.htm", "image": "heading-misspellings.webp", "tag": "Common errors"}, {"label": "The schwa", "href": "https://www.grammar-monster.com/glossary/schwa.htm", "image": "heading-theSchwa.webp", "tag": "Sounds"}, {"label": "Diphthongs", "href": "https://www.grammar-monster.com/glossary/diphthong.htm", "image": "heading-diphthongs.webp", "tag": "Sounds"}, {"label": "Vowels", "href": "https://www.grammar-monster.com/glossary/vowels.htm", "image": "heading-vowels.webp", "tag": "Sounds"}, {"label": "Consonants", "href": "https://www.grammar-monster.com/glossary/consonant.htm", "image": "headings-consonants.webp", "tag": "Sounds"}, {"label": "Syllables", "href": "https://www.grammar-monster.com/glossary/syllable.htm", "image": "heading-syllables.webp", "tag": "Sounds"}];
+const memoryTools = [{"label": "Mnemonic devices", "href": "https://www.grammar-monster.com/glossary/mnemonic_devices.htm", "mark": "M", "copy": "Remember tricky spellings and ideas with deliberate memory cues."}, {"label": "Look-Cover-Write-Check", "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm", "mark": "LCWC", "copy": "A simple, repeatable method for teaching or mastering spelling."}];
+const vocabularyLessons = [{"label": "83 vocabulary topics", "href": "https://www.grammar-monster.com/ESL-vocabulary-lists.html", "mark": "83", "copy": "Learn words in categories so they are remembered in context."}, {"label": "1,000 useful words", "href": "https://www.grammar-monster.com/vocabulary/1000-useful-words-for-English-learners.htm", "mark": "1K", "copy": "A drag-and-drop collection of useful English words."}, {"label": "Counting in English", "href": "https://www.grammar-monster.com/tests/counting-in-English.htm", "mark": "123", "copy": "Practise numbers and counting vocabulary."}, {"label": "Telling the time", "href": "https://www.grammar-monster.com/tests/telling-the-time-in-English.htm", "mark": "12:", "copy": "Learn the language used to tell the time."}, {"label": "Role-play scenarios", "href": "https://www.grammar-monster.com/role-play-scenarios.htm", "mark": "↔", "copy": "Use vocabulary in practical speaking situations."}];
+const partsOfSpeech = [{"label": "Top 50 nouns", "href": "https://www.grammar-monster.com/lists/top-50-nouns-in-English.htm", "mark": "50"}, {"label": "Top 50 adjectives", "href": "https://www.grammar-monster.com/lists/top-50-adjectives-in-English.htm", "mark": "50"}, {"label": "Top 3 conjunctions", "href": "https://www.grammar-monster.com/lists/top-3-conjunctions-in-English.htm", "mark": "3"}, {"label": "Top 10 interjections", "href": "https://www.grammar-monster.com/lists/top-10-interjections-in-English.htm", "mark": "10"}, {"label": "Top 30 adverbs", "href": "https://www.grammar-monster.com/lists/top-30-adverbs-in-English.htm", "mark": "30"}, {"label": "Top 10 prepositions", "href": "https://www.grammar-monster.com/lists/top-10-prepositions-in-English.htm", "mark": "10"}, {"label": "Most common verbs", "href": "https://www.grammar-monster.com/most-common-verbs-in-English.htm", "mark": "V"}, {"label": "Top 10 irregular verbs", "href": "https://www.grammar-monster.com/lists/top-10-irregular-verbs-in-English.htm", "mark": "10"}, {"label": "Top 10 regular verbs", "href": "https://www.grammar-monster.com/lists/top-10-regular-verbs-in-English.htm", "mark": "10"}];
+const games = [{"label": "WordUp!", "href": "https://www.grammar-monster.com/learning_games/wordup.htm", "copy": "Build a ladder of words.", "mark": "↑"}, {"label": "Word Builder", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm", "copy": "Create lots of words.", "mark": "+"}, {"label": "Hangman", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm", "copy": "Find the secret word.", "mark": "?"}, {"label": "Countdown", "href": "https://www.grammar-monster.com/learning_games/countdown.htm", "copy": "Find the longest word.", "mark": "10"}, {"label": "Wordle", "href": "/games/wordle/", "copy": "Find today's secret word.", "mark": "W"}];
+const videos = [{"title": "Flowers", "desc": "Learn the different flowers in English", "thumb": "https://i.ytimg.com/vi/I28MDrOMxNM/hqdefault.jpg", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-flowers.htm"}, {"title": "Fruit", "desc": "Learn the different fruits in English", "thumb": "https://i.ytimg.com/vi/BK9vaLQ1Lgo/hqdefault.jpg", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-food-fruits.htm"}, {"title": "Furniture", "desc": "Learn the different types of furniture in English", "thumb": "https://i.ytimg.com/vi/SiVe_3dWZ48/hqdefault.jpg", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-furniture.htm"}, {"title": "Places in Town", "desc": "Learn the different places in town in English", "thumb": "https://i.ytimg.com/vi/oXh6HJRl-Wc/hqdefault.jpg", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-places-in-town.htm"}, {"title": "Shapes", "desc": "Learn the different shapes in English", "thumb": "https://i.ytimg.com/vi/x-e6XDQu2Ds/hqdefault.jpg", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-shapes.htm"}, {"title": "Vegetables", "desc": "Learn the different vegetables in English", "thumb": "https://i.ytimg.com/vi/39TX3uXhkw4/hqdefault.jpg", "href": "https://www.grammar-monster.com/vocabulary/ESL-vocabulary-food-vegetables.htm"}, {"title": "Top 100 English Verbs", "desc": "Action verbs, stative verbs, regular and irregular verbs, and auxiliary verbs.", "thumb": "https://i.ytimg.com/vi/S5cuSsK8_EE/hqdefault.jpg", "href": "https://www.grammar-monster.com/most-common-verbs-in-English.htm"}, {"title": "Verb 'To Be'", "desc": "A detailed lesson on the verb “to be” for advanced students or teachers.", "thumb": "https://i.ytimg.com/vi/HtNMl0oqhj4/hqdefault.jpg", "href": "https://www.grammar-monster.com/irregular_verbs/verb-to-be-in-English.html"}];
+const teacher = [{"type": "Play", "label": "Word Builder", "href": "https://www.grammar-monster.com/learning_games/wordBuilder.htm"}, {"type": "Play", "label": "WordUp", "href": "https://www.grammar-monster.com/learning_games/wordup.htm"}, {"type": "Play", "label": "Wordle", "href": "/games/wordle/"}, {"type": "Play", "label": "Hangman", "href": "https://www.grammar-monster.com/learning_games/hangMan.htm"}, {"type": "Play", "label": "Countdown", "href": "https://www.grammar-monster.com/learning_games/countdown.htm"}, {"type": "Learn", "label": "Look-cover-write-check", "href": "https://www.grammar-monster.com/tests/look-cover-write-check.htm"}, {"type": "List", "label": "Vocabulary topics", "href": "https://www.grammar-monster.com/ESL-vocabulary-lists.html"}, {"type": "Read", "label": "Mnemonic devices", "href": "https://www.grammar-monster.com/glossary/mnemonic_devices.htm"}];
+---
+
+<BaseLayout
+  title="Spelling and Vocabulary Lessons | Grammar Monster"
+  description="Here is a list of our spelling and vocabulary lessons."
+>
+  <div class="sv-page">
+    <section class="sv-hero">
+      <div class="sv-shell sv-hero__grid">
+        <div class="sv-hero__copy">
+          <div class="sv-kicker"><span></span> SPELLING & VOCABULARY</div>
+          <h1>English is complicated.<br /><em>Learning it doesn’t have to be.</em></h1>
+          <p>
+            A list of our most popular spelling and vocabulary lessons — from spelling rules and
+            syllables to vocabulary topics, word games, and practical ways to remember what you learn.
+          </p>
+
+          <div class="sv-actions">
+            <a href="#spelling">Explore spelling lessons</a>
+            <a class="sv-actions__ghost" href="#vocabulary">Explore vocabulary</a>
+          </div>
+
+          <div class="sv-hero__stats">
+            <div><strong>8</strong><span>core spelling lessons</span></div>
+            <i></i>
+            <div><strong>83</strong><span>vocabulary topics</span></div>
+            <i></i>
+            <div><strong>140</strong><span>grammar videos</span></div>
+          </div>
+        </div>
+
+        <div class="sv-hero__visual">
+          <div class="sv-orbit sv-orbit--one"></div>
+          <div class="sv-orbit sv-orbit--two"></div>
+          <div class="sv-main-art">
+            <img src="/assets/images/spelling-and-vocabulary-lessons.png" alt="Spelling and Vocabulary Lessons" />
+          </div>
+
+          <div class="sv-float sv-float--one"><span>vowels</span><b>A E I O U</b></div>
+          <div class="sv-float sv-float--two"><span>schwa</span><b>ə</b></div>
+          <div class="sv-float sv-float--three"><span>words</span><b>∞</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-why">
+      <div class="sv-shell sv-why__grid">
+        <div>
+          <span class="sv-mini-label">WHY IS ENGLISH SPELLING SO HARD?</span>
+          <h2>English borrowed widely.<br />Its spelling kept the receipts.</h2>
+        </div>
+        <div class="sv-why__copy">
+          <p>
+            Spelling in English is challenging! This is due to a combination of historical factors
+            and linguistic influences. More specifically, English "borrowed" many of its words from
+            a number of languages, including <a href="https://www.grammar-monster.com/Latin_terms_in_English.html">Latin</a>,
+            French, and German, which resulted in highly inconsistent spelling patterns.
+          </p>
+          <p>
+            Additionally, English underwent significant changes in pronunciation over time, while
+            its spelling rules remained relatively unchanged. As a consequence, many English words
+            are spelled differently from how they are pronounced, making it difficult for both native
+            speakers and learners.
+          </p>
+          <strong>
+            Don't worry though. There are rules and patterns that cover the majority of words.
+            Once you have learned those, it is just a case of learning the exceptions.
+          </strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-section sv-spelling" id="spelling">
+      <div class="sv-shell">
+        <div class="sv-section-head">
+          <div>
+            <span class="sv-mini-label">SPELLING LESSONS</span>
+            <h2>Rules, sounds and patterns<br /><em>that make spelling click.</em></h2>
+          </div>
+          <p>
+            These lessons were written for teachers, but they are also suitable for advanced
+            self-help students.
+          </p>
+        </div>
+
+        <div class="sv-lesson-grid">
+          {
+            spellingLessons.map((lesson, index) => (
+              <a class:list={["sv-lesson-card", `sv-accent-${(index % 6) + 1}`]} href={lesson.href}>
+                <div class="sv-lesson-card__art">
+                  <img src={`/assets/images/${lesson.image}`} alt="" loading="lazy" />
+                </div>
+                <div class="sv-lesson-card__copy">
+                  <small>{lesson.tag}</small>
+                  <h3>{lesson.label}</h3>
+                  <span>Open lesson <b>↗</b></span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="sv-memory">
+          <div class="sv-memory__intro">
+            <span class="sv-mini-label">REMEMBER IT</span>
+            <h3>Two simple ways to make spelling stick.</h3>
+            <p>
+              If you struggle to remember words or spellings, here are some techniques to help.
+              The "mnemonic devices" lesson shows you some ways to remember things, and the
+              "look-cover-write-check" method is a great way to teach or master spelling.
+            </p>
+          </div>
+
+          <div class="sv-memory__cards">
+            {
+              memoryTools.map((item, index) => (
+                <a class:list={[`sv-accent-${index + 2}`]} href={item.href}>
+                  <div class="sv-memory__mark">{item.mark}</div>
+                  <div>
+                    <h4>{item.label}</h4>
+                    <p>{item.copy}</p>
+                  </div>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-vocab" id="vocabulary">
+      <div class="sv-shell">
+        <div class="sv-vocab__grid">
+          <div class="sv-vocab__intro">
+            <span class="sv-mini-label sv-mini-label--lime">VOCABULARY LESSONS</span>
+            <h2>Learn words<br /><em>in context.</em></h2>
+            <p>
+              Using categories to learn words is an efficient approach to boosting vocabulary as it
+              gives structure to the learning process and means words are learned in context.
+            </p>
+
+            <div class="sv-vocab__visual">
+              <img src="/assets/images/spelling-and-vocabulary-lessons.png" alt="" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="sv-vocab__cards">
+            {
+              vocabularyLessons.map((item, index) => (
+                <a class:list={[`sv-accent-${(index % 6) + 1}`]} href={item.href}>
+                  <div class="sv-vocab__mark">{item.mark}</div>
+                  <div>
+                    <small>VOCABULARY</small>
+                    <h3>{item.label}</h3>
+                    <p>{item.copy}</p>
+                  </div>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-section sv-pos">
+      <div class="sv-shell">
+        <div class="sv-section-head">
+          <div>
+            <span class="sv-mini-label">PART OF SPEECH LESSONS</span>
+            <h2>Useful word lists,<br /><em>ready to explore.</em></h2>
+          </div>
+          <p>Quick-reference lists covering the most common nouns, adjectives, verbs, adverbs and more.</p>
+        </div>
+
+        <div class="sv-pos-grid">
+          {
+            partsOfSpeech.map((item, index) => (
+              <a class:list={[`sv-accent-${(index % 6) + 1}`]} href={item.href}>
+                <div class="sv-pos__medal">{item.mark}</div>
+                <strong>{item.label}</strong>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-games">
+      <div class="sv-shell">
+        <div class="sv-games__head">
+          <div>
+            <span class="sv-mini-label sv-mini-label--lime">VOCABULARY TESTS & GAMES</span>
+            <h2>Build the skill.<br /><em>Then play with it.</em></h2>
+          </div>
+          <a href="/games/">Browse Games & Tests →</a>
+        </div>
+
+        <div class="sv-games-grid">
+          {
+            games.map((game, index) => (
+              <a class:list={[`sv-accent-${(index % 6) + 1}`]} href={game.href}>
+                <div class="sv-game-mark">{game.mark}</div>
+                <div>
+                  <small>PLAY</small>
+                  <h3>{game.label}</h3>
+                  <p>{game.copy}</p>
+                </div>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-section sv-video-section">
+      <div class="sv-shell">
+        <div class="sv-section-head">
+          <div>
+            <span class="sv-mini-label">VOCABULARY FOR BEGINNERS</span>
+            <h2>Prefer to learn<br /><em>visually?</em></h2>
+          </div>
+          <p>Here are some videos related to vocabulary.</p>
+        </div>
+
+        <div class="sv-video-grid">
+          {
+            videos.map((video) => (
+              <a href={video.href}>
+                <div class="sv-video-thumb">
+                  <img src={video.thumb} alt="" loading="lazy" />
+                  <span>▶</span>
+                </div>
+                <div class="sv-video-copy">
+                  <h3>{video.title}</h3>
+                  <p>{video.desc}</p>
+                  <small>Open lesson ↗</small>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+        <a class="sv-video-library" href="https://www.grammar-monster.com/grammar-videos.htm">
+          <div class="sv-video-library__mark">▶</div>
+          <div>
+            <span class="sv-mini-label">LIBRARY OF GRAMMAR VIDEOS</span>
+            <h3>140 grammar videos</h3>
+            <p>Are you a visual learner? Explore all of our grammar-related videos.</p>
+          </div>
+          <b>↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section class="sv-teacher">
+      <div class="sv-shell sv-teacher__grid">
+        <div class="sv-teacher__copy">
+          <span class="sv-mini-label sv-mini-label--lime">TEACHERS' ZONE</span>
+          <h2>Teach it.<br />Practise it.<br /><em>Make it memorable.</em></h2>
+          <p>
+            Games, lists and techniques from the existing Grammar Monster library,
+            collected here for teaching or independent practice.
+          </p>
+        </div>
+
+        <div class="sv-teacher__links">
+          {
+            teacher.map((item, index) => (
+              <a href={item.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <small>{item.type}</small>
+                  <strong>{item.label}</strong>
+                </div>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-bottom">
+      <div class="sv-shell">
+        <div class="sv-related">
+          <a href="https://www.grammar-monster.com/tests/drag_and_drop_test_types_of_syllables.htm">
+            <span>01</span><strong>Drag-and-drop test on the types of syllable</strong><b>↗</b>
+          </a>
+          <a href="https://www.grammar-monster.com/favourite-words-the-top-tens.htm">
+            <span>02</span><strong>Favo(u)rite word lists</strong><b>↗</b>
+          </a>
+        </div>
+
+        <div class="sv-author">
+          <span>✎</span>
+          <p>
+            This page was written by
+            <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm">Craig Shrives</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
