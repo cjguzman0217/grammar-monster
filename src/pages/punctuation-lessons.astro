@@ -2,102 +2,425 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/punctuation-hub.css";
 
-const categories = [
-  ["’","Apostrophes","Possession, contractions, plurals and awkward edge cases."],
-  ["( )","Brackets & Parentheses","Add extra information clearly without disrupting the sentence."],
-  [",","Commas","Lists, clauses, direct address, quotations and the Oxford comma."],
-  [":","Colons","Introduce lists, explanations, quotations and supporting detail."],
-  ["-","Hyphens","Prefixes, compound words, ages and number ranges."],
-  ["—","Dashes","Dates, parenthetical breaks and deliberate emphasis."],
-  [";","Semicolons","Join related clauses and make complex lists easier to read."],
-  ["“ ”","Quotation Marks","Dialogue, quotations, titles and punctuation placement."],
-  ["…","Ellipsis","Show omission, hesitation or an unfinished thought."],
-  ["!","Exclamation Marks","Express strong feeling, emphasis and force."],
-  ["?","Question Marks","Direct questions, uncertainty and enquiry."],
-  [".","Periods / Full Stops","End statements cleanly and keep ideas under control."]
-];
+const description = "Punctuation adds clarity and precision to writing. Here are our punctuation lessons that explain how to use apostrophes, brackets, colons, dashes, hyphens, semicolons, and quotation marks.";
+const mainLessons = [{"label": "Apostrophes", "href": "https://www.grammar-monster.com/punctuation/using_apostrophes.htm", "image": "punctuation_apostrophe.webp", "mark": "’", "search": "apostrophes"}, {"label": "Brackets", "href": "https://www.grammar-monster.com/punctuation/using_brackets_parentheses.htm", "image": "punctuation_brackets.webp", "mark": "( )", "search": "brackets"}, {"label": "Commas", "href": "https://www.grammar-monster.com/punctuation/using_commas.htm", "image": "punctuation_comma.webp", "mark": ",", "search": "commas"}, {"label": "Colons", "href": "https://www.grammar-monster.com/punctuation/using_colons.htm", "image": "punctuation_colon.png", "mark": ":", "search": "colons"}, {"label": "Hyphens", "href": "https://www.grammar-monster.com/punctuation/using_hyphens.htm", "image": "punctuation_hyphen.webp", "mark": "-", "search": "hyphens"}, {"label": "Dashes", "href": "https://www.grammar-monster.com/punctuation/using_dashes.htm", "image": "punctuation_dash.webp", "mark": "—", "search": "dashes"}, {"label": "Semicolons", "href": "https://www.grammar-monster.com/punctuation/using_semicolons.htm", "image": "punctuation_semicolon.webp", "mark": ";", "search": "semicolons"}, {"label": "Quotation Marks", "href": "https://www.grammar-monster.com/punctuation/using_quotation_marks.htm", "image": "punctuation_quotation_mark.webp", "mark": "“ ”", "search": "quotation marks"}, {"label": "Ellipsis", "href": "https://www.grammar-monster.com/glossary/ellipsis.htm", "image": "punctuation_ellipsis.webp", "mark": "…", "search": "ellipsis"}, {"label": "Exclamation Marks", "href": "https://www.grammar-monster.com/glossary/exclamation_mark.htm", "image": "punctuation_exclamation_mark.webp", "mark": "!", "search": "exclamation marks"}, {"label": "Question Marks", "href": "https://www.grammar-monster.com/glossary/question_mark.htm", "image": "punctuation_question_mark.webp", "mark": "?", "search": "question marks"}, {"label": "Periods / Full Stops", "href": "https://www.grammar-monster.com/glossary/period_full_stop.htm", "image": "punctuation_fullstop_period.webp", "mark": ".", "search": "periods full stops"}];
+const details = [{"title": "All Apostrophe Lessons", "image": "punctuation_apostrophe.webp", "intro": "Here are more lessons about apostrophes with a focus on:", "links": [{"label": "apostrophes for possession", "href": "https://www.grammar-monster.com/lessons/apostrophes_show_possession.htm"}, {"label": "apostrophe-placement rules", "href": "https://www.grammar-monster.com/punctuation/apostrophe_placement_rules.htm"}, {"label": "apostrophe after s", "href": "https://www.grammar-monster.com/punctuation/apostrophe_after_s.html"}, {"label": "apostrophe after z", "href": "https://www.grammar-monster.com/punctuation/apostrophe_after_z.html"}, {"label": "apostrophe before s", "href": "https://www.grammar-monster.com/punctuation/apostrophe_before_s.html"}, {"label": "apostrophes for awkward plurals", "href": "https://www.grammar-monster.com/lessons/apostrophes_show_plural_of_abbreviations.htm"}, {"label": "apostrophes after abbreviations", "href": "https://www.grammar-monster.com/punctuation/apostrophe_after_acronym.html"}, {"label": "apostrophes in contractions", "href": "https://www.grammar-monster.com/lessons/apostrophes_replace_letters.htm"}, {"label": "apostrophes in time expressions", "href": "https://www.grammar-monster.com/lessons/apostrophes_in_time_(temporal)_expressions.htm"}, {"label": "apostrophes and plurals", "href": "https://www.grammar-monster.com/lessons/apostrophe_error_with_plurals.htm"}, {"label": "apostrophe exercises", "href": "https://www.grammar-monster.com/punctuation/apostrophe_exercises.html"}, {"label": "apostrophes in names", "href": "https://www.grammar-monster.com/punctuation/apostrophe_in_names.html"}, {"label": "apostrophe misuse", "href": "https://www.grammar-monster.com/punctuation/apostrophe_misuse.html"}, {"label": "apostrophes in contractions", "href": "https://www.grammar-monster.com/punctuation/apostrophes_for_contractions.html"}, {"label": "overview of apostrophes", "href": "https://www.grammar-monster.com/punctuation/using_apostrophes.htm"}, {"label": "help with apostrophes", "href": "https://www.grammar-monster.com/punctuation/apostrophe_help.html"}, {"label": "apostrophes for ownership", "href": "https://www.grammar-monster.com/punctuation/apostrophe_ownership.htm"}]}, {"title": "All Brackets and Parentheses Lessons", "image": "punctuation_brackets.webp", "intro": "Here are more lessons about brackets with a focus on:", "links": [{"label": "square brackets", "href": "https://www.grammar-monster.com/lessons/brackets_square_brackets.htm"}, {"label": "round brackets", "href": "https://www.grammar-monster.com/lessons/brackets_round_brackets.htm"}, {"label": "punctuation placement with brackets", "href": "https://www.grammar-monster.com/punctuation/brackets_and_full_stop_placement.html"}, {"label": "choice of parenthetical punctuation", "href": "https://www.grammar-monster.com/lessons/parenthesis_choice_of_parentheses.htm"}]}, {"title": "All Commas Lessons", "image": "punctuation_comma.webp", "intro": "Here are more lessons about commas with a focus on:", "links": [{"label": "commas with \"Dear,\" \"Hello,\" and \"Hi\"", "href": "https://www.grammar-monster.com/lessons/comma_with_dear_hello_and_hi.htm"}, {"label": "commas after a dependent clause", "href": "https://www.grammar-monster.com/lessons/commas_after_a_sentence_introduction.htm"}, {"label": "commas after words like \"however\"", "href": "https://www.grammar-monster.com/lessons/commas_after_a_transitional_phrase.htm"}, {"label": "commas after interjections", "href": "https://www.grammar-monster.com/lessons/commas_after_interjections.htm"}, {"label": "commas before words like \"and\"", "href": "https://www.grammar-monster.com/lessons/commas_before_conjunctions.htm"}, {"label": "commas for parenthesis", "href": "https://www.grammar-monster.com/lessons/commas_for_parenthesis.htm"}, {"label": "commas in lists", "href": "https://www.grammar-monster.com/lessons/commas_in_lists.htm"}, {"label": "the comma run-on error", "href": "https://www.grammar-monster.com/lessons/commas_run-on_error.htm"}, {"label": "The Oxford Comma", "href": "https://www.grammar-monster.com/lessons/commas_the_Oxford_comma.htm"}, {"label": "commas with long subjects", "href": "https://www.grammar-monster.com/lessons/commas_with_a_long_subject.htm"}, {"label": "commas in numbers", "href": "https://www.grammar-monster.com/lessons/commas_with_numbers.htm"}, {"label": "commas with quotation marks", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_colon_or_comma.htm"}, {"label": "commas with direct address", "href": "https://www.grammar-monster.com/lessons/commas_with_vocative_case.htm"}, {"label": "commas and \"however\"", "href": "https://www.grammar-monster.com/punctuation/commas_and_however.html"}]}, {"title": "All Colons Lessons", "image": "punctuation_colon.png", "intro": "Here are more lessons about colons with a focus on:", "links": [{"label": "colons before long quotations", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_colon_or_comma.htm"}, {"label": "colons with bullet points", "href": "https://www.grammar-monster.com/lessons/colons_with_bullet_points.htm"}, {"label": "colons for introductions", "href": "https://www.grammar-monster.com/lessons/colons_introduction.htm"}, {"label": "colons in references", "href": "https://www.grammar-monster.com/lessons/colons_in_references.htm"}, {"label": "colons with appositives", "href": "https://www.grammar-monster.com/punctuation/using_colons.htm"}, {"label": "colons before lists", "href": "https://www.grammar-monster.com/punctuation/colon_before_list.html"}, {"label": "colons versus semicolons", "href": "https://www.grammar-monster.com/punctuation/colon_vs_semicolon.html"}, {"label": "capital letters after colons", "href": "https://www.grammar-monster.com/punctuation/colons_capitalization_after_a_colon.html"}]}, {"title": "All Hyphens Lessons", "image": "punctuation_hyphen.webp", "intro": "Here are more lessons about hyphens with a focus on:", "links": [{"label": "hyphens in prefixes", "href": "https://www.grammar-monster.com/lessons/hyphens_in_prefixes.htm"}, {"label": "hyphens in compound nouns", "href": "https://www.grammar-monster.com/lessons/hyphens_in_compound_nouns.htm"}, {"label": "hyphens in compound adjectives", "href": "https://www.grammar-monster.com/lessons/hyphens_in_compound_adjectives.htm"}, {"label": "alternatives to hyphens", "href": "https://www.grammar-monster.com/lessons/hyphens_alternatives_in_compound_adjectives.htm"}, {"label": "hyphens between numbers", "href": "https://www.grammar-monster.com/punctuation/hyphens_dashes_between_numbers.html"}, {"label": "hyphens between words", "href": "https://www.grammar-monster.com/punctuation/hyphens_dashes_between_words.html"}, {"label": "hyphens in ages", "href": "https://www.grammar-monster.com/punctuation/hyphens_in_age.html"}]}, {"title": "All Dashes Lessons", "image": "punctuation_dash.webp", "intro": "Here are more lessons about dashes with a focus on:", "links": [{"label": "dashes between dates", "href": "https://www.grammar-monster.com/punctuation/hyphens_dashes_between_dates.html"}, {"label": "hyphens versus dashes", "href": "https://www.grammar-monster.com/punctuation/hyphens_versus_dashes.html"}, {"label": "dashes as parentheses", "href": "https://www.grammar-monster.com/glossary/parentheses_parenthetical_punctuation.htm"}]}, {"title": "All Semicolons Lessons", "image": "punctuation_semicolon.webp", "intro": "Here are more lessons about semicolons with a focus on:", "links": [{"label": "semicolons for smoother breaks", "href": "https://www.grammar-monster.com/punctuation/using_semicolons.htm"}, {"label": "semicolons in lists", "href": "https://www.grammar-monster.com/lessons/semicolons_in_lists.htm"}, {"label": "semicolons with words like \"however\"", "href": "https://www.grammar-monster.com/lessons/semicolons_before_transitional_phrases.htm"}, {"label": "semicolons before words like \"and\"", "href": "https://www.grammar-monster.com/lessons/semicolons_before_conjunctions.htm"}]}, {"title": "All Quotation Marks Lessons", "image": "punctuation_quotation_mark.webp", "intro": "Here are more lessons about quotation marks with a focus on:", "links": [{"label": "quotations within quotations", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_single_or_double.htm"}, {"label": "quotations marks for ships, plays, etc.", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_ships_plays_books.htm"}, {"label": "punctuation with quotations", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_punctuation_in_or_out.htm"}, {"label": "quotation marks for \"alleged\"", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_meaning_alleged_so-called.htm"}, {"label": "ellipsis in quotations", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_ellipsis_three_dots.htm"}, {"label": "punctuation choices before quotations", "href": "https://www.grammar-monster.com/lessons/quotation_(speech)_marks_colon_or_comma.htm"}, {"label": "multiple-paragraph quotations", "href": "https://www.grammar-monster.com/punctuation/quotation_marks_multiple_or_new_paragraphs.html"}]}];
+const teacher = [{"type": "Play", "label": "Choose the right punctuation (game)", "href": "https://www.grammar-monster.com/tests/test_punctuation.htm"}, {"type": "Test", "label": "Learn commas properly", "href": "https://www.grammar-monster.com/tests/test_commas.htm"}, {"type": "Read", "label": "A summary of all punctuation", "href": "https://www.grammar-monster.com/glossary/punctuation.htm"}];
+const related = [{"label": "Overview of punctuation usage", "href": "https://www.grammar-monster.com/glossary/punctuation.htm"}, {"label": "Grammar glossary", "href": "/grammar-terms/"}, {"label": "Easily confused words", "href": "/easily-confused-words/"}, {"label": "Common errors", "href": "https://www.grammar-monster.com/common_grammar_errors.htm"}, {"label": "Grammar tests", "href": "/games/"}, {"label": "Sayings and proverbs", "href": "https://www.grammar-monster.com/sayings_proverbs.htm"}, {"label": "Tattoo fails", "href": "https://www.grammar-monster.com/tattoo_fails.htm"}];
+const quiz = [{"question": "The cat?s dinner.", "display": "The cat?s dinner.", "options": ["Apostrophe", "Semicolon", "Colon"], "answer": "Apostrophe"}, {"question": "A high?quality stone", "display": "A high?quality stone", "options": ["Comma", "Dash", "Hyphen"], "answer": "Hyphen"}, {"question": "Have you got the time?", "display": "Have you got the time?", "options": ["Exclamation Mark", "Period (Full Stop)", "Question Mark"], "answer": "Question Mark"}];
 
-const deep = [
-  ["’","Apostrophes",["Apostrophes for possession","Apostrophe-placement rules","Apostrophe after s","Apostrophe after z","Apostrophe before s","Apostrophes in contractions"]],
-  [",","Commas",['Commas with “Dear,” “Hello,” and “Hi”',"Commas after a dependent clause",'Commas after words like “however”',"Commas in lists","The comma run-on error","The Oxford comma"]],
-  [":","Colons",["Colons before long quotations","Colons with bullet points","Colons for introductions","Colons in references","Colons with appositives","Colons before lists"]],
-  ["-","Hyphens",["Hyphens in prefixes","Hyphens in compound nouns","Hyphens in compound adjectives","Alternatives to hyphens","Hyphens between numbers","Hyphens in ages"]]
-];
-
-const related = ["Overview of punctuation usage","Grammar glossary","Easily confused words","Common errors","Grammar tests","Sayings and proverbs"];
+const detailCount = details.reduce((sum, section) => sum + section.links.length, 0);
 ---
 
-<BaseLayout title="Punctuation Lessons | Grammar Monster" description="Explore punctuation lessons, summaries, tests and teacher resources.">
-<div class="ph">
-  <section class="ph-hero">
-    <div class="ph-shell ph-hero-grid">
-      <div>
-        <div class="eyebrow"><span></span>PUNCTUATION LESSONS</div>
-        <h1>Punctuation,<br><em>made brilliantly clear.</em></h1>
-        <p>Learn the marks that control how writing flows, how ideas are grouped and how meaning is understood.</p>
-        <div class="actions"><a href="#marks">Explore punctuation</a><a class="ghost" href="#practice">Test yourself</a></div>
-        <div class="meta"><b>12<small>core marks</small></b><i></i><b>100s<small>of lessons</small></b><i></i><b>Free<small>to learn</small></b></div>
-      </div>
-      <div class="art">
-        <div class="orb"></div>
-        <div class="mark m1">,</div><div class="mark m2">;</div><div class="mark m3">?</div><div class="mark m4">!</div>
-        <img src="/assets/images/grammarMonsterEye.webp" alt="" />
-        <div class="tip"><small>MONSTER TIP</small><p>Punctuation controls how readers absorb the text presented.</p></div>
-      </div>
-    </div>
-  </section>
+<BaseLayout
+  title="Punctuation Lessons | Grammar Monster"
+  description={description}
+>
+  <div class="pu-page">
+    <section class="pu-hero">
+      <div class="pu-shell pu-hero__grid">
+        <div class="pu-hero__copy">
+          <div class="pu-kicker"><span></span> PUNCTUATION LESSONS</div>
+          <h1>Punctuation,<br /><em>made brilliantly clear.</em></h1>
+          <p>{"Using punctuation correctly is essential to add clarity and precision to writing. More specifically, punctuation controls how information is grouped, how it flows, and how it is emphasized. In other words, it controls how readers absorb the text presented."}</p>
 
-  <section class="section" id="marks">
-    <div class="ph-shell">
-      <div class="head"><div><small>START HERE</small><h2>Choose the mark you want to master.</h2></div><p>Each category becomes a doorway into Grammar Monster’s deeper lesson library.</p></div>
-      <div class="grid">
-        {categories.map((c,i)=><a href="#" class:list={["card",i===2&&"featured"]}><div class="cardtop"><span>{c[0]}</span><i>{String(i+1).padStart(2,"0")}</i></div><h3>{c[1]}</h3><p>{c[2]}</p><b>View lessons →</b></a>)}
+          <div class="pu-actions">
+            <a href="#main-lessons">Explore punctuation</a>
+            <a class="pu-actions__ghost" href="#detailed-lessons">Browse detailed lessons</a>
+          </div>
+
+          <div class="pu-hero__stats">
+            <div><strong>12</strong><span>main punctuation guides</span></div>
+            <i></i>
+            <div><strong>{detailCount}</strong><span>detailed lesson links</span></div>
+            <i></i>
+            <div><strong>Free</strong><span>tests & classroom resources</span></div>
+          </div>
+        </div>
+
+        <div class="pu-hero__visual">
+          <div class="pu-orbit pu-orbit--one"></div>
+          <div class="pu-orbit pu-orbit--two"></div>
+
+          <div class="pu-hero-art">
+            <img src="/assets/images/punctuation-lessons.webp" alt="Why punctuation matters" />
+          </div>
+
+          <div class="pu-float pu-float--comma"><img src="/assets/images/punctuation_comma.webp" alt="" /></div>
+          <div class="pu-float pu-float--question"><img src="/assets/images/punctuation_question_mark.webp" alt="" /></div>
+          <div class="pu-float pu-float--semicolon"><img src="/assets/images/punctuation_semicolon.webp" alt="" /></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="why">
-    <div class="ph-shell whygrid">
-      <div><small>WHY PUNCTUATION MATTERS</small><h2>Small marks. Huge difference.</h2><p>Punctuation adds clarity, precision and rhythm. The wrong mark can change meaning completely.</p>
-        <div class="examples"><div><small>WITHOUT THE COMMA</small><strong>Let’s eat grandma.</strong></div><div><small>WITH THE COMMA</small><strong>Let’s eat, grandma.</strong></div></div>
+    <section class="pu-main" id="main-lessons">
+      <div class="pu-shell">
+        <div class="pu-section-head">
+          <div>
+            <span class="pu-mini-label">MAIN PUNCTUATION LESSONS</span>
+            <h2>Every mark has<br /><em>a job to do.</em></h2>
+          </div>
+          <p>
+            Here is a list of the main punctuation lessons.
+            These lessons summarize the main points for each type of punctuation.
+          </p>
+        </div>
+
+        <div class="pu-mark-grid">
+          {
+            mainLessons.map((lesson, index) => (
+              <a
+                class:list={["pu-mark-card", `pu-accent-${(index % 6) + 1}`]}
+                href={lesson.href}
+              >
+                <div class="pu-mark-card__art">
+                  <div class="pu-mark-card__halo"></div>
+                  <img src={`/assets/images/${lesson.image}`} alt="" loading="lazy" />
+                </div>
+                <div class="pu-mark-card__copy">
+                  <small>PUNCTUATION</small>
+                  <h3>{lesson.label}</h3>
+                  <span>Open lesson <b>↗</b></span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
       </div>
-      <div class="summary"><small>QUICK SUMMARY</small><h3>All punctuation at a glance.</h3><p>Start with a concise overview of the core punctuation marks and what each one does.</p><a href="#">Read the punctuation summary ↗</a></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section deep">
-    <div class="ph-shell">
-      <div class="head"><div><small>DETAILED LESSONS</small><h2>Go deeper by punctuation type.</h2></div><p>A reusable pattern for exposing dozens of existing lessons without the old wall-of-links feel.</p></div>
-      <div class="deepgrid">
-        {deep.map(g=><article class="deepcard"><div class="deephead"><span>{g[0]}</span><div><h3>All {g[1]} Lessons</h3><p>Focused lessons and practical examples.</p></div></div><div class="links">{g[2].map(x=><a href="#">{x}<b>→</b></a>)}</div><a class="all" href="#">View all {String(g[1]).toLowerCase()} lessons ↗</a></article>)}
+    <section class="pu-summary">
+      <div class="pu-shell pu-summary__grid">
+        <div class="pu-summary__card">
+          <div class="pu-summary__icon">
+            <img src="/assets/images/punctuation.webp" alt="Punctuation symbol" />
+          </div>
+          <div>
+            <span class="pu-mini-label pu-mini-label--lime">SUMMARY OF ALL PUNCTUATION</span>
+            <h2>Need the whole picture?</h2>
+            <p>Here is a handy summary of all the punctuation.</p>
+            <a href="https://www.grammar-monster.com/glossary/punctuation.htm">Read the summary →</a>
+          </div>
+        </div>
+
+        <div class="pu-summary__art">
+          <img src="/assets/images/punctuation-lessons.webp" alt="Why punctuation matters examples" loading="lazy" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="practice" id="practice">
-    <div class="ph-shell practicegrid">
-      <div><small>PRACTICE & TEST</small><h2>Learn it. Test it. Remember it.</h2><p>The existing page already combines lessons and testing. This version makes those routes far easier to discover.</p><div class="actions"><a class="lime" href="#">Take the multi-choice test</a><a class="outline" href="/games/">Explore games & tests</a></div></div>
-      <div class="practicecards">
-        <a href="#"><span>01</span><div><b>Multi-choice punctuation test</b><small>Printable • Sendable • Classroom-friendly</small></div><strong>→</strong></a>
-        <a href="#"><span>02</span><div><b>Choose the right punctuation</b><small>Quick game • Instant feedback</small></div><strong>→</strong></a>
-        <a href="#"><span>03</span><div><b>Learn commas properly</b><small>Focused test • Common errors</small></div><strong>→</strong></a>
+    <section class="pu-details" id="detailed-lessons">
+      <div class="pu-shell">
+        <div class="pu-details__head">
+          <div>
+            <span class="pu-mini-label">DETAILED LESSONS</span>
+            <h2>Go deeper on the<br /><em>main types of punctuation.</em></h2>
+          </div>
+          <p>
+            Search the detailed lesson library, or expand a punctuation type to browse
+            the existing Grammar Monster lessons.
+          </p>
+        </div>
+
+        <div class="pu-search-panel">
+          <div class="pu-searchbox">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"></path>
+            </svg>
+            <input id="punctuationSearch" type="search" placeholder="Search commas, apostrophes, quotations..." autocomplete="off" />
+            <kbd>/</kbd>
+          </div>
+          <div class="pu-search-meta">
+            <span id="punctuationCount">{detailCount} lessons</span>
+            <button id="expandPunctuation" type="button">Expand all</button>
+            <button id="collapsePunctuation" type="button">Collapse all</button>
+            <button id="clearPunctuation" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="pu-detail-list">
+          {
+            details.map((section, sectionIndex) => (
+              <details
+                class:list={["pu-detail", `pu-accent-${(sectionIndex % 6) + 1}`]}
+                data-detail
+                open={sectionIndex < 2}
+              >
+                <summary>
+                  <div class="pu-detail__number">{String(sectionIndex + 1).padStart(2, "0")}</div>
+                  <div class="pu-detail__icon">
+                    <img src={`/assets/images/${section.image}`} alt="" loading="lazy" />
+                  </div>
+                  <div class="pu-detail__title">
+                    <h3>{section.title}</h3>
+                    <p>{section.intro}</p>
+                  </div>
+                  <div class="pu-detail__count">{section.links.length} lessons</div>
+                  <div class="pu-detail__chevron">⌄</div>
+                </summary>
+
+                <div class="pu-detail__body">
+                  <div class="pu-link-grid">
+                    {
+                      section.links.map((link) => (
+                        <a href={link.href} data-punctuation-link data-search={(section.title + " " + link.label).toLowerCase()}>
+                          <span>{link.label}</span>
+                          <b>↗</b>
+                        </a>
+                      ))
+                    }
+                  </div>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+
+        <div class="pu-empty" id="punctuationEmpty" hidden>
+          <span>?</span>
+          <h3>No matching punctuation lesson found.</h3>
+          <p>Try a broader search such as “comma”, “apostrophe”, “quotation” or “hyphen”.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="ph-shell teacher">
-      <div><small>TEACHERS’ ZONE</small><h2>Built for the classroom too.</h2><p>Turn a lesson into a handout, homework task, quick test or shareable resource.</p><div class="teacherbuttons"><a href="#">Print as handout</a><a href="#">Send as homework</a><a href="#">Show as slides</a><a href="#">Expand to full page</a></div></div>
-      <div class="teachermonster"><div></div><img src="/assets/images/grammarMonsterEye.webp" alt="" /><span>Teacher-friendly by design.</span></div>
-    </div>
-  </section>
+    <section class="pu-teacher">
+      <div class="pu-shell pu-teacher__grid">
+        <div class="pu-teacher__copy">
+          <span class="pu-mini-label pu-mini-label--lime">TEACHERS' ZONE</span>
+          <h2>Teach it.<br />Test it.<br /><em>Use it.</em></h2>
+          <p>
+            Use Grammar Monster's existing punctuation games, comma test,
+            and punctuation summary for classroom or independent practice.
+          </p>
 
-  <section class="section related">
-    <div class="ph-shell">
-      <div class="head"><div><small>KEEP EXPLORING</small><h2>You might also like…</h2></div></div>
-      <div class="relatedgrid">{related.map(x=><a href="#">{x}<span>↗</span></a>)}</div>
-      <div class="author"><span>✎</span><div><small>ORIGINAL CONTENT</small><b>This page was written by Craig Shrives.</b></div></div>
-    </div>
-  </section>
-</div>
+          <div class="pu-teacher__links">
+            {
+              teacher.map((item, index) => (
+                <a href={item.href}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <small>{item.type}</small>
+                    <strong>{item.label}</strong>
+                  </div>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="pu-quiz" data-quiz data-quiz-source={JSON.stringify(quiz)}>
+          <div class="pu-quiz__top">
+            <div>
+              <span>QUICK PUNCTUATION CHECK</span>
+              <h3>Can you choose the right mark?</h3>
+            </div>
+            <div class="pu-quiz__score"><strong id="puScore">0</strong><span>/ 3</span></div>
+          </div>
+
+          <div class="pu-quiz__progress">
+            <i id="puProgress"></i>
+          </div>
+
+          <div class="pu-quiz__body">
+            <small id="puQuestionNumber">QUESTION 1 OF 3</small>
+            <p id="puQuestion"></p>
+            <div id="puOptions" class="pu-quiz__options"></div>
+            <div id="puFeedback" class="pu-quiz__feedback"></div>
+          </div>
+
+          <button id="puNext" type="button" class="pu-quiz__next" disabled>Next question →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="pu-related">
+      <div class="pu-shell">
+        <div class="pu-section-head">
+          <div>
+            <span class="pu-mini-label">KEEP EXPLORING</span>
+            <h2>You might also like…</h2>
+          </div>
+        </div>
+
+        <div class="pu-related-grid">
+          {
+            related.map((item, index) => (
+              <a class:list={[`pu-accent-${(index % 6) + 1}`]} href={item.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="pu-author">
+          <div class="pu-author__mark">✎</div>
+          <p>
+            This page was written by
+            <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm">Craig Shrives</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const search = document.getElementById("punctuationSearch");
+    const sections = [...document.querySelectorAll("[data-detail]")];
+    const count = document.getElementById("punctuationCount");
+    const empty = document.getElementById("punctuationEmpty");
+
+    function filterPunctuation(value) {
+      const term = (value || "").trim().toLowerCase();
+      let visibleLinks = 0;
+      let visibleSections = 0;
+
+      sections.forEach((section) => {
+        let sectionMatches = 0;
+
+        section.querySelectorAll("[data-punctuation-link]").forEach((link) => {
+          const match = !term || (link.dataset.search || "").includes(term);
+          link.hidden = !match;
+
+          if (match) {
+            visibleLinks++;
+            sectionMatches++;
+          }
+        });
+
+        section.hidden = sectionMatches === 0;
+
+        if (sectionMatches > 0) {
+          visibleSections++;
+          if (term) section.open = true;
+        }
+      });
+
+      if (count) count.textContent = `${visibleLinks} ${visibleLinks === 1 ? "lesson" : "lessons"}`;
+      if (empty) empty.hidden = visibleSections !== 0;
+    }
+
+    search?.addEventListener("input", () => filterPunctuation(search.value));
+
+    document.getElementById("expandPunctuation")?.addEventListener("click", () => {
+      sections.filter((section) => !section.hidden).forEach((section) => section.open = true);
+    });
+
+    document.getElementById("collapsePunctuation")?.addEventListener("click", () => {
+      sections.forEach((section) => section.open = false);
+    });
+
+    document.getElementById("clearPunctuation")?.addEventListener("click", () => {
+      if (search) {
+        search.value = "";
+        search.focus();
+      }
+      filterPunctuation("");
+      sections.forEach((section, index) => section.open = index < 2);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const tag = document.activeElement?.tagName;
+
+      if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") {
+        event.preventDefault();
+        search?.focus();
+      }
+
+      if (event.key === "Escape" && document.activeElement === search) {
+        search.value = "";
+        filterPunctuation("");
+        search.blur();
+      }
+    });
+
+    const quizHost = document.querySelector("[data-quiz]");
+    if (quizHost) {
+      const quiz = JSON.parse(quizHost.dataset.quizSource || "[]");
+      const qNumber = document.getElementById("puQuestionNumber");
+      const qText = document.getElementById("puQuestion");
+      const options = document.getElementById("puOptions");
+      const feedback = document.getElementById("puFeedback");
+      const next = document.getElementById("puNext");
+      const scoreEl = document.getElementById("puScore");
+      const progress = document.getElementById("puProgress");
+
+      let current = 0;
+      let score = 0;
+      let answered = false;
+
+      const render = () => {
+        if (current >= quiz.length) {
+          qNumber.textContent = "COMPLETE";
+          qText.textContent = score === quiz.length
+            ? "Perfect score. Punctuation mastered."
+            : `You scored ${score} out of ${quiz.length}.`;
+          options.innerHTML = "";
+          feedback.textContent = "Try the full Grammar Monster punctuation game for more practice.";
+          feedback.className = "pu-quiz__feedback is-correct";
+          next.textContent = "Play again";
+          next.disabled = false;
+          progress.style.width = "100%";
+          return;
+        }
+
+        const q = quiz[current];
+        answered = false;
+        qNumber.textContent = `QUESTION ${current + 1} OF ${quiz.length}`;
+        qText.textContent = q.display;
+        feedback.textContent = "";
+        feedback.className = "pu-quiz__feedback";
+        options.innerHTML = "";
+        next.disabled = true;
+        next.textContent = current === quiz.length - 1 ? "See score →" : "Next question →";
+        progress.style.width = `${(current / quiz.length) * 100}%`;
+
+        q.options.forEach((option) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = option;
+
+          button.addEventListener("click", () => {
+            if (answered) return;
+            answered = true;
+
+            const correct = option === q.answer;
+            if (correct) score++;
+
+            [...options.querySelectorAll("button")].forEach((btn) => {
+              btn.disabled = true;
+              if (btn.textContent === q.answer) btn.classList.add("is-correct");
+              else if (btn === button && !correct) btn.classList.add("is-wrong");
+            });
+
+            scoreEl.textContent = String(score);
+            feedback.textContent = correct ? "Correct." : `The correct answer is ${q.answer}.`;
+            feedback.className = `pu-quiz__feedback ${correct ? "is-correct" : "is-wrong"}`;
+            next.disabled = false;
+            progress.style.width = `${((current + 1) / quiz.length) * 100}%`;
+          });
+
+          options.appendChild(button);
+        });
+      };
+
+      next?.addEventListener("click", () => {
+        if (current >= quiz.length) {
+          current = 0;
+          score = 0;
+          scoreEl.textContent = "0";
+          render();
+          return;
+        }
+
+        current++;
+        render();
+      });
+
+      render();
+    }
+  </script>
 </BaseLayout>
