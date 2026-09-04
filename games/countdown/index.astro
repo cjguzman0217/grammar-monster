@@ -1,0 +1,401 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/countdown.css";
+
+const relatedGames = [
+  { title: "Wordle", description: "Find today's secret five-letter word.", href: "/games/wordle/", number: "01" },
+  { title: "WordUp", description: "Build a ladder of words to reach the top.", href: "https://www.grammar-monster.com/learning_games/wordup.htm", number: "02" },
+  { title: "Word Builder", description: "How many words can you find?", href: "https://www.grammar-monster.com/learning_games/wordBuilder.htm", number: "03" },
+  { title: "Hangman", description: "Find the secret word.", href: "https://www.grammar-monster.com/learning_games/hangMan.htm", number: "04" }
+];
+
+const teacherLinks = [
+  ["Word Builder", "https://www.grammar-monster.com/learning_games/wordBuilder.htm"],
+  ["WordUp", "https://www.grammar-monster.com/learning_games/wordup.htm"],
+  ["Wordle", "/games/wordle/"],
+  ["Hangman", "https://www.grammar-monster.com/learning_games/hangMan.htm"],
+  ["Look-cover-write-check", "https://www.grammar-monster.com/tests/look-cover-write-check.htm"],
+  ["Spelling & vocabulary", "/spelling-vocabulary/"]
+];
+---
+
+<BaseLayout
+  title="Countdown | Grammar Monster"
+  description="Play Grammar Monster Countdown. Find the longest word you can from nine letters, with a new nine-letter challenge every day."
+>
+  <script is:inline>
+    window.vitag = window.vitag || {};
+    window.vitag.smartBannerConfig = { enablePC: false, enableMobile: false };
+  </script>
+  <script is:inline async src="https://services.vlitag.com/adv1/?q=30b982bcceb31097305670acdcf26233"></script>
+
+  <main class="gm-countdown">
+    <section class="countdown-hero">
+      <div class="countdown-shell countdown-hero__grid">
+        <div class="countdown-hero__copy">
+          <nav class="countdown-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span>
+            <a href="/games/">Games & Tests</a><span>›</span>
+            <strong>Countdown</strong>
+          </nav>
+
+          <span class="countdown-kicker countdown-kicker--lime">GRAMMAR MONSTER GAME</span>
+          <h1>Welcome to<br /><em>Countdown!</em></h1>
+
+          <p class="countdown-hero__lede">
+            Find the longest word you can from nine letters. There is always a
+            nine-letter word — and there is a new challenge every day.
+          </p>
+
+          <div class="countdown-hero__stats" aria-label="Game format">
+            <div><strong>9</strong><span>letters</span></div>
+            <i></i>
+            <div><strong>45</strong><span>seconds</span></div>
+            <i></i>
+            <div><strong>1</strong><span>daily challenge</span></div>
+          </div>
+
+          <div class="countdown-hero__actions">
+            <a href="#play">Play today's game <span>↓</span></a>
+            <button type="button" data-open-instructions>How to play</button>
+          </div>
+        </div>
+
+        <div class="countdown-hero__visual">
+          <div class="countdown-hero__halo"></div>
+          <div class="countdown-art-card">
+            <img src="/assets/images/countdown.webp" alt="Grammar Monster Countdown game artwork" />
+          </div>
+          <div class="countdown-float countdown-float--one"><span>●</span> NEW WORD DAILY</div>
+          <div class="countdown-float countdown-float--two"><span>✓</span> ALWAYS 9 LETTERS</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-intro">
+      <div class="countdown-shell countdown-intro__grid">
+        <div>
+          <span class="countdown-kicker">LET'S PLAY COUNTDOWN</span>
+          <h2>How long a word<br /><em>can you find?</em></h2>
+        </div>
+
+        <div class="countdown-intro__copy">
+          <p>
+            The aim of Countdown is to find the longest word you can from the
+            nine letters. This version is based on the Channel 4 TV show, but
+            there is one big difference: you do not pick the letters, and there
+            is <strong>always</strong> a nine-letter word.
+          </p>
+          <p>
+            Can you find today's word? If not, what is the longest word you can
+            get? Can you beat your friends?
+          </p>
+          <p>
+            Once the music has stopped, you have an extra 15 seconds to finish
+            entering your word. Good luck!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-ad-stage" aria-label="Advertisement">
+      <div class="countdown-shell">
+        <div class="countdown-ad-stage__label">ADVERTISEMENT <span>Ads help keep Grammar Monster free.</span></div>
+        <div class="countdown-ad-stage__slots">
+          <div class="countdown-ad-slot" data-countdown-ad-shell>
+            <div class="countdown-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Free games, supported by ads.</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342100586"></div>
+          </div>
+          <div class="countdown-ad-slot countdown-ad-slot--secondary" data-countdown-ad-shell>
+            <div class="countdown-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Grammar Monster stays free.</strong>
+              <small>Thanks for supporting the site.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112530"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-play" id="play">
+      <div class="countdown-shell">
+        <div class="countdown-play__head">
+          <div>
+            <span class="countdown-kicker">TODAY'S COUNTDOWN</span>
+            <h2>Build your best word.</h2>
+          </div>
+
+          <div class="countdown-play__meta">
+            <span class="countdown-play__dot"></span>
+            <div>
+              <strong data-game-label>DAILY CHALLENGE</strong>
+              <small data-game-date></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="countdown-game-shell">
+          <div class="countdown-game-shell__top">
+            <div>
+              <span class="countdown-game-dot"></span>
+              <strong data-phase-label>READY</strong>
+            </div>
+            <p data-dictionary-status>Loading dictionary…</p>
+            <button type="button" data-open-instructions aria-label="Open instructions">?</button>
+          </div>
+
+          <div class="countdown-game-grid">
+            <div class="countdown-clock-wrap">
+              <div class="countdown-clock" data-clock>
+                <div class="countdown-clock__face">
+                  <span class="countdown-clock__twelve"></span>
+                  <span class="countdown-clock__three"></span>
+                  <span class="countdown-clock__six"></span>
+                  <span class="countdown-clock__nine"></span>
+                  <div class="countdown-clock__hand" data-clock-hand></div>
+                  <div class="countdown-clock__pin"></div>
+                  <strong data-clock-value>45</strong>
+                  <small data-clock-caption>SECONDS</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="countdown-workspace">
+              <div class="countdown-status" data-countdown-status aria-live="polite">
+                Ready for today's nine-letter challenge?
+              </div>
+
+              <div class="countdown-letters" data-countdown-letters aria-label="Available letters"></div>
+
+              <div class="countdown-built">
+                <div class="countdown-built__head">
+                  <span>YOUR WORD</span>
+                  <strong data-word-length>0 letters</strong>
+                </div>
+                <div class="countdown-built__word" data-built-word>
+                  <span>Choose letters to begin</span>
+                </div>
+              </div>
+
+              <div class="countdown-controls">
+                <button type="button" data-clear disabled>Clear</button>
+                <button type="button" class="countdown-controls__bank" data-bank disabled>
+                  Bank word
+                </button>
+              </div>
+
+              <div class="countdown-best" data-best-wrap hidden>
+                <span>BEST SO FAR</span>
+                <strong data-best-word>—</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="countdown-start-row">
+            <button type="button" class="countdown-start" data-start disabled>
+              <span>▶</span>
+              <div>
+                <strong>Start today's game</strong>
+                <small>30 seconds + 15 seconds to finish</small>
+              </div>
+            </button>
+          </div>
+
+          <div class="countdown-game-actions">
+            <button type="button" data-restart-daily>
+              <span>↻</span>
+              <div><strong>Play today's game again</strong><small>Same nine-letter challenge</small></div>
+            </button>
+            <button type="button" data-random-game>
+              <span>✦</span>
+              <div><strong>Play a random game</strong><small>Fresh nine-letter challenge</small></div>
+            </button>
+          </div>
+        </div>
+
+        <p class="countdown-play__tip">
+          Every letter can be used once. Your word must be at least
+          <strong>3 letters</strong> long and appear in the dictionary.
+        </p>
+      </div>
+    </section>
+
+    <section class="countdown-how">
+      <div class="countdown-shell countdown-how__grid">
+        <div class="countdown-how__copy">
+          <span class="countdown-kicker">HOW TO PLAY</span>
+          <h2>Nine letters.<br /><em>One ticking clock.</em></h2>
+          <p>
+            The nine letters come from today's secret nine-letter challenge word.
+            Use them to build the longest valid word you can.
+          </p>
+
+          <div class="countdown-steps">
+            <div><span>01</span><p>Press start and reveal the shuffled letters.</p></div>
+            <div><span>02</span><p>Choose letters to build words of three letters or more.</p></div>
+            <div><span>03</span><p>Bank valid words. Your longest word becomes your score.</p></div>
+            <div><span>04</span><p>The music runs for 30 seconds, then you get 15 seconds to finish.</p></div>
+          </div>
+        </div>
+
+        <div class="countdown-score-card">
+          <span class="countdown-score-card__label">HOW GOOD WAS IT?</span>
+          <h3>Your longest word sets the grade.</h3>
+          <div class="countdown-score-table">
+            <div><strong>9</strong><span>Super Star!</span></div>
+            <div><strong>8</strong><span>Brilliant</span></div>
+            <div><strong>7</strong><span>Very Good</span></div>
+            <div><strong>6</strong><span>Good</span></div>
+            <div><strong>5</strong><span>Fair</span></div>
+            <div><strong>4</strong><span>Not Bad</span></div>
+            <div><strong>3 or less</strong><span>Meh</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-video">
+      <div class="countdown-shell countdown-video__grid">
+        <div>
+          <span class="countdown-kicker countdown-kicker--lime">WATCH & LEARN</span>
+          <h2>Prefer video<br />to text?</h2>
+          <p>Craig's original Countdown explanation stays alongside the game.</p>
+          <a href="https://www.grammar-monster.com/grammar-videos.htm" target="_blank" rel="noopener">
+            Browse all Grammar Monster videos ↗
+          </a>
+        </div>
+
+        <div class="countdown-video__frame">
+          <iframe
+            loading="lazy"
+            src="https://www.youtube.com/embed/kn8sDIgCXs4"
+            title="Grammar Monster Countdown explanatory video"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-more">
+      <div class="countdown-shell">
+        <div class="countdown-more__head">
+          <div>
+            <span class="countdown-kicker">YOU MIGHT ALSO LIKE</span>
+            <h2>More ways to<br /><em>play with words.</em></h2>
+          </div>
+          <a href="/games/">Browse all Games & Tests →</a>
+        </div>
+
+        <div class="countdown-related-grid">
+          {
+            relatedGames.map((game) => (
+              <a href={game.href} target={game.href.startsWith("http") ? "_blank" : undefined} rel={game.href.startsWith("http") ? "noopener" : undefined}>
+                <span>{game.number}</span>
+                <div><strong>{game.title}</strong><p>{game.description}</p></div>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="countdown-teacher">
+          <div class="countdown-teacher__copy">
+            <span class="countdown-kicker countdown-kicker--lime">TEACHERS' ZONE</span>
+            <h2>Vocabulary practice<br />with some pressure.</h2>
+            <p>More games, spelling practice and vocabulary tools from Grammar Monster.</p>
+          </div>
+
+          <div class="countdown-teacher__links">
+            {
+              teacherLinks.map(([label, href], index) => (
+                <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener" : undefined}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{label}</strong>
+                  <b>↗</b>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="countdown-author">
+          <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+          <div>
+            <span>ABOUT THIS PAGE</span>
+            <p>
+              This page was written by
+              <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm" target="_blank" rel="noopener">Craig Shrives</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-ad-stage countdown-ad-stage--bottom" aria-label="Advertisement">
+      <div class="countdown-shell">
+        <div class="countdown-ad-stage__label">ADVERTISEMENT <span>Helping keep the game free.</span></div>
+        <div class="countdown-ad-stage__slots">
+          <div class="countdown-ad-slot" data-countdown-ad-shell>
+            <div class="countdown-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>More free Grammar Monster.</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112533"></div>
+          </div>
+          <div class="countdown-ad-slot countdown-ad-slot--secondary" data-countdown-ad-shell>
+            <div class="countdown-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Learning without a paywall.</strong>
+              <small>Thanks for supporting the site.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112534"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="countdown-dialog" data-instructions-dialog>
+      <div class="countdown-dialog__inner">
+        <button type="button" class="countdown-dialog__close" data-close-instructions aria-label="Close instructions">×</button>
+        <span class="countdown-kicker">HOW TO PLAY</span>
+        <h2>Find the longest word you can.</h2>
+        <ul>
+          <li>The nine letters come from today's secret nine-letter challenge word.</li>
+          <li>Use each available letter no more than once.</li>
+          <li>Your word must be at least three letters long and in the dictionary.</li>
+          <li>The music runs for 30 seconds, followed by 15 extra seconds to finish.</li>
+          <li>Bank as many valid words as you like; your longest word is your final score.</li>
+        </ul>
+        <button type="button" class="countdown-dialog__done" data-close-instructions>Let's play</button>
+      </div>
+    </dialog>
+
+    <dialog class="countdown-dialog countdown-dialog--result" data-result-dialog>
+      <div class="countdown-dialog__inner">
+        <button type="button" class="countdown-dialog__close" data-close-result aria-label="Close result">×</button>
+        <span class="countdown-kicker">GAME OVER</span>
+        <h2 data-result-heading>Time's up.</h2>
+        <p data-result-copy></p>
+        <div class="countdown-result-grade" data-result-grade></div>
+        <button type="button" class="countdown-dialog__done" data-close-result>OK</button>
+      </div>
+    </dialog>
+
+    <div class="countdown-toast" data-countdown-toast aria-live="polite" hidden></div>
+
+    <audio id="countdown-audio" preload="auto">
+      <source src="/assets/audio/countdownAudio.mp3" type="audio/mpeg" />
+    </audio>
+  </main>
+
+  <script is:inline src="/assets/js/countdown/Dictionary.js"></script>
+  <script is:inline src="/assets/js/countdown/SpellChecker.js"></script>
+  <script is:inline src="/assets/js/countdown/countdown-words.js"></script>
+  <script is:inline src="/assets/js/countdown/countdown-game.js"></script>
+</BaseLayout>
