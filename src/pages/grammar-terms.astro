@@ -1,0 +1,382 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/grammar-terms.css";
+
+const description = "This A-Z list of grammatical terms provides links to the explanations of the meanings. Each entry in the glossary has a link to a lesson that includes example sentences as well as printable and sendable tests.";
+const fundamental = [{"label": "Adjectives", "href": "https://www.grammar-monster.com/lessons/adjectives.htm", "video": "https://youtu.be/q9aFVmzRgLg", "mark": "Adj"}, {"label": "Adverbs", "href": "https://www.grammar-monster.com/lessons/adverbs.htm", "video": "https://youtu.be/-lfdDD9lpds", "mark": "Adv"}, {"label": "Conjunctions", "href": "https://www.grammar-monster.com/lessons/conjunctions.htm", "video": "https://youtu.be/ssHY3f7FOJM", "mark": "Con"}, {"label": "Determiners", "href": "https://www.grammar-monster.com/glossary/determiner.htm", "video": "https://youtu.be/o-LbqRag28c", "mark": "Det"}, {"label": "Interjections", "href": "https://www.grammar-monster.com/lessons/interjections.htm", "video": null, "mark": "Int"}, {"label": "Nouns", "href": "https://www.grammar-monster.com/lessons/nouns.htm", "video": "https://youtu.be/PkiyAulrfCo", "mark": "N"}, {"label": "Prepositions", "href": "https://www.grammar-monster.com/lessons/prepositions.htm", "video": "https://youtu.be/W4Tu9CMCnRs", "mark": "Prep"}, {"label": "Pronouns", "href": "https://www.grammar-monster.com/lessons/pronouns.htm", "video": "https://youtu.be/kNW_gP_Qjjo", "mark": "Pro"}, {"label": "Verbs", "href": "https://www.grammar-monster.com/lessons/verbs.htm", "video": "https://youtu.be/N3AViIPrT08", "mark": "V"}];
+const letters = [{"letter": "A", "entries": [{"label": "abbreviation", "href": "https://www.grammar-monster.com/glossary/abbreviations.htm", "video": null}, {"label": "absolute phrase", "href": "https://www.grammar-monster.com/glossary/absolute-phrase.htm", "video": null}, {"label": "absolute possessive", "href": "https://www.grammar-monster.com/glossary/absolute_possessives.htm", "video": null}, {"label": "abstract noun", "href": "https://www.grammar-monster.com/glossary/abstract_nouns.htm", "video": "https://youtu.be/R1M0Q8RMgTE"}, {"label": "accusative case", "href": "https://www.grammar-monster.com/glossary/accusative_case.htm", "video": null}, {"label": "acronym", "href": "https://www.grammar-monster.com/glossary/acronyms.htm", "video": null}, {"label": "active sentence", "href": "https://www.grammar-monster.com/glossary/active_sentences.htm", "video": "https://youtu.be/3wVJyV6ssOk"}, {"label": "active voice", "href": "https://www.grammar-monster.com/glossary/active_voice.htm", "video": "https://youtu.be/3wVJyV6ssOk"}, {"label": "adjective", "href": "https://www.grammar-monster.com/lessons/adjectives.htm", "video": "https://youtu.be/q9aFVmzRgLg"}, {"label": "adjective complement", "href": "https://www.grammar-monster.com/glossary/adjective_complement.htm", "video": null}, {"label": "adjective clause", "href": "https://www.grammar-monster.com/glossary/adjective_clauses.htm", "video": null}, {"label": "adjective phrase", "href": "https://www.grammar-monster.com/glossary/adjective_phrases.htm", "video": null}, {"label": "adjunct", "href": "https://www.grammar-monster.com/glossary/adjuncts.htm", "video": null}, {"label": "adverb", "href": "https://www.grammar-monster.com/lessons/adverbs.htm", "video": "https://youtu.be/-lfdDD9lpds"}, {"label": "adverbial clause", "href": "https://www.grammar-monster.com/glossary/adverbial_clauses.htm", "video": "https://youtu.be/NOUfRmwtw-s"}, {"label": "adverbial phrase", "href": "https://www.grammar-monster.com/glossary/adverbial_phrases.htm", "video": "https://youtu.be/1an0ZjR0zek"}, {"label": "affix", "href": "https://www.grammar-monster.com/glossary/affixes.htm", "video": null}, {"label": "alliteration", "href": "https://www.grammar-monster.com/glossary/alliteration.htm", "video": "https://youtu.be/45Wm45sRHIA"}, {"label": "anagram", "href": "https://www.grammar-monster.com/glossary/anagrams.htm", "video": null}, {"label": "analogy", "href": "https://www.grammar-monster.com/glossary/analogy.htm", "video": null}, {"label": "anaphora", "href": "https://www.grammar-monster.com/glossary/repetition_anaphora.htm", "video": null}, {"label": "anastrophe", "href": "https://www.grammar-monster.com/glossary/anastrophe.htm", "video": null}, {"label": "antecedent", "href": "https://www.grammar-monster.com/glossary/antecedent.htm", "video": null}, {"label": "antonym", "href": "https://www.grammar-monster.com/glossary/antonyms.htm", "video": null}, {"label": "apostrophe", "href": "https://www.grammar-monster.com/punctuation/using_apostrophes.htm", "video": "https://youtu.be/REwZKOjZ5Ag"}, {"label": "apposition", "href": "https://www.grammar-monster.com/glossary/appositive_apposition.htm", "video": null}, {"label": "appositive", "href": "https://www.grammar-monster.com/glossary/appositive_apposition.htm", "video": null}, {"label": "archaism", "href": "https://www.grammar-monster.com/glossary/archaism.htm", "video": null}, {"label": "article", "href": "https://www.grammar-monster.com/glossary/articles.htm", "video": null}, {"label": "aspect", "href": "https://www.grammar-monster.com/glossary/aspect.htm", "video": null}, {"label": "assonance", "href": "https://www.grammar-monster.com/glossary/assonance.htm", "video": null}, {"label": "auxiliary verb", "href": "https://www.grammar-monster.com/glossary/auxiliary_verbs.htm", "video": null}]}, {"letter": "B", "entries": [{"label": "bare infinitive", "href": "https://www.grammar-monster.com/glossary/bare-infinitive.htm", "video": null}, {"label": "base form", "href": "https://www.grammar-monster.com/glossary/base_form.htm", "video": null}, {"label": "brackets", "href": "https://www.grammar-monster.com/glossary/brackets.htm", "video": "https://youtu.be/mG6RwDMZmi0"}]}, {"letter": "C", "entries": [{"label": "case", "href": "https://www.grammar-monster.com/glossary/case.htm", "video": null}, {"label": "clause", "href": "https://www.grammar-monster.com/glossary/clause.htm", "video": "https://youtu.be/2u7NhUMfz3I"}, {"label": "cliche", "href": "https://www.grammar-monster.com/glossary/cliches.htm", "video": null}, {"label": "co-ordinate conjunction", "href": "https://www.grammar-monster.com/glossary/coordinate_conjunctions.htm", "video": null}, {"label": "collective noun", "href": "https://www.grammar-monster.com/glossary/collective_nouns.htm", "video": "https://youtu.be/9cdJI1aEbZQ"}, {"label": "collocation", "href": "https://www.grammar-monster.com/glossary/collocation.htm", "video": null}, {"label": "colloquialism", "href": "https://www.grammar-monster.com/glossary/colloquialisms.htm", "video": null}, {"label": "colon", "href": "https://www.grammar-monster.com/punctuation/using_colons.htm", "video": "https://youtu.be/zq1wAYz9DKM"}, {"label": "comma", "href": "https://www.grammar-monster.com/punctuation/using_commas.htm", "video": null}, {"label": "common noun", "href": "https://www.grammar-monster.com/glossary/common_nouns.htm", "video": "https://youtu.be/4M0WbVQ9714"}, {"label": "commoratio", "href": "https://www.grammar-monster.com/glossary/repetition_commoratio.htm", "video": null}, {"label": "comparative", "href": "https://www.grammar-monster.com/glossary/comparatives.htm", "video": "https://youtu.be/DRdavZGjgpQ"}, {"label": "complement", "href": "https://www.grammar-monster.com/glossary/complement.htm", "video": null}, {"label": "complete aspect", "href": "https://www.grammar-monster.com/glossary/complete_aspect.htm", "video": null}, {"label": "complete tense", "href": "https://www.grammar-monster.com/glossary/complete_tense.htm", "video": null}, {"label": "complex sentence", "href": "https://www.grammar-monster.com/glossary/complex_sentence.htm", "video": "https://youtu.be/EHNBlHXWLho"}, {"label": "compound adjective", "href": "https://www.grammar-monster.com/glossary/compound_adjectives.htm", "video": null}, {"label": "compound noun", "href": "https://www.grammar-monster.com/glossary/compound_nouns.htm", "video": null}, {"label": "compound predicate", "href": "https://www.grammar-monster.com/glossary/compound_predicate.htm", "video": null}, {"label": "compound sentence", "href": "https://www.grammar-monster.com/glossary/compound_sentence.htm", "video": "https://youtu.be/7c1Gbo-BvKo"}, {"label": "compound subject", "href": "https://www.grammar-monster.com/glossary/compound_subject.htm", "video": null}, {"label": "compound verb", "href": "https://www.grammar-monster.com/glossary/compound_verbs.htm", "video": null}, {"label": "concrete noun", "href": "https://www.grammar-monster.com/glossary/concrete_nouns.htm", "video": "https://youtu.be/R1M0Q8RMgTE"}, {"label": "conditional sentences", "href": "https://www.grammar-monster.com/glossary/conditional_sentences.htm", "video": "https://youtu.be/vQFvG0K9j70"}, {"label": "conjugation", "href": "https://www.grammar-monster.com/glossary/verb_conjugation.htm", "video": null}, {"label": "conjunction", "href": "https://www.grammar-monster.com/lessons/conjunctions.htm", "video": "https://youtu.be/ssHY3f7FOJM"}, {"label": "conjunctive adverb", "href": "https://www.grammar-monster.com/glossary/conjunctive_adverbs.htm", "video": "https://youtu.be/mQYTBdyPIHY"}, {"label": "connotation", "href": "https://www.grammar-monster.com/glossary/connotation.htm", "video": null}, {"label": "consonance", "href": "https://www.grammar-monster.com/glossary/consonance.htm", "video": null}, {"label": "consonant", "href": "https://www.grammar-monster.com/glossary/consonant.htm", "video": null}, {"label": "continuing aspect", "href": "https://www.grammar-monster.com/glossary/continuing_aspect.htm", "video": null}, {"label": "contraction", "href": "https://www.grammar-monster.com/glossary/contractions.htm", "video": null}, {"label": "copular verbs", "href": "https://www.grammar-monster.com/glossary/copular_verbs.htm", "video": null}, {"label": "correlative conjunction", "href": "https://www.grammar-monster.com/glossary/correlative_conjunctions.htm", "video": null}, {"label": "countable noun", "href": "https://www.grammar-monster.com/glossary/countable_nouns.htm", "video": null}]}, {"letter": "D", "entries": [{"label": "dangling modifier", "href": "https://www.grammar-monster.com/glossary/dangling_modifier.htm", "video": "https://youtu.be/MA5hyjHFWlw"}, {"label": "dash", "href": "https://www.grammar-monster.com/glossary/dash_em_dash_en_dash.htm", "video": null}, {"label": "dative case", "href": "https://www.grammar-monster.com/glossary/dative_case.htm", "video": null}, {"label": "declarative sentence", "href": "https://www.grammar-monster.com/glossary/declarative_sentence.htm", "video": "https://youtu.be/68nHXVkN95A"}, {"label": "definite article", "href": "https://www.grammar-monster.com/glossary/definite_article.htm", "video": "https://youtu.be/ovZpmsyG3j4"}, {"label": "demonstrative adjective", "href": "https://www.grammar-monster.com/glossary/demonstrative_adjective.htm", "video": null}, {"label": "demonstrative pronoun", "href": "https://www.grammar-monster.com/glossary/demonstrative_pronoun.htm", "video": null}, {"label": "denotation", "href": "https://www.grammar-monster.com/glossary/denotation.htm", "video": null}, {"label": "dependent adverb clause", "href": "https://www.grammar-monster.com/glossary/dependent_adverb_clause.htm", "video": null}, {"label": "dependent clause", "href": "https://www.grammar-monster.com/glossary/dependent_clause.htm", "video": null}, {"label": "determiner", "href": "https://www.grammar-monster.com/glossary/determiner.htm", "video": "https://youtu.be/o-LbqRag28c"}, {"label": "diction", "href": "https://www.grammar-monster.com/glossary/diction.htm", "video": null}, {"label": "diphthong", "href": "https://www.grammar-monster.com/glossary/diphthong.htm", "video": "https://youtu.be/dWrXZgC2OsM"}, {"label": "direct object", "href": "https://www.grammar-monster.com/glossary/direct_object.htm", "video": "https://youtu.be/_yQO7tIGR8g"}, {"label": "direct question", "href": "https://www.grammar-monster.com/glossary/direct_question.htm", "video": null}, {"label": "double comparative", "href": "https://www.grammar-monster.com/glossary/double_comparative.htm", "video": null}, {"label": "double negative", "href": "https://www.grammar-monster.com/glossary/double_negative.htm", "video": null}]}, {"letter": "E", "entries": [{"label": "ellipsis", "href": "https://www.grammar-monster.com/glossary/ellipsis.htm", "video": null}, {"label": "emotive language", "href": "https://www.grammar-monster.com/glossary/emotive_language.htm", "video": null}, {"label": "emphatic pronouns", "href": "https://www.grammar-monster.com/glossary/emphatic_pronouns.htm", "video": null}, {"label": "epiphora", "href": "https://www.grammar-monster.com/glossary/repetition_epiphora.htm", "video": null}, {"label": "ethos", "href": "https://www.grammar-monster.com/glossary/ethos.htm", "video": null}, {"label": "euphemism", "href": "https://www.grammar-monster.com/glossary/euphemism.htm", "video": "https://youtu.be/gB9yw0tWBhU"}, {"label": "exclamation mark", "href": "https://www.grammar-monster.com/glossary/exclamation_mark.htm", "video": null}, {"label": "exclamatory sentence", "href": "https://www.grammar-monster.com/glossary/exclamatory_sentence.htm", "video": "https://youtu.be/4ETrqmy5zXc"}]}, {"letter": "F", "entries": [{"label": "feminine", "href": "https://www.grammar-monster.com/glossary/feminine.htm", "video": "https://youtu.be/appSbV6nQtg"}, {"label": "figurative", "href": "https://www.grammar-monster.com/glossary/figurative_language.htm", "video": null}, {"label": "figure of speech", "href": "https://www.grammar-monster.com/glossary/figure_of_speech.htm", "video": null}, {"label": "finite verbs", "href": "https://www.grammar-monster.com/glossary/finite_verbs.htm", "video": "https://youtu.be/wMyvaAI6TUs"}, {"label": "first person", "href": "https://www.grammar-monster.com/glossary/first_person.htm", "video": "https://youtu.be/5qY9KpEn54g"}, {"label": "full stop (period)", "href": "https://www.grammar-monster.com/glossary/period_full_stop.htm", "video": null}, {"label": "future perfect tense", "href": "https://www.grammar-monster.com/glossary/future_perfect_tense.htm", "video": "https://youtu.be/0FkHV5Gr0p4"}, {"label": "future perfect progressive tense", "href": "https://www.grammar-monster.com/glossary/future_perfect_progressive_tense.htm", "video": "https://youtu.be/p89G9_DJeBY"}, {"label": "future progressive tense", "href": "https://www.grammar-monster.com/glossary/future_progressive_tense.htm", "video": "https://youtu.be/pHfl_cbijRY"}, {"label": "future tense", "href": "https://www.grammar-monster.com/glossary/future_tense.htm", "video": "https://youtu.be/K1sp_Y9Fw2M"}]}, {"letter": "G", "entries": [{"label": "gender", "href": "https://www.grammar-monster.com/glossary/gender.htm", "video": "https://youtu.be/appSbV6nQtg"}, {"label": "gender-specific noun", "href": "https://www.grammar-monster.com/glossary/gender-specific_noun.htm", "video": null}, {"label": "genitive case", "href": "https://www.grammar-monster.com/glossary/genitive_case.htm", "video": null}, {"label": "gerund", "href": "https://www.grammar-monster.com/glossary/gerunds.htm", "video": null}, {"label": "gerund phrase", "href": "https://www.grammar-monster.com/glossary/gerund_phrase.htm", "video": null}, {"label": "gradable adjectives", "href": "https://www.grammar-monster.com/glossary/gradable-adjectives.htm", "video": null}]}, {"letter": "H", "entries": [{"label": "helping verb", "href": "https://www.grammar-monster.com/glossary/helping_verb.htm", "video": null}, {"label": "homonym", "href": "https://www.grammar-monster.com/glossary/homonyms.htm", "video": null}, {"label": "hyperbole", "href": "https://www.grammar-monster.com/glossary/hyperbole.htm", "video": "https://youtu.be/rfw8WrQSltI"}, {"label": "hyphen", "href": "https://www.grammar-monster.com/punctuation/using_hyphens.htm", "video": "https://youtu.be/FZLiRebmNkg"}]}, {"letter": "I", "entries": [{"label": "idiom", "href": "https://www.grammar-monster.com/glossary/idiom.htm", "video": null}, {"label": "imperative mood", "href": "https://www.grammar-monster.com/glossary/imperative_mood.htm", "video": null}, {"label": "imperative sentence", "href": "https://www.grammar-monster.com/glossary/imperative_sentence.htm", "video": "https://youtu.be/Zr_K8TEB808"}, {"label": "indefinite adjective", "href": "https://www.grammar-monster.com/glossary/indefinite_adjectives.htm", "video": null}, {"label": "indefinite article", "href": "https://www.grammar-monster.com/glossary/indefinite_articles.htm", "video": null}, {"label": "indefinite aspect", "href": "https://www.grammar-monster.com/glossary/indefinite_aspect.htm", "video": null}, {"label": "indefinite pronoun", "href": "https://www.grammar-monster.com/glossary/indefinite_pronoun.htm", "video": null}, {"label": "indefinite tense", "href": "https://www.grammar-monster.com/glossary/indefinite_tense.htm", "video": null}, {"label": "independent clause", "href": "https://www.grammar-monster.com/glossary/independent_clause.htm", "video": "https://youtu.be/LaVZbDodVTo"}, {"label": "indicative mood", "href": "https://www.grammar-monster.com/glossary/indicative_mood.htm", "video": null}, {"label": "indirect object", "href": "https://www.grammar-monster.com/glossary/indirect_object.htm", "video": "https://youtu.be/ne9nJoF7hQk"}, {"label": "indirect question", "href": "https://www.grammar-monster.com/glossary/indirect_questions.htm", "video": null}, {"label": "infinitive form", "href": "https://www.grammar-monster.com/glossary/infinitive_form.htm", "video": null}, {"label": "infinitive phrase", "href": "https://www.grammar-monster.com/glossary/infinitive_phrase.htm", "video": "https://youtu.be/8cKJYTCAG-E"}, {"label": "intensifier", "href": "https://www.grammar-monster.com/glossary/intensifier.htm", "video": null}, {"label": "intensive pronoun", "href": "https://www.grammar-monster.com/glossary/intensive_pronoun.htm", "video": null}, {"label": "interjection", "href": "https://www.grammar-monster.com/lessons/interjections.htm", "video": null}, {"label": "interrogative", "href": "https://www.grammar-monster.com/glossary/interrogative.htm", "video": null}, {"label": "interrogative adjective", "href": "https://www.grammar-monster.com/glossary/interrogative_adjectives.htm", "video": null}, {"label": "interrogative adverb", "href": "https://www.grammar-monster.com/glossary/interrogative_adverbs.htm", "video": null}, {"label": "interrogative pronoun", "href": "https://www.grammar-monster.com/glossary/interrogative_pronouns.htm", "video": null}, {"label": "interrogative sentence", "href": "https://www.grammar-monster.com/glossary/interrogative_sentence.htm", "video": "https://youtu.be/iZM-61qfe-s"}, {"label": "intransitive verb", "href": "https://www.grammar-monster.com/glossary/intransitive_verbs.htm", "video": "https://youtu.be/TtTT-Ygo7uY"}, {"label": "irony", "href": "https://www.grammar-monster.com/glossary/irony.htm", "video": "https://youtu.be/1I0D3rjTQ2A"}, {"label": "irregular verb", "href": "https://www.grammar-monster.com/glossary/irregular_verbs.htm", "video": null}]}, {"letter": "J", "entries": []}, {"letter": "K", "entries": []}, {"letter": "L", "entries": [{"label": "limiting modifier", "href": "https://www.grammar-monster.com/glossary/limiting_modifiers.htm", "video": null}, {"label": "linking verb", "href": "https://www.grammar-monster.com/glossary/linking_verbs.htm", "video": "https://youtu.be/AQ2kPuQOT7Q"}, {"label": "literal meaning", "href": "https://www.grammar-monster.com/glossary/literal_meaning.htm", "video": null}, {"label": "logosglyph", "href": "https://www.grammar-monster.com/glossary/logosglyph.htm", "video": null}]}, {"letter": "M", "entries": [{"label": "masculine", "href": "https://www.grammar-monster.com/glossary/masculine.htm", "video": "https://youtu.be/appSbV6nQtg"}, {"label": "mass noun", "href": "https://www.grammar-monster.com/glossary/mass_noun.htm", "video": null}, {"label": "metaphor", "href": "https://www.grammar-monster.com/glossary/metaphor.htm", "video": "https://youtu.be/yOroJzTTVSo"}, {"label": "metonym", "href": "https://www.grammar-monster.com/glossary/metonyms.htm", "video": null}, {"label": "misplaced modifier", "href": "https://www.grammar-monster.com/glossary/misplaced_modifier.htm", "video": null}, {"label": "mnemonic devices", "href": "https://www.grammar-monster.com/glossary/mnemonic_devices.htm", "video": null}]}, {"letter": "N", "entries": [{"label": "neologism", "href": "https://www.grammar-monster.com/glossary/neologism.htm", "video": null}, {"label": "neuter", "href": "https://www.grammar-monster.com/glossary/neuter.htm", "video": "https://youtu.be/appSbV6nQtg"}, {"label": "nominative case", "href": "https://www.grammar-monster.com/glossary/nominative_case.htm", "video": null}, {"label": "non-countable noun", "href": "https://www.grammar-monster.com/glossary/non-countable_nouns.htm", "video": null}, {"label": "non-finite verbs", "href": "https://www.grammar-monster.com/glossary/non-finite_verbs.htm", "video": null}, {"label": "non-restrictive clause", "href": "https://www.grammar-monster.com/glossary/non-restrictive_clauses.htm", "video": null}, {"label": "noun", "href": "https://www.grammar-monster.com/lessons/nouns.htm", "video": "https://youtu.be/PkiyAulrfCo"}, {"label": "noun clause", "href": "https://www.grammar-monster.com/glossary/noun_clauses.htm", "video": null}, {"label": "noun phrase", "href": "https://www.grammar-monster.com/glossary/noun_phrases.htm", "video": "https://youtu.be/edU_QGQwRsw"}, {"label": "number", "href": "https://www.grammar-monster.com/glossary/number.htm", "video": null}]}, {"letter": "O", "entries": [{"label": "object", "href": "https://www.grammar-monster.com/glossary/object.htm", "video": null}, {"label": "object of a preposition", "href": "https://www.grammar-monster.com/glossary/object_of_a_preposition.htm", "video": null}, {"label": "objective case", "href": "https://www.grammar-monster.com/glossary/objective_case.htm", "video": null}, {"label": "object complement", "href": "https://www.grammar-monster.com/glossary/object_complement.htm", "video": null}, {"label": "objective personal pronoun", "href": "https://www.grammar-monster.com/glossary/objective_personal_pronoun.htm", "video": null}, {"label": "onomatopoeia", "href": "https://www.grammar-monster.com/glossary/onomatopoeia.htm", "video": null}, {"label": "oxymoron", "href": "https://www.grammar-monster.com/glossary/oxymoron.htm", "video": null}]}, {"letter": "P", "entries": [{"label": "palindrome", "href": "https://www.grammar-monster.com/glossary/palindrome.htm", "video": null}, {"label": "paradox", "href": "https://www.grammar-monster.com/glossary/paradox.htm", "video": "https://youtu.be/8Y2HFDWhviE"}, {"label": "paragraph", "href": "https://www.grammar-monster.com/glossary/paragraph.htm", "video": "https://youtu.be/uFk1X5-ryq8"}, {"label": "parallel lists", "href": "https://www.grammar-monster.com/lessons/parallel_lists.htm", "video": null}, {"label": "parentheses", "href": "https://www.grammar-monster.com/glossary/parentheses_parenthetical_punctuation.htm", "video": null}, {"label": "parenthesis", "href": "https://www.grammar-monster.com/glossary/parenthesis.htm", "video": null}, {"label": "parenthesis in apposition", "href": "https://www.grammar-monster.com/glossary/parenthesis_in_apposition.htm", "video": null}, {"label": "participle", "href": "https://www.grammar-monster.com/glossary/participles.htm", "video": null}, {"label": "participle phrase", "href": "https://www.grammar-monster.com/glossary/participle_phrases.htm", "video": null}, {"label": "parts of speech", "href": "https://www.grammar-monster.com/glossary/parts_of_speech.htm", "video": "https://youtu.be/2wlKKsA1HMQ"}, {"label": "passive sentence", "href": "https://www.grammar-monster.com/glossary/passive_sentences.htm", "video": "https://youtu.be/3wVJyV6ssOk"}, {"label": "passive voice", "href": "https://www.grammar-monster.com/glossary/passive_voice.htm", "video": "https://youtu.be/3wVJyV6ssOk"}, {"label": "past form", "href": "https://www.grammar-monster.com/glossary/past_form.htm", "video": null}, {"label": "past participle", "href": "https://www.grammar-monster.com/glossary/past_participles.htm", "video": "https://youtu.be/PIoNtQV2J0o"}, {"label": "past participle phrase", "href": "https://www.grammar-monster.com/glossary/past_participle_phrase.htm", "video": null}, {"label": "past perfect tense", "href": "https://www.grammar-monster.com/glossary/past_perfect_tense.htm", "video": "https://youtu.be/QJC5dd1ODBQ"}, {"label": "past perfect progressive tense", "href": "https://www.grammar-monster.com/glossary/past_perfect_progressive_tense.htm", "video": "https://youtu.be/ud2wlMNmhVE"}, {"label": "past progressive tense", "href": "https://www.grammar-monster.com/glossary/past_progressive_tense.htm", "video": "https://youtu.be/odDSbWHUGYk"}, {"label": "past tense", "href": "https://www.grammar-monster.com/glossary/past_tense.htm", "video": "https://youtu.be/XMf1OkdruEY"}, {"label": "perfect aspect", "href": "https://www.grammar-monster.com/glossary/perfect_aspect.htm", "video": null}, {"label": "perfect participle phrase", "href": "https://www.grammar-monster.com/glossary/perfect_participle_phrase.htm", "video": null}, {"label": "perfect progressive aspect", "href": "https://www.grammar-monster.com/glossary/perfect_progressive_aspect.htm", "video": null}, {"label": "perfect progressive tense", "href": "https://www.grammar-monster.com/glossary/perfect_progressive_tense.htm", "video": null}, {"label": "perfect tense", "href": "https://www.grammar-monster.com/glossary/perfect_tense.htm", "video": null}, {"label": "period (full stop)", "href": "https://www.grammar-monster.com/glossary/period_full_stop.htm", "video": null}, {"label": "periodic sentence", "href": "https://www.grammar-monster.com/glossary/periodic_sentence.htm", "video": null}, {"label": "person", "href": "https://www.grammar-monster.com/glossary/person.htm", "video": "https://youtu.be/5qY9KpEn54g"}, {"label": "personal pronoun", "href": "https://www.grammar-monster.com/glossary/personal_pronouns.htm", "video": null}, {"label": "personification", "href": "https://www.grammar-monster.com/glossary/personification.htm", "video": null}, {"label": "phrasal verbs", "href": "https://www.grammar-monster.com/glossary/phrasal_verbs.htm", "video": null}, {"label": "phrase", "href": "https://www.grammar-monster.com/glossary/phrase.htm", "video": "https://youtu.be/W7XoOM1lqf0"}, {"label": "plural", "href": "https://www.grammar-monster.com/glossary/plural_definition.htm", "video": null}, {"label": "point of view", "href": "https://www.grammar-monster.com/glossary/point_of_view.htm", "video": null}, {"label": "portmanteau words", "href": "https://www.grammar-monster.com/glossary/portmanteau-words.htm", "video": null}, {"label": "positive degree", "href": "https://www.grammar-monster.com/glossary/positive_degree.htm", "video": null}, {"label": "possessive adjective", "href": "https://www.grammar-monster.com/glossary/possessive_adjectives.htm", "video": "https://youtu.be/2xFkmZ8GLwE"}, {"label": "possessive case", "href": "https://www.grammar-monster.com/glossary/possessive_case.htm", "video": null}, {"label": "possessive noun", "href": "https://www.grammar-monster.com/glossary/possessive_noun.htm", "video": "https://youtu.be/hikdnsDVLcg"}, {"label": "possessive personal pronoun", "href": "https://www.grammar-monster.com/glossary/possessive_personal_pronouns.htm", "video": null}, {"label": "possessive pronoun", "href": "https://www.grammar-monster.com/glossary/possessive_pronouns.htm", "video": null}, {"label": "predicate", "href": "https://www.grammar-monster.com/glossary/predicate.htm", "video": "https://youtu.be/bxOuspF_cYU"}, {"label": "predicate adjectives", "href": "https://www.grammar-monster.com/glossary/predicate_adjectives.htm", "video": null}, {"label": "predicate nominative", "href": "https://www.grammar-monster.com/glossary/predicate_nominative.htm", "video": "https://youtu.be/TbZJc9h_S68"}, {"label": "prefix", "href": "https://www.grammar-monster.com/glossary/prefix.htm", "video": null}, {"label": "preposition", "href": "https://www.grammar-monster.com/lessons/prepositions.htm", "video": "https://youtu.be/W4Tu9CMCnRs"}, {"label": "prepositional phrase", "href": "https://www.grammar-monster.com/glossary/prepositional_phrase.htm", "video": "https://youtu.be/C6m5-SszI_8"}, {"label": "present participle", "href": "https://www.grammar-monster.com/glossary/present_participle.htm", "video": "https://youtu.be/nV_65R9UDow"}, {"label": "present participle phrase", "href": "https://www.grammar-monster.com/glossary/present_participle_phrase.htm", "video": null}, {"label": "present perfect tense", "href": "https://www.grammar-monster.com/glossary/present_perfect_tense.htm", "video": "https://youtu.be/wQtfXWVy_m0"}, {"label": "present perfect progressive tense", "href": "https://www.grammar-monster.com/glossary/present_perfect_progressive_tense.htm", "video": "https://youtu.be/IrcF51yp-tE"}, {"label": "present progressive tense", "href": "https://www.grammar-monster.com/glossary/present_progressive_tense.htm", "video": "https://youtu.be/dNE_DqegeuI"}, {"label": "present tense", "href": "https://www.grammar-monster.com/glossary/present_tense.htm", "video": "https://youtu.be/EeNL95YOlmE"}, {"label": "progressive aspect", "href": "https://www.grammar-monster.com/glossary/progressive_aspect.htm", "video": null}, {"label": "progressive tense", "href": "https://www.grammar-monster.com/glossary/progressive_tenses.htm", "video": null}, {"label": "pronoun", "href": "https://www.grammar-monster.com/lessons/pronouns.htm", "video": "https://youtu.be/kNW_gP_Qjjo"}, {"label": "proper noun", "href": "https://www.grammar-monster.com/glossary/proper_nouns.htm", "video": "https://youtu.be/4M0WbVQ9714"}, {"label": "prose", "href": "https://www.grammar-monster.com/glossary/prose.htm", "video": null}, {"label": "punctuation", "href": "https://www.grammar-monster.com/glossary/punctuation.htm", "video": "https://youtu.be/C69M7QmFcLk"}]}, {"letter": "Q", "entries": [{"label": "question mark", "href": "https://www.grammar-monster.com/glossary/question_mark.htm", "video": null}, {"label": "quotation", "href": "https://www.grammar-monster.com/glossary/quotation.htm", "video": null}, {"label": "quotation marks", "href": "https://www.grammar-monster.com/glossary/quotation_marks.htm", "video": "https://youtu.be/xeOdzA6fy9A"}]}, {"letter": "R", "entries": [{"label": "reciprocal pronoun", "href": "https://www.grammar-monster.com/glossary/reciprocal_pronouns.htm", "video": null}, {"label": "reflexive pronoun", "href": "https://www.grammar-monster.com/glossary/reflexive_pronouns.htm", "video": null}, {"label": "regular verb", "href": "https://www.grammar-monster.com/glossary/regular_verbs.htm", "video": null}, {"label": "relative adverb", "href": "https://www.grammar-monster.com/glossary/relative_adverbs.htm", "video": null}, {"label": "relative pronoun", "href": "https://www.grammar-monster.com/glossary/relative_pronouns.htm", "video": null}, {"label": "restrictive clause", "href": "https://www.grammar-monster.com/glossary/restrictive_clause.htm", "video": null}, {"label": "restrictive modifier", "href": "https://www.grammar-monster.com/glossary/restrictive_modifier.htm", "video": null}, {"label": "rhetorical question", "href": "https://www.grammar-monster.com/glossary/rhetorical_questions.htm", "video": null}, {"label": "root", "href": "https://www.grammar-monster.com/glossary/root_of_a_word.htm", "video": null}, {"label": "run-on sentence", "href": "https://www.grammar-monster.com/glossary/run-on_sentence.htm", "video": null}]}, {"letter": "S", "entries": [{"label": "satire", "href": "https://www.grammar-monster.com/glossary/satire.htm", "video": null}, {"label": "simile", "href": "https://www.grammar-monster.com/glossary/simile.htm", "video": "https://youtu.be/2yyLEix81kw"}, {"label": "second person", "href": "https://www.grammar-monster.com/glossary/second_person.htm", "video": "https://youtu.be/5qY9KpEn54g"}, {"label": "semicolon", "href": "https://www.grammar-monster.com/punctuation/using_semicolons.htm", "video": "https://youtu.be/lsQoOQ8eI-4"}, {"label": "sentence", "href": "https://www.grammar-monster.com/glossary/sentences.htm", "video": "https://youtu.be/ryQfEDvA4VE"}, {"label": "sentence fragment", "href": "https://www.grammar-monster.com/glossary/sentence_fragment.htm", "video": null}, {"label": "simple aspect", "href": "https://www.grammar-monster.com/glossary/simple_aspect.htm", "video": null}, {"label": "simple future tense", "href": "https://www.grammar-monster.com/glossary/simple_future_tense.htm", "video": "https://youtu.be/WTHILTNE1yo"}, {"label": "simple past tense", "href": "https://www.grammar-monster.com/glossary/simple_past_tense.htm", "video": "https://youtu.be/BNSoDln1FQ8"}, {"label": "simple present tense", "href": "https://www.grammar-monster.com/glossary/simple_present_tense.htm", "video": "https://youtu.be/6jexvI0-uTU"}, {"label": "simple sentence", "href": "https://www.grammar-monster.com/glossary/simple_sentence.htm", "video": "https://youtu.be/JoTIDcnKGz8"}, {"label": "simple subject", "href": "https://www.grammar-monster.com/glossary/simple_subject.htm", "video": null}, {"label": "simple tense", "href": "https://www.grammar-monster.com/glossary/simple_tenses.htm", "video": null}, {"label": "singular", "href": "https://www.grammar-monster.com/glossary/singular.htm", "video": null}, {"label": "split infinitive", "href": "https://www.grammar-monster.com/glossary/split_infinitives.htm", "video": null}, {"label": "squinting modifier", "href": "https://www.grammar-monster.com/glossary/squinting_modifier.htm", "video": null}, {"label": "staccato sentences", "href": "https://www.grammar-monster.com/glossary/staccato_sentences.htm", "video": null}, {"label": "stative verbs", "href": "https://www.grammar-monster.com/glossary/stative_verbs.htm", "video": null}, {"label": "subject", "href": "https://www.grammar-monster.com/glossary/subject.htm", "video": null}, {"label": "subjective case", "href": "https://www.grammar-monster.com/glossary/subjective_case.htm", "video": null}, {"label": "subject complement", "href": "https://www.grammar-monster.com/glossary/subject_complement.htm", "video": null}, {"label": "subject-verb agreement", "href": "https://www.grammar-monster.com/lessons/subject_verb_agreement.htm", "video": null}, {"label": "subjective personal pronoun", "href": "https://www.grammar-monster.com/glossary/subjective_personal_pronouns.htm", "video": null}, {"label": "subjunctive mood", "href": "https://www.grammar-monster.com/glossary/subjunctive_mood.htm", "video": "https://youtu.be/UchifoqFGNA"}, {"label": "subordinate clause", "href": "https://www.grammar-monster.com/glossary/subordinate_clause.htm", "video": null}, {"label": "subordinating conjunction", "href": "https://www.grammar-monster.com/glossary/subordinating_conjunctions.htm", "video": null}, {"label": "suffix", "href": "https://www.grammar-monster.com/glossary/suffix.htm", "video": null}, {"label": "superlative", "href": "https://www.grammar-monster.com/glossary/superlatives.htm", "video": "https://youtu.be/geVN43poD2s"}, {"label": "syllable", "href": "https://www.grammar-monster.com/glossary/syllable.htm", "video": "https://youtu.be/DpogctiOovs"}, {"label": "synonym", "href": "https://www.grammar-monster.com/glossary/synonyms.htm", "video": null}]}, {"letter": "T", "entries": [{"label": "tautology", "href": "https://www.grammar-monster.com/glossary/tautology.htm", "video": "https://youtu.be/h5-dKWBusCw"}, {"label": "tense", "href": "https://www.grammar-monster.com/glossary/tense.htm", "video": null}, {"label": "third person", "href": "https://www.grammar-monster.com/glossary/third_person.htm", "video": "https://youtu.be/5qY9KpEn54g"}, {"label": "title case", "href": "https://www.grammar-monster.com/glossary/title_case.htm", "video": null}, {"label": "tmesis", "href": "https://www.grammar-monster.com/glossary/tmesis.htm", "video": null}, {"label": "transition words", "href": "https://www.grammar-monster.com/glossary/transition-words.htm", "video": null}, {"label": "transitive verb", "href": "https://www.grammar-monster.com/glossary/transitive_verbs.htm", "video": "https://youtu.be/TtTT-Ygo7uY"}]}, {"letter": "U", "entries": []}, {"letter": "V", "entries": [{"label": "verb", "href": "https://www.grammar-monster.com/lessons/verbs.htm", "video": "https://youtu.be/N3AViIPrT08"}, {"label": "verb phrase", "href": "https://www.grammar-monster.com/glossary/verb_phrase.htm", "video": null}, {"label": "verb root", "href": "https://www.grammar-monster.com/glossary/verb_root.htm", "video": null}, {"label": "verbal", "href": "https://www.grammar-monster.com/glossary/verbals.htm", "video": null}, {"label": "verbal noun", "href": "https://www.grammar-monster.com/glossary/verbal_nouns.htm", "video": null}, {"label": "vocative case", "href": "https://www.grammar-monster.com/glossary/vocative_case.htm", "video": null}, {"label": "voice", "href": "https://www.grammar-monster.com/glossary/voice.htm", "video": null}, {"label": "vowel", "href": "https://www.grammar-monster.com/glossary/vowels.htm", "video": "https://youtu.be/N8ZcgYAs7f8"}]}, {"letter": "W", "entries": [{"label": "weak verb", "href": "https://www.grammar-monster.com/glossary/weak_verbs.htm", "video": null}]}, {"letter": "X", "entries": []}, {"letter": "Y", "entries": []}, {"letter": "Z", "entries": [{"label": "zeugma", "href": "https://www.grammar-monster.com/glossary/zeugma.htm", "video": null}]}];
+const teacherZone = [{"label": "Drag-n-drop game (parts of speech)", "href": "https://www.grammar-monster.com/tests/drag_and_drop_test_parts_of_speech.htm", "type": "Play"}, {"label": "Match the pairs (parts of speech)", "href": "https://www.grammar-monster.com/tests/match-the-pairs-game-parts-of-speech.htm", "type": "Play"}, {"label": "Bucket game (parts of speech)", "href": "https://www.grammar-monster.com/tests/parts_of_speech_bucket_game.htm", "type": "Play"}, {"label": "Confidence test (parts of speech)", "href": "https://www.grammar-monster.com/tests/grammatical_terms.htm", "type": "Test"}, {"label": "Identify the word type", "href": "https://www.grammar-monster.com/tests/test_parts_of_speech.htm", "type": "Test"}, {"label": "Speed test (all writing skills)", "href": "https://www.grammar-monster.com/tests/monster_grammar_test.htm", "type": "Test"}, {"label": "Parts-of-speech lists", "href": "https://www.grammar-monster.com/parts_of_speech_lists.htm", "type": "Read"}];
+const related = [{"label": "How to print a Grammar Monster test as a handout", "href": "https://youtu.be/3UZNRKyqtoc"}, {"label": "How to send a Grammar Monster test to students", "href": "https://youtu.be/vgRj4RF5pH4"}, {"label": "Easily Confused Words", "href": "https://www.grammar-monster.com/easily_confused_words.htm"}, {"label": "Punctuation Lessons", "href": "/punctuation-lessons/"}, {"label": "Common Grammar Errors", "href": "https://www.grammar-monster.com/common_grammar_errors.htm"}, {"label": "Grammar Tests", "href": "/games/"}, {"label": "Sayings and Proverbs", "href": "https://www.grammar-monster.com/sayings_proverbs.htm"}, {"label": "Tattoo Fails", "href": "https://www.grammar-monster.com/tattoo_fails.htm"}];
+
+const visibleLetterCount = letters.filter((group) => group.entries.length > 0).length;
+---
+
+<BaseLayout
+  title="Grammatical Terms | Grammar Monster"
+  description={description}
+>
+  <div class="gt-page">
+    <section class="gt-hero">
+      <div class="gt-shell gt-hero__grid">
+        <div class="gt-hero__copy">
+          <div class="gt-kicker"><span></span> GRAMMAR MONSTER GLOSSARY</div>
+          <h1>Grammatical terms,<br /><em>made brilliantly clear.</em></h1>
+
+          <p class="gt-lead">
+            Learning grammatical terms is essential to take your language study or writing skills
+            to the next level. If you're learning a foreign language in a classroom setting, then
+            you must know the grammatical terms so you and your tutor can discuss language structures
+            efficiently. If you're looking to improve your writing, then you must know the grammatical
+            terms to remove the guesswork from aspects such as punctuation, sentence structure, and
+            capitalization.
+          </p>
+
+          <div class="gt-hero__actions">
+            <a href="#glossary">Browse the A–Z glossary</a>
+            <a class="gt-button--ghost" href="#fundamentals">Start with the fundamentals</a>
+          </div>
+
+          <div class="gt-hero__proof">
+            <div><strong>276</strong><span>grammar terms</span></div>
+            <i></i>
+            <div><strong>9</strong><span>principal parts of speech</span></div>
+            <i></i>
+            <div><strong>Free</strong><span>lessons, examples & tests</span></div>
+          </div>
+        </div>
+
+        <div class="gt-hero__visual" aria-hidden="true">
+          <div class="gt-orbit gt-orbit--one"></div>
+          <div class="gt-orbit gt-orbit--two"></div>
+
+          <div class="gt-letter gt-letter--a">A</div>
+          <div class="gt-letter gt-letter--v">V</div>
+          <div class="gt-letter gt-letter--n">N</div>
+
+          <div class="gt-monster">
+            <img src="/assets/images/grammarMonsterEye.webp" alt="" />
+          </div>
+
+          <div class="gt-floating-card">
+            <small>GRAMMAR TERM</small>
+            <strong>dependent clause</strong>
+            <span>A clause that cannot stand alone.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gt-why">
+      <div class="gt-shell gt-why__grid">
+        <div class="gt-why__statement">
+          <span class="gt-mini-label">WHY THE TERMS MATTER</span>
+          <h2>Know the terminology.<br />Remove the guesswork.</h2>
+        </div>
+        <div class="gt-why__copy">
+          <p>
+            For example, to use commas accurately, you must understand dependent clauses,
+            independent clauses, conjunctions, interjections, the vocative case, cumulative
+            adjectives, parenthesis, and apposition.
+          </p>
+          <p>
+            If you don't understand those terms, you are flying by the seat of your pants
+            regarding <a href="https://www.grammar-monster.com/punctuation/using_commas.htm">commas</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gt-section" id="fundamentals">
+      <div class="gt-shell">
+        <div class="gt-section-head">
+          <div>
+            <span class="gt-mini-label">FUNDAMENTAL GRAMMAR TERMS</span>
+            <h2>The nine principal parts of speech.</h2>
+          </div>
+          <p>
+            Here are the nine principal parts of speech (also called "word classes").
+            These detailed lessons are intended for teachers or advanced learners.
+          </p>
+        </div>
+
+        <div class="gt-parts-grid">
+          {
+            fundamental.map((item, index) => (
+              <article class:list={["gt-part-card", `gt-accent-${(index % 6) + 1}`]}>
+                <a class="gt-part-card__main" href={item.href}>
+                  <div class="gt-part-card__mark">{item.mark}</div>
+                  <div>
+                    <span>PART OF SPEECH</span>
+                    <h3>{item.label}</h3>
+                  </div>
+                  <b>↗</b>
+                </a>
+
+                {
+                  item.video ? (
+                    <a class="gt-video-link" href={item.video} target="_blank" rel="noopener">
+                      <span class="gt-play">▶</span>
+                      Watch video lesson
+                    </a>
+                  ) : (
+                    <span class="gt-video-link gt-video-link--empty">Lesson available</span>
+                  )
+                }
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="gt-intro-card">
+          <div class="gt-intro-card__badge">9</div>
+          <div>
+            <span class="gt-mini-label">A SIMPLER INTRODUCTION</span>
+            <h3>Introduction to the Nine Parts of Speech</h3>
+            <p>
+              This lesson with the accompanying video is a helpful, simplified introduction
+              to the nine parts of speech.
+            </p>
+          </div>
+          <div class="gt-intro-card__actions">
+            <a href="https://www.grammar-monster.com/glossary/parts_of_speech.htm">Read the lesson ↗</a>
+            <a href="https://youtu.be/2wlKKsA1HMQ" target="_blank" rel="noopener">Watch the video ▶</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gt-glossary" id="glossary">
+      <div class="gt-shell">
+        <div class="gt-glossary__head">
+          <div>
+            <span class="gt-mini-label">A–Z GLOSSARY</span>
+            <h2>276 grammatical terms.<br /><em>One place to find them.</em></h2>
+          </div>
+          <p>
+            This A-Z list of grammatical terms provides links to the explanations of the meanings.
+            Each entry has a link to a lesson that includes example sentences as well as a printable
+            and sendable test. Many entries also have a video tutorial.
+          </p>
+        </div>
+
+        <div class="gt-search-panel">
+          <div class="gt-searchbox">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 21-4.2-4.2m1.2-5.8A7 7 0 1 1 4 11a7 7 0 0 1 14 0Z"></path>
+            </svg>
+            <input
+              id="termSearch"
+              type="search"
+              placeholder="Search 276 terms — try ‘clause’, ‘pronoun’, ‘tense’..."
+              autocomplete="off"
+            />
+            <kbd>/</kbd>
+          </div>
+
+          <div class="gt-search-panel__meta">
+            <span id="termCount">276 terms</span>
+            <button id="clearTerms" type="button">Clear search</button>
+          </div>
+        </div>
+
+        <nav class="gt-alphabet" aria-label="Jump to a glossary letter">
+          {
+            letters.map((group) => (
+              <button
+                type="button"
+                data-letter={group.letter}
+                disabled={group.entries.length === 0}
+                title={group.entries.length === 0 ? `No ${group.letter} entries` : `Jump to ${group.letter}`}
+              >
+                {group.letter}
+              </button>
+            ))
+          }
+        </nav>
+
+        <div class="gt-letter-list" id="termList">
+          {
+            letters.map((group, groupIndex) => (
+              <section
+                class:list={["gt-letter-section", `gt-accent-${(groupIndex % 6) + 1}`]}
+                data-term-group
+                data-letter-section={group.letter}
+                hidden={group.entries.length === 0}
+              >
+                <div class="gt-letter-section__rail">
+                  <strong>{group.letter}</strong>
+                  <span>{group.entries.length} {group.entries.length === 1 ? "term" : "terms"}</span>
+                </div>
+
+                <div class="gt-term-grid">
+                  {
+                    group.entries.map((entry) => (
+                      <div class="gt-term" data-term data-search={entry.label.toLowerCase()}>
+                        <a class="gt-term__main" href={entry.href}>
+                          <span>{entry.label}</span>
+                          <b>↗</b>
+                        </a>
+                        {
+                          entry.video && (
+                            <a
+                              class="gt-term__video"
+                              href={entry.video}
+                              target="_blank"
+                              rel="noopener"
+                              aria-label={`Watch a video about ${entry.label}`}
+                              title="Video tutorial"
+                            >
+                              ▶
+                            </a>
+                          )
+                        }
+                      </div>
+                    ))
+                  }
+                </div>
+              </section>
+            ))
+          }
+        </div>
+
+        <div class="gt-empty" id="termEmpty" hidden>
+          <span>?</span>
+          <h3>No matching term found.</h3>
+          <p>Try a broader search, or use the A–Z picker above.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gt-teacher">
+      <div class="gt-shell gt-teacher__grid">
+        <div class="gt-teacher__copy">
+          <span class="gt-mini-label gt-mini-label--lime">TEACHERS' ZONE</span>
+          <h2>Learn it. Play it.<br />Test it.</h2>
+          <p>
+            Use the existing Grammar Monster parts-of-speech games, confidence tests
+            and reference lists for practice, homework or classroom activities.
+          </p>
+          <a href="/games/" class="gt-teacher__cta">Explore Games & Tests →</a>
+        </div>
+
+        <div class="gt-teacher__links">
+          {
+            teacherZone.map((item, index) => (
+              <a href={item.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <small>{item.type}</small>
+                  <strong>{item.label}</strong>
+                </div>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gt-section gt-related">
+      <div class="gt-shell">
+        <div class="gt-section-head">
+          <div>
+            <span class="gt-mini-label">KEEP EXPLORING</span>
+            <h2>You might also like…</h2>
+          </div>
+        </div>
+
+        <div class="gt-related-grid">
+          {
+            related.map((item, index) => (
+              <a class:list={[`gt-accent-${(index % 6) + 1}`]} href={item.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+                <b>↗</b>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="gt-author">
+          <div class="gt-author__mark">✎</div>
+          <div>
+            <small>ORIGINAL GRAMMAR MONSTER CONTENT</small>
+            <p>
+              This page was written by
+              <a href="https://www.grammar-monster.com/Craig_Shrives_author.htm">Craig Shrives</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const search = document.getElementById("termSearch");
+    const terms = [...document.querySelectorAll("[data-term]")];
+    const groups = [...document.querySelectorAll("[data-term-group]")];
+    const count = document.getElementById("termCount");
+    const empty = document.getElementById("termEmpty");
+
+    function filterTerms(value) {
+      const term = (value || "").trim().toLowerCase();
+      let visible = 0;
+
+      groups.forEach((group) => {
+        let groupVisible = 0;
+
+        group.querySelectorAll("[data-term]").forEach((item) => {
+          const match = !term || (item.dataset.search || "").includes(term);
+          item.hidden = !match;
+
+          if (match) {
+            visible++;
+            groupVisible++;
+          }
+        });
+
+        group.hidden = groupVisible === 0;
+      });
+
+      if (count) count.textContent = `${visible} ${visible === 1 ? "term" : "terms"}`;
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    search?.addEventListener("input", () => filterTerms(search.value));
+
+    document.getElementById("clearTerms")?.addEventListener("click", () => {
+      if (search) {
+        search.value = "";
+        search.focus();
+      }
+      filterTerms("");
+    });
+
+    document.querySelectorAll("[data-letter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const letter = button.dataset.letter;
+        const target = document.querySelector(`[data-letter-section="${letter}"]`);
+
+        if (search) search.value = "";
+        filterTerms("");
+
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const tag = document.activeElement?.tagName;
+
+      if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") {
+        event.preventDefault();
+        search?.focus();
+      }
+
+      if (event.key === "Escape" && document.activeElement === search) {
+        search.value = "";
+        filterTerms("");
+        search.blur();
+      }
+    });
+  </script>
+</BaseLayout>
