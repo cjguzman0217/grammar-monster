@@ -288,9 +288,18 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
   const mobileClose = document.querySelector("[data-mobile-close]");
   const backdrop = document.querySelector("[data-mobile-backdrop]");
 
+  const hoverCloseTimers = new WeakMap();
+
   const closeDesktopMenus = (except = null) => {
     groups.forEach((group) => {
       if (group === except) return;
+
+      const timer = hoverCloseTimers.get(group);
+      if (timer) {
+        window.clearTimeout(timer);
+        hoverCloseTimers.delete(group);
+      }
+
       group.classList.remove("is-open");
       group.querySelector("[data-nav-trigger]")?.setAttribute("aria-expanded", "false");
     });
@@ -299,26 +308,70 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
   groups.forEach((group) => {
     const trigger = group.querySelector("[data-nav-trigger]");
 
+    const clearHoverClose = () => {
+      const timer = hoverCloseTimers.get(group);
+      if (timer) {
+        window.clearTimeout(timer);
+        hoverCloseTimers.delete(group);
+      }
+    };
+
+    const openGroup = () => {
+      clearHoverClose();
+      closeDesktopMenus(group);
+      group.classList.add("is-open");
+      trigger?.setAttribute("aria-expanded", "true");
+    };
+
+    const queueCloseGroup = () => {
+      clearHoverClose();
+
+      const timer = window.setTimeout(() => {
+        group.classList.remove("is-open");
+        trigger?.setAttribute("aria-expanded", "false");
+        hoverCloseTimers.delete(group);
+      }, 280);
+
+      hoverCloseTimers.set(group, timer);
+    };
+
     trigger?.addEventListener("click", (event) => {
       event.stopPropagation();
       const willOpen = !group.classList.contains("is-open");
-      closeDesktopMenus(group);
-      group.classList.toggle("is-open", willOpen);
-      trigger.setAttribute("aria-expanded", String(willOpen));
+
+      if (willOpen) {
+        openGroup();
+      } else {
+        clearHoverClose();
+        group.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+      }
     });
 
     group.addEventListener("mouseenter", () => {
       if (window.matchMedia("(min-width: 901px)").matches) {
-        closeDesktopMenus(group);
-        group.classList.add("is-open");
-        trigger?.setAttribute("aria-expanded", "true");
+        openGroup();
       }
     });
 
     group.addEventListener("mouseleave", () => {
       if (window.matchMedia("(min-width: 901px)").matches) {
-        group.classList.remove("is-open");
-        trigger?.setAttribute("aria-expanded", "false");
+        queueCloseGroup();
+      }
+    });
+
+    group.addEventListener("focusin", () => {
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        openGroup();
+      }
+    });
+
+    group.addEventListener("focusout", (event) => {
+      if (
+        window.matchMedia("(min-width: 901px)").matches &&
+        !group.contains(event.relatedTarget)
+      ) {
+        queueCloseGroup();
       }
     });
   });
@@ -390,7 +443,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
 
   .gm-header__bar{
     width:min(1180px,calc(100% - 40px));
-    min-height:82px;
+    min-height:86px;
     margin:0 auto;
     display:grid;
     grid-template-columns:auto 1fr auto;
@@ -436,7 +489,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
     align-items:baseline;
     gap:4px;
     font-family:"Manrope",sans-serif;
-    font-size:16px;
+    font-size:17px;
     letter-spacing:-.035em;
   }
 
@@ -460,12 +513,12 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
     display:flex;
     align-items:center;
     gap:6px;
-    padding:0 11px;
+    padding:0 12px;
     border:0;
     border-radius:999px;
     background:transparent;
     color:#52675e;
-    font:800 9px/1 "DM Sans",sans-serif;
+    font:800 10.25px/1 "DM Sans",sans-serif;
     cursor:pointer;
     transition:background .16s ease,color .16s ease;
   }
@@ -510,7 +563,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
 
   .gm-nav__menu{
     position:absolute;
-    top:calc(100% + 12px);
+    top:calc(100% + 9px);
     left:50%;
     width:590px;
     display:grid;
@@ -546,6 +599,17 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
     background:#fff;
     border-left:1px solid rgba(14,77,53,.10);
     border-top:1px solid rgba(14,77,53,.10);
+  }
+
+  /* Invisible hover bridge: keeps the dropdown "connected" to its trigger. */
+  .gm-nav__menu:after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:-16px;
+    height:18px;
+    background:transparent;
   }
 
   .gm-nav__menu-intro{
@@ -585,14 +649,14 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
     display:block;
     margin-top:7px;
     font-family:"Manrope",sans-serif;
-    font-size:22px;
+    font-size:23px;
     letter-spacing:-.045em;
   }
 
   .gm-nav__menu-intro p{
     margin:10px 0 0;
     color:#b6cac0;
-    font-size:8.5px;
+    font-size:9.25px;
     line-height:1.55;
   }
 
@@ -603,7 +667,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
   }
 
   .gm-nav__menu-link{
-    min-height:82px;
+    min-height:86px;
     display:grid;
     grid-template-columns:38px 1fr auto;
     gap:10px;
@@ -636,14 +700,14 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
 
   .gm-nav__item-copy strong{
     display:block;
-    font-size:9.5px;
+    font-size:10.5px;
   }
 
   .gm-nav__item-copy small{
     display:block;
     margin-top:3px;
     color:#83938b;
-    font-size:7px;
+    font-size:7.75px;
     line-height:1.35;
   }
 
@@ -661,7 +725,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
   .gm-header__home-link{
     color:#62766c;
     text-decoration:none;
-    font-size:8.5px;
+    font-size:9.25px;
     font-weight:800;
   }
 
@@ -677,7 +741,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
     background:linear-gradient(135deg,#063d2e,#075440);
     color:#fff;
     text-decoration:none;
-    font-size:8.5px;
+    font-size:9.25px;
     font-weight:850;
     box-shadow:0 10px 25px rgba(5,67,46,.15);
     transition:transform .17s ease,box-shadow .17s ease;
@@ -830,7 +894,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
     .gm-mobile-nav__top small{
       display:block;
       color:var(--header-green);
-      font-size:7px;
+      font-size:7.75px;
       font-weight:850;
       letter-spacing:.12em;
     }
@@ -852,7 +916,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
       border-radius:11px;
       background:#fff;
       color:#53695e;
-      font-size:22px;
+      font-size:23px;
       line-height:1;
       cursor:pointer;
     }
@@ -867,7 +931,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
       background:#edf6e9;
       color:var(--header-green);
       text-decoration:none;
-      font-size:10px;
+      font-size:11px;
       font-weight:850;
     }
 
@@ -892,7 +956,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
       min-height:52px;
       padding:0 14px;
       color:#344f43;
-      font-size:10px;
+      font-size:11px;
       font-weight:850;
       cursor:pointer;
       user-select:none;
@@ -951,14 +1015,14 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
 
     .gm-mobile-group__links strong{
       display:block;
-      font-size:9.5px;
+      font-size:10.5px;
     }
 
     .gm-mobile-group__links small{
       display:block;
       margin-top:3px;
       color:#83938b;
-      font-size:7px;
+      font-size:7.75px;
       line-height:1.35;
     }
 
@@ -1015,7 +1079,7 @@ const groupIsActive = (group) => group.items.some((item) => routeIsActive(item.h
       background:linear-gradient(135deg,#063d2e,#075440);
       color:#fff;
       text-decoration:none;
-      font-size:9px;
+      font-size:10px;
       font-weight:850;
     }
 
