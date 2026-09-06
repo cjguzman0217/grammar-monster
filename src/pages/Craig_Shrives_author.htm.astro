@@ -1,0 +1,567 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/craig-author.css";
+
+const sites = [
+  {
+    name: "Mathematics Monster",
+    url: "https://www.mathematics-monster.com/",
+    display: "www.mathematics-monster.com",
+    description: "Free Mathematics lessons, tests, and games",
+    mark: "∑"
+  },
+  {
+    name: "Cyber Definitions",
+    url: "https://www.cyberdefinitions.com/",
+    display: "www.cyberdefinitions.com",
+    description: "Online dictionary for text-speak and neologisms",
+    mark: "#"
+  },
+  {
+    name: "Funny Quotation",
+    url: "https://www.funnyquotation.com/",
+    display: "www.funnyquotation.com",
+    description: "A searchable database of witty or thoughtful quotations",
+    mark: "“"
+  },
+  {
+    name: "How To Get Your Own Way",
+    url: "https://www.howtogetyourownway.com/",
+    display: "www.howtogetyourownway.com",
+    description: "A site for understanding manipulation via Critical Thinking and statistics",
+    mark: "↗"
+  },
+  {
+    name: "You Against Me",
+    url: "https://www.youagainst.me/",
+    display: "www.youagainst.me",
+    description: "Classic games and word games over WhatsApp, SMS, etc. without log-ins or data sharing",
+    mark: "VS"
+  }
+];
+
+const related = [
+  { title: "A–Z Grammar Terms", href: "/grammar-terms/", label: "Grammar library", mark: "Aa" },
+  { title: "A–Z Easily Confused Words", href: "/easily-confused-words/", label: "Word choice", mark: "≠" },
+  { title: "Common Grammar Errors", href: "https://www.grammar-monster.com/common_grammar_errors.htm", label: "Writing help", mark: "!" },
+  { title: "Tests and Games", href: "/games/", label: "Practise", mark: "✓" }
+];
+
+const questions = [
+  {
+    prompt: "Select the noun:",
+    options: ["curiosity", "thoughtful", "curiously"],
+    answer: 0
+  },
+  {
+    prompt: "Select the example of an idiom:",
+    options: ["He's all bark and no bite.", "He shouts a lot but never acts."],
+    answer: 0
+  },
+  {
+    prompt: "Select the collective noun for a group of turtles:",
+    helper: "🐢  🐢  🐢",
+    options: ["armada", "bale", "bouquet", "battery"],
+    answer: 1
+  },
+  {
+    prompt: "Select the correct version:",
+    prefix: "I think the government has become too risk ",
+    options: ["adverse", "averse"],
+    suffix: ".",
+    answer: 1
+  },
+  {
+    prompt: "Select the answer with an attributive adjective.",
+    options: ["something old", "old man", "It is old."],
+    answer: 1
+  }
+];
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Craig Shrives",
+  url: "https://www.grammar-monster.com/Craig_Shrives_author.htm",
+  image: "https://www.grammar-monster.com/images/craig_shrives_author_page.webp",
+  jobTitle: "Founder of Grammar Monster",
+  sameAs: [
+    "https://www.amazon.co.uk/Craig-Shrives/e/B0071GTSRW"
+  ]
+};
+---
+
+<BaseLayout
+  title="Craig Shrives | Grammar Monster"
+  description="About Craig Shrives, founder of Grammar Monster and author of Smashing Grammar and Grammar for Grown-Ups."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+
+  <script is:inline>
+    window.vitag = window.vitag || {};
+    window.vitag.smartBannerConfig = { enablePC: false, enableMobile: false };
+  </script>
+  <script is:inline async src="https://services.vlitag.com/adv1/?q=30b982bcceb31097305670acdcf26233"></script>
+
+  <main class="craig-page">
+    <section class="craig-hero">
+      <div class="craig-shell craig-hero__grid">
+        <div class="craig-hero__copy">
+          <nav class="craig-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span>
+            <a href="/explore/">Explore</a><span>›</span>
+            <strong>Craig Shrives</strong>
+          </nav>
+
+          <span class="craig-kicker craig-kicker--lime">FOUNDER · AUTHOR · TEACHER</span>
+          <h1>Meet Craig<br /><em>Shrives.</em></h1>
+
+          <p class="craig-hero__lede">
+            Founder of Grammar Monster and author of <strong>Smashing Grammar</strong>
+            and the bestselling <strong>Grammar Rules</strong>, later re-titled
+            <strong>Grammar for Grown-Ups</strong>.
+          </p>
+
+          <div class="craig-hero__facts">
+            <div><strong>1999</strong><span>Grammar Monster established</span></div>
+            <i></i>
+            <div><strong>2m+</strong><span>visitors a month</span></div>
+            <i></i>
+            <div><strong>5</strong><span>other sites</span></div>
+          </div>
+
+          <div class="craig-hero__actions">
+            <a href="#about-craig">About Craig <span>↓</span></a>
+            <a class="craig-hero__ghost" href="https://www.grammar-monster.com/smashing_grammar.htm">His books ↗</a>
+          </div>
+        </div>
+
+        <div class="craig-hero__visual">
+          <div class="craig-portrait-ring"></div>
+          <div class="craig-portrait-card">
+            <img
+              src="https://www.grammar-monster.com/images/craig_shrives_author_page.webp"
+              alt="Craig Shrives"
+            />
+            <div>
+              <span>CRAIG SHRIVES</span>
+              <strong>Founder, Grammar Monster</strong>
+            </div>
+          </div>
+          <div class="craig-float craig-float--one"><span>✎</span> WRITING THAT MATTERS</div>
+          <div class="craig-float craig-float--two"><span>✓</span> GRAMMAR, WITHOUT THE FUSS</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="craig-main" id="about-craig">
+      <div class="craig-shell craig-main__grid">
+        <article class="craig-story">
+          <header class="craig-section-head">
+            <span class="craig-kicker">ABOUT CRAIG SHRIVES</span>
+            <h2>Grammar with a<br /><em>reason behind it.</em></h2>
+          </header>
+
+          <div class="craig-intro-card">
+            <img
+              src="https://www.grammar-monster.com/images/craig_shrives_author_page.webp"
+              alt="Craig Shrives"
+            />
+            <div>
+              <p>
+                Craig Shrives is the founder of grammar-monster.com. Established in
+                1999, the site now receives over 2 million visitors a month.
+              </p>
+              <p>
+                Craig is the author of
+                <a href="https://www.grammar-monster.com/smashing_grammar.htm">Smashing Grammar</a>
+                and the bestselling
+                <a href="https://www.grammar-monster.com/grammar_rules.htm">Grammar Rules</a>
+                (later re-titled “Grammar for Grown-Ups”). He is also the co-author
+                of “How To Get Your Own Way”, a book on Critical Thinking and
+                business influence.
+              </p>
+            </div>
+          </div>
+
+          <div class="craig-prose">
+            <p>
+              <a href="https://www.amazon.co.uk/Craig-Shrives/e/B0071GTSRW">Craig</a>
+              explains grammar in an entertaining and vocational way, focusing on
+              what you need to know and why you need to know it.
+            </p>
+            <p>
+              For example, every lesson on Grammar Monster ends with a
+              <strong>“Why Should I Care?”</strong> section to explain why the
+              grammar point matters to a writer.
+            </p>
+          </div>
+
+          <section class="craig-books">
+            <div class="craig-books__head">
+              <span class="craig-kicker">BOOKS</span>
+              <h3>From the site to the bookshelf.</h3>
+            </div>
+
+            <div class="craig-book-grid">
+              <a href="https://www.grammar-monster.com/smashing_grammar.htm">
+                <span>01</span>
+                <div>
+                  <strong>Smashing Grammar</strong>
+                  <p>Grammar terminology, punctuation and easily confused words.</p>
+                </div>
+                <b>↗</b>
+              </a>
+              <a href="https://www.grammar-monster.com/grammar_rules.htm">
+                <span>02</span>
+                <div>
+                  <strong>Grammar for Grown-Ups</strong>
+                  <p>The bestselling book originally published as Grammar Rules.</p>
+                </div>
+                <b>↗</b>
+              </a>
+              <a href="https://www.howtogetyourownway.com/">
+                <span>03</span>
+                <div>
+                  <strong>How To Get Your Own Way</strong>
+                  <p>Critical Thinking and business influence.</p>
+                </div>
+                <b>↗</b>
+              </a>
+            </div>
+          </section>
+
+          <section class="craig-sites">
+            <div class="craig-sites__head">
+              <div>
+                <span class="craig-kicker">CRAIG ALSO RUNS</span>
+                <h3>Five more corners<br />of the web.</h3>
+              </div>
+              <p>
+                Grammar, mathematics, language, quotations, critical thinking
+                and old-school games.
+              </p>
+            </div>
+
+            <div class="craig-sites__grid">
+              {sites.map((site, index) => (
+                <a href={site.url} target="_blank" rel="noopener">
+                  <span class="craig-site-number">{String(index + 1).padStart(2, "0")}</span>
+                  <div class="craig-site-mark">{site.mark}</div>
+                  <div>
+                    <strong>{site.display}</strong>
+                    <p>{site.description}</p>
+                  </div>
+                  <b>↗</b>
+                </a>
+              ))}
+            </div>
+
+            <a class="craig-about-link" href="https://www.grammar-monster.com/about_us.htm">
+              Read more about Grammar Monster →
+            </a>
+          </section>
+
+          <section class="craig-ad-stage" aria-label="Advertisement">
+            <div class="craig-ad-label">ADVERTISEMENT <span>Ads help keep Grammar Monster free.</span></div>
+            <div class="craig-ad-grid">
+              <div class="craig-ad-slot" data-craig-ad-shell>
+                <div class="craig-ad-placeholder">
+                  <span>ADVERTISEMENT</span>
+                  <strong>Grammar Monster stays free.</strong>
+                  <small>Live ad inventory may appear here.</small>
+                </div>
+                <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342100586"></div>
+              </div>
+              <div class="craig-ad-slot craig-ad-slot--secondary" data-craig-ad-shell>
+                <div class="craig-ad-placeholder">
+                  <span>ADVERTISEMENT</span>
+                  <strong>Free learning, supported by ads.</strong>
+                  <small>Thanks for supporting the site.</small>
+                </div>
+                <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112530"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="craig-related">
+            <div class="craig-related__head">
+              <span class="craig-kicker">YOU MIGHT ALSO LIKE</span>
+              <h2>Keep exploring.</h2>
+            </div>
+
+            <div class="craig-related__grid">
+              {related.map((item) => (
+                <a href={item.href}>
+                  <div>{item.mark}</div>
+                  <span>{item.label}</span>
+                  <strong>{item.title}</strong>
+                  <b>→</b>
+                </a>
+              ))}
+            </div>
+          </section>
+        </article>
+
+        <aside class="craig-quiz-wrap">
+          <div class="craig-quiz" data-craig-quiz>
+            <div class="craig-quiz__head">
+              <div>
+                <span class="craig-kicker">QUICK PRACTICE</span>
+                <h2>Five Quick Questions</h2>
+              </div>
+              <div class="craig-score" aria-label="Quiz score">
+                <div><strong data-score-correct>0</strong><span>right</span></div>
+                <div><strong data-score-wrong>0</strong><span>wrong</span></div>
+              </div>
+            </div>
+
+            <div class="craig-quiz-tools" aria-label="Quiz tools">
+              <button type="button" data-quiz-expand>
+                <span>↗</span><strong>Full page</strong>
+              </button>
+              <button type="button" data-quiz-slides>
+                <span>▣</span><strong>Slides</strong>
+              </button>
+              <button type="button" data-quiz-share>
+                <span>➤</span><strong>Homework</strong>
+              </button>
+              <button type="button" data-quiz-print>
+                <span>▤</span><strong>Print</strong>
+              </button>
+            </div>
+
+            <div class="craig-questions" data-question-list>
+              {questions.map((question, qIndex) => (
+                <section
+                  class="craig-question"
+                  data-question
+                  data-answer={question.answer}
+                  data-index={qIndex}
+                >
+                  <div class="craig-question__meta">
+                    <span>{qIndex + 1}</span>
+                    <strong data-question-state>not attempted</strong>
+                  </div>
+
+                  <p class="craig-question__prompt">{question.prompt}</p>
+
+                  {question.helper && (
+                    <div class="craig-question__helper" aria-hidden="true">{question.helper}</div>
+                  )}
+
+                  {question.prefix && (
+                    <p class="craig-question__sentence">
+                      {question.prefix}<strong>?</strong>{question.suffix}
+                    </p>
+                  )}
+
+                  <div class="craig-options">
+                    {question.options.map((option, optionIndex) => (
+                      <button
+                        type="button"
+                        data-option
+                        data-option-index={optionIndex}
+                      >
+                        <span>{String.fromCharCode(65 + optionIndex)}.</span>
+                        <strong>{option}</strong>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+
+            <div class="craig-quiz__footer">
+              <div>
+                <span>FINISHED?</span>
+                <strong data-result-message>Try all five questions.</strong>
+              </div>
+              <a href="/games/">Hundreds more games & tests →</a>
+            </div>
+          </div>
+
+          <div class="craig-more-tests">
+            <span>MORE GAMES AND TESTS</span>
+            <div>
+              <img src="/assets/images/grammarMonsterEye.webp" alt="" aria-hidden="true" />
+              <p>We have <a href="/games/">hundreds of games and tests</a>.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="craig-ad-stage craig-ad-stage--bottom" aria-label="Advertisement">
+      <div class="craig-shell">
+        <div class="craig-ad-label">ADVERTISEMENT <span>Helping keep Grammar Monster free.</span></div>
+        <div class="craig-ad-grid">
+          <div class="craig-ad-slot" data-craig-ad-shell>
+            <div class="craig-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>More free Grammar Monster.</strong>
+              <small>Live ad inventory may appear here.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112533"></div>
+          </div>
+          <div class="craig-ad-slot craig-ad-slot--secondary" data-craig-ad-shell>
+            <div class="craig-ad-placeholder">
+              <span>ADVERTISEMENT</span>
+              <strong>Learning without a paywall.</strong>
+              <small>Thanks for supporting the site.</small>
+            </div>
+            <div class="adsbyvli" style="width:300px;height:250px" data-ad-slot="vi_342112534"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="craig-toast" data-craig-toast hidden></div>
+  </main>
+
+  <script is:inline>
+    (() => {
+      const quiz = document.querySelector("[data-craig-quiz]");
+      if (!quiz) return;
+
+      const questions = [...quiz.querySelectorAll("[data-question]")];
+      const correctEl = quiz.querySelector("[data-score-correct]");
+      const wrongEl = quiz.querySelector("[data-score-wrong]");
+      const resultMessage = quiz.querySelector("[data-result-message]");
+      const toast = document.querySelector("[data-craig-toast]");
+
+      let correct = 0;
+      let wrong = 0;
+      let attempted = 0;
+      let slides = false;
+      let slideIndex = 0;
+
+      function updateScore() {
+        correctEl.textContent = String(correct);
+        wrongEl.textContent = String(wrong);
+
+        if (attempted === questions.length) {
+          resultMessage.textContent =
+            correct === questions.length
+              ? "Perfect score — 5 out of 5."
+              : `${correct} out of ${questions.length} correct.`;
+        }
+      }
+
+      function showToast(message) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.hidden = false;
+        toast.classList.add("is-visible");
+        setTimeout(() => {
+          toast.classList.remove("is-visible");
+          setTimeout(() => { toast.hidden = true; }, 180);
+        }, 1600);
+      }
+
+      questions.forEach((question) => {
+        const answer = Number(question.dataset.answer);
+        const state = question.querySelector("[data-question-state]");
+        const options = [...question.querySelectorAll("[data-option]")];
+
+        options.forEach((button) => {
+          button.addEventListener("click", () => {
+            if (question.dataset.attempted === "true") return;
+
+            question.dataset.attempted = "true";
+            attempted += 1;
+
+            const chosen = Number(button.dataset.optionIndex);
+            const isCorrect = chosen === answer;
+
+            if (isCorrect) {
+              correct += 1;
+              button.classList.add("is-correct");
+              state.textContent = "correct";
+              state.dataset.tone = "good";
+            } else {
+              wrong += 1;
+              button.classList.add("is-wrong");
+              options[answer]?.classList.add("is-correct");
+              state.textContent = "not quite";
+              state.dataset.tone = "bad";
+            }
+
+            options.forEach((option) => option.disabled = true);
+            updateScore();
+          });
+        });
+      });
+
+      function renderSlides() {
+        quiz.classList.toggle("is-slide-mode", slides);
+        questions.forEach((question, index) => {
+          question.hidden = slides && index !== slideIndex;
+        });
+
+        const button = quiz.querySelector("[data-quiz-slides] strong");
+        if (button) button.textContent = slides ? "All questions" : "Slides";
+      }
+
+      quiz.querySelector("[data-quiz-slides]")?.addEventListener("click", () => {
+        slides = !slides;
+        slideIndex = 0;
+        renderSlides();
+      });
+
+      quiz.querySelector("[data-quiz-expand]")?.addEventListener("click", () => {
+        quiz.classList.toggle("is-expanded");
+        document.body.classList.toggle("craig-quiz-expanded");
+        const label = quiz.querySelector("[data-quiz-expand] strong");
+        if (label) label.textContent = quiz.classList.contains("is-expanded") ? "Close" : "Full page";
+      });
+
+      quiz.querySelector("[data-quiz-print]")?.addEventListener("click", () => window.print());
+
+      quiz.querySelector("[data-quiz-share]")?.addEventListener("click", async () => {
+        const shareData = {
+          title: "Five Quick Grammar Questions",
+          text: "Try these five quick Grammar Monster questions.",
+          url: window.location.href
+        };
+
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+          } else {
+            await navigator.clipboard.writeText(window.location.href);
+            showToast("Homework link copied.");
+          }
+        } catch (_) {}
+      });
+
+      // Existing Grammar Monster VI/VLI placements.
+      const adSlots = ["vi_342100586", "vi_342112530", "vi_342112533", "vi_342112534"];
+      if (window.vitag) {
+        (window.vitag.Init = window.vitag.Init || []).push(() => {
+          adSlots.forEach((slot) => {
+            try { window.viAPItag?.display(slot); } catch (_) {}
+          });
+        });
+      }
+
+      document.querySelectorAll("[data-craig-ad-shell]").forEach((shell) => {
+        const ad = shell.querySelector(".adsbyvli");
+        const placeholder = shell.querySelector(".craig-ad-placeholder");
+        if (!ad || !placeholder) return;
+
+        const update = () => {
+          const live = Boolean(ad.querySelector("iframe") || ad.children.length);
+          placeholder.hidden = live;
+          shell.classList.toggle("has-live-ad", live);
+        };
+
+        new MutationObserver(update).observe(ad, { childList: true, subtree: true });
+        setTimeout(update, 1800);
+        setTimeout(update, 4200);
+      });
+
+      updateScore();
+    })();
+  </script>
+</BaseLayout>
